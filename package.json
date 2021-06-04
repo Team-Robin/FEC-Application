@@ -1,3 +1,28 @@
 {
-  "name": "FEC-Application"
+  "name": "fec-application",
+  "version": "1.0.0",
+  "description" : "Front end capstone project for Hack Reactor. Updating an outdated front end portal for an ecommerce website",
+  "license": "MIT",
+  "repository": {"type": "git", "url": "https://github.com/Team-Robin/FEC-Application"},
+  "author": {
+    "name": "Your Name",
+    "email": "you@example.com",
+    "url": "http://your-website.com"
+  },
+  "main": "index.js",
+  "scripts": {
+
+  },
+  "contributors": [
+    { "name": "Your Friend", "email": "friend@example.com", "url": "http://friends-website.com" },
+    { "name": "Other Friend", "email": "other@example.com", "url": "http://other-website.com" }
+  ],
+  "devDependencies": {
+    "eslint": "^7.27.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0"
+  }
 }
