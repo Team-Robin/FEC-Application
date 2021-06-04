@@ -1,5 +1,6 @@
-#FEC author ignors
+#FEC author ignores
 .yarn/*
+public/app.js
 
 
 # Logs
