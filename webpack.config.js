@@ -5,8 +5,8 @@ const SRC_DIR = path.join(__dirname, 'client' ,'src');
 module.exports = {
   entry: path.join(SRC_DIR, 'index.js'),
   output: {
-    path: path.join(__dirname, 'dist'),
-    fileName: 'app.js'
+    path: path.join(__dirname, 'public'),
+    filename: 'app.js'
   },
   module: {
     rules: [
