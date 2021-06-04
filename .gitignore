@@ -1,3 +1,7 @@
+#FEC author ignors
+.yarn/*
+
+
 # Logs
 logs
 *.log
