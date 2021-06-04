@@ -12,10 +12,6 @@
     "email": "you@example.com",
     "url": "http://your-website.com"
   },
-  "main": "index.js",
-  "scripts": {
-    "react-dev": "webpack -w"
-  },
   "contributors": [
     {
       "name": "Your Friend",
@@ -28,6 +24,10 @@
       "url": "http://other-website.com"
     }
   ],
+  "main": "index.js",
+  "scripts": {
+    "react-dev": "webpack -w"
+  },
   "devDependencies": {
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.4",
