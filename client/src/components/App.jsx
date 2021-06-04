@@ -4,6 +4,7 @@ import React, {useEffect} from 'react';
 import Overview from './overview/Overview.jsx';
 import QuestionsAndAnswers from './questionsandanswers/QuestionsAndAnswers.jsx';
 import RatingsAndReviews from './ratingsandreviews/RatingsAndReviews.jsx';
+import Connect from './connect.js';
 
 class App extends React.Component {
 
@@ -15,13 +16,19 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-
+    Connect.getProducts()
+      .then((result) => {
+        console.log('received from server', result);
+      })
+      .catch((error) => {
+        console.log('error from the server', error);
+      })
   }
 
 // const App = (props) => {
 
 //   // both the this.state and this.setState()
-//   const [productInfo, setProductInfo] = useState({});
+//   const [productInfo, setProduct Info] = useState({});
 
 //    Component Did Mount
 //   useEffect(() => {
