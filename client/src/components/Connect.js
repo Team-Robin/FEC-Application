@@ -8,6 +8,10 @@ const Connect = {
     return axios.get(`/api/products`);
   },
 
+  getProductById: (id) => {
+    return axios.get(`/api/products/${id}`);
+  }
+
   getQuestions: () => {
     return axios.get(`/api/qa/questions`);
   }

@@ -16,13 +16,16 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    Connect.getProducts()
-      .then((result) => {
-        console.log('received from server', result);
-      })
-      .catch((error) => {
-        console.log('error from the server', error);
-      })
+
+    const id = window.location.href;
+    console.log('url', id)
+    // Connect.getProductById(id)
+    //   .then((result) => {
+    //     console.log('received from server', result);
+    //   })
+    //   .catch((error) => {
+    //     console.log('error from the server', error);
+    //   })
   }
 
 // const App = (props) => {

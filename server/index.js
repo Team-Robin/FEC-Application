@@ -16,16 +16,17 @@ app.get('/', (req, res) => {
 
 //===================== Product Information =======================
 
+// trying to figure out how to render the page and product number
 app.get('/products/:productId', (req, res) => {
   console.log('body', req.params.productId);
-  res.productInfo = {}; // from connect.getProductId();
-  res.status(200).sendFile(path.join(__dirname, '..', 'public/index.html'));
+  // res.productInfo = {hello: 'world'}; // from connect.getProductId();
+  res.status(200).sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
 
+// all products
 app.get('/api/products', (req, res) => {
   connect.getProducts()
     .then((result) => {
-      console.log('from API', result);
       res.status(200).send(result.data);
     })
     .catch((error) => {
@@ -33,11 +34,11 @@ app.get('/api/products', (req, res) => {
     });
 })
 
-app.get('/api/products/', (req, res) => {
-
-  connect.getProducts()
+// get by product id
+app.get('/api/products/:productId', (req, res) => {
+  const productId = req.params.productId;
+  connect.getProductId(productId)
     .then((result) => {
-      console.log('from API', result);
       res.status(200).send(result.data);
     })
     .catch((error) => {
