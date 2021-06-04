@@ -2,7 +2,7 @@
 
 import React, {useEffect} from 'react';
 import Overview from './overview/Overview.jsx';
-import QuestionsAndAnswers from './questionsandanswers/QuestionsAndAnswers.jsx';
+import QuestionsAndAnswers from './questionsandanswers/QuestionsView.jsx';
 import RatingsAndReviews from './ratingsandreviews/RatingsAndReviews.jsx';
 
 class App extends React.Component {

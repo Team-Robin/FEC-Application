@@ -42,6 +42,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/preset-react", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:7.13.13"],
             ["babel-loader", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:8.2.2"],
             ["css-loader", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:5.2.6"],
+            ["dotenv", "npm:10.0.0"],
             ["eslint", "npm:7.27.0"],
             ["eslint-config-airbnb", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:18.2.1"],
             ["eslint-plugin-import", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:2.23.4"],
@@ -4623,6 +4624,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["dotenv", [
+        ["npm:10.0.0", {
+          "packageLocation": "./.yarn/cache/dotenv-npm-10.0.0-36b272df25-9c45712e21.zip/node_modules/dotenv/",
+          "packageDependencies": [
+            ["dotenv", "npm:10.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["electron-to-chromium", [
         ["npm:1.3.747", {
           "packageLocation": "./.yarn/cache/electron-to-chromium-npm-1.3.747-dc501ddc0d-4947db0dc2.zip/node_modules/electron-to-chromium/",
@@ -5302,6 +5312,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/preset-react", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:7.13.13"],
             ["babel-loader", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:8.2.2"],
             ["css-loader", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:5.2.6"],
+            ["dotenv", "npm:10.0.0"],
             ["eslint", "npm:7.27.0"],
             ["eslint-config-airbnb", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:18.2.1"],
             ["eslint-plugin-import", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:2.23.4"],
