@@ -18,5 +18,9 @@ module.exports = {
         "react"
     ],
     "rules": {
+        "import/no-unresolved": [
+            2,
+            { "caseSensitive": false }
+         ]
     }
 };

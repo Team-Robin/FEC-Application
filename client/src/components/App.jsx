@@ -1,59 +1,38 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
 
-
-import React, {useEffect} from 'react';
+// eslint-disable-next-line no-unused-vars
+import React, { useEffect, useState, useContext } from 'react';
 import Overview from './overview/Overview.jsx';
 import QuestionsAndAnswers from './questionsandanswers/QuestionsAndAnswers.jsx';
 import RatingsAndReviews from './ratingsandreviews/RatingsAndReviews.jsx';
 import Connect from './connect.js';
 
-class App extends React.Component {
+const App = () => {
+  // both the this.state and this.setState()
+  // eslint-disable-next-line no-unused-vars
+  const [productInfo, setProductInfo] = useState({});
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      product: '',
-    }
-  }
-
-  componentDidMount() {
-    const id = window.location.pathname.split('/')[2];  // splits '/products/###/' to '/', 'products', '####, '/'. we just want the numbers
-    console.log(id);
-    // Some work with cookies, not sure if I want to venture on this further
-    // var body = document.cookie.split(';');
-    // console.log('body is', body[0]);
-
-    // work with connecting to server to fetch the necessary data
+  //  Component Did Mount
+  useEffect(() => {
+    const id = window.location.pathname.split('/')[2]; // splits '/products/###/' to '/', 'products', '####, '/'. we just want the numbers
     Connect.getProductById(id)
       .then((result) => {
-        this.setState({product: result.data});
+        setProductInfo({ product: result.data });
       })
       .catch((error) => {
-        console.log('error from the server', error);
-      })
-  }
+        throw error;
+      });
+  }, []);
 
-// const App = (props) => {
-
-//   // both the this.state and this.setState()
-//   const [productInfo, setProduct Info] = useState({});
-
-//    Component Did Mount
-//   useEffect(() => {
-//     // do api fetch for the product
-//     // setProductInfo = ApiFetch
-//   }, [])
-
-  render() {
-    return (
-      <>
-        <div className="prime-color">From React!</div>
-        <Overview />
-        <QuestionsAndAnswers />
-        <RatingsAndReviews />
-      </>
-    )
-  }
-}
+  return (
+    <>
+      <div className="prime-color">From React!</div>
+      <Overview />
+      <QuestionsAndAnswers />
+      <RatingsAndReviews />
+    </>
+  );
+};
 
 export default App;
-

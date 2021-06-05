@@ -2,7 +2,26 @@
 // examples
 
 $primary-color: #B392F8;
+$off-white: #F0F0F0;
+$charcoal: #101010;
+
+$background-dark: #202124;
+$background-light: #fff;
+
+$Roboto-regular: 'Roboto', sans-serif;
+$Roboto-light: 'Roboto', sans-serif, 200;
+
+* {
+  margin: 0;
+  padding: 0;
+  color: $charcoal;
+  font-family: $Roboto-regular;
+}
 
 .prime-color {
   color: $primary-color;
+}
+
+::selection {
+  background-color: $primary-color;
 }

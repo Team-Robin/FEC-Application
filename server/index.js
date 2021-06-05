@@ -1,22 +1,21 @@
-const express = require('express')
-const app = express()
+const express = require('express');
 const path = require('path');
-const port = 3000
 const morgan = require('morgan'); // for server tracking
-const connect = require('./connect.js');
 const cookieParser = require('cookie-parser');
+const connect = require('./connect');
 
+const port = 3000;
+const app = express();
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(express.json());
 app.use(morgan('dev')); // see in the server commandline the method, url and speed it took
-app.use(cookieParser())
+app.use(cookieParser());
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+  res.send('Hello World!');
+});
 
-
-//===================== Product Information =======================
+// ===================== Product Information =======================
 
 // trying to figure out how to render the page and product number
 app.get('/products/:productId', (req, res) => {
@@ -32,39 +31,38 @@ app.get('/api/products', (req, res) => {
       res.status(200).send(result.data);
     })
     .catch((error) => {
-      res.status(500).send('error at API fetch');
+      res.status(500).send('error at API fetch', error);
     });
-})
+});
 
 // get by product id
 app.get('/api/products/:productId', (req, res) => {
-  const productId = req.params.productId;
-  connect.getProductId({id: productId})
+  const { productId } = req.params; // productId = req.params.productId;
+  connect.getProductId({ id: productId })
     .then((result) => {
       res.status(200).send(result.data);
     })
     .catch((error) => {
-      res.status(500).send('error at API fetch');
+      res.status(500).send('error at API fetch', error);
     });
-})
+});
 
-//=====================QA GET=======================>>>
-app.get('/api/qa/questions', (req, res)=> {
+// =====================QA GET=======================>>>
+app.get('/api/qa/questions', (req, res) => {
   connect.getQuestions()
     .then((result) => {
       console.log('From QA API', result);
       res.status(200).send(result.data);
     })
     .catch((error) => {
-      res.status(200).send(result.data);
-    })
+      res.status(200).send(error);
+    });
 });
-
 
 app.get('/test', (req, res) => {
   res.status(200).send('hello from test!');
-})
+});
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+  console.log(`Example app listening at http://localhost:${port}`);
+});
