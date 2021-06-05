@@ -22,12 +22,12 @@ const getProducts = async (options = {page: 1, count: 5}) => {
 const getProductId = async (id = {id: 17071}) => {
   return await axios({
     method: 'GET',
-    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id.id}`,
     headers: {
       'Authorization': process.env.GIT_TOKEN
     },
     params: {
-      page: id.id,
+
     }
   });
 }

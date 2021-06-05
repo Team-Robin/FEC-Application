@@ -2984,6 +2984,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cookie-parser@npm:^1.4.5":
+  version: 1.4.5
+  resolution: "cookie-parser@npm:1.4.5"
+  dependencies:
+    cookie: 0.4.0
+    cookie-signature: 1.0.6
+  checksum: a3eeda832d81862477e40444a8d411595b91e15f9b1d2b397a173e9efa744a29129de9aaa99342cf9468641d854a464c4e215cd60d1df49374c9ccffa1af52bf
+  languageName: node
+  linkType: hard
+
 "cookie-signature@npm:1.0.6":
   version: 1.0.6
   resolution: "cookie-signature@npm:1.0.6"
@@ -3933,6 +3943,7 @@ __metadata:
     "@babel/preset-react": ^7.13.13
     axios: ^0.21.1
     babel-loader: ^8.2.2
+    cookie-parser: ^1.4.5
     css-loader: ^5.2.6
     dotenv: ^10.0.0
     eslint: ^7.27.0

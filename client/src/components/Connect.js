@@ -10,15 +10,13 @@ const Connect = {
 
   getProductById: (id) => {
     return axios.get(`/api/products/${id}`);
-  }
+  },
 
   getQuestions: () => {
     return axios.get(`/api/qa/questions`);
-  }
+  },
 
 }
 
-// export default Connect;
 
-// module.exports = connect;
 export default Connect;

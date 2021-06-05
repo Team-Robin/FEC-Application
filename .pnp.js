@@ -42,6 +42,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/preset-react", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:7.13.13"],
             ["axios", "npm:0.21.1"],
             ["babel-loader", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:8.2.2"],
+            ["cookie-parser", "npm:1.4.5"],
             ["css-loader", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:5.2.6"],
             ["dotenv", "npm:10.0.0"],
             ["eslint", "npm:7.27.0"],
@@ -4556,6 +4557,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["cookie-parser", [
+        ["npm:1.4.5", {
+          "packageLocation": "./.yarn/cache/cookie-parser-npm-1.4.5-85a59b20ec-a3eeda832d.zip/node_modules/cookie-parser/",
+          "packageDependencies": [
+            ["cookie-parser", "npm:1.4.5"],
+            ["cookie", "npm:0.4.0"],
+            ["cookie-signature", "npm:1.0.6"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["cookie-signature", [
         ["npm:1.0.6", {
           "packageLocation": "./.yarn/cache/cookie-signature-npm-1.0.6-93f325f7f0-305054e102.zip/node_modules/cookie-signature/",
@@ -5745,6 +5757,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/preset-react", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:7.13.13"],
             ["axios", "npm:0.21.1"],
             ["babel-loader", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:8.2.2"],
+            ["cookie-parser", "npm:1.4.5"],
             ["css-loader", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:5.2.6"],
             ["dotenv", "npm:10.0.0"],
             ["eslint", "npm:7.27.0"],

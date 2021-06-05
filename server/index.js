@@ -4,10 +4,12 @@ const path = require('path');
 const port = 3000
 const morgan = require('morgan'); // for server tracking
 const connect = require('./connect.js');
+const cookieParser = require('cookie-parser');
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(express.json());
 app.use(morgan('dev')); // see in the server commandline the method, url and speed it took
+app.use(cookieParser())
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -19,7 +21,7 @@ app.get('/', (req, res) => {
 // trying to figure out how to render the page and product number
 app.get('/products/:productId', (req, res) => {
   console.log('body', req.params.productId);
-  // res.productInfo = {hello: 'world'}; // from connect.getProductId();
+  // res.cookie('productInfo', `${req.params.productId}`);
   res.status(200).sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
 
@@ -37,7 +39,7 @@ app.get('/api/products', (req, res) => {
 // get by product id
 app.get('/api/products/:productId', (req, res) => {
   const productId = req.params.productId;
-  connect.getProductId(productId)
+  connect.getProductId({id: productId})
     .then((result) => {
       res.status(200).send(result.data);
     })
