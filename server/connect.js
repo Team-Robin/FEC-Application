@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 require('dotenv').config();
 const axios = require('axios');
 
