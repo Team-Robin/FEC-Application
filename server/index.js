@@ -40,6 +40,7 @@ app.get('/api/products/:productId', (req, res) => {
   const { productId } = req.params; // productId = req.params.productId;
   connect.getProductId({ id: productId })
     .then((result) => {
+      // console.log(result);
       res.status(200).send(result.data);
     })
     .catch((error) => {

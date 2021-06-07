@@ -18,6 +18,7 @@ const App = () => {
     const id = window.location.pathname.split('/')[2]; // splits '/products/###/' to '/', 'products', '####, '/'. we just want the numbers
     Connect.getProductById(id)
       .then((result) => {
+        console.log(result);
         setProductInfo({ product: result.data });
         // return result.data.id;
       })
@@ -31,7 +32,10 @@ const App = () => {
     Connect.getReviewMeta('17071')
       .then((result) => {
         setProductReviewMeta(result.data);
-      });
+      })
+      .catch((error) => {
+        throw error;
+      })
   }, []);
 
   return (
