@@ -34,7 +34,7 @@ const getQuestions = async (product_id, options = { page: 1, count: 5 }) => axio
     Authorization: process.env.GIT_TOKEN,
   },
   params: {
-    product_id: product_id.product_id,
+    product_id: product_id,
     page: options.page,
     count: options.count,
   },

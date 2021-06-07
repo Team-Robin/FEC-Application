@@ -52,6 +52,7 @@ app.get('/api/products/:productId', (req, res) => {
 app.get('/api/qa/questions', (req, res) => {
   connect.getQuestions()
     .then((result) => {
+      console.log(result)
       res.status(200).send(result.data);
     })
     .catch((error) => {
