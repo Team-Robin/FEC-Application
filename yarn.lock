@@ -3980,6 +3980,7 @@ __metadata:
     sass: ^1.34.1
     sass-loader: ^12.0.0
     style-loader: ^2.0.0
+    svg-url-loader: ^7.1.1
     url-loader: ^4.1.1
     webpack: ^5.38.1
     webpack-cli: ^4.7.0
@@ -3992,6 +3993,18 @@ __metadata:
   dependencies:
     flat-cache: ^3.0.4
   checksum: af83a412143100405a995bb7d9a31982ebcfabe6c545dac2e787fc5580b2da74e253ef62968057fa5bbfaf0811a8b85623aeea776e16c77e3ce4c2488b0e4821
+  languageName: node
+  linkType: hard
+
+"file-loader@npm:~6.2.0":
+  version: 6.2.0
+  resolution: "file-loader@npm:6.2.0"
+  dependencies:
+    loader-utils: ^2.0.0
+    schema-utils: ^3.0.0
+  peerDependencies:
+    webpack: ^4.0.0 || ^5.0.0
+  checksum: 0f103418c072ec66c081a9908cd7824ee19905e18be16889cb050f5f373998afaf7ca4c2fd2df4cabf703a2cd526aefe59105930e3f8d266a5b35e6d5f5b3cf4
   languageName: node
   linkType: hard
 
@@ -5674,7 +5687,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loader-utils@npm:^2.0.0":
+"loader-utils@npm:^2.0.0, loader-utils@npm:~2.0.0":
   version: 2.0.0
   resolution: "loader-utils@npm:2.0.0"
   dependencies:
@@ -7728,6 +7741,18 @@ resolve@^2.0.0-next.3:
     has-flag: ^4.0.0
     supports-color: ^7.0.0
   checksum: 91af5f206c55fe38c5acacafca8e13bee8ddf59f817178d3cb83388bd85d3ec181a59c446439b63aafa0375e579a7e8d8ec044a0ed1143137ba12f303eb76c6a
+  languageName: node
+  linkType: hard
+
+"svg-url-loader@npm:^7.1.1":
+  version: 7.1.1
+  resolution: "svg-url-loader@npm:7.1.1"
+  dependencies:
+    file-loader: ~6.2.0
+    loader-utils: ~2.0.0
+  peerDependencies:
+    webpack: ^4.0.0 || ^5.0.0
+  checksum: cc1f78f8bdc9f58142521c6a70129877efd73d8b32cfd2fff9b1f467a33cf4068ced24badb6b7a6b8364fd53bd87f0171a314a2dc6c7f54e7be7a5b45472a46d
   languageName: node
   linkType: hard
 

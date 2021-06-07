@@ -37,6 +37,7 @@ const App = () => {
           Slogan={productInfo.product.slogan}
           Price={productInfo.product.default_price}
           ReviewsRatings={productReviewMeta.ratings}
+          Features={productInfo.product.features}
         />
       ) : null}
       <QuestionsAndAnswers />

@@ -24,6 +24,7 @@ $pins-color: #E60023;
   padding: 0;
   color: $charcoal;
   font-family: $Roboto-regular;
+  // border: 1px red solid;
 }
 
 button {
@@ -93,6 +94,21 @@ h1, .h1 {
   display: flex;
 }
 
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.col, .col-auto {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+.col-auto {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: auto;
+  max-width: none;
+}
 
 // ====== Rounded ======
 
@@ -123,21 +139,54 @@ h1, .h1 {
 .bg-transparent {
   background-color: transparent;
 }
+
+// ====== Stars ======
+.star-25, .star-50, .star-75, .star-100, .star-empty {
+  background-repeat: none;
+  background-position: center;
+  background-size: cover;
+  outline: 0;
+  border: 0;
+  stroke: transparent;
+  width: 1.5em;
+  height: 1.5em;
+}
+.star-empty{
+  background-image: url('../Assets/NoStar.svg');
+}
+.star-25{
+  background-image: url('../Assets/Quarter-Star.svg');
+}
+.star-50{
+  background-image: url('../Assets/Half-star.svg');
+}
+.star-75{
+  background-image: url('../Assets/ThreeForth-star.svg');
+}
+.star-100{
+  background-image: url('../Assets/Full-star.svg');
+}
+
+.star-muted{
+  filter: opacity(80%);
+}
+
 // ====== Socials ======
 .social-icon{
-  width: 2rem;
-  height: 2rem;
+  width: 2.1rem;
+  height: 2.2rem;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 .fb-bg-color{
   background-color: $fb-color;
 }
 .fb-text-color {
   color: $fb-color;
-}
-.fb-icon {
-  background-image: url('../Assets/f_logo_RGB-Blue_72.png');
-  background-repeat: no-repeat;
-  background-size: contain;
 }
 .twtr-bg-color{
   background-color: $twtr-color;
@@ -179,19 +228,40 @@ h1, .h1 {
   &:hover{
     filter: brightness(125%);
   }
+  &:active {
+    filter: brightness(80%);
+  }
 }
+
 .shadow-sm{
   box-shadow: .1rem .1rem .1rem 0rem rgba(0,0,0,.3);
 
   &.btn:hover {
     box-shadow: .1rem .15rem .2rem .1rem rgba(0,0,0,.3);
   }
+  &.btn:active {
+    box-shadow: .05rem .05rem .1rem .05rem rgba(0,0,0,.3);
+  }
 }
+
 .shadow {
-  box-shadow: .25rem .25rem .25rem 0rem rgba(0,0,0,.3);
+  box-shadow: .1rem .125rem .5rem .2rem rgba(0,0,0,.3);
+  &.btn:hover {
+    box-shadow: .1rem .125rem .4rem .2rem rgba(0,0,0,.4);
+  }
+  &.btn:active {
+    box-shadow: .1rem .1rem .4rem .2rem rgba(0,0,0,.2);
+  }
 }
 
 // ====== MISC ======
 .no-clicker{
   pointer-events: none;
+}
+
+.bar {
+  position: relative;
+  width: 3px;
+  background-color: $muted;
+ height: 100%;
 }

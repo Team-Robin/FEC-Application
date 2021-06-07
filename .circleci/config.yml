@@ -28,7 +28,7 @@ jobs:
           pkg-manager: yarn
       -run:
         name: test
-        command: yarn run test
+        command: yarn install
 
 
 workflows:
