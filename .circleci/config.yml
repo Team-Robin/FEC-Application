@@ -27,7 +27,7 @@ jobs:
       # If you are using yarn instead npm, remove the line above and uncomment the two lines below.
       - node/install-packages:
           pkg-manager: yarn
-      -berry:
+      - berry:
           name: install berry
           command: yarn set version berry
       - run:
