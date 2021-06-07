@@ -2,7 +2,184 @@
 // examples
 
 $primary-color: #B392F8;
+$off-white: #F0F0F0;
+$charcoal: #101010;
+
+$background-dark: #202124;
+$background-light: #fff;
+
+$Roboto-regular: 'Roboto', sans-serif;
+$Roboto-light: 'Roboto', sans-serif, 200;
+
+$muted: rgba(0,0,0,.6);
+
+$fb-color: #4267B2;
+$twtr-color: #1DA1F2;
+$pins-color: #E60023;
+
+// ====== Reset! ======
+
+* {
+  margin: 0;
+  padding: 0;
+  color: $charcoal;
+  font-family: $Roboto-regular;
+}
+
+button {
+  outline: none;
+  border: none;
+}
 
 .prime-color {
   color: $primary-color;
+}
+
+::selection {
+  background-color: $primary-color;
+}
+
+
+// ====== Big text! ======
+
+h6, .h6 {
+  font-size: 1.1rem;
+}
+h5, .h5 {
+  font-size: 1.25rem;
+}
+h4, .h4 {
+  font-size: 1.5rem;
+}
+h3, .h3 {
+  font-size: 1.75rem;
+}
+h2, .h2 {
+  font-size: 2rem;
+}
+h1, .h1 {
+  font-size: 2.5rem;
+}
+
+// ====== Text manipulation ======
+.text-thin {
+  font-weight: lighter;
+}
+.text-bold {
+  font-weight: bold;
+}
+.text-bolder {
+  font-weight: bolder;
+}
+.text-muted {
+  color: $muted;
+}
+.text-space-1{
+  letter-spacing: 1px;
+}
+
+// ====== Text Color ======
+
+.text-light {
+  color: $off-white
+}
+.text-dark {
+  color: $charcoal
+}
+
+// ====== display  ======
+
+.d-flex {
+  display: flex;
+}
+
+
+// ====== Rounded ======
+
+.rounded-sm {
+  border-radius: .25rem;
+}
+.rounded{
+  border-radius: .5rem;
+}
+.rounded-lg{
+  border-radius: 1rem;
+}
+.rounded-pill{
+  border-radius: 50%;
+}
+.rounded-circle{
+  border-radius: 100%;
+}
+
+// ====== BG Color ======
+
+.bg-dark{
+  background-color: $charcoal;
+}
+.bg-light{
+  background-color: $off-white;
+}
+
+// ====== Socials ======
+.social-icon{
+  width: 2rem;
+  height: 2rem;
+}
+.fb-bg-color{
+  background-color: $fb-color;
+}
+.fb-text-color {
+  color: $fb-color;
+}
+.twtr-bg-color{
+  background-color: $twtr-color;
+}
+.twtr-text-color {
+  color: $twtr-color;
+}
+.pins-bg-color{
+  background-color: $pins-color;
+}
+.pins-text-color {
+  color: $pins-color;
+}
+
+
+// ====== Spacings ======
+
+.m-1 {
+  margin: .25rem;
+}
+.mr-1, .mx-1 {
+  margin-right: .25rem;
+}
+.ml-1, .mx-1 {
+  margin-left: .25rem;
+}
+.mt-1, .my-1 {
+  margin-top: .25rem;
+}
+.mb-1, .my-1 {
+  margin-bottom: .25rem;
+}
+
+
+// ====== Button ======
+
+.btn {
+  transition: all .15s ease-in-out;
+  &:hover{
+    filter: brightness(125%);
+  }
+}
+.shadow-sm{
+  box-shadow: .1rem .1rem .1rem 0rem rgba(0,0,0,.3);
+
+  &.btn:hover {
+    box-shadow: .1rem .15rem .2rem .1rem rgba(0,0,0,.3);
+  }
+}
+.shadow {
+  box-shadow: .25rem .25rem .25rem 0rem rgba(0,0,0,.3);
 }
