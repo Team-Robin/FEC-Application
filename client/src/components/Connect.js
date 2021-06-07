@@ -9,6 +9,12 @@ const Connect = {
   getProductById: (id) => axios.get(`/api/products/${id}`),
 
   getQuestions: () => axios.get('/api/qa/questions'),
+
+  getReviewMeta: (id) => axios.get('/api/reviews/meta', {
+    params: {
+      product_id: id,
+    },
+  }),
 };
 
 export default Connect;

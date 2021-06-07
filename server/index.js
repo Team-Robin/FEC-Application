@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan'); // for server tracking
@@ -19,7 +20,6 @@ app.get('/', (req, res) => {
 
 // trying to figure out how to render the page and product number
 app.get('/products/:productId', (req, res) => {
-  console.log('body', req.params.productId);
   // res.cookie('productInfo', `${req.params.productId}`);
   res.status(200).sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
@@ -51,7 +51,17 @@ app.get('/api/products/:productId', (req, res) => {
 app.get('/api/qa/questions', (req, res) => {
   connect.getQuestions()
     .then((result) => {
-      console.log('From QA API', result);
+      res.status(200).send(result.data);
+    })
+    .catch((error) => {
+      res.status(200).send(error);
+    });
+});
+
+// =====================REVIEWS GET=======================>>>
+app.get('*/api/reviews/meta', (req, res) => {
+  connect.getReviewsMeta(req.query)
+    .then((result) => {
       res.status(200).send(result.data);
     })
     .catch((error) => {
@@ -64,5 +74,6 @@ app.get('/test', (req, res) => {
 });
 
 app.listen(port, () => {
+  // eslint-disable-next-line no-console
   console.log(`Example app listening at http://localhost:${port}`);
 });

@@ -40,8 +40,19 @@ const getQuestions = async (product_id, options = { page: 1, count: 5 }) => axio
   },
 });
 
+// eslint-disable-next-line camelcase
+const getReviewsMeta = async (product_id) => axios({
+  method: 'GET',
+  url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta',
+  headers: {
+    Authorization: process.env.GIT_TOKEN,
+  },
+  params: product_id,
+});
+
 module.exports = {
   getProducts,
   getProductId,
   getQuestions,
+  getReviewsMeta,
 };

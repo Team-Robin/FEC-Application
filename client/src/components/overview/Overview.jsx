@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable arrow-body-style */
 /* eslint-disable import/extensions */
 /* eslint-disable no-undef */
@@ -8,7 +9,7 @@ import ProductInfo from './ProductInfo.jsx';
 import ProductDescription from './ProductDescription.jsx';
 
 // eslint-disable-next-line object-curly-newline
-const Overview = ({ Name, Category, Description, Slogan, Price }) => (
+const Overview = ({ Name, Category, Description, Slogan, Price, ReviewsRatings }) => (
   <>
     <ProductInfo Name={Name} Category={Category} Price={Price} />
     <ProductDescription Description={Description} Slogan={Slogan} />
@@ -21,6 +22,7 @@ Overview.propTypes = {
   Description: PropTypes.string.isRequired,
   Slogan: PropTypes.string.isRequired,
   Price: PropTypes.string.isRequired,
+  ReviewsRatings: PropTypes.object.isRequired,
 };
 
 export default Overview;
