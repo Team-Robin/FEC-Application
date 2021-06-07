@@ -34,11 +34,7 @@ const getQuestions = async ({ product_id }, options = { page: 1, count: 5 }) => 
     Authorization: process.env.GIT_TOKEN,
   },
   params: {
-<<<<<<< HEAD
-    product_id: product_id,
-=======
     product_id,
->>>>>>> cf0ccbd434055c4c22039da9c79ec2cde4f9ef8e
     page: options.page,
     count: options.count,
   },

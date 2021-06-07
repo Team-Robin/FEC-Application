@@ -52,7 +52,7 @@ app.get('/api/products/:productId', (req, res) => {
 app.get('/api/qa/questions', (req, res) => {
   connect.getQuestions(req.query)
     .then((result) => {
-      console.log(result)
+      console.log('QUESTIONS IN SERVER', result.data)
       res.status(200).send(result.data);
     })
     .catch((error) => {
