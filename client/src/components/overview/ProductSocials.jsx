@@ -21,7 +21,7 @@ const ProductSocials = () => {
         onClick={handleFacebook}
         style={{fontSize: '24px'}}
       >
-      <i class="fab fa-facebook fa-lg fb-text-color"></i>
+      <i className="fab fa-facebook fa-lg fb-text-color"></i>
       </button>
       <button
         type="button"

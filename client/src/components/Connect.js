@@ -8,7 +8,11 @@ const Connect = {
 
   getProductById: (id) => axios.get(`/api/products/${id}`),
 
-  getQuestions: () => axios.get('/api/qa/questions'),
+  getQuestions: (id) => axios.get('/api/qa/questions', {
+    params: {
+      product_id: id,
+    },
+  }),
 
   getReviewMeta: (id) => axios.get('/api/reviews/meta', {
     params: {

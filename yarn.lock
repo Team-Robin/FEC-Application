@@ -1084,6 +1084,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/plugin-transform-runtime@npm:^7.14.3":
+  version: 7.14.3
+  resolution: "@babel/plugin-transform-runtime@npm:7.14.3"
+  dependencies:
+    "@babel/helper-module-imports": ^7.13.12
+    "@babel/helper-plugin-utils": ^7.13.0
+    babel-plugin-polyfill-corejs2: ^0.2.0
+    babel-plugin-polyfill-corejs3: ^0.2.0
+    babel-plugin-polyfill-regenerator: ^0.2.0
+    semver: ^6.3.0
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  checksum: 2c8d211a468a394cd467a85ae002a7914be765d79ddc12c22d3aa6e07fa5163b274fd5d3782b2d156f4f20926e83259aae0cdb9ca01a05ac92abfc19945c72e6
+  languageName: node
+  linkType: hard
+
 "@babel/plugin-transform-shorthand-properties@npm:^7.12.13":
   version: 7.12.13
   resolution: "@babel/plugin-transform-shorthand-properties@npm:7.12.13"
@@ -1287,7 +1303,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.8.4":
+"@babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.14.0, @babel/runtime@npm:^7.8.4":
   version: 7.14.0
   resolution: "@babel/runtime@npm:7.14.0"
   dependencies:
@@ -3939,8 +3955,10 @@ __metadata:
   resolution: "fec-application@workspace:."
   dependencies:
     "@babel/core": ^7.14.3
+    "@babel/plugin-transform-runtime": ^7.14.3
     "@babel/preset-env": ^7.14.4
     "@babel/preset-react": ^7.13.13
+    "@babel/runtime": ^7.14.0
     axios: ^0.21.1
     babel-loader: ^8.2.2
     cookie-parser: ^1.4.5
