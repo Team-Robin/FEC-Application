@@ -31,6 +31,9 @@ const App = () => {
     Connect.getReviewMeta('17071')
       .then((result) => {
         setProductReviewMeta(result.data);
+      })
+      .catch((error) => {
+        throw error;
       });
   }, []);
 

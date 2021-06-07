@@ -17,10 +17,11 @@ const ProductSocials = () => {
     <div className="d-flex">
       <button
         type="button"
-        className="btn fb-bg-color rounded-circle text-light social-icon mx-1"
+        className="btn text-light social-icon mx-1 bg-transparent"
         onClick={handleFacebook}
+        style={{fontSize: '24px'}}
       >
-        FB
+      <i class="fab fa-facebook fa-lg fb-text-color"></i>
       </button>
       <button
         type="button"
