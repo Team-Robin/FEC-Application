@@ -8,6 +8,10 @@ orbs:
   # See the orb documentation here: https://circleci.com/developer/orbs/orb/circleci/node
   node: circleci/node@4.1
 
+macos_defaults: &macos_defaults
+  macos:
+    xcode: "11.0"
+  working_directory: ~/project/yarn
 
 jobs:
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
@@ -17,6 +21,8 @@ jobs:
     # A list of available CircleCI Docker Convenience Images are available here: https://circleci.com/developer/images/image/cimg/node
     # docker:
     #   - image: cimg/node:15.1
+    macos:
+      xcode: 11.3.0
     # Then run your tests!
     # CircleCI will report the results back to your VCS provider.
     steps:
@@ -33,7 +39,7 @@ jobs:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependencies
-          command: yarn install --immutable
+          command: yarn install --immutable-cache
       - save_cache:
           name: Save Yarn Package Cache
           key: yarn-packages-{{ checksum "yarn.lock" }}
