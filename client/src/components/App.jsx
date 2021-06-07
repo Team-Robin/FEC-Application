@@ -13,9 +13,11 @@ const App = () => {
   // both the this.state and this.setState()
   const [productInfo, setProductInfo] = useState({});
   const [productReviewMeta, setProductReviewMeta] = useState({});
+
   //  Component Did Mount
-  useEffect(() => {
+  useEffect(async () => {
     const id = window.location.pathname.split('/')[2]; // splits '/products/###/' to '/', 'products', '####, '/'. we just want the numbers
+<<<<<<< HEAD
     Connect.getProductById(id)
       .then((result) => {
         console.log(result);
@@ -36,6 +38,16 @@ const App = () => {
       .catch((error) => {
         throw error;
       })
+=======
+    const product = await Connect.getProductById(id);
+    const reviewMeta = await Connect.getReviewMeta(product.data.id);
+    const questions = await Connect.getQuestions(product.data.id);
+
+    console.log(questions);
+
+    setProductInfo({ product: product.data });
+    setProductReviewMeta(reviewMeta.data);
+>>>>>>> cf0ccbd434055c4c22039da9c79ec2cde4f9ef8e
   }, []);
 
   return (

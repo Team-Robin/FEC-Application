@@ -29,6 +29,10 @@ module.exports = {
           // compile Sass to CSS
           "sass-loader"
         ]
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'url-loader'
       }
     ]
   },
