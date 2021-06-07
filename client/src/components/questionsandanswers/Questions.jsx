@@ -4,18 +4,21 @@ import {useState} from 'react';
 // import Answer from './Answer.jsx';
 
 
-const Questions = ({questionInfo}) => {
+const Questions = React.memo(({questionInfo}) => {
   return (
     <div>
       {console.log('LOG IN QUESTIONS', questionInfo.questions)}
-      <div className="QA-question-block">
-        {questionInfo.questions.map(questions =>
-          <p className="question" key={questions.question_id}>Q: {questions.question_body}</p>
+
+        {questionInfo.questions.map((questions, index) =>
+        <div className="QA-question-block" key={index} >
+          <p className="question">{questions.asker_name} {questions.question_date}</p>
+          <p className="question">Q: {questions.question_body}</p>
+        </div>
         )}
       </div>
-    </div>
+
   )
-}
+})
 
 
 
