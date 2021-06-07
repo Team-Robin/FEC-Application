@@ -120,7 +120,9 @@ h1, .h1 {
 .bg-light{
   background-color: $off-white;
 }
-
+.bg-transparent {
+  background-color: transparent;
+}
 // ====== Socials ======
 .social-icon{
   width: 2rem;
@@ -131,6 +133,11 @@ h1, .h1 {
 }
 .fb-text-color {
   color: $fb-color;
+}
+.fb-icon {
+  background-image: url('../Assets/f_logo_RGB-Blue_72.png');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 .twtr-bg-color{
   background-color: $twtr-color;
@@ -182,4 +189,9 @@ h1, .h1 {
 }
 .shadow {
   box-shadow: .25rem .25rem .25rem 0rem rgba(0,0,0,.3);
+}
+
+// ====== MISC ======
+.no-clicker{
+  pointer-events: none;
 }

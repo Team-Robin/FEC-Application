@@ -49,7 +49,7 @@ app.get('/api/products/:productId', (req, res) => {
 
 // =====================QA GET=======================>>>
 app.get('/api/qa/questions', (req, res) => {
-  connect.getQuestions()
+  connect.getQuestions(req.query)
     .then((result) => {
       res.status(200).send(result.data);
     })

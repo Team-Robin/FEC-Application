@@ -13,25 +13,18 @@ const App = () => {
   // both the this.state and this.setState()
   const [productInfo, setProductInfo] = useState({});
   const [productReviewMeta, setProductReviewMeta] = useState({});
+
   //  Component Did Mount
-  useEffect(() => {
+  useEffect(async () => {
     const id = window.location.pathname.split('/')[2]; // splits '/products/###/' to '/', 'products', '####, '/'. we just want the numbers
-    Connect.getProductById(id)
-      .then((result) => {
-        setProductInfo({ product: result.data });
-        // return result.data.id;
-      })
-      // .then((productId) => Connect.getReviewMeta(productId))
-      // .then((result) => {
-      //   setProductReviewMeta({ reviewMeta: result.data });
-      // })
-      .catch((error) => {
-        throw error;
-      });
-    Connect.getReviewMeta('17071')
-      .then((result) => {
-        setProductReviewMeta(result.data);
-      });
+    const product = await Connect.getProductById(id);
+    const reviewMeta = await Connect.getReviewMeta(product.data.id);
+    const questions = await Connect.getQuestions(product.data.id);
+
+    console.log(questions);
+
+    setProductInfo({ product: product.data });
+    setProductReviewMeta(reviewMeta.data);
   }, []);
 
   return (
