@@ -6,18 +6,18 @@ import Connect from '../Connect.js';
 
 
 const Questions = React.memo(({questionInfo}) => {
-  const questionID = questionInfo.questions.results.map(questions => {
-    return questions.question_id;
+  const questionID = questionInfo.questions.results.map(question => {
+    return question.answers;
   });
   const [answerObj, setAnswerObj] = useState(questionID);
   const [answers, setAnswers] = useState([]);
 
   useEffect(async ()=> {
-
-    console.log('NO MANS LAND',questionID);
     getAllAnswers();
-    const answers = await questionID.map(qid =>
-      Connect.getAnswers(qid));
+
+    const answers = await questionInfo.questions.results.map(qid =>
+      Connect.getAnswers(qid.question_id))
+
 
 
 
@@ -25,6 +25,7 @@ const Questions = React.memo(({questionInfo}) => {
 
   const getAllAnswers = () => {
     const answers = Object.values(answerObj).map(answer => answer);
+    console.log('INSIDE GETALLANSWERS', answers)
     setAnswers(answers);
   };
 
@@ -38,6 +39,9 @@ const Questions = React.memo(({questionInfo}) => {
         <p className="question">Q: {questions.question_body}</p>
       </div>
       )}
+      <div>
+        {console.log('FROM RENDER AREA', answers)}
+      </div>
     </div>
 
   )
