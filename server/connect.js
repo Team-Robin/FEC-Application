@@ -26,6 +26,16 @@ const getProductId = async (id = { id: 17071 }) => axios({
   },
 });
 
+const getProductIdStyle = async (id = { id: 17071 }) => axios({
+  method: 'GET',
+  url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id.id}/styles`,
+  headers: {
+    Authorization: process.env.GIT_TOKEN,
+  },
+  params: {
+  },
+});
+
 // eslint-disable-next-line camelcase
 const getQuestions = async ({ product_id }, options = { page: 1, count: 5 }) => axios({
   method: 'GET',
@@ -66,6 +76,7 @@ const getReviewsMeta = async (product_id) => axios({
 module.exports = {
   getProducts,
   getProductId,
+  getProductIdStyle,
   getQuestions,
   getAnswers,
   getReviewsMeta,

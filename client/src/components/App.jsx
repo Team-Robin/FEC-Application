@@ -14,7 +14,7 @@ const App = () => {
   const [productInfo, setProductInfo] = useState({});
   const [productReviewMeta, setProductReviewMeta] = useState({});
   const [questionInfo, setQuestionInfo] = useState({});
-  const [productStyles, setProductStyles] = useState({});
+
 
   //  Component Did Mount
   useEffect(async () => {
@@ -22,12 +22,15 @@ const App = () => {
     const product = await Connect.getProductById(id);
     const reviewMeta = await Connect.getReviewMeta(product.data.id);
     const questions = await Connect.getQuestions(product.data.id);
+    const styles = await Connect.getProductStyles(product.data.id);
+
 
 
     setQuestionInfo({questions: questions.data});
     setProductStyles({ styles: styles.data.results });
     setProductInfo({ product: product.data });
     setProductReviewMeta(reviewMeta.data);
+
 
   }, []);
 
@@ -41,6 +44,8 @@ const App = () => {
           Slogan={productInfo.product.slogan}
           Price={productInfo.product.default_price}
           ReviewsRatings={productReviewMeta.ratings}
+          Features={productInfo.product.features}
+          Styles={productStyles.styles}
         />
       ) : null}
       <>

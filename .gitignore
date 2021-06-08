@@ -1,5 +1,4 @@
 #FEC author ignores
-.yarn/*
 public/app.js
 
 
@@ -107,5 +106,4 @@ dist
 
 # TernJS port file
 .tern-port
-public/app.js
 public/bundle.js
