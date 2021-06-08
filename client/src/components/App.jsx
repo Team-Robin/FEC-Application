@@ -14,8 +14,7 @@ const App = () => {
   const [productInfo, setProductInfo] = useState({});
   const [productReviewMeta, setProductReviewMeta] = useState({});
   const [questionInfo, setQuestionInfo] = useState({});
-
-
+  const [productStyles, setProductStyles] = useState({});
   //  Component Did Mount
   useEffect(async () => {
     const id = window.location.pathname.split('/')[2]; // splits '/products/###/' to '/', 'products', '####, '/'. we just want the numbers
@@ -24,14 +23,10 @@ const App = () => {
     const questions = await Connect.getQuestions(product.data.id);
     const styles = await Connect.getProductStyles(product.data.id);
 
-
-
-    setQuestionInfo({questions: questions.data});
+    setQuestionInfo({ questions: questions.data });
     setProductStyles({ styles: styles.data.results });
-    setProductInfo({ product: product.data });
     setProductReviewMeta(reviewMeta.data);
-
-
+    setProductInfo({ product: product.data });
   }, []);
 
   return (
@@ -49,11 +44,11 @@ const App = () => {
         />
       ) : null}
       <>
-      {questionInfo.questions ? (
-      <QuestionsView
-      questionInfo={questionInfo}
-      />
-       ) : null}
+        {questionInfo.questions ? (
+          <QuestionsView
+            questionInfo={questionInfo}
+          />
+        ) : null}
       </>
       <RatingsAndReviews />
     </>
