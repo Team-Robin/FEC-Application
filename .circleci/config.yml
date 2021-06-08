@@ -18,3 +18,19 @@ jobs:
       - run:
           name: run-tests
           command: yarn test
+  run_test:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:10.18.0
+    steps:
+      - checkout
+      - run:
+          name: run-tests
+          command: yarn test
+workflows:
+  build_yarn:
+    jobs:
+      - build
+  test_yarn:
+    jobs:
+      - run_test
