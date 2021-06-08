@@ -1,57 +1,9 @@
 import React from 'react';
+import ReviewsOverview from './ReviewsOverview';
 
 const RatingsAndReviews = () => (
   <div id="rnr">
-    <div id="ratingsOverview">
-      <div id="reviewSummary">
-        <h4>
-          Ratings and Reviews
-        </h4>
-        <div>
-          <h1>3.5</h1>
-          <div>--star component--</div>
-        </div>
-        <p>1,000,000% of people recommend this product</p>
-      </div>
-      <div id="reviewBreakdown">
-        <div className="reviewBar">
-          <button type="button"> 1 Star</button>
-          <div className="backgroundBar" />
-          <div className="forgroundBar" />
-        </div>
-        <div className="reviewBar">
-          <button type="button">2 Star</button>
-          <div className="backgroundBar" />
-          <div className="forgroundBar" />
-        </div>
-        <div className="reviewBar">
-          <button type="button">3 Star</button>
-          <div className="backgroundBar" />
-          <div className="forgroundBar" />
-        </div>
-        <div className="reviewBar">
-          <button type="button">4 Star</button>
-          <div className="backgroundBar" />
-          <div className="forgroundBar" />
-        </div>
-        <div className="reviewBar">
-          <button type="button">5 Star</button>
-          <div className="backgroundBar" />
-          <div className="forgroundBar" />
-        </div>
-      </div>
-      <div id="characteristicList">
-        <div className="characteristic">
-          <h6>Attribute type</h6>
-          <div className="charBar">
-            <div className="backgroundBar" />
-            <div className="icon" />
-          </div>
-          <p className="minLabel">MinLable</p>
-          <p className="maxLabel">MaxLable</p>
-        </div>
-      </div>
-    </div>
+    <ReviewsOverview />
     <div id="ratingsList">
       <div id="sortHead">
         <span>256 reviews, sorted by </span>
