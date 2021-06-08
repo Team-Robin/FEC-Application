@@ -8,6 +8,7 @@ import Overview from './overview/Overview.jsx';
 import QuestionsView from './questionsandanswers/QuestionsView.jsx';
 import RatingsAndReviews from './ratingsandreviews/RatingsAndReviews.jsx';
 import Connect from './Connect';
+import LoadingPulse from './LoadingPulse';
 
 const App = () => {
   // both the this.state and this.setState()
@@ -55,7 +56,7 @@ const App = () => {
           setCurrentStyle={setCurrentStyle}
           SalePrice={productSalesPrice}
         />
-      ) : null}
+      ) : <LoadingPulse Message="quick coffee run!" />}
       <>
         {questionInfo.questions ? (
           <QuestionsView

@@ -13,12 +13,13 @@ const ProductStyle = ({ Style, setCurrentStyle, CurrentStyle }) => (
     aria-label={`style ${Style.name}`}
   >
     <div
-      className={`styles-icon no-clicker ${Style.style_id === CurrentStyle.style_id ? 'styles-selected' : 'styles-pop'}`}
+      className={`styles-icon no-clicker shadow-sm ${Style.style_id === CurrentStyle.style_id ? 'styles-selected' : 'styles-pop'}`}
       style={{
         backgroundImage: `url("${Style.photos[0].thumbnail_url}")`,
-        backgroundSize: '4.5rem',
+        backgroundSize: '5.25rem',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
+        backgroundColor: 'transparent',
       }}
     />
   </button>
