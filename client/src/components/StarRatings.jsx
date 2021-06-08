@@ -2,9 +2,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const StarRatings = ({ ReviewsRatings = {
-  1: 0, 2: 0, 3: 0, 4: 0, 5: 0,
-},
+const StarRatings = ({
+  ReviewsRatings = {
+    1: 0, 2: 0, 3: 0, 4: 0, 5: 0,
+  },
 }) => {
   const getAvarageRatings = () => {
     const one = ReviewsRatings[1];
