@@ -47,6 +47,18 @@ app.get('/api/products/:productId', (req, res) => {
     });
 });
 
+// get by product id
+app.get('/api/products/:productId/styles', (req, res) => {
+  const { productId } = req.params; // productId = req.params.productId;
+  connect.getProductIdStyle({ id: productId })
+    .then((result) => {
+      res.status(200).send(result.data);
+    })
+    .catch((error) => {
+      res.status(500).send('error at API fetch', error);
+    });
+});
+
 // =====================QA GET=======================>>>
 app.get('/api/qa/questions', (req, res) => {
   connect.getQuestions(req.query)
