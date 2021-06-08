@@ -74,17 +74,32 @@ const RatingsAndReviews = (props) => {
           </div>
         </div>
         <div id="reviewList">
+
           <div className="review">
             <div className="reviewHead">
               <span>Star Component</span>
-              <span className="userInfo">
-                <span className="verification">verification</span>
-                <span>username</span>
-                <span>date</span>
+              <span className="reviewInfo">
+                <div className="verification"></div>
+                <span>Noshuas </span>
+                <span>June 7, 2021</span>
               </span>
             </div>
-          </div> {/*duplicate when done*/}
+            <h3 className="reviewTitle">Here lies a generic title</h3>
+            <p className="reviewBody">This stuff is the litteral shez-perezz. If you are not scooping this up by the handfuls, you may as well lop off those useless meat hooks. Get one right now!</p>
+            <p className="recommended">I recomend this product</p>
+            <div className="reviewResponse">
+              <p className="responseTitle">Response: </p>
+              <br></br>
+              <p>What are you even talking about??</p>
+            </div>
+            <span className="helpfulReport">Was this review helpful?
+              <button>  Yes</button>
+              <button>  No</button>  |
+              <button>  Report</button>
+            </span>
+          </div>
         </div>
+
         <div id="reviewButtons">
           <button id="seeMore">See More</button>
           <button id="addReview">Add Review</button>
