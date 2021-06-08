@@ -1,30 +1,36 @@
 version: 2.1
-orbs:
-  # The Node.js orb contains a set of prepackaged CircleCI configuration you can utilize
-  # Orbs reduce the amount of configuration required for common tasks.
-  # See the orb documentation here: https://circleci.com/developer/orbs/orb/circleci/node
-  node: circleci/node@4.5.0
 
-jobs:
-  # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
-  install-node-example:
-    # These next lines define a Docker executor: https://circleci.com/docs/2.0/executor-types/
-    # You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # A list of available CircleCI Docker Convenience Images are available here: https://circleci.com/developer/images/image/cimg/node
-    docker:
-      - image: cimg/node:15.1
-    # Then run your tests!
-    # CircleCI will report the results back to your VCS provider.
+orbs:
+  node: circleci/node@2.0.3
+
+commands:
+  setup-node-and-yarn-install-with-cache:
     steps:
-      - checkout
+      - node/install:
+          install-yarn: true
+          node-version: latest
       - node/install-packages:
           pkg-manager: yarn
-      - run:
-          command: yarn run test
-          name: Run YARN tests
+          cache-key: yarn.lock
 
+jobs:
+  lint-and-test:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - setup-node-and-yarn-install-with-cache
+      - run:
+          name: Lint
+          command: npm run lint
+      - run:
+          name: Check types
+          command: npm run check-types
+      - run:
+          name: Run tests
+          command: npm run test
 
 workflows:
-  node-tests:
+  run-ci:
     jobs:
-      - install-node-example
+      - lint-and-test
