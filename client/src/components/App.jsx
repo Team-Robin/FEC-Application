@@ -1,55 +1,71 @@
+/* eslint-disable import/no-cycle */
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
 
-
-import React, {useEffect} from 'react';
+// eslint-disable-next-line no-unused-vars
+import React, { useEffect, useState } from 'react';
 import Overview from './overview/Overview.jsx';
-import QuestionsAndAnswers from './questionsandanswers/QuestionsView.jsx';
+import QuestionsView from './questionsandanswers/QuestionsView.jsx';
 import RatingsAndReviews from './ratingsandreviews/RatingsAndReviews.jsx';
-import Connect from './Connect.js';
+import Connect from './Connect';
 
-class App extends React.Component {
+const App = () => {
+  // both the this.state and this.setState()
+  const [productInfo, setProductInfo] = useState({});
+  const [productReviewMeta, setProductReviewMeta] = useState({});
+  const [questionInfo, setQuestionInfo] = useState({});
+  const [productStyles, setProductStyles] = useState({});
+  const [currentStyle, setCurrentStyle] = useState({});
+  const [productSalesPrice, setProductSalesPrice] = useState({});
+  //  Component Did Mount
+  useEffect(async () => {
+    const id = window.location.pathname.split('/')[2]; // splits '/products/###/' to '/', 'products', '####, '/'. we just want the numbers
+    const product = await Connect.getProductById(id);
+    const reviewMeta = await Connect.getReviewMeta(product.data.id);
+    const questions = await Connect.getQuestions(product.data.id);
+    const styles = await Connect.getProductStyles(product.data.id);
 
-  constructor(props) {
-    super(props);
-    this.state = {
+    setQuestionInfo({ questions: questions.data });
+    setProductStyles({ styles: styles.data.results });
+    setProductReviewMeta(reviewMeta.data);
+    setProductInfo({ product: product.data });
+    setCurrentStyle(styles.data.results[0]);
+    setProductSalesPrice(styles.data.results[0].sale_price);
+  }, []);
 
+  useEffect(() => {
+    if (currentStyle) {
+      setProductSalesPrice(currentStyle.sale_price || '');
     }
-  }
+  }, [currentStyle]);
 
-  componentDidMount() {
-
-    const id = window.location.href;
-    console.log('url', id)
-    // Connect.getProductById(id)
-    //   .then((result) => {
-    //     console.log('received from server', result);
-    //   })
-    //   .catch((error) => {
-    //     console.log('error from the server', error);
-    //   })
-  }
-
-// const App = (props) => {
-
-//   // both the this.state and this.setState()
-//   const [productInfo, setProduct Info] = useState({});
-
-//    Component Did Mount
-//   useEffect(() => {
-//     // do api fetch for the product
-//     // setProductInfo = ApiFetch
-//   }, [])
-
-  render() {
-    return (
+  return (
+    <>
+      {productInfo.product ? (
+        <Overview
+          Name={productInfo.product.name}
+          Category={productInfo.product.category}
+          Description={productInfo.product.description}
+          Slogan={productInfo.product.slogan}
+          Price={productInfo.product.default_price}
+          ReviewsRatings={productReviewMeta.ratings}
+          Features={productInfo.product.features}
+          Styles={productStyles.styles}
+          CurrentStyle={currentStyle}
+          setCurrentStyle={setCurrentStyle}
+          SalePrice={productSalesPrice}
+        />
+      ) : null}
       <>
-        <div className="prime-color">From React!</div>
-        <Overview />
-        <QuestionsAndAnswers />
-        <RatingsAndReviews />
+        {questionInfo.questions ? (
+          <QuestionsView
+            questionInfo={questionInfo}
+          />
+        ) : null}
       </>
-    )
-  }
-}
+      <RatingsAndReviews />
+    </>
+  );
+};
 
 export default App;
-

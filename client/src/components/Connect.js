@@ -1,24 +1,28 @@
-
 // const axios = require('axios');
+// eslint-disable-next-line import/no-unresolved
 import axios from 'axios';
 
 const Connect = {
 
-  getProducts:  () => {
-    return axios.get(`/api/products`);
-  },
+  getProducts: () => axios.get('/api/products'),
 
-  getProductById: (id) => {
-    return axios.get(`/api/products/${id}`);
-  },
+  getProductById: (id) => axios.get(`/api/products/${id}`),
 
-  getQuestions: () => {
-    return axios.get(`/api/qa/questions`);
-  }
+  getProductStyles: (id) => axios.get(`/api/products/${id}/styles`),
 
-}
+  getQuestions: (id) => axios.get('/api/qa/questions', {
+    params: {
+      product_id: id,
+    },
+  }),
 
-// export default Connect;
+  getAnswers: (id) => axios.get(`/qa/questions/${id}/answers`),
 
-// module.exports = connect;
+  getReviewMeta: (id) => axios.get('/api/reviews/meta', {
+    params: {
+      product_id: id,
+    },
+  }),
+};
+
 export default Connect;

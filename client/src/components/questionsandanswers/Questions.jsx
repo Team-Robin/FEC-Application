@@ -1,76 +1,52 @@
-const testData = {
-  "product_id": "5",
-  "results": [{
-        "question_id": 37,
-        "question_body": "Why is this product cheaper here than other sites?",
-        "question_date": "2018-10-18T00:00:00.000Z",
-        "asker_name": "williamsmith",
-        "question_helpfulness": 4,
-        "reported": false,
-        "answers": {
-          68: {
-            "id": 68,
-            "body": "We are selling it here without any markup from the middleman!",
-            "date": "2018-08-18T00:00:00.000Z",
-            "answerer_name": "Seller",
-            "helpfulness": 4,
-            "photos": []
-            // ...
-          }
-        }
-      },
-      {
-        "question_id": 38,
-        "question_body": "How long does it last?",
-        "question_date": "2019-06-28T00:00:00.000Z",
-        "asker_name": "funnygirl",
-        "question_helpfulness": 2,
-        "reported": false,
-        "answers": {
-          70: {
-            "id": 70,
-            "body": "Some of the seams started splitting the first time I wore it!",
-            "date": "2019-11-28T00:00:00.000Z",
-            "answerer_name": "sillyguy",
-            "helpfulness": 6,
-            "photos": [],
-          },
-          78: {
-            "id": 78,
-            "body": "9 lives",
-            "date": "2019-11-12T00:00:00.000Z",
-            "answerer_name": "iluvdogz",
-            "helpfulness": 31,
-            "photos": [],
-          }
-        }
-      },
-      // ...
-  ]
-}
-
+import App from '../App.jsx';
 import React from 'react';
-// import Answer from './Answer.jsx';
+import {useState, useEffect} from 'react';
+import Answer from './Answer.jsx';
+import Connect from '../Connect.js';
 
 
-Questions () => {
+const Questions = React.memo(({questionInfo}) => {
+  const questionID = questionInfo.questions.results.map(question => {
+    return question.answers;
+  });
+  const [answerObj, setAnswerObj] = useState(questionID);
+  const [answers, setAnswers] = useState([]);
+
+  useEffect(async ()=> {
+    getAllAnswers();
+
+    const answers = await questionInfo.questions.results.map(qid =>
+      Connect.getAnswers(qid.question_id))
+
+
+
+
+  }, [...answerObj]);
+
+  const getAllAnswers = () => {
+    const answers = Object.values(answerObj).map(answer => answer);
+    console.log('INSIDE GETALLANSWERS', answers)
+    setAnswers(answers);
+  };
+
+
   return (
     <div>
-      <div class="QA-question-block">
-        <p class="question">Q: {''}</p>
+      {console.log('LOG IN QUESTIONS', questionInfo.questions)}
+      {questionInfo.questions.results.map((questions, index) =>
+      <div className="QA-question-block" key={index} >
+        <p className="question">User: {questions.asker_name} Date: {questions.question_date}</p>
+        <p className="question">Q: {questions.question_body}</p>
       </div>
-
+      )}
+      <div>
+        {console.log('FROM RENDER AREA', answers)}
+      </div>
     </div>
+
   )
-}
+})
 
 
 
-
-
-
-
-
-
-
-export default Question;
+export default Questions;

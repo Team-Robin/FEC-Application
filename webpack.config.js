@@ -6,7 +6,7 @@ module.exports = {
   entry: path.join(SRC_DIR, 'index.js'),
   output: {
     path: path.join(__dirname, 'public'),
-    filename: 'app.js'
+    filename: 'bundle.js'
   },
   module: {
     rules: [
@@ -29,10 +29,26 @@ module.exports = {
           // compile Sass to CSS
           "sass-loader"
         ]
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'svg-url-loader',
+            options: {
+              limit: 10000,
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'url-loader'
       }
     ]
   },
   mode: 'development',
+  watch: true,
   resolve: {
     extensions: ['.js', '.jsx']
   }

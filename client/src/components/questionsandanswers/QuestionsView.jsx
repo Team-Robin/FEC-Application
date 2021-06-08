@@ -1,32 +1,29 @@
 
 import React from 'react';
+import {useState} from 'react';
+import Questions from './Questions.jsx';
+import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
 // import Questions from './questionsandanswers/Questions.jsx';
 
-class QuestionsAndAnswers extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const QuestionsView = ({questionInfo}) => {
 
-    }
-  }
 
-  render() {
-    return (
 
-      <div>
+
+  return (
+
+    <div>
         <div className="QA-view">
           <p>Questions & Answers</p>
+          <Questions questionInfo={questionInfo}/>
         <form className="QA-form">
         <input className="QA-search-box" type="text" name="QA-search-box" placeholder="Have a question?" />
-
         </form>
         </div>
       </div>
     )
-  }
-
-
 
 }
 
-export default QuestionsAndAnswers;
+
+export default QuestionsView;
