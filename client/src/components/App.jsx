@@ -25,8 +25,8 @@ const App = () => {
 
     setQuestionInfo({ questions: questions.data });
     setProductStyles({ styles: styles.data.results });
-    setProductInfo({ product: product.data });
     setProductReviewMeta(reviewMeta.data);
+    setProductInfo({ product: product.data });
   }, []);
 
   return (
