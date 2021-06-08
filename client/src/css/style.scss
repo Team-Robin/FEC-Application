@@ -17,6 +17,8 @@ $fb-color: #4267B2;
 $twtr-color: #1DA1F2;
 $pins-color: #E60023;
 
+$red: #FC0058;
+
 // ====== Reset! ======
 
 * {
@@ -24,11 +26,13 @@ $pins-color: #E60023;
   padding: 0;
   color: $charcoal;
   font-family: $Roboto-regular;
+  // border: 1px red solid;
 }
 
 button {
   outline: none;
   border: none;
+  background-color: transparent;
 }
 
 .prime-color {
@@ -77,25 +81,97 @@ h1, .h1 {
 .text-space-1{
   letter-spacing: 1px;
 }
-
+.text-underline {
+  text-decoration: underline;
+}
+.text-strikethrough{
+  text-decoration: line-through;
+}
+.text-size-1{
+  font-size: 1rem;
+}
+.text-size-2{
+  font-size: 1.25rem;
+}
+.text-size-3{
+  font-size: 1.5rem
+}
+.text-size-4{
+  font-size: 1.75rem;
+}
+.text-size-5{
+  font-size: 2rem;
+}
 // ====== Text Color ======
 
 .text-light {
-  color: $off-white
+  color: $off-white;
 }
 .text-dark {
-  color: $charcoal
+  color: $charcoal;
 }
-
+.text-primary {
+  color: $primary-color;
+}
+.text-red {
+  color: $red
+}
 // ====== display  ======
 
 .d-flex {
   display: flex;
 }
 
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.col, .col-auto {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+.col-auto {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: auto;
+  max-width: none;
+}
+
+.justify-content-center{
+  justify-content: center;
+}
+.align-items-center{
+  align-items: center;
+}
+.align-self-center{
+  align-self: center;
+}
+
+// ====== border ======
+.border {
+  border-style: solid;
+  border-width: 2px;
+}
+.border-bottom{
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+}
+.border-top{
+  border-top-style: solid;
+  border-top-width: 2px;
+}
+.border-left{
+  border-left-style: solid;
+  border-left-width: 2px;
+}
+.border-{
+  border-right-style: solid;
+  border-right-width: 2px;
+}
+
 
 // ====== Rounded ======
-
 .rounded-sm {
   border-radius: .25rem;
 }
@@ -120,11 +196,136 @@ h1, .h1 {
 .bg-light{
   background-color: $off-white;
 }
+.bg-transparent {
+  background-color: transparent;
+}
+
+// ====== Stars ======
+.star-25, .star-50, .star-75, .star-100, .star-empty {
+  background-repeat: none;
+  background-position: center;
+  background-size: cover;
+  outline: 0;
+  border: 0;
+  stroke: transparent;
+  width: 1.25em;
+  height: 1.25em;
+}
+.star-empty{
+  background-image: url('../Assets/NoStar.svg');
+}
+.star-25{
+  background-image: url('../Assets/Quarter-Star.svg');
+}
+.star-50{
+  background-image: url('../Assets/Half-star.svg');
+}
+.star-75{
+  background-image: url('../Assets/ThreeFourth-star.svg');
+}
+.star-100{
+  background-image: url('../Assets/Full-star.svg');
+}
+.star-muted{
+  filter: opacity(80%);
+}
+// ====== Styles Component Constraint ======
+.overview-right-dekstop{
+  max-width: 20rem;
+}
+// ====== Overview Final Select ======
+
+.select-size{
+  width: 10rem;
+  height: 3rem;
+  border-style: solid;
+  border-width: 2px;
+  cursor: pointer;
+}
+
+// ====== Styles Icons ======
+.styles-wrapper{
+  display: flex;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  flex-grow: 0;
+  flex-basis: 23%;
+  flex-shrink: 1;
+  justify-content: space-around;
+  overflow: hidden;
+  &:hover{
+    >.styles-icon{
+      transition: all .2s ease-in-out;
+      filter: brightness(125%);
+      box-shadow: .1rem .1rem .4rem .1rem rgba(0,0,0,.3);
+    }
+    >.styles-pop {
+      &::after {
+        transition: all .2s ease-in-out;
+        opacity: 100%;
+        left: 80%;
+        top: -10%;
+      }
+    }
+  }
+  &:active{
+    >.styles-icon{
+      filter: brightness(90%);
+      box-shadow: .1rem .05rem .2rem .1rem rgba(0,0,0,.4);
+    }
+  }
+}
+
+.styles-pop {
+  &::after {
+    transition: all .2s ease-in-out;
+    opacity: 0;
+    position: absolute;
+    content: "\f00c";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    left: 200%;
+    top: 0%;
+  }
+}
+.styles-icon{
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border-width: 2px;
+  border-style: solid;
+  transition: all .2s ease-in-out;
+  position: relative;
+};
+.styles-selected{
+  border-color: $primary-color;
+  position: relative;
+  &::after{
+    content: "\f058";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 400;
+    color: $primary-color;
+    background-clip: padding-box;
+    border-radius: 100%;
+    font-size: 1.2rem;
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    left: 75%;
+    top: -15%;
+  }
+}
 
 // ====== Socials ======
 .social-icon{
-  width: 2rem;
-  height: 2rem;
+  width: 2.1rem;
+  height: 2.2rem;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 .fb-bg-color{
   background-color: $fb-color;
@@ -147,6 +348,21 @@ h1, .h1 {
 
 
 // ====== Spacings ======
+.m-auto{
+  margin: auto;
+}
+.mr-auto, .mx-auto{
+  margin-right: auto;
+}
+.ml-auto, .mx-auto{
+  margin-left: auto;
+}
+.mt-auto, .my-auto{
+  margin-top: auto;
+}
+.mb-auto, .my-auto{
+  margin-bottom: auto;
+}
 
 .m-1 {
   margin: .25rem;
@@ -164,6 +380,13 @@ h1, .h1 {
   margin-bottom: .25rem;
 }
 
+.mr-5, .mx-5 {
+  margin-right: 2.25rem;
+}
+.ml-5, .mx-5 {
+  margin-left: 2.25rem;
+}
+
 
 // ====== Button ======
 
@@ -172,14 +395,51 @@ h1, .h1 {
   &:hover{
     filter: brightness(125%);
   }
+  &:active {
+    filter: brightness(80%);
+  }
 }
+
 .shadow-sm{
   box-shadow: .1rem .1rem .1rem 0rem rgba(0,0,0,.3);
 
   &.btn:hover {
     box-shadow: .1rem .15rem .2rem .1rem rgba(0,0,0,.3);
   }
+  &.btn:active {
+    box-shadow: .05rem .05rem .1rem .05rem rgba(0,0,0,.3);
+  }
 }
+
 .shadow {
-  box-shadow: .25rem .25rem .25rem 0rem rgba(0,0,0,.3);
+  box-shadow: .1rem .125rem .5rem .2rem rgba(0,0,0,.3);
+  &.btn:hover {
+    box-shadow: .1rem .125rem .4rem .2rem rgba(0,0,0,.4);
+  }
+  &.btn:active {
+    box-shadow: .1rem .1rem .4rem .2rem rgba(0,0,0,.2);
+  }
+}
+
+// ====== MISC ======
+.no-clicker{
+  pointer-events: none;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.bar {
+  position: relative;
+  width: 3px;
+  background-color: $muted;
+ height: 100%;
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
 }
