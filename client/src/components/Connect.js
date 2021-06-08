@@ -16,6 +16,8 @@ const Connect = {
     },
   }),
 
+  getAnswers: (id) => axios.get(`/qa/questions/${id}/answers`),
+
   getReviewMeta: (id) => axios.get('/api/reviews/meta', {
     params: {
       product_id: id,

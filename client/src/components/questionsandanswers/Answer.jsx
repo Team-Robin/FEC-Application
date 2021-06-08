@@ -1,9 +1,7 @@
 import React from 'react';
 
-Answer = () => {
-  return (
+const Answer = () => {
 
-  )
 }
 
 
