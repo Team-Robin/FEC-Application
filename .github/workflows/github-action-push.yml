@@ -1,21 +1,17 @@
-name: GitHub Actions Demo
+name: Github CI
 on: [push]
 jobs:
   build:
-    name: Push Check
+    name: Test
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Yarn Install
-        uses: borales/actions-yarn@v2.0.0
+      - uses: actions/checkout@v2
+      - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install # will run `yarn install` command
-      - name: Yarn Build
-        uses: borales/actions-yarn@v2.0.0
+      - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: build # will run `yarn build` command
-      - name: Yarn Test
-        uses: borales/actions-yarn@v2.0.0
+      - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: test # will run `yarn test` command
