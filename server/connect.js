@@ -26,7 +26,7 @@ const getProductId = async (id = { id: 17071 }) => axios({
   },
 });
 
-const getProductIdStyle = async ( id = { id: 17071 }) => axios({
+const getProductIdStyle = async (id = { id: 17071 }) => axios({
   method: 'GET',
   url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id.id}/styles`,
   headers: {
