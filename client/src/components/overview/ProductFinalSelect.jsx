@@ -31,7 +31,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
   return (
     <div>
       <select
-        className="select-size text-size-2 rounded-sm mr-1"
+        className="select-size text-size-2 rounded-sm mr-1 pl-4 hover-outline"
         onChange={(event) => setCurrentSize(event.target.value)}
         value={currentSize || ''}
       >
@@ -47,7 +47,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
         ))}
       </select>
       <select
-        className="select-size text-size-2 rounded-sm ml-1"
+        className="select-size text-size-2 rounded-sm ml-1 pl-4"
         value={`${currentSize ? selectedQuantity : null}` || ''}
         onChange={(event) => setSelectedQuantity(event.target.value)}
       >
@@ -57,8 +57,8 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
         ))}
       </select>
       <div>
-        <button type="button" aria-label="add to cart" className="select-size text-size-2 btn shadow-sm my-1 rounded-sm">
-          Add to Bag
+        <button type="button" aria-label="add to cart" className="select-size text-size-2 btn shadow-sm my-1 rounded-sm ">
+          <span className="hover-outline"> Add to Bag </span>
         </button>
       </div>
       <div className="">

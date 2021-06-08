@@ -20,7 +20,7 @@ const ProductInfo = ({
     <div className="overview-right-dekstop">
       <div className="row">
         <StarRatings ReviewsRatings={ReviewsRatings} />
-        <button type="button" className="ml-1 align-self-center text-underline cursor-pointer" onClick={scrollTo} onKeyDown={scrollTo}>Read all reviews</button>
+        <button type="button" className="ml-1 align-self-center text-underline cursor-pointer hover-outline " onClick={scrollTo} onKeyDown={scrollTo}>Read all reviews</button>
       </div>
       <div className="h5 text-thin">{Category}</div>
       <div className="h3 text-bold">{Name}</div>

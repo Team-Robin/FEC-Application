@@ -387,6 +387,12 @@ h1, .h1 {
   margin-left: 2.25rem;
 }
 
+.pl-1 {
+  padding: .25rem;
+}
+.pl-4 {
+  padding-left: 1rem;
+}
 
 // ====== Button ======
 
@@ -442,4 +448,64 @@ h1, .h1 {
   -ms-transition: $args;
   -o-transition: $args;
   transition: $args;
+}
+
+.hover-outline {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    background-color: $charcoal;
+    left: 0;
+    right: 0;
+    top: 1em;
+    bottom: 0;
+    height: 1px;
+    width: 0%;
+    transition: all .2s ease-in-out;
+  }
+  &:hover {
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+.hover-outline-cascade {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: '';
+    position: absolute;
+    background-color: $charcoal;
+    left: 0;
+    right: 0;
+    top: 5em;
+    bottom: 0;
+    height: 1px;
+    width: 60%;
+    transition: all .2s ease-in-out;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    background-color: $muted;
+    left: 0;
+    right: 0;
+    top: 5em;
+    bottom: 0;
+    height: 1px;
+    width: 0%;
+    transition: all .3s ease-in-out;
+  }
+  &:hover {
+    &::after {
+      width: 100%;
+      top: 1em;
+    }
+    &::before {
+      width: 100%;
+      top: 1.2em
+    }
+  }
 }
