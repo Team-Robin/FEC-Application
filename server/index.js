@@ -81,6 +81,7 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
       res.status(200).send(result.data);
     })
     .catch((error) => {
+      // console.log(error);
       res.status(200).send(error);
     });
 });
