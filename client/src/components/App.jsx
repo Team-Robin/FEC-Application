@@ -13,6 +13,7 @@ const App = () => {
   // both the this.state and this.setState()
   const [productInfo, setProductInfo] = useState({});
   const [productReviewMeta, setProductReviewMeta] = useState({});
+  const [productStyles, setProductStyles] = useState({});
 
   //  Component Did Mount
   useEffect(async () => {
@@ -20,11 +21,13 @@ const App = () => {
     const product = await Connect.getProductById(id);
     const reviewMeta = await Connect.getReviewMeta(product.data.id);
     const questions = await Connect.getQuestions(product.data.id);
+    const styles = await Connect.getProductStyles(product.data.id);
 
     console.log(questions);
 
-    setProductInfo({ product: product.data });
     setProductReviewMeta(reviewMeta.data);
+    setProductInfo({ product: product.data });
+    setProductStyles({ styles: styles.data.results });
   }, []);
 
   return (
