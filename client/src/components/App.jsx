@@ -14,6 +14,7 @@ const App = () => {
   const [productInfo, setProductInfo] = useState({});
   const [productReviewMeta, setProductReviewMeta] = useState({});
   const [questionInfo, setQuestionInfo] = useState({});
+  const [productStyles, setProductStyles] = useState({});
 
   //  Component Did Mount
   useEffect(async () => {
@@ -24,6 +25,7 @@ const App = () => {
 
 
     setQuestionInfo({questions: questions.data});
+    setProductStyles({ styles: styles.data.results });
     setProductInfo({ product: product.data });
     setProductReviewMeta(reviewMeta.data);
 
