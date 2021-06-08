@@ -8,10 +8,11 @@ jobs:
     steps:
       - checkout
       - node/install:
-          install-npm: false
-          node-version: 12.16.2
-      - node/install-yarn:
-          version: 1.22.4
+          install-npm: true
+          node-version: latest
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: yarn.lock
       - run: npm install -g yarn
       - run: yarn set version berry
       - run: node --version
