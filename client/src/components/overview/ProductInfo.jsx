@@ -11,7 +11,7 @@ const ProductInfo = ({
   Name, Category, Price, ReviewsRatings, SalePrice,
 }) => {
   const scrollTo = (event) => {
-    console.log('I got clicked!')
+    console.log('I got clicked!');
     // document.querySelector('NoshuaPit').scrollIntoView({
     //   behavior: 'smooth',
     // });
@@ -27,7 +27,7 @@ const ProductInfo = ({
       <ProductPrice Price={Price} SalePrice={SalePrice} />
     </div>
   );
-}
+};
 
 ProductInfo.propTypes = {
   Name: PropTypes.string.isRequired,
