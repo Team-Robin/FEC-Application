@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import ProductSocials from './ProductSocials';
 
 const ProductDescription = ({
-  Description, Slogan, ReviewsRatings, Features,
+  Description, Slogan, Features,
 }) => (
   <div className="row">
     <div className="col">
@@ -18,7 +18,7 @@ const ProductDescription = ({
     </div>
     <div className="col">
       {Features.map((feature) => (
-        <div>
+        <div key={`Features-${feature.feature}`}>
           <i className="fas fa-check text-muted" />
           {`${feature.feature} : ${feature.value}`}
         </div>
@@ -30,7 +30,6 @@ const ProductDescription = ({
 ProductDescription.propTypes = {
   Description: PropTypes.string.isRequired,
   Slogan: PropTypes.string.isRequired,
-  ReviewsRatings: PropTypes.object.isRequired,
   Features: PropTypes.array.isRequired,
 };
 

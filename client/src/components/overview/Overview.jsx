@@ -5,20 +5,39 @@ import PropTypes from 'prop-types';
 import ProductInfo from './ProductInfo';
 import ProductDescription from './ProductDescription';
 import ProductStyles from './ProductStyles';
+import ProductFinalSelect from './ProductFinalSelect';
 
 // eslint-disable-next-line object-curly-newline
 const Overview = ({
   Name, Category, Description, Slogan, Price, ReviewsRatings, Features, Styles,
+  CurrentStyle, setCurrentStyle, SalePrice,
 }) => (
   <>
-    <ProductInfo Name={Name} Category={Category} Price={Price} ReviewsRatings={ReviewsRatings} />
-    <ProductStyles Styles={Styles} />
-    <ProductDescription
-      Description={Description}
-      Slogan={Slogan}
-      ReviewsRatings={ReviewsRatings}
-      Features={Features}
-    />
+    <div className="row">
+      <div className="col border text-primamry" />
+      <div className="col ml-1">
+        <ProductInfo
+          Name={Name}
+          Category={Category}
+          Price={Price}
+          ReviewsRatings={ReviewsRatings}
+          SalePrice={SalePrice}
+        />
+        <ProductStyles
+          Styles={Styles}
+          CurrentStyle={CurrentStyle}
+          setCurrentStyle={setCurrentStyle}
+        />
+        { CurrentStyle.skus ? <ProductFinalSelect SizeInformation={CurrentStyle.skus} /> : null}
+      </div>
+    </div>
+    <div className="row">
+      <ProductDescription
+        Description={Description}
+        Slogan={Slogan}
+        Features={Features}
+      />
+    </div>
   </>
 );
 
@@ -30,7 +49,10 @@ Overview.propTypes = {
   Price: PropTypes.string.isRequired,
   ReviewsRatings: PropTypes.object.isRequired,
   Features: PropTypes.array.isRequired,
-  Styles: PropTypes.object.isRequired,
+  Styles: PropTypes.array.isRequired,
+  CurrentStyle: PropTypes.object.isRequired,
+  setCurrentStyle: PropTypes.func.isRequired,
+  SalePrice: PropTypes.string.isRequired,
 };
 
 export default Overview;

@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable import/no-unresolved */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -23,7 +24,7 @@ const StarRatings = ({
   const fullStars = () => {
     const stars = [];
     for (let i = 0; i < Math.floor(average / 1); i += 1) {
-      stars.push(<div className="star-100 star-muted" />);
+      stars.push(<div className="star-100 star-muted" key={`StarFull-${i}`} />);
     }
     return stars;
   };
@@ -32,19 +33,19 @@ const StarRatings = ({
     const stars = [];
     switch (partial) {
       case (0.25):
-        stars.push(<div className="star-25 star-muted" />);
+        stars.push(<div className="star-25 star-muted" key={`StarPartial-${stars.length}`} />);
         break;
       case (0.5):
-        stars.push(<div className="star-50 star-muted" />);
+        stars.push(<div className="star-50 star-muted" key={`StarPartial-${stars.length}`} />);
         break;
       case (0.75):
-        stars.push(<div className="star-75 star-muted" />);
+        stars.push(<div className="star-75 star-muted" key={`StarPartial-${stars.length}`} />);
         break;
       default:
         break;
     }
     for (let i = 0; i < Math.floor(5 - average); i += 1) {
-      stars.push(<div className="star-empty star-muted" />);
+      stars.push(<div className="star-empty star-muted" key={`StarEmpty-${i}`} />);
     }
     return stars;
   };
@@ -58,7 +59,7 @@ const StarRatings = ({
 };
 
 StarRatings.propTypes = {
-  ReviewsRatings: PropTypes.number.isRequired,
+  ReviewsRatings: PropTypes.object.isRequired,
 };
 
 export default StarRatings;

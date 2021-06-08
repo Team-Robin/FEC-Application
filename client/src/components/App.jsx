@@ -15,6 +15,8 @@ const App = () => {
   const [productReviewMeta, setProductReviewMeta] = useState({});
   const [questionInfo, setQuestionInfo] = useState({});
   const [productStyles, setProductStyles] = useState({});
+  const [currentStyle, setCurrentStyle] = useState({});
+  const [productSalesPrice, setProductSalesPrice] = useState({});
   //  Component Did Mount
   useEffect(async () => {
     const id = window.location.pathname.split('/')[2]; // splits '/products/###/' to '/', 'products', '####, '/'. we just want the numbers
@@ -27,7 +29,15 @@ const App = () => {
     setProductStyles({ styles: styles.data.results });
     setProductReviewMeta(reviewMeta.data);
     setProductInfo({ product: product.data });
+    setCurrentStyle(styles.data.results[0]);
+    setProductSalesPrice(styles.data.results[0].sale_price);
   }, []);
+
+  useEffect(() => {
+    if (currentStyle) {
+      setProductSalesPrice(currentStyle.sale_price || '');
+    }
+  }, [currentStyle]);
 
   return (
     <>
@@ -41,6 +51,9 @@ const App = () => {
           ReviewsRatings={productReviewMeta.ratings}
           Features={productInfo.product.features}
           Styles={productStyles.styles}
+          CurrentStyle={currentStyle}
+          setCurrentStyle={setCurrentStyle}
+          SalePrice={productSalesPrice}
         />
       ) : null}
       <>

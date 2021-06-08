@@ -1,23 +1,36 @@
 version: 2.1
-orbs:
-  node: circleci/node@2.1.1
 jobs:
-  install-node-12:
+  build:
+    working_directory: ~/repo
     docker:
-      - image: "cimg/base:2020.05"
+      - image: circleci/node:10.18.0
     steps:
       - checkout
-      - node/install:
-          install-yarn: true
-          node-version: latest
-      - node/install-packages:
-          pkg-manager: yarn
-          cache-key: yarn.lock
-      - run: npm install -g yarn
-      - run: yarn set version berry
-      - run: node --version
-      - run: yarn
+      - restore_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: install-dependencies
+          command: yarn install --immutable
+      - save_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - run:
+          name: run-tests
+          command: yarn test
+  # run_test:
+  #   working_directory: ~/repo
+  #   docker:
+  #     - image: circleci/node:10.18.0
+    # steps:
+    #   - checkout
+    #   - run:
+    #       name: run-tests
+    #       command: yarn test
 workflows:
-  install-n:
+  build_yarn:
     jobs:
-      - install-node-12
+      - build
+  # test_yarn:
+  #   jobs:
+  #     - run_test
