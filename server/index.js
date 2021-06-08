@@ -60,6 +60,18 @@ app.get('/api/qa/questions', (req, res) => {
     });
 });
 
+app.get('/qa/questions/:question_id/answers', (req, res) => {
+  connect.getAnswers(req.query)
+  // console.log(req.query)
+    .then((result) => {
+      console.log('ANSWERS IN SERVER', result.data)
+      res.status(200).send(result.data);
+    })
+    .catch((error) => {
+      res.status(200).send(error);
+    });
+});
+
 // =====================REVIEWS GET=======================>>>
 app.get('*/api/reviews/meta', (req, res) => {
   connect.getReviewsMeta(req.query)

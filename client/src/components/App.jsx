@@ -23,7 +23,7 @@ const App = () => {
     const questions = await Connect.getQuestions(product.data.id);
 
 
-    setQuestionInfo({questions: questions.data.results});
+    setQuestionInfo({questions: questions.data});
     setProductInfo({ product: product.data });
     setProductReviewMeta(reviewMeta.data);
 
@@ -44,15 +44,7 @@ const App = () => {
       <>
       {questionInfo.questions ? (
       <QuestionsView
-        questionInfo={questionInfo}
-        // question_id={questionInfo.questions.question_id}
-        // Body={questionInfo.questions.question_body}
-        // Date={questionInfo.questions.question_date}
-        // User={questionInfo.questions.asker_name}
-        // Helpfulness={questionInfo.questions.question_helpfulness}
-        // Reported={questionInfo.questions.reported}
-
-
+      questionInfo={questionInfo}
       />
        ) : null}
       </>
