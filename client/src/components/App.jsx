@@ -25,9 +25,9 @@ const App = () => {
 
     console.log(questions);
 
+    setProductStyles({ styles: styles.data.results });
     setProductReviewMeta(reviewMeta.data);
     setProductInfo({ product: product.data });
-    setProductStyles({ styles: styles.data.results });
   }, []);
 
   return (
@@ -41,6 +41,7 @@ const App = () => {
           Price={productInfo.product.default_price}
           ReviewsRatings={productReviewMeta.ratings}
           Features={productInfo.product.features}
+          Styles={productStyles.styles}
         />
       ) : null}
       <QuestionsAndAnswers />

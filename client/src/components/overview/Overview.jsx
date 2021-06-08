@@ -4,11 +4,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ProductInfo from './ProductInfo';
 import ProductDescription from './ProductDescription';
+import ProductStyles from './ProductStyles';
 
 // eslint-disable-next-line object-curly-newline
-const Overview = ({ Name, Category, Description, Slogan, Price, ReviewsRatings, Features }) => (
+const Overview = ({
+  Name, Category, Description, Slogan, Price, ReviewsRatings, Features, Styles,
+}) => (
   <>
-    <ProductInfo Name={Name} Category={Category} Price={Price} />
+    <ProductInfo Name={Name} Category={Category} Price={Price} ReviewsRatings={ReviewsRatings} />
+    <ProductStyles Styles={Styles} />
     <ProductDescription
       Description={Description}
       Slogan={Slogan}
@@ -26,6 +30,7 @@ Overview.propTypes = {
   Price: PropTypes.string.isRequired,
   ReviewsRatings: PropTypes.object.isRequired,
   Features: PropTypes.array.isRequired,
+  Styles: PropTypes.object.isRequired,
 };
 
 export default Overview;

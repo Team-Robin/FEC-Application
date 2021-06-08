@@ -4,7 +4,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ProductSocials from './ProductSocials';
 
-const ProductDescription = ({ Description, Slogan, ReviewsRatings, Features }) => (
+const ProductDescription = ({
+  Description, Slogan, ReviewsRatings, Features,
+}) => (
   <div className="row">
     <div className="col">
       <div className="text-bold">{Slogan}</div>
