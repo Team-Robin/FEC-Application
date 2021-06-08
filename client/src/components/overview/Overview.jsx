@@ -12,10 +12,10 @@ const Overview = ({
   Name, Category, Description, Slogan, Price, ReviewsRatings, Features, Styles,
   CurrentStyle, setCurrentStyle, SalePrice,
 }) => (
-  <>
+  <div className="ml-5 mt-5">
     <div className="row">
       <div className="col border text-primamry" />
-      <div className="col ml-1">
+      <div className="col ml-3">
         <ProductInfo
           Name={Name}
           Category={Category}
@@ -31,14 +31,14 @@ const Overview = ({
         { CurrentStyle.skus ? <ProductFinalSelect SizeInformation={CurrentStyle.skus} /> : null}
       </div>
     </div>
-    <div className="row">
+    <div className="mt-3 row align-items-center justify-content-center w-75 mx-auto">
       <ProductDescription
         Description={Description}
         Slogan={Slogan}
         Features={Features}
       />
     </div>
-  </>
+  </div>
 );
 
 Overview.propTypes = {

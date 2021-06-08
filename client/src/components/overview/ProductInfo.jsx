@@ -20,6 +20,8 @@ const ProductInfo = ({
   useEffect(() => {
     if (ReviewsRatings) {
       // do somethig
+      setTotalReviews(Object.values(ReviewsRatings)
+        .reduce((acc, val) => parseInt(acc, 10) + parseInt(val, 10)));
     }
   }, [ReviewsRatings]);
 
@@ -29,7 +31,7 @@ const ProductInfo = ({
         <StarRatings ReviewsRatings={ReviewsRatings} />
         <button type="button" className="py-1 ml-1 align-self-center cursor-pointer hover-outline-cascade" onClick={scrollTo} onKeyDown={scrollTo}>
           Read all
-          {totalReviews}
+          {` ${totalReviews} `}
           reviews
         </button>
       </div>

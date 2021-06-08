@@ -18,8 +18,8 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
 
   useEffect(() => {
     const qOpts = [];
-    let max = 15;
-    if (quantity < max) {
+    let max = 0;
+    if (quantity < 15) {
       max = quantity;
     }
     for (let i = 0; i < max; i += 1) {
@@ -30,32 +30,36 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
 
   return (
     <div>
-      <select
-        className="select-size text-size-2 rounded-sm mr-1 pl-4 hover-outline"
-        onChange={(event) => setCurrentSize(event.target.value)}
-        value={currentSize || ''}
-      >
-        <option value="">Select size</option>
-        {Object.keys(SizeInformation).map((item) => (
-          <option
-            value={`${SizeInformation[item].size},${SizeInformation[item].quantity}`}
-            className="text-size-1"
-            key={`SelectSize-${item}`}
+      { !SizeInformation.null ? (
+        <>
+          <select
+            className="select-size text-size-2 rounded-sm mr-1 pl-4 hover-outline"
+            onChange={(event) => setCurrentSize(event.target.value)}
+            value={currentSize || ''}
           >
-            {SizeInformation[item].size}
-          </option>
-        ))}
-      </select>
-      <select
-        className="select-size text-size-2 rounded-sm ml-1 pl-4"
-        value={`${currentSize ? selectedQuantity : null}` || ''}
-        onChange={(event) => setSelectedQuantity(event.target.value)}
-      >
-        <option value="">-</option>
-        {quantityOptions.map((value) => (
-          <option value={value} key={`Quantity-${value}`}>{value}</option>
-        ))}
-      </select>
+            <option value="">Select size</option>
+            {Object.keys(SizeInformation).map((key) => (
+              <option
+                value={`${SizeInformation[key].size},${SizeInformation[key].quantity}`}
+                className="text-size-1"
+                key={`SelectSize-${key}`}
+              >
+                {SizeInformation[key].size}
+              </option>
+            ))}
+          </select>
+          <select
+            className="select-size text-size-2 rounded-sm ml-1 pl-4"
+            value={`${currentSize ? selectedQuantity : null}` || ''}
+            onChange={(event) => setSelectedQuantity(event.target.value)}
+          >
+            <option value="">-</option>
+            {quantityOptions.map((value) => (
+              <option value={value} key={`Quantity-${value}`}>{value}</option>
+            ))}
+          </select>
+        </>
+      ) : null}
       <div>
         <button type="button" aria-label="add to cart" className="select-size text-size-2 btn shadow-sm my-1 rounded-sm ">
           <span className="hover-outline"> Add to Bag </span>

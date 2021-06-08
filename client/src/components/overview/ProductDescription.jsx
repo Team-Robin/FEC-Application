@@ -7,8 +7,8 @@ import ProductSocials from './ProductSocials';
 const ProductDescription = ({
   Description, Slogan, Features,
 }) => (
-  <div className="row">
-    <div className="col">
+  <div className="d-flex">
+    <div className="col w-50">
       <div className="text-bold">{Slogan}</div>
       <div className="">{Description}</div>
       <ProductSocials />
@@ -16,9 +16,9 @@ const ProductDescription = ({
     <div className="col-auto">
       <div className="bar" />
     </div>
-    <div className="col">
+    <div className="col w-50 ml-3">
       {Features.map((feature) => (
-        <div key={`Features-${feature.feature}`}>
+        <div key={`Features-${feature.feature}`} className="flex-shrink">
           <i className="fas fa-check text-muted" />
           {`${feature.feature} : ${feature.value}`}
         </div>
