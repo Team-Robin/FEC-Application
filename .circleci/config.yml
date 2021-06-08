@@ -24,8 +24,6 @@ jobs:
       - image: circleci/node:10.18.0
     steps:
       - checkout
-      - node/install-packages:
-          pkg-manager: yarn
       - run:
           name: run-tests
           command: yarn test
