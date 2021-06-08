@@ -16,16 +16,22 @@ const ProductInfo = ({
       behavior: 'smooth',
     });
   };
+
   useEffect(() => {
     if (ReviewsRatings) {
-
+      // do somethig
     }
-  }, [ReviewsRatings])
+  }, [ReviewsRatings]);
+
   return (
     <div className="overview-right-dekstop">
       <div className="row">
         <StarRatings ReviewsRatings={ReviewsRatings} />
-        <button type="button" className="py-1 ml-1 align-self-center cursor-pointer hover-outline-cascade" onClick={scrollTo} onKeyDown={scrollTo}>Read all {totalReviews} reviews</button>
+        <button type="button" className="py-1 ml-1 align-self-center cursor-pointer hover-outline-cascade" onClick={scrollTo} onKeyDown={scrollTo}>
+          Read all
+          {totalReviews}
+          reviews
+        </button>
       </div>
       <div className="h5 text-thin">{Category}</div>
       <div className="h3 text-bold">{Name}</div>

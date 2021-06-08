@@ -7,7 +7,10 @@ const LoadingPulse = ({ Message }) => (
     margin: 'auto', width: '50%', textAlign: 'center', height: '100%',
   }}
   >
-    <div style={{ position: 'relative', paddingTop: '10%', paddingBottom: '10%', textAlign: 'center' }}>
+    <div style={{
+      position: 'relative', paddingTop: '10%', paddingBottom: '10%', textAlign: 'center',
+    }}
+    >
       <i className="fas fa-spinner fa-pulse fa-lg" style={{ fontSize: '15rem', color: 'rgba(0,0,0,.6)', marginBottom: '5rem' }} />
       <div style={{ flexBasis: '100%', flexGrow: '0' }}>
         <p style={{ fontSize: '2rem' }}>{Message}</p>
