@@ -17,7 +17,7 @@ const ProductSocials = () => {
     <div className="d-flex">
       <button
         type="button"
-        className="btn text-light social-icon bg-transparent shadow"
+        className="btn text-light social-icon bg-transparent shadow cursor-pointer"
         onClick={handleFacebook}
         style={{ fontSize: '2rem' }}
       >
@@ -25,11 +25,11 @@ const ProductSocials = () => {
       </button>
       <button
         type="button"
-        className="btn text-light social-icon bg-transparent shadow"
+        className="btn text-light social-icon bg-transparent shadow cursor-pointer"
         onClick={handleTwitter}
         style={{ fontSize: '2rem' }}
       >
-        <i className="fab fa-twitter-square fa-lg twtr-text-color" />
+        <i className="fab fa-twitter-square fa-lg twtr-text-color cursor-pointer" />
       </button>
       <button
         type="button"
@@ -37,7 +37,7 @@ const ProductSocials = () => {
         onClick={handlePinterest}
         style={{ fontSize: '2rem' }}
       >
-        <i className="fab fa-pinterest-square fa-lg pins-text-color" />
+        <i className="fab fa-pinterest-square fa-lg pins-text-color cursor-pointer" />
       </button>
     </div>
   );
