@@ -10,7 +10,7 @@ jobs:
           key: dependency-cache-{{ checksum "yarn.lock" }}
       - run:
           name: install-dependencies
-          command: yarn install --frozen-lockfile
+          command: yarn install --immutable
       - save_cache:
           key: dependency-cache-{{ checksum "yarn.lock" }}
           paths:
