@@ -17,9 +17,11 @@ jobs:
     # CircleCI will report the results back to your VCS provider.
     steps:
       - checkout
-      - node/install:
-          install-yarn: true
-      - run: node --version
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          command: yarn run test
+          name: Run YARN tests
 
 
 workflows:
