@@ -8,6 +8,7 @@ const ReviewList = ({ reviews, reviewControls }) => (
       reviews.map((review) => (
         <Review
           key={review.review_id}
+          name={review.review_id}
           review={review}
           reviewControls={reviewControls}
         />

@@ -6,13 +6,14 @@ import Connect from '../Connect';
 class RatingsAndReviews extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      sortStyle: 'relevent',
-      ratings: {},
-      reviews: {},
-      activeFilters: [],
-    };
-    this.lables = {
+    this.labels = {
+      Quality: {
+        1: 'Hot garbage',
+        2: 'Lukewarm garbage',
+        3: 'Does the job I need it to do',
+        4: 'Very niiice',
+        5: 'OMGWOWSOGUUD'
+      },
       Size: {
         1: 'A size too small',
         2: 'A half size too small',
@@ -69,6 +70,35 @@ class RatingsAndReviews extends React.Component {
         addFilter: this.addFilter.bind(this),
       },
     };
+    this.state = {
+      sortStyle: 'relevant',
+      ratings: {},
+      reviews: {},
+      activeFilters: [],
+    };
+  }
+
+  componentDidMount() {
+    const options = {
+      params: {
+        count: 2,
+        sort: 'relevant',
+        product_id: this.props.productId,
+      },
+    };
+    Connect.getReviews(options)
+      .then((response) => response.data)
+      .then((reviews) => {
+        Connect.getReviewMeta(reviews.product)
+          .then((response) => {
+            let ratings = response.data;
+            console.log(ratings, reviews);
+            this.setState({
+              reviews,
+              ratings,
+            });
+          });
+      });
   }
 
   setHelpful(reviewId) {
@@ -141,20 +171,24 @@ class RatingsAndReviews extends React.Component {
   }
 
   render() {
-    return (
-      <div id="rnr">
-        <RatingsOverview
-          labels={this.labels}
-          ratingMetaData={this.state.ratings}
-          controls={this.controls.ratings}
-        />
-        <ReviewsPanel
-          activeFilters={this.state.activeFilters}
-          reviews={this.state.reviews}
-          controls={this.controls.reviews}
-        />
-      </div>
-    );
+    console.log(this);
+    if (Object.values(this.state.reviews).length) {
+      return (
+        <div id="rnr">
+          <RatingsOverview
+            labels={this.labels}
+            ratingMetaData={this.state.ratings}
+            controls={this.controls.ratings}
+          />
+          <ReviewsPanel
+            activeFilters={this.state.activeFilters}
+            reviews={this.state.reviews}
+            controls={this.controls.reviews}
+          />
+        </div>
+      );
+    }
+    return <p>What happened?</p>;
   }
 }
 

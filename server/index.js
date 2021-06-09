@@ -37,6 +37,7 @@ app.get('/api/products', (req, res) => {
 
 // get by product id
 app.get('/api/products/:productId', (req, res) => {
+  console.log(req.params, '-------------------------------------------------------------------')
   const { productId } = req.params; // productId = req.params.productId;
   connect.getProductId({ id: productId })
     .then((result) => {
@@ -44,6 +45,7 @@ app.get('/api/products/:productId', (req, res) => {
       res.status(200).send(result.data);
     })
     .catch((error) => {
+      console.log(error);
       res.status(500).send('error at API fetch', error);
     });
 });
@@ -85,7 +87,18 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
 });
 
 // =====================REVIEWS GET=======================>>>
-app.get('*/api/reviews/meta', (req, res) => {
+app.get('/api/reviews', (req, res) => {
+  connect.getReviews(req.query)
+    .then((result) => {
+      res.send(200, result.data);
+    })
+    .catch((err) => {
+      res.send(500, err);
+    });
+});
+
+app.get('/api/reviews/meta', (req, res) => {
+  console.log(req.query);
   connect.getReviewsMeta(req.query)
     .then((result) => {
       res.status(200).send(result.data);

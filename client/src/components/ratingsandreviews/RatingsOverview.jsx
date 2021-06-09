@@ -23,8 +23,8 @@ const RatingsOverview = ({ labels, ratingMetaData, controls }) => (
 
 RatingsOverview.propTypes = {
   labels: PropTypes.objectOf(PropTypes.object).isRequired,
-  ratingMetaData: PropTypes.objectOf(PropTypes.object).isRequired,
-  controls: PropTypes.func.isRequired,
+  ratingMetaData: PropTypes.objectOf(PropTypes.any).isRequired,
+  controls: PropTypes.objectOf(PropTypes.func).isRequired,
 };
 
 export default RatingsOverview;

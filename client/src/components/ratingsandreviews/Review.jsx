@@ -5,7 +5,7 @@ import ReviewContent from './ReviewContent';
 import ReviewResponse from './ReviewResponse';
 import FeedbackController from './FeedbackController';
 
-const Review = ({ key, review, reviewControls }) => {
+const Review = ({ name, review, reviewControls }) => {
   const response = (review.response !== null) ? <ReviewResponse response={review.response} /> : '';
   return (
     <div className="review">
@@ -22,7 +22,7 @@ const Review = ({ key, review, reviewControls }) => {
       />
       {response}
       <FeedbackController
-        reviewId={key}
+        reviewId={name}
         setHelpful={reviewControls.setHelpful}
         reportReview={reviewControls.reportReview}
       />
@@ -31,7 +31,7 @@ const Review = ({ key, review, reviewControls }) => {
 };
 
 Review.propTypes = {
-  key: PropTypes.number.isRequired,
+  name: PropTypes.number.isRequired,
   review: PropTypes.objectOf(PropTypes.any).isRequired,
   reviewControls: PropTypes.objectOf(PropTypes.func).isRequired,
 };

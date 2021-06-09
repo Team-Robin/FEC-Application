@@ -24,7 +24,7 @@ const Connect = {
     },
   }),
 
-  getReviews: (options) => axios.get('/api/reviews/meta', options),
+  getReviews: (options) => axios.get('/api/reviews/', options),
 
   setHelpful: (reviewid) => axios.put(`/api/${reviewid}/helpful`),
 

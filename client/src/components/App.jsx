@@ -63,7 +63,9 @@ const App = () => {
           />
         ) : null}
       </>
-      <RatingsAndReviews productId={productInfo.product.id} />
+      {productInfo.product ? (
+        <RatingsAndReviews productId={productInfo.product.id} />
+      ) : null}
     </>
   );
 };

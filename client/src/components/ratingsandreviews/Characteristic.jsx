@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Characteristic = ({
-  key, value, minLabel, maxLabel,
+  name, value, minLabel, maxLabel,
 }) => (
   <div className="characteristic">
-    <h6>{key}</h6>
+    <h6>{name}</h6>
     <div className="charBar">
       <div className="backgroundBar" />
-      <div className="icon" style={`left: ${(value / 5) * 100}%`} />
+      <div className="icon" styles={`left: ${(value / 5) * 100}%`} />
     </div>
     <p className="minLabel">{minLabel}</p>
     <p className="maxLabel">{maxLabel}</p>
@@ -16,7 +16,7 @@ const Characteristic = ({
 );
 
 Characteristic.propTypes = {
-  key: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   value: PropTypes.number.isRequired,
   minLabel: PropTypes.string.isRequired,
   maxLabel: PropTypes.string.isRequired,

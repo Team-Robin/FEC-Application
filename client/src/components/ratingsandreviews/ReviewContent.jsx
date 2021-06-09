@@ -28,8 +28,8 @@ const ReviewContent = ({
 
 ReviewContent.propTypes = {
   summary: PropTypes.string.isRequired,
-  recommended: PropTypes.string.isRequired,
-  body: PropTypes.bool.isRequired,
+  recommended: PropTypes.bool.isRequired,
+  body: PropTypes.string.isRequired,
   seeMore: PropTypes.func.isRequired,
 };
 
