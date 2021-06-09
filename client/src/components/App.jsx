@@ -25,7 +25,7 @@ const App = () => {
     const reviewMeta = await Connect.getReviewMeta(product.data.id);
     const questions = await Connect.getQuestions(product.data.id);
     const styles = await Connect.getProductStyles(product.data.id);
-    console.log('in user effect App');
+
     setQuestionInfo({ questions: questions.data });
     setProductStyles({ styles: styles.data.results });
     setProductReviewMeta(reviewMeta.data);

@@ -7,7 +7,6 @@ import Questions from './Questions';
 import PropTypes from 'prop-types';
 
 const Answer = ({ answerBody }) => {
-  console.log('within answersJSX', answerBody)
   return (
     <div>
       <p>A: {answerBody.body}</p>

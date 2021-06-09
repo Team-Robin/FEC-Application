@@ -8,7 +8,6 @@ import Connect from '../Connect';
 import Question from './Question';
 
 const Questions = ({ questionInfo }) => {
-  console.log('QUESTION INFO', questionInfo);
 
   return (
     <div>

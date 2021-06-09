@@ -8,7 +8,6 @@ const AnswersList = ({ answers }) => {
     <>
       {answers ?
         Object.keys(answers).map((key) => {
-          console.log(answers[key]);
           return (<Answer answerBody={answers[key]} />)
         })
       :
