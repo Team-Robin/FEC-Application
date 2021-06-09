@@ -7,6 +7,7 @@ import ProductGallery from './ProductGallery';
 const ProductCarousel = ({ Photos }) => {
   // hello
   const [currentPhoto, setCurrentPhoto] = useState();
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [photoGallery, setPhotoGallery] = useState([]);
   const [photoStyle, setPhotoStyle] = useState();
   const [restrict, setRestrict] = useState('decrement');
@@ -19,7 +20,14 @@ const ProductCarousel = ({ Photos }) => {
         photos = [...photos, { photo, index }];
       });
       setPhotoGallery(photos);
-      setCurrentPhoto(photos[0]);
+      if (!currentPhoto) {
+        setCurrentPhoto(photos[0]);
+        setCurrentIndex(0);
+      }
+      if (photos.length < currentIndex) {
+        setCurrentIndex(photos.length - 1);
+      }
+      setCurrentPhoto(photos[currentIndex]);
     }
   }, [Photos]);
 
@@ -27,7 +35,7 @@ const ProductCarousel = ({ Photos }) => {
     if (currentPhoto && currentPhoto.photo) {
       // setPhotoStyle({
       //   backgroundImage: `url(${currentPhoto.url})`,
-      //   backgroundSize: 'constraint',
+      //   backgroundSize: 'contain',
       //   backgroundPosition: 'center',
       //   backgroundRepeat: 'no-repeat',
       //   backgroundColor: 'transparent',
@@ -40,6 +48,7 @@ const ProductCarousel = ({ Photos }) => {
       } else {
         setRestrict('none');
       }
+      setCurrentIndex(currentPhoto.index);
     }
   }, [currentPhoto]);
 

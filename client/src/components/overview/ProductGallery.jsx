@@ -25,8 +25,15 @@ const ProductGallery = ({ PhotoGallery, CurrentPhoto, SelectPhoto }) => {
       gallery.push(
         // eslint-disable-next-line jsx-a11y/control-has-associated-label
         <div
-          className={`shadow overview-gallery-thumbnail btn ${PhotoGallery[start] === CurrentPhoto ? 'border text-primary' : null}`}
-          style={{ ...boilerThumbnail, backgroundImage: `url(${PhotoGallery[start].photo.thumbnail_url})`, top: `calc(${position}% + 5%)` }}
+          className={`overview-gallery-thumbnail ${PhotoGallery[start] === CurrentPhoto ? 'border text-primary' : null}`}
+          style={{ ...boilerThumbnail,
+            backgroundImage: `url(${PhotoGallery[start].photo.thumbnail_url})`,
+            backgroundSize: 'contain',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: 'transparent',
+            top: `calc(${position}% + 5%)`,
+          }}
           onClick={() => {
             SelectPhoto(PhotoGallery[start]);
           }}
