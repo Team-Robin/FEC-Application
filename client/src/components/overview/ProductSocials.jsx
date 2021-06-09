@@ -14,7 +14,7 @@ const ProductSocials = () => {
     window.open(`http://pinterest.com/pin/create/button/?url=${window.location.href}&description=Hack Reactor Student FEC`, '_blank');
   };
   return (
-    <div className="d-flex">
+    <div className="d-flex mt-2">
       <button
         type="button"
         className="btn text-light social-icon bg-transparent shadow cursor-pointer"
