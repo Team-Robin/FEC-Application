@@ -199,8 +199,17 @@ h1, .h1 {
 .flex-basis-60 {
   flex-basis: 60%;
 }
+.flex-basis-70 {
+  flex-basis: 70%;
+}
 .flex-basis-75 {
   flex-basis: 75%;
+}
+.flex-basis-80 {
+  flex-basis: 80%;
+}
+.flex-basis-90 {
+  flex-basis: 90%;
 }
 .flex-basis-100 {
   flex-basis: 100%;
@@ -257,7 +266,6 @@ h1, .h1 {
   border-right-style: solid;
   border-right-width: 2px;
 }
-
 
 // ====== Rounded ======
 .rounded-sm {

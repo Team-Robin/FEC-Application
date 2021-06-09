@@ -94,7 +94,6 @@ const ProductCarousel = ({ Photos }) => {
           style={{
             color: 'transparent',
             position: 'absolute',
-            backgroundColor: 'transparent',
             left: 'min(10em, 20%)',
             right: '0',
             top: '0',
