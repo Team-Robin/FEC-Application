@@ -2836,7 +2836,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@jest/types", "npm:26.6.2"],
             ["@types/istanbul-lib-coverage", "npm:2.0.3"],
             ["@types/istanbul-reports", "npm:3.0.1"],
-            ["@types/node", "npm:15.12.0"],
+            ["@types/node", "npm:15.12.2"],
             ["@types/yargs", "npm:15.0.13"],
             ["chalk", "npm:4.1.1"]
           ],
@@ -2910,7 +2910,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@testing-library-dom-npm-7.31.2-d66ba6a14d-f930b4797f.zip/node_modules/@testing-library/dom/",
           "packageDependencies": [
             ["@testing-library/dom", "npm:7.31.2"],
-            ["@babel/code-frame", "npm:7.12.13"],
+            ["@babel/code-frame", "npm:7.12.11"],
             ["@babel/runtime", "npm:7.14.0"],
             ["@types/aria-query", "npm:4.2.1"],
             ["aria-query", "npm:4.2.2"],

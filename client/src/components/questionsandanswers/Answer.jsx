@@ -1,23 +1,23 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable react/prop-types */
+/* eslint-disable import/no-cycle */
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import Questions from './Questions'
+import Questions from './Questions';
+import PropTypes from 'prop-types';
 
-const Answer = React.memo(({ answersObj }) => {
-  const answersArr = answersObj.map(answer => Object.entries(answer));
-  const answers = answersArr.map(answer => answer)
-  console.log('ANSWERSARR', answersArr);
-
-  console.log('ANSWERS', answers);
-  // console.log('ANSWERS', answers[0])
-
+const Answer = ({ answerBody }) => {
+  console.log('within answersJSX', answerBody)
   return (
     <div>
-      {answers.map(answer => {
-        <p>A:{console.log(answer[0])}</p>
-      })}
+      <p>A: {answerBody.body}</p>
 
     </div>
   );
-});
+};
+
+Answer.propTypes = {
+  answerBody: PropTypes.object.isRequired,
+};
 
 export default Answer;
