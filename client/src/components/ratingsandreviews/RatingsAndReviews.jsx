@@ -1,110 +1,195 @@
 import React from 'react';
+import RatingsOverview from './RatingsOverview';
+import ReviewsPanel from './ReviewsPanel';
+import Connect from '../Connect';
 
-const RatingsAndReviews = () => (
-  <div id="rnr">
-    <div id="ratingsOverview">
-      <div id="reviewSummary">
-        <h4>
-          Ratings and Reviews
-        </h4>
-        <div>
-          <h1>3.5</h1>
-          <div>--star component--</div>
-        </div>
-        <p>1,000,000% of people recommend this product</p>
-      </div>
-      <div id="reviewBreakdown">
-        <div className="reviewBar">
-          <button type="button"> 1 Star</button>
-          <div className="backgroundBar" />
-          <div className="forgroundBar" />
-        </div>
-        <div className="reviewBar">
-          <button type="button">2 Star</button>
-          <div className="backgroundBar" />
-          <div className="forgroundBar" />
-        </div>
-        <div className="reviewBar">
-          <button type="button">3 Star</button>
-          <div className="backgroundBar" />
-          <div className="forgroundBar" />
-        </div>
-        <div className="reviewBar">
-          <button type="button">4 Star</button>
-          <div className="backgroundBar" />
-          <div className="forgroundBar" />
-        </div>
-        <div className="reviewBar">
-          <button type="button">5 Star</button>
-          <div className="backgroundBar" />
-          <div className="forgroundBar" />
-        </div>
-      </div>
-      <div id="characteristicList">
-        <div className="characteristic">
-          <h6>Attribute type</h6>
-          <div className="charBar">
-            <div className="backgroundBar" />
-            <div className="icon" />
-          </div>
-          <p className="minLabel">MinLable</p>
-          <p className="maxLabel">MaxLable</p>
-        </div>
-      </div>
-    </div>
-    <div id="ratingsList">
-      <div id="sortHead">
-        <span>256 reviews, sorted by </span>
-        <select>
-          <option>Relevance</option>
-          <option>Most Helpful</option>
-          <option>Newest</option>
-        </select>
-        <div id="filters">
-          Filters:
-          <button type="button" className="filterBtn">1 Star</button>
-          <button type="button" className="filterBtn">2 Star</button>
-          <button type="button" className="filterBtn">3 Star</button>
-          <button type="button" className="filterBtn">4 Star</button>
-          <button type="button" className="filterBtn">5 Star</button>
-          <button type="button">Remove All</button>
-        </div>
-      </div>
-      <div id="reviewList">
+class RatingsAndReviews extends React.Component {
+  constructor(props) {
+    super(props);
+    this.labels = {
+      Quality: {
+        1: 'Hot garbage',
+        2: 'Lukewarm garbage',
+        3: 'Does the job I need it to do',
+        4: 'Very niiice',
+        5: 'OMGWOWSOGUUD'
+      },
+      Size: {
+        1: 'A size too small',
+        2: 'A half size too small',
+        3: 'Perfect',
+        4: 'A half size too big',
+        5: 'A size too wide',
+      },
+      Width: {
+        1: 'Too narrow',
+        2: 'Slightly narrow',
+        3: 'Perfect',
+        4: 'Slightly wide',
+        5: 'Too wide',
+      },
+      Comfort: {
+        1: 'Uncomfortable',
+        2: 'Slightly uncomfortable',
+        3: 'Ok',
+        4: 'Comfortable',
+        5: 'Perfect',
+      },
+      Length: {
+        1: 'Runs short',
+        2: 'Runs slightly short',
+        3: 'Perfect',
+        4: 'Runs slightly long',
+        5: 'Runs long',
+      },
+      Fit: {
+        1: 'Runs tight',
+        2: 'Runs slightly tight',
+        3: 'Perfect',
+        4: 'Runs slightly long',
+        5: 'Runs long',
+      },
+    };
+    this.controls = {
+      reviews: {
+        display: {
+          remove: this.remove.bind(this),
+          removeAll: this.removeAll.bind(this),
+          sort: this.sort.bind(this),
+        },
+        reviews: {
+          seeMore: this.expandBody.bind(this),
+          setHelpful: this.setHelpful,
+          reportReview: this.reportReview,
+        },
+        footer: {
+          seeMore: this.expandReviewList.bind(this),
+        },
+      },
+      ratings: {
+        addFilter: this.addFilter.bind(this),
+      },
+    };
+    this.state = {
+      sortStyle: 'relevant',
+      ratings: {},
+      reviews: {},
+      activeFilters: [],
+    };
+  }
 
-        <div className="review">
-          <div className="reviewHead">
-            <span>Star Component</span>
-            <span className="reviewInfo">
-              <div className="verification" />
-              <span>Noshuas </span>
-              <span>June 7, 2021</span>
-            </span>
-          </div>
-          <h3 className="reviewTitle">Here lies a generic title</h3>
-          <p className="reviewBody">This stuff is the litteral shez-perezz. If you are not scooping this up by the handfuls, you may as well lop off those useless meat hooks. Get one right now!</p>
-          <p className="recommended">I recomend this product</p>
-          <div className="reviewResponse">
-            <p className="responseTitle">Response: </p>
-            <br />
-            <p>What are you even talking about??</p>
-          </div>
-          <span className="helpfulReport">
-            Was this review helpful?
-            <button type="button">  Yes</button>
-            <button type="button">  No</button>
-            |
-            <button type="button">  Report</button>
-          </span>
-        </div>
-      </div>
+  componentDidMount() {
+    const options = {
+      params: {
+        count: 2,
+        sort: 'relevant',
+        product_id: this.props.productId,
+      },
+    };
+    Connect.getReviews(options)
+      .then((response) => response.data)
+      .then((reviews) => {
+        Connect.getReviewMeta(reviews.product)
+          .then((response) => {
+            let ratings = response.data;
+            console.log(ratings, reviews);
+            this.setState({
+              reviews,
+              ratings,
+            });
+          });
+      });
+  }
 
-      <div id="reviewButtons">
-        <button type="button" id="seeMore">See More</button>
-        <button type="button" id="addReview">Add Review</button>
-      </div>
-    </div>
-  </div>
-);
+  setHelpful(reviewId) {
+    Connect.setHelpful(reviewId);
+  }
+
+  reportReview(reviewId) {
+    Connect.reportReview(reviewId);
+  }
+
+  expandBody(e) {
+    const target = e.target;
+    const parent = target.parent;
+    const body = parent.children[1]; // should be the <p> element
+    const fullText = e.target.value; // may need to use attribute.value
+    body.innerHTML = fullText;
+  }
+
+  sort(e) {
+    const sortStyle = e.target.value;
+    console.log('loging sortStyle RatingsAndReviews 86', sortStyle);
+    const options = {
+      params: {
+        count: 2,
+        sort: sortStyle,
+        product_id: this.props.productId,
+      },
+    };
+    Connect.getReviews(options)
+      .then((response) => response.data)
+      .then((reviews) => this.setState({ reviews, sortStyle }));
+  }
+
+  removeAll() {
+    this.setState({
+      activeFilters: [],
+    });
+  }
+
+  remove(filter) {
+    const newFilters = this.state.activeFilters.slice();
+    const position = newFilters.indexOf(filter);
+    newFilters.splice(position, 1);
+    this.setState({
+      activeFilters: newFilters,
+    });
+  }
+
+  addFilter(key) {
+    const position = parseInt(key.split(' ')[0], 10) - 1;
+    const newFilters = this.state.activeFilters.slice();
+    newFilters[position] = key;
+    this.state({
+      activeFilters: newFilters,
+    });
+  }
+
+  expandReviewList() {
+    const { sortStyle } = this.state;
+    const options = {
+      params: {
+        count: 10,
+        sort: sortStyle,
+        product_id: this.props.productId,
+      },
+    };
+    Connect.getReviews(options)
+      .then((response) => response.data)
+      .then((reviews) => this.setState({ reviews, sortStyle }));
+  }
+
+  render() {
+    console.log(this);
+    if (Object.values(this.state.reviews).length) {
+      return (
+        <div id="rnr">
+          <RatingsOverview
+            labels={this.labels}
+            ratingMetaData={this.state.ratings}
+            controls={this.controls.ratings}
+          />
+          <ReviewsPanel
+            activeFilters={this.state.activeFilters}
+            reviews={this.state.reviews}
+            controls={this.controls.reviews}
+          />
+        </div>
+      );
+    }
+    return <p>What happened?</p>;
+  }
+}
 
 export default RatingsAndReviews;

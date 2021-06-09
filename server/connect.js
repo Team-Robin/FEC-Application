@@ -73,6 +73,15 @@ const getReviewsMeta = async (product_id) => axios({
   params: product_id,
 });
 
+const getReviews = async (params) => axios({
+  method: 'GET',
+  url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/',
+  headers: {
+    Authorization: process.env.GIT_TOKEN,
+  },
+  params: params,
+});
+
 module.exports = {
   getProducts,
   getProductId,
@@ -80,4 +89,5 @@ module.exports = {
   getQuestions,
   getAnswers,
   getReviewsMeta,
+  getReviews,
 };
