@@ -5,5 +5,6 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import './css/style.scss';
 import './css/RNR.scss';
+import './css/QA.scss';
 
 ReactDOM.render(<App />, document.getElementById('app'));

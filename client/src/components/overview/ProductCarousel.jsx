@@ -69,11 +69,11 @@ const ProductCarousel = ({ Photos }) => {
       <div
         className={`overview-carousel mx-auto d-flex justify-content-center${!expanded ? 'overview-expanded-carousel' : null}`}
         style={{
-          backgroundImage: `url(${photoStyle})`,
-          backgroundSize: 'contain',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          transition: 'all .15s ease-out',
+          // backgroundImage: `url(${photoStyle})`,
+          // backgroundSize: 'contain',
+          // backgroundPosition: 'center',
+          // backgroundRepeat: 'no-repeat',
+          // transition: 'all .15s ease-out',
         }}
       >
         { currentPhoto && currentPhoto.photo && expanded ? (
@@ -107,7 +107,7 @@ const ProductCarousel = ({ Photos }) => {
         >
           expand image
         </div>
-        {/* <img
+        <img
           src={`${photoStyle}`}
           alt="product"
           style={{
@@ -115,8 +115,8 @@ const ProductCarousel = ({ Photos }) => {
             maxWidth: '100%',
             margin: 'auto',
           }}
-          className={`mx-auto shadow-lg ${!expanded ? 'overview-expanded-carousel' : null}`}
-        /> */}
+          className={`mx-auto shadow-lg rounded-sm ${!expanded ? 'overview-expanded-carousel' : null}`}
+        />
         {restrict !== 'decrement' ? (
           <button
             type="button"

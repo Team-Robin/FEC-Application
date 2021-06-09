@@ -7,17 +7,14 @@ import React, { useState, useEffect } from 'react';
 import Connect from '../Connect';
 import Question from './Question';
 
-const Questions = ({ questionInfo }) => {
+const Questions = ({ questionInfo }) => (
+  <div>
+    {questionInfo.questions.results.map((question, index) => (
+      <Question question={question} key={`Question-${index}`} />
+    ))}
+  </div>
 
-  return (
-    <div>
-      {questionInfo.questions.results.map((question, index) => (
-        <Question question={question} key={`Question-${index}`}/>
-      ))}
-    </div>
-
-  );
-};
+);
 
 export default Questions;
 

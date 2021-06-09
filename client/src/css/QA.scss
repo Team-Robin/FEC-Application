@@ -1,0 +1,40 @@
+// =================Main Container====================
+#QA-view {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  margin: 0;
+  background: rgb(237, 237, 237);
+  justify-content: center;
+  align-items: flex-start;
+}
+* {
+  border-radius: .5rem;
+}
+
+#QA-view > * {
+  display: inline-block;
+  background: rgb(245, 242, 242);
+  margin: 1rem;
+
+}
+
+#QA-header {
+  display: flex;
+  float: left;
+}
+//==================Search=====================
+input {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  background-color: #eee;
+}
+.QA-search-box {
+  height: 2em;
+  background-color: #ededed;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid black;
+}

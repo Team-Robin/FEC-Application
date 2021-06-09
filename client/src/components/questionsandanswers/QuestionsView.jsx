@@ -9,9 +9,9 @@ import QuestionsAndAnswers from './QuestionsAndAnswers';
 
 const QuestionsView = ({ questionInfo }) => (
 
-  <div>
-    <div className="QA-view">
-      <p>Questions & Answers</p>
+  <div id="QA-view">
+    <div id="QA-header">
+      <h1>Questions & Answers</h1>
       <Questions questionInfo={questionInfo} />
       <form className="QA-form">
         <input className="QA-search-box" type="text" name="QA-search-box" placeholder="Have a question?" />
