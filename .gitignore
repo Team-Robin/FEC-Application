@@ -8,7 +8,7 @@ public/app.js
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
-
+/home/noshua/HackReactor/Coding/FEC-Application/.yarn/build-state.yml
 # Logs
 logs
 *.log
