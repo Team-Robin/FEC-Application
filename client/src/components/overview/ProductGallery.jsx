@@ -1,132 +1,83 @@
 /* eslint-disable react/forbid-prop-types */
-// eslint-disable-next-line import/no-unresolved
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-const ProductGallery = ({ Photos }) => {
-  // hello
-  const [currentPhoto, setCurrentPhoto] = useState();
-  const [photoGallery, setPhotoGallery] = useState([]);
-  const [photoStyle, setPhotoStyle] = useState();
-  const [restrict, setRestrict] = useState('decrement');
-  const [expanded, setExpanded] = useState('false');
-
-  useEffect(async () => {
-    if (Photos) {
-      let photos = [];
-      Photos.forEach((photo, index) => {
-        photos = [...photos, { photo, index }];
-      });
-      setPhotoGallery(photos);
-      setCurrentPhoto(photos[0]);
-    }
-  }, [Photos]);
+const ProductGallery = ({ PhotoGallery, CurrentPhoto, SelectPhoto }) => {
+  const [currentView, setCurrentView] = useState(0);
+  const [currentGallery, setCurretGallery] = useState();
+  const boilerThumbnail = {
+    position: 'absolute',
+    width: '60%',
+    paddingTop: '60%',
+    left: '20%',
+  };
 
   useEffect(() => {
-    if (currentPhoto && currentPhoto.photo) {
-      // setPhotoStyle({
-      //   backgroundImage: `url(${currentPhoto.url})`,
-      //   backgroundSize: 'constraint',
-      //   backgroundPosition: 'center',
-      //   backgroundRepeat: 'no-repeat',
-      //   backgroundColor: 'transparent',
-      // });
-      setPhotoStyle(currentPhoto.photo.url);
-      if (currentPhoto.index >= photoGallery.length - 1) {
-        setRestrict('increment');
-      } else if (currentPhoto.index <= 0) {
-        setRestrict('decrement');
-      } else {
-        setRestrict('none');
-      }
+    if (CurrentPhoto.index > currentView || CurrentPhoto.index < currentView) {
+      setCurrentView(Math.floor(CurrentPhoto.index / 7) * 7);
     }
-  }, [currentPhoto]);
+  }, [CurrentPhoto]);
 
-  const carouselReducer = (direction) => {
+  const generateThumbnails = () => {
+    const gallery = [];
+    for (let start = currentView, i = 0; start < PhotoGallery.length && i < 7; start += 1, i += 1) {
+      const position = i * 13;
+      gallery.push(
+        // eslint-disable-next-line jsx-a11y/control-has-associated-label
+        <div
+          className={`shadow overview-gallery-thumbnail btn ${PhotoGallery[start] === CurrentPhoto ? 'border text-primary' : null}`}
+          style={{ ...boilerThumbnail, backgroundImage: `url(${PhotoGallery[start].photo.thumbnail_url})`, top: `calc(${position}% + 5%)` }}
+          onClick={() => {
+            SelectPhoto(PhotoGallery[start]);
+          }}
+          onKeyDown={() => {
+            SelectPhoto(PhotoGallery[start]);
+          }}
+          role="button"
+          tabIndex="0"
+        />,
+      );
+    }
+    return gallery;
+  };
+  const galleryReducer = (direction) => {
     let newIndex = direction;
     if (newIndex < 0) {
       // newIndex = photoGallery.length - 1;
       newIndex = 0;
-    } else if (newIndex >= photoGallery.length) {
+    } else if (newIndex >= PhotoGallery.length) {
       // newIndex = 0;
-      newIndex = photoGallery.length - 1;
+      newIndex -= 7;
     }
-    setCurrentPhoto(photoGallery[newIndex]);
+    setCurrentView(newIndex);
   };
-
   return (
-    <div className="overview-gallery text-center">
-      <div
-        className={`overview-carousel mx-auto d-flex justify-content-center ${!expanded ? 'overview-expanded-carousel' : null}`}
-        style={{
-          // backgroundImage: `url(${photoStyle})`,
-          // backgroundSize: 'contain',
-          // backgroundPosition: 'center',
-          // backgroundRepeat: 'no-repeat',
-        }}
-      >
-        <div
-          onClick={() => {
-            setExpanded(!expanded);
-          }}
-          onKeyDown={() => {
-            setExpanded(!expanded);
-          }}
-          style={{
-            color: 'transparent',
-            position: 'absolute',
-            backgroundColor: 'transparent',
-            left: 'min(10em, 20%)',
-            right: '0',
-            top: '0',
-            bottom: '0',
-            width: 'calc(100% - min(20em, 40%))',
-          }}
-          className={`${!expanded ? 'zoomer' : null}`}
-          role="button"
-          tabIndex="0"
+    <div className="overview-gallery-thumbnails">
+      <div className="overview-gallery-thumbnails-wrapper">
+        <button
+          type="button"
+          onClick={() => galleryReducer(currentView + 7)}
+          className="overview-gallery-increment"
         >
-          expand image
-        </div>
-        <img
-          src={`${photoStyle}`}
-          alt="product"
-          style={{
-            maxHeight: '100%',
-            maxWidth: '100%',
-            margin: 'auto',
-          }}
-          className={`mx-auto shadow-lg ${!expanded ? 'overview-expanded-carousel' : null}`}
-        />
-        {restrict !== 'decrement' ? (
-          <button
-            type="button"
-            className="overview-carousel-decrement"
-            onClick={() => {
-              carouselReducer(currentPhoto.index - 1);
-            }}
-          >
-            <i className="fas fa-chevron-left fa-lg rounded-circle overview-carousel-icon" style={{ overflow: 'hidden', fontSize: '2em' }} />
-          </button>
-        ) : null}
-        {restrict !== 'increment' ? (
-          <button
-            type="button"
-            className="overview-carousel-increment"
-            onClick={() => {
-              carouselReducer(currentPhoto.index + 1);
-            }}
-          >
-            <i className="fas fa-chevron-right fa-lg rounded-circle overview-carousel-icon" style={{ overflow: 'hidden', fontSize: '2em' }} />
-          </button>
-        ) : null}
+          <i className="fas fa-chevron-down fa-lg rounded-circle overview-gallery-icon" style={{ overflow: 'hidden', fontSize: '2em' }} />
+        </button>
+        <button
+          type="button"
+          onClick={() => galleryReducer(currentView - 7)}
+          className="overview-gallery-decrement"
+        >
+          <i className="fas fa-chevron-up fa-lg rounded-circle overview-gallery-icon" style={{ overflow: 'hidden', fontSize: '2em' }} />
+        </button>
+        {generateThumbnails()}
       </div>
     </div>
   );
 };
 
 ProductGallery.propTypes = {
-  Photos: PropTypes.array.isRequired,
+  SelectPhoto: PropTypes.func.isRequired,
+  CurrentPhoto: PropTypes.object.isRequired,
+  PhotoGallery: PropTypes.array.isRequired,
 };
 
 export default ProductGallery;
