@@ -1,21 +1,14 @@
-
+/* eslint-disable react/prop-types */
+/* eslint-disable import/no-cycle */
 import React from 'react';
-import Answer from './Answer.jsx';
+import Answer from './Answer';
 
-const AnswersList = ({ answers }) => {
-
-  return (
-    <>
-      {answers ?
-        Object.keys(answers).map((key) => {
-          return (<Answer answerBody={answers[key]} />)
-        })
-      :
-        null
-      }
-      <input type="text" placeholder="answer here"></input>
-    </>
-  )
-};
+const AnswersList = ({ answers }) => (
+  <>
+    {answers
+      ? Object.keys(answers).map((key) => (<Answer answerBody={answers[key]} />))
+      : null}
+  </>
+);
 
 export default AnswersList;
