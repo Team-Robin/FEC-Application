@@ -64,7 +64,9 @@ const App = () => {
           />
         ) : null}
       </>
-      <RatingsAndReviews />
+      {productInfo.product ? (
+        <RatingsAndReviews productId={productInfo.product.id} />
+      ) : null}
     </>
   );
 };
