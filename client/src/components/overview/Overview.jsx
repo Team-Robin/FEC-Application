@@ -6,7 +6,7 @@ import ProductInfo from './ProductInfo';
 import ProductDescription from './ProductDescription';
 import ProductStyles from './ProductStyles';
 import ProductFinalSelect from './ProductFinalSelect';
-import ProductGallery from './ProductGallery';
+import ProductCarousel from './ProductCarousel';
 
 // eslint-disable-next-line object-curly-newline
 const Overview = ({
@@ -20,7 +20,7 @@ const Overview = ({
     <div className="ml-4 mt-5 full-view">
       <div className="row">
         {CurrentStyle.photos && CurrentStyle.photos.length > 0
-          ? (<ProductGallery Photos={CurrentStyle.photos} />)
+          ? (<ProductCarousel Photos={CurrentStyle.photos} />)
           : null}
         <div className="col ml-3 overview-product-info">
           <ProductInfo
