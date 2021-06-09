@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const RatingBar = ({ key, reviewCount, percent }) => (
-  <div className="RatingBar">
-    <button type="button">
-      { `${key} (${reviewCount})`}
+const RatingBar = ({
+  key, ratingCount, percent, addFilter,
+}) => (
+  <div className="ratingBar">
+    <button type="button" onClick={() => { addFilter(key); }}>
+      { `${key} (${ratingCount})`}
     </button>
     <div className="backgroundBar" />
     <div className="forgroundBar" style={`width: ${percent};`} />
@@ -13,8 +15,9 @@ const RatingBar = ({ key, reviewCount, percent }) => (
 
 RatingBar.propTypes = {
   key: PropTypes.string.isRequired,
-  reviewCount: PropTypes.number.isRequired,
+  ratingCount: PropTypes.number.isRequired,
   percent: PropTypes.string.isRequired,
+  addFilter: PropTypes.func.isRequired,
 };
 
 export default RatingBar;

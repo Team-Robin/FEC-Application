@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ReviewSummary = ({ ratings, recommended }) => {
+const RatingSummary = ({ ratings, recommended }) => {
   const totalRatings = Object.values(ratings).reduce((rateCount, total = 0) => rateCount + total);
   const totalStars = Object.entries(ratings).reduce((rateCount, total = 0) => (
     // rateCount looks like ['1', 5]
@@ -10,7 +10,7 @@ const ReviewSummary = ({ ratings, recommended }) => {
   const overallRating = totalStars / totalRatings;
 
   return (
-    <div id="reviewSummary">
+    <div id="ratingSummary">
       <h3>
         Ratings and Reviews
       </h3>
@@ -23,9 +23,9 @@ const ReviewSummary = ({ ratings, recommended }) => {
   );
 };
 
-ReviewSummary.propTypes = {
+RatingSummary.propTypes = {
   ratings: PropTypes.objectOf(PropTypes.number).isRequired,
   recommended: PropTypes.objectOf(PropTypes.number).isRequired,
 };
 
-export default ReviewSummary;
+export default RatingSummary;

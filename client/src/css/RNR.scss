@@ -37,21 +37,21 @@
   margin: 1rem;
 }
 
-//review Summary-------------------------------------------------
-#reviewSummary {
+//rating Summary-------------------------------------------------
+#ratingSummary {
   display: flex;
   flex-flow: column wrap;
   align-content: space-around;
 }
-//reviewBreakdown------------------------------------------------
-#reviewBreakdown {
+//ratingBreakdown------------------------------------------------
+#ratingBreakdown {
   display: flex;
   flex-flow: column wrap;
   align-content: center;
   justify-content: space-around;
 
 }
-.reviewBar {
+.ratingBar {
   width: 70%;
 }
 .backgroundBar {
@@ -102,14 +102,14 @@
 
 //----------------------------------------------------------------------
 //ratings List----------------------------------------------------------
-#ratingsList {
+#ReviewPanel {
   display: flex;
   flex-flow: column;
   flex: 6;
   justify-content: center;
 }
 
-#ratingsList > * {
+#ReviewPanel > * {
   background: rgb(236, 236, 236);
   flex: 1 1 auto;
   margin: 1rem;
@@ -196,7 +196,7 @@
   border-left: solid green;
 }
 
-.helpfulReport {
+.FeedbackController {
   font-size: .8em;
 }
 .responseTitle {

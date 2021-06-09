@@ -63,7 +63,7 @@ const App = () => {
           />
         ) : null}
       </>
-      <RatingsAndReviews />
+      <RatingsAndReviews productId={productInfo.product.id} />
     </>
   );
 };

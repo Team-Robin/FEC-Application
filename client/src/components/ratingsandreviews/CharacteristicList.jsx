@@ -14,8 +14,8 @@ const CharacteristicList = ({ characteristics, labels }) => {
           <Characteristic
             key={characteristic[name]}
             value={characteristic[info].value}
-            minLabel={labels[characteristic[name]].min}
-            maxLabel={labels[characteristic[name]].max}
+            minLabel={labels[characteristic[name]]['1']}
+            maxLabel={labels[characteristic[name]]['5']}
           />
         ))
       }

@@ -23,6 +23,13 @@ const Connect = {
       product_id: id,
     },
   }),
+
+  getReviews: (options) => axios.get('/api/reviews/meta', options),
+
+  setHelpful: (reviewid) => axios.put(`/api/${reviewid}/helpful`),
+
+  reportReview: (reviewid) => axios.put(`/api/${reviewid}/report`),
+
 };
 
 export default Connect;
