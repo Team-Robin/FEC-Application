@@ -1,46 +1,53 @@
 /* eslint-disable react/forbid-prop-types */
 // eslint-disable-next-line import/no-unresolved
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ProductInfo from './ProductInfo';
 import ProductDescription from './ProductDescription';
 import ProductStyles from './ProductStyles';
 import ProductFinalSelect from './ProductFinalSelect';
+import ProductGallery from './ProductGallery';
 
 // eslint-disable-next-line object-curly-newline
 const Overview = ({
   Name, Category, Description, Slogan, Price, ReviewsRatings, Features, Styles,
   CurrentStyle, setCurrentStyle, SalePrice,
-}) => (
-  <>
-    <div className="row">
-      <div className="col border text-primamry" />
-      <div className="col ml-1">
-        <ProductInfo
-          Name={Name}
-          Category={Category}
-          Price={Price}
-          ReviewsRatings={ReviewsRatings}
-          SalePrice={SalePrice}
+}) => {
+  useEffect(() => {
+
+  }, []);
+  return (
+    <div className="ml-4 mt-5 full-view">
+      <div className="row">
+        {CurrentStyle.photos && CurrentStyle.photos.length > 0
+          ? (<ProductGallery Photos={CurrentStyle.photos} />)
+          : null}
+        <div className="col ml-3 overview-product-info">
+          <ProductInfo
+            Name={Name}
+            Category={Category}
+            Price={Price}
+            ReviewsRatings={ReviewsRatings}
+            SalePrice={SalePrice}
+          />
+          <ProductStyles
+            Styles={Styles}
+            CurrentStyle={CurrentStyle}
+            setCurrentStyle={setCurrentStyle}
+          />
+          { CurrentStyle.skus ? <ProductFinalSelect SizeInformation={CurrentStyle.skus} /> : null}
+        </div>
+      </div>
+      <div className="mt-3 row align-items-center justify-content-center w-75 mx-auto">
+        <ProductDescription
+          Description={Description}
+          Slogan={Slogan}
+          Features={Features}
         />
-        <ProductStyles
-          Styles={Styles}
-          CurrentStyle={CurrentStyle}
-          setCurrentStyle={setCurrentStyle}
-        />
-        { CurrentStyle.skus ? <ProductFinalSelect SizeInformation={CurrentStyle.skus} /> : null}
       </div>
     </div>
-    <div className="row">
-      <ProductDescription
-        Description={Description}
-        Slogan={Slogan}
-        Features={Features}
-      />
-    </div>
-  </>
-);
-
+  );
+};
 Overview.propTypes = {
   Name: PropTypes.string.isRequired,
   Category: PropTypes.string.isRequired,

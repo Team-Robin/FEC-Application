@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/no-unresolved */
 const express = require('express');
 const path = require('path');
@@ -82,6 +83,7 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
       res.status(200).send(result.data);
     })
     .catch((error) => {
+      // console.log(error);
       res.status(200).send(error);
     });
 });
