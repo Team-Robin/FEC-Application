@@ -58,13 +58,16 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
               <option value={value} key={`Quantity-${value}`}>{value}</option>
             ))}
           </select>
+          <div>
+            <button type="button" aria-label="add to cart" className="select-size text-size-2 btn shadow-sm my-1 rounded-sm ">
+              <span className=""> Add to Bag </span>
+            </button>
+          </div>
         </>
-      ) : null}
-      <div>
-        <button type="button" aria-label="add to cart" className="select-size text-size-2 btn shadow-sm my-1 rounded-sm ">
-          <span className="hover-outline"> Add to Bag </span>
-        </button>
-      </div>
+      )
+        : (
+          <div className="text-muted text-bold text-size-4">OUT OF STONKS</div>
+        )}
       <div className="">
         <button type="button" className="select-size text-size-2 d-flex justify-content-center btn shadow-sm rounded-sm">
           <div className="star-empty star-muted align-self-center" />

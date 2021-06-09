@@ -6,6 +6,7 @@ import ProductInfo from './ProductInfo';
 import ProductDescription from './ProductDescription';
 import ProductStyles from './ProductStyles';
 import ProductFinalSelect from './ProductFinalSelect';
+import ProductGallery from './ProductGallery';
 
 // eslint-disable-next-line object-curly-newline
 const Overview = ({
@@ -14,8 +15,10 @@ const Overview = ({
 }) => (
   <div className="ml-5 mt-5">
     <div className="row">
-      <div className="col border text-primamry" />
-      <div className="col ml-3">
+      <div className="col border text-primary overview-gallery">
+        <ProductGallery />
+      </div>
+      <div className="col ml-3 overview-product-info">
         <ProductInfo
           Name={Name}
           Category={Category}

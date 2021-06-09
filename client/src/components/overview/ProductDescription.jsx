@@ -8,7 +8,7 @@ const ProductDescription = ({
   Description, Slogan, Features,
 }) => (
   <div className="d-flex">
-    <div className="col w-50">
+    <div className="col w-50 overview-description-min">
       <div className="text-bold">{Slogan}</div>
       <div className="">{Description}</div>
       <ProductSocials />
@@ -16,7 +16,7 @@ const ProductDescription = ({
     <div className="col-auto">
       <div className="bar" />
     </div>
-    <div className="col w-50 ml-3">
+    <div className="col w-50 overview-features-min ml-3">
       {Features.map((feature) => (
         <div key={`Features-${feature.feature}`} className="flex-shrink">
           <i className="fas fa-check text-muted" />

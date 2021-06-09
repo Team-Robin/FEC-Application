@@ -16,7 +16,7 @@ const ProductStyle = ({ Style, setCurrentStyle, CurrentStyle }) => (
       className={`styles-icon no-clicker shadow-sm ${Style.style_id === CurrentStyle.style_id ? 'styles-selected' : 'styles-pop'}`}
       style={{
         backgroundImage: `url("${Style.photos[0].thumbnail_url}")`,
-        backgroundSize: '5.25rem',
+        backgroundSize: '5.4rem',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundColor: 'transparent',
