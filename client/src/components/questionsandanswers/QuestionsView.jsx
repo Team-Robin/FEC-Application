@@ -1,29 +1,23 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 
-import React from 'react';
-import {useState} from 'react';
-import Questions from './Questions.jsx';
-import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
+import React, { useState } from 'react';
+
+import Questions from './Questions';
+import QuestionsAndAnswers from './QuestionsAndAnswers';
 // import Questions from './questionsandanswers/Questions.jsx';
 
-const QuestionsView = ({questionInfo}) => {
+const QuestionsView = ({ questionInfo }) => (
 
-
-
-
-  return (
-
-    <div>
-        <div className="QA-view">
-          <p>Questions & Answers</p>
-          <Questions questionInfo={questionInfo}/>
-        <form className="QA-form">
+  <div>
+    <div className="QA-view">
+      <p>Questions & Answers</p>
+      <Questions questionInfo={questionInfo} />
+      <form className="QA-form">
         <input className="QA-search-box" type="text" name="QA-search-box" placeholder="Have a question?" />
-        </form>
-        </div>
-      </div>
-    )
-
-}
-
+      </form>
+    </div>
+  </div>
+);
 
 export default QuestionsView;
