@@ -8,21 +8,20 @@ const ProductDescription = ({
   Description, Slogan, Features,
 }) => (
   <div className="d-flex">
-    <div className="col w-50 overview-description-min">
+    <div className="col w-50 ">
       <div className="text-bold">{Slogan}</div>
       <div className="">{Description}</div>
       <ProductSocials />
     </div>
-    <div className="col-auto">
-      <div className="bar" />
-    </div>
-    <div className="col w-50 overview-features-min ml-3">
-      {Features.map((feature) => (
-        <div key={`Features-${feature.feature}`} className="flex-shrink">
-          <i className="fas fa-check text-muted" />
-          {`${feature.feature} : ${feature.value}`}
-        </div>
-      ))}
+    <div className="col w-50">
+      <div style={{ maxHeight: 'fit-content' }} className="ml-3 overview-features-bar">
+        {Features.map((feature) => (
+          <div key={`Features-${feature.feature}`} className="flex-shrink">
+            <i className="fas fa-check text-muted" />
+            {`${feature.feature} : ${feature.value}`}
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 );
