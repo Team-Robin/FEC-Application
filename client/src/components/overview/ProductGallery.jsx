@@ -4,11 +4,10 @@ import PropTypes from 'prop-types';
 
 const ProductGallery = ({ PhotoGallery, CurrentPhoto, SelectPhoto }) => {
   const [currentView, setCurrentView] = useState(0);
-  const [currentGallery, setCurretGallery] = useState();
   const boilerThumbnail = {
     position: 'absolute',
     width: '60%',
-    paddingTop: '60%',
+    height: '12%',
     left: '20%',
   };
 
@@ -25,13 +24,14 @@ const ProductGallery = ({ PhotoGallery, CurrentPhoto, SelectPhoto }) => {
       gallery.push(
         // eslint-disable-next-line jsx-a11y/control-has-associated-label
         <div
-          className={`overview-gallery-thumbnail ${PhotoGallery[start] === CurrentPhoto ? 'border text-primary' : null}`}
-          style={{ ...boilerThumbnail,
-            backgroundImage: `url(${PhotoGallery[start].photo.thumbnail_url})`,
-            backgroundSize: 'contain',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundColor: 'transparent',
+          className="overview-gallery-thumbnail"
+          style={{
+            ...boilerThumbnail,
+            // backgroundImage: `url(${PhotoGallery[start].photo.thumbnail_url})`,
+            // backgroundSize: 'contain',
+            // backgroundPosition: 'center',
+            // backgroundRepeat: 'no-repeat',
+            // backgroundColor: 'transparent',
             top: `calc(${position}% + 5%)`,
           }}
           onClick={() => {
@@ -42,7 +42,17 @@ const ProductGallery = ({ PhotoGallery, CurrentPhoto, SelectPhoto }) => {
           }}
           role="button"
           tabIndex="0"
-        />,
+        >
+          <img
+            src={PhotoGallery[start].photo.thumbnail_url}
+            alt="product thumbnail"
+            style={{
+              maxHeight: '100%',
+              maxWidth: '100%',
+            }}
+            className={`shadow btn rounded-sm ${PhotoGallery[start] === CurrentPhoto ? 'border text-primary overview-gallery-selected' : null}`}
+          />
+        </div>,
       );
     }
     return gallery;
