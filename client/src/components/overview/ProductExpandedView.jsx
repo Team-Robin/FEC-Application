@@ -5,16 +5,26 @@ const ProductExpandedView = ({ expanded, setExpanded, photoStyle }) => {
   const [zoomed, setZoomed] = useState(false);
   return (
     <div className={`mx-auto d-flex justify-content-center overview-carousel-image-wrapper ${expanded ? 'overview-expanded-carousel' : null}`}>
-      <img
-        src={`${photoStyle}`}
+      <button
+        type="button"
+        // src={`${photoStyle}`}
         alt="product"
         style={!expanded ? {
+          backgroundImage: `url(${photoStyle})`,
+          backgroundSize: 'fit',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          height: '100%',
+          width: '100%',
+          objectFit: 'contain',
           maxHeight: '100%',
           maxWidth: '100%',
           margin: 'auto',
         } : null}
         className={`mx-auto shadow-lg rounded-sm ${expanded ? 'overview-expanded-image' : null}`}
-      />
+      >
+        expand view
+      </button>
       <i
         className="fas fa-expand fa-lg overview-expand-icon"
         style={{
