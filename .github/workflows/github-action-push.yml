@@ -22,23 +22,7 @@ jobs:
       run: yarn
     - name: Run Jest
       run: yarn test
-    - name: Passing all
-      if: ${{ success() }}
-      uses: unsplash/comment-on-pr@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        msg: "Good job!"
-        check_for_duplicate_msg: false  # OPTIONAL 
-    - name: Something failed
-      if: ${{ success() }}
-      uses: unsplash/comment-on-pr@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        msg: "An oopsie happened"
-        check_for_duplicate_msg: false  # OPTIONAL 
-    - name: PR Status Giphy
+    - name: Status Giphy
       uses: jzweifel/pr-status-giphy-action@master
       env:
         GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
