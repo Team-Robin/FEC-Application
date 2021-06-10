@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable import/no-unresolved */
 require('dotenv').config();
 const axios = require('axios');
@@ -36,7 +37,6 @@ const getProductIdStyle = async (id = { id: 17071 }) => axios({
   },
 });
 
-// eslint-disable-next-line camelcase
 const getQuestions = async ({ product_id }, options = { page: 1, count: 5 }) => axios({
   method: 'GET',
   url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions',
@@ -50,6 +50,16 @@ const getQuestions = async ({ product_id }, options = { page: 1, count: 5 }) => 
   },
 });
 
+// const getHelpfulnessQuestions = async ({ question_id }) => axios({
+//   method: 'PUT',
+//   url: 'PUT /qa/questions/:question_id/helpful',
+//   headers: {
+//     Authorization: process.env.GIT_TOKEN,
+//   },
+//   params: {
+//     question_id,
+//   },
+// });
 const getAnswers = async (id = { id: 104629 }, options = { page: 1, count: 5 }) => axios({
   method: 'GET',
   url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${id.id}/answers`,
@@ -79,7 +89,7 @@ const getReviews = async (params) => axios({
   headers: {
     Authorization: process.env.GIT_TOKEN,
   },
-  params: params,
+  params,
 });
 
 module.exports = {

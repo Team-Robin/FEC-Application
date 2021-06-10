@@ -12,11 +12,14 @@
   border-radius: .5rem;
 }
 
-#QA-view > * {
-  display: inline-block;
-  background: rgb(245, 242, 242);
-  margin: 1rem;
-
+#QA-view {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  margin: 0;
+  background: #ededed;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 div#inner-QAview {
@@ -34,31 +37,39 @@ div#inner-QAview {
   flex-wrap: wrap;
   align-content: flex-start;
   justify-content: flex-start;
-  font-size: 2.0rem;
+  font-size: 2rem;
 }
 //==================Questions==================
 #QA-questions {
   display: flex;
-  flex-flow: row wrap;
+  /* flex-flow: row wrap; */
   /* max-height: 600px; */
   flex: 1 2 45%;
   align-items: stretch;
   /* flex-wrap: wrap; */
   align-content: space-around;
+  overflow-x: scroll;
 }
 
 #questions-answers {
-  display: flex;
+  /* display: flex; */
   flex-wrap: wrap;
-  flex-basis: 30%;
-  flex: 1;
+  flex-basis: 20%;
+  /* flex: 1; */
+  flex-grow: 1;
   margin: 1rem 1rem 1rem 1rem;
   flex-direction: column;
   /* flex-wrap: nowrap; */
-  align-content: space-between;
-  align-items: stretch;
+  /* align-content: space-between; */
+  /* align-items: stretch; */
+  max-height: 600px;
   justify-content: flex-end;
   background-color: #b9dfe0;
+  overflow-y: scroll;
+  min-width: 20em;
+  max-width: 8em;
+  /* overflow: scroll; */
+  /* overflow-x: unset; */
 }
 
 #questions-answers > * {

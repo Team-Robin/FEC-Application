@@ -3,7 +3,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-unused-vars */
+// eslint-disable-next-line import/no-duplicates
 import React from 'react';
+// eslint-disable-next-line import/no-duplicates
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Questions from './Questions';
@@ -19,9 +21,6 @@ const Answer = React.memo(({ answerBody }) => {
     return date;
   };
 
-  const [helpful, setHelpful] = useState("");
-
-  console.log(answerBody);
   return (
     <div id="answers">
       <p>
@@ -37,9 +36,11 @@ const Answer = React.memo(({ answerBody }) => {
         {dateFormat(answerBody.date)}
       </p>
       <p className="helpful">
-        Helpful? {answerBody.helpfulness}
+        Helpful?
+        {' '}
+        {answerBody.helpfulness}
         <button className="helpful-btn" type="button">  Yes</button>
-         |
+        |
         <button className="helpful-btn" type="button">  No</button>
       </p>
     </div>
