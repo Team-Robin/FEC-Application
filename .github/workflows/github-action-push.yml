@@ -22,8 +22,10 @@ jobs:
       run: yarn
     - name: Run Jest
       run: yarn test
-    - name: Status Giphy
-      uses: jzweifel/pr-status-giphy-action@master
-      env:
-        GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
+    - name: Ramsey GIFifier
+      # You may pin to the exact commit or the version.
+      # uses: ethan-dowler/ramsey-gififier@9da89a13ff3efe7304a98ddc9c964c47b7846ef8
+      uses: ethan-dowler/ramsey-gififier@0.4
+      with:
+        # Github token for the repository.
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
