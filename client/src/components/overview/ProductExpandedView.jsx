@@ -1,45 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-const ProductExpandedView = ({ expanded, setExpanded, photoStyle }) => {
-  const [zoomed, setZoomed] = useState(false);
-  const [imageStyle, setImageStyle] = useState();
+const ProductExpandedView = ({ expanded, setExpanded, photoStyle, zoomed, setZoomed }) => {
+  const [imageStyle, setImageStyle] = useState({
+    backgroundImage: `url(${photoStyle})`,
+    backgroundSize: zoomed ? 'cover' : 'contain',
+    backgroundRepeat: 'no-repeat',
+    transform: zoomed ? 'scale(2.5, 2.5)' : '',
+  });
+  const [mousePosition, setMousePosition] = useState();
 
   useEffect(() => {
     setImageStyle({
-      // backgroundImage: `url(${photoStyle})`,
-      // backgroundSize: 'fit',
-      // backgroundPosition: 'center',
-      // backgroundRepeat: 'no-repeat',
-      // backgroundOrigin: 'fixed',
-      // height: '100%',
-      // width: '100%',
-      // maxHeight: '100%',
-      // maxWidth: '100%',
-      // margin: 'auto',
+      backgroundSize: zoomed ? 'cover' : 'contain',
+      transform: zoomed ? 'scale(2.5, 2.5)' : null,
     });
-  }, [photoStyle]);
+  }, [zoomed]);
+
+  const trackMouse = (event) => {
+    if (zoomed) {
+      event.target.style.transform = `scale(2.5, 2.5) translate(calc(50% + -${event.clientX}px), calc(50% + -${event.clientY}px))`;
+    }
+  };
   return (
-    <div className={`mx-auto d-flex justify-content-center overview-carousel-image-wrapper ${expanded ? 'overview-expanded-carousel' : null}`}>
+    <div className={`mx-auto d-flex justify-content-center overview-carousel-image-wrapper ${expanded ? 'overview-expanded-carousel' : ''} ${zoomed ? 'cursor-minus' : 'cursor-plus'}`}>
       <button
         type="button"
         // src={`${photoStyle}`}
         alt="product"
-        style={{
-          backgroundImage: `url(${photoStyle})`,
-          backgroundSize: zoomed ? 'cover' : 'fit',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          backgroundOrigin: 'fixed',
-          backgroundColor: 'transparent',
-          height: '100%',
-          width: '100%',
-          maxHeight: '100%',
-          maxWidth: '100%',
-          margin: 'auto',
-          transform: zoomed ? 'scale(200%)' : null,
+        style={{ backgroundImage: `url(${photoStyle})`, ...imageStyle }}
+        className={`mx-auto shadow-lg rounded-sm overview-carousel-image transition ${zoomed ? 'cursor-minus' : 'cursor-plus'}`}
+        onClick={() => {
+          setZoomed(!zoomed);
         }}
-        className={`mx-auto shadow-lg rounded-sm transition ${expanded ? '' : null}`}
+        onMouseMove={trackMouse}
       >
         {/* <img
           alt="product"
@@ -88,6 +82,8 @@ ProductExpandedView.propTypes = {
   expanded: PropTypes.bool.isRequired,
   photoStyle: PropTypes.string.isRequired,
   setExpanded: PropTypes.func.isRequired,
+  zoomed: PropTypes.bool.isRequired,
+  setZoomed: PropTypes.func.isRequired,
 };
 
 export default ProductExpandedView;

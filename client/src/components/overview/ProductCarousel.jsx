@@ -13,6 +13,13 @@ const ProductCarousel = ({ Photos }) => {
   const [photoStyle, setPhotoStyle] = useState();
   const [restrict, setRestrict] = useState('decrement');
   const [expanded, setExpanded] = useState(false);
+  const [zoomed, setZoomed] = useState(false);
+
+  useEffect(() => {
+    if (!expanded) {
+      setZoomed(false);
+    }
+  }, [expanded]);
 
   useEffect(async () => {
     if (Photos) {
@@ -74,6 +81,8 @@ const ProductCarousel = ({ Photos }) => {
         expanded={expanded}
         setExpanded={setExpanded}
         photoStyle={photoStyle}
+        zoomed={zoomed}
+        setZoomed={setZoomed}
       />
       <div
         className="overview-carousel "
@@ -94,8 +103,32 @@ const ProductCarousel = ({ Photos }) => {
             />
           </>
         ) : null}
-
-        {restrict !== 'decrement' ? (
+        <div
+          onClick={() => {
+            setExpanded(!expanded);
+          }}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter') {
+              setExpanded(!expanded);
+            }
+          }}
+          style={{
+            color: 'transparent',
+            position: 'absolute',
+            backgroundColor: 'transparent',
+            left: 'min(10em, 20%)',
+            right: '0',
+            top: '0',
+            bottom: '0',
+            width: 'calc(100% - min(20em, 40%))',
+            cursor: 'zoom-in',
+          }}
+          role="button"
+          tabIndex="0"
+        >
+          expand image
+        </div>
+        {restrict !== 'decrement' && !zoomed ? (
           <button
             type="button"
             className="overview-carousel-decrement"
@@ -107,7 +140,7 @@ const ProductCarousel = ({ Photos }) => {
             <i className="fas fa-chevron-left fa-lg rounded-circle overview-carousel-icon" style={{ overflow: 'hidden', fontSize: '2em' }} />
           </button>
         ) : null}
-        {restrict !== 'increment' ? (
+        {restrict !== 'increment' && !zoomed ? (
           <button
             type="button"
             className="overview-carousel-increment"

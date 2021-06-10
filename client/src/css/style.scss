@@ -354,6 +354,7 @@ h1, .h1 {
   max-width: 200vw !important;
   max-height: 100vh !important;
   background-color: $off-white;
+  overflow: hidden;
   position: absolute;
   left: 0;
   top: 0;
@@ -398,6 +399,7 @@ h1, .h1 {
   }
 }
 .overview-gallery-thumbnail-picture{
+  cursor: pointer;
   max-width: 100%;
   max-height: 100%;
 }
@@ -432,6 +434,17 @@ h1, .h1 {
   &:hover {
     color: rgba(0,0,0,1);
   }
+}
+.overview-carousel-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-origin: fixed;
+  background-color: transparent;
+  height: 100%;
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  margin: auto;
 }
 .overview-carousel-image-wrapper {
   background-color: $off-white;
@@ -782,6 +795,12 @@ h1, .h1 {
 }
 .cursor-pointer {
   cursor: pointer;
+}
+.cursor-plus {
+  cursor: url('../Assets/Plus.svg'), crosshair;
+}
+.cursor-minus {
+  cursor: url('../Assets/Minus.svg'), crosshair ;
 }
 
 .bar {
