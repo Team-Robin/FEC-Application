@@ -81,7 +81,7 @@ class RatingsAndReviews extends React.Component {
   componentDidMount() {
     const options = {
       params: {
-        count: 2,
+        count: 3,
         sort: 'relevant',
         product_id: this.props.productId,
       },
@@ -171,7 +171,6 @@ class RatingsAndReviews extends React.Component {
   }
 
   render() {
-    console.log(this);
     if (Object.values(this.state.reviews).length) {
       return (
         <div id="rnr">

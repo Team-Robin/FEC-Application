@@ -5,7 +5,7 @@ import ReviewList from './ReviewList';
 import ReviewButtons from './ReviewButtons';
 
 const ReviewsPanel = ({ activeFilters, reviews, controls }) => (
-  <div id="reviewsPanel">
+  <div id="reviewPanel">
     <SortHeader
       displayControls={controls.display}
       activeFilters={activeFilters}

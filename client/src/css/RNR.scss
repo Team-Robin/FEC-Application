@@ -7,9 +7,6 @@
   justify-content: center;
   align-items: flex-start;
 }
-* {
-  // border-radius: .5rem;
-}
 
 #rnr > * {
   display: inline-block;
@@ -101,18 +98,18 @@
 }
 
 //----------------------------------------------------------------------
-//ratings List----------------------------------------------------------
-#ReviewPanel {
+//Review List----------------------------------------------------------
+#reviewPanel {
   display: flex;
   flex-flow: column;
-  flex: 6;
+  flex: 10;
   justify-content: center;
 }
 
-#ReviewPanel > * {
+#reviewPanel > * {
   background: rgb(236, 236, 236);
   flex: 1 1 auto;
-  margin: 1rem;
+  margin: .25rem;
   padding: .5rem 0;
 }
 
@@ -141,6 +138,7 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
+  padding: 0;
 }
 
 .review {
@@ -151,6 +149,7 @@
   border-left: solid green;
   margin: .25em 0;
   padding: .25em;
+  background: #E3E3E2;
 }
 
 .review > * {
