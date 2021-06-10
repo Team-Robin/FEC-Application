@@ -8,7 +8,7 @@ import Connect from '../Connect';
 import Question from './Question';
 
 const Questions = ({ questionInfo }) => (
-  <div>
+  <div id="QA-questions">
     {questionInfo.questions.results.map((question, index) => (
       <Question question={question} key={`Question-${index}`} />
     ))}

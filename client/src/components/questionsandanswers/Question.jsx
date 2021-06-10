@@ -20,18 +20,23 @@ const Question = ({ question }) => {
 
   return (
     <div id="questions-answers">
-      <p className="question">
-        User:
-        {question.asker_name}
-        {' '}
-        Date:
-        {dateFormat(question.question_date)}
-      </p>
+      <div className="question-body">
+        <div className="user">
+          {question.asker_name}:
+        </div>
+        <div className="date">
+          Date:
+          {dateFormat(question.question_date)}
+        </div>
+      </div>
       <p className="question">
         Q:
+        {' '}
         {question.question_body}
       </p>
       <AnswersList answers={question.answers} />
+      <input className="answer-input" type="text" placeholder="submit an answer" />
+      <button onClick={console.log('Hello')} className="answer-submit-btn" type="button">Submit</button>
     </div>
   );
 };

@@ -8,8 +8,8 @@ const ReviewHead = ({ rating, reviewerName, date }) => {
       <span>Star Component</span>
       <span className="reviewInfo">
         {/* {verification} */}
-        <span>{reviewerName}</span>
-        <span>{date}</span>
+        <span>{reviewerName}, </span>
+        <span>{date.slice(0,10)} </span>
       </span>
     </div>
   );
