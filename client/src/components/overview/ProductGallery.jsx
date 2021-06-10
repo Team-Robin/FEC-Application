@@ -6,8 +6,7 @@ const ProductGallery = ({ PhotoGallery, CurrentPhoto, SelectPhoto }) => {
   const [currentView, setCurrentView] = useState(0);
   const boilerThumbnail = {
     position: 'absolute',
-    width: '60%',
-    height: '12%',
+    height: '10%',
     left: '20%',
   };
 
@@ -46,11 +45,7 @@ const ProductGallery = ({ PhotoGallery, CurrentPhoto, SelectPhoto }) => {
           <img
             src={PhotoGallery[start].photo.thumbnail_url}
             alt="product thumbnail"
-            style={{
-              maxHeight: '100%',
-              maxWidth: '100%',
-            }}
-            className={`shadow btn rounded-sm ${PhotoGallery[start] === CurrentPhoto ? 'border text-primary overview-gallery-selected' : null}`}
+            className={`shadow btn rounded-sm overview-gallery-thumbnail-picture ${PhotoGallery[start] === CurrentPhoto ? ' border text-primary overview-gallery-selected' : null}`}
           />
         </div>,
       );

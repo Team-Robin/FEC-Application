@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ProductGallery from './ProductGallery';
+import ProductExpandedView from './ProductExpandedView';
 
 const ProductCarousel = ({ Photos }) => {
   // hello
@@ -11,7 +12,7 @@ const ProductCarousel = ({ Photos }) => {
   const [photoGallery, setPhotoGallery] = useState([]);
   const [photoStyle, setPhotoStyle] = useState();
   const [restrict, setRestrict] = useState('decrement');
-  const [expanded, setExpanded] = useState('false');
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(async () => {
     if (Photos) {
@@ -65,9 +66,17 @@ const ProductCarousel = ({ Photos }) => {
   };
 
   return (
-    <div className="transition-basic overview-gallery text-center">
+    <div
+      className="transition-basic overview-gallery text-center mb-3"
+      style={!expanded ? { position: 'relative' } : {}}
+    >
+      <ProductExpandedView
+        expanded={expanded}
+        setExpanded={setExpanded}
+        photoStyle={photoStyle}
+      />
       <div
-        className={`overview-carousel mx-auto d-flex justify-content-center ${!expanded ? 'overview-expanded-carousel' : null}`}
+        className="overview-carousel "
         style={{
           // backgroundImage: `url(${photoStyle})`,
           // backgroundSize: 'contain',
@@ -76,50 +85,21 @@ const ProductCarousel = ({ Photos }) => {
           // transition: 'all .15s ease-out',
         }}
       >
-        { currentPhoto && currentPhoto.photo && expanded ? (
-          <ProductGallery
-            PhotoGallery={photoGallery}
-            CurrentPhoto={currentPhoto}
-            SelectPhoto={setCurrentPhoto}
-          />
+        { currentPhoto && currentPhoto.photo && !expanded ? (
+          <>
+            <ProductGallery
+              PhotoGallery={photoGallery}
+              CurrentPhoto={currentPhoto}
+              SelectPhoto={setCurrentPhoto}
+            />
+          </>
         ) : null}
 
-        <div
-          onClick={() => {
-            setExpanded(!expanded);
-          }}
-          onKeyDown={() => {
-            setExpanded(!expanded);
-          }}
-          style={{
-            color: 'transparent',
-            position: 'absolute',
-            left: 'min(10em, 20%)',
-            right: '0',
-            top: '0',
-            bottom: '0',
-            width: 'calc(100% - min(20em, 40%))',
-          }}
-          className={`${!expanded ? 'zoomer' : null}`}
-          role="button"
-          tabIndex="0"
-        >
-          expand image
-        </div>
-        <img
-          src={`${photoStyle}`}
-          alt="product"
-          style={{
-            maxHeight: '100%',
-            maxWidth: '100%',
-            margin: 'auto',
-          }}
-          className={`mx-auto shadow-lg rounded-sm ${!expanded ? 'overview-expanded-image' : null}`}
-        />
         {restrict !== 'decrement' ? (
           <button
             type="button"
             className="overview-carousel-decrement"
+            style={expanded ? { left: '0' } : null}
             onClick={() => {
               carouselReducer(currentPhoto.index - 1);
             }}
@@ -131,6 +111,7 @@ const ProductCarousel = ({ Photos }) => {
           <button
             type="button"
             className="overview-carousel-increment"
+            style={expanded ? { left: '100%' } : null}
             onClick={() => {
               carouselReducer(currentPhoto.index + 1);
             }}
