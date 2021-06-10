@@ -1,29 +1,55 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 const ProductExpandedView = ({ expanded, setExpanded, photoStyle }) => {
   const [zoomed, setZoomed] = useState(false);
+  const [imageStyle, setImageStyle] = useState();
+
+  useEffect(() => {
+    setImageStyle({
+      // backgroundImage: `url(${photoStyle})`,
+      // backgroundSize: 'fit',
+      // backgroundPosition: 'center',
+      // backgroundRepeat: 'no-repeat',
+      // backgroundOrigin: 'fixed',
+      // height: '100%',
+      // width: '100%',
+      // maxHeight: '100%',
+      // maxWidth: '100%',
+      // margin: 'auto',
+    });
+  }, [photoStyle]);
   return (
     <div className={`mx-auto d-flex justify-content-center overview-carousel-image-wrapper ${expanded ? 'overview-expanded-carousel' : null}`}>
       <button
         type="button"
         // src={`${photoStyle}`}
         alt="product"
-        style={!expanded ? {
+        style={{
           backgroundImage: `url(${photoStyle})`,
-          backgroundSize: 'fit',
+          backgroundSize: zoomed ? 'cover' : 'fit',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
+          backgroundOrigin: 'fixed',
+          backgroundColor: 'transparent',
           height: '100%',
           width: '100%',
-          objectFit: 'contain',
           maxHeight: '100%',
           maxWidth: '100%',
           margin: 'auto',
-        } : null}
-        className={`mx-auto shadow-lg rounded-sm ${expanded ? 'overview-expanded-image' : null}`}
+          transform: zoomed ? 'scale(200%)' : null,
+        }}
+        className={`mx-auto shadow-lg rounded-sm transition ${expanded ? '' : null}`}
       >
-        expand view
+        {/* <img
+          alt="product"
+          src={photoStyle}
+          style={{
+            width: '100%',
+            height: 'auto',
+            maxHeight: 'inherit',
+          }}
+        /> */}
       </button>
       <i
         className="fas fa-expand fa-lg overview-expand-icon"
