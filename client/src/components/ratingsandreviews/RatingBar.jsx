@@ -9,7 +9,7 @@ const RatingBar = ({
       { `${name} (${ratingCount})`}
     </button>
     <div className="backgroundBar" />
-    <div className="forgroundBar" styles={`width: ${percent};`} />
+    <div className="forgroundBar" style={{ width: `${percent}` }} />
   </div>
 );
 

@@ -8,7 +8,7 @@ const Characteristic = ({
     <h6>{name}</h6>
     <div className="charBar">
       <div className="backgroundBar" />
-      <div className="icon" styles={`left: ${(value / 5) * 100}%`} />
+      <div className="icon" style={{ left: `${(value / 5) * 100}%` }} />
     </div>
     <p className="minLabel">{minLabel}</p>
     <p className="maxLabel">{maxLabel}</p>
