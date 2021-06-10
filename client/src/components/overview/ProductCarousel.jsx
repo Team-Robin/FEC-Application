@@ -65,9 +65,9 @@ const ProductCarousel = ({ Photos }) => {
   };
 
   return (
-    <div className="overview-gallery text-center ">
+    <div className="transition-basic overview-gallery text-center">
       <div
-        className={`overview-carousel mx-auto d-flex justify-content-center${!expanded ? 'overview-expanded-carousel' : null}`}
+        className={`overview-carousel mx-auto d-flex justify-content-center ${!expanded ? 'overview-expanded-carousel' : null}`}
         style={{
           // backgroundImage: `url(${photoStyle})`,
           // backgroundSize: 'contain',
@@ -114,7 +114,7 @@ const ProductCarousel = ({ Photos }) => {
             maxWidth: '100%',
             margin: 'auto',
           }}
-          className={`mx-auto shadow-lg rounded-sm ${!expanded ? 'overview-expanded-carousel' : null}`}
+          className={`mx-auto shadow-lg rounded-sm ${!expanded ? 'overview-expanded-image' : null}`}
         />
         {restrict !== 'decrement' ? (
           <button
