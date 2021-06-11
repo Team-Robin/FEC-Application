@@ -74,16 +74,18 @@ const ProductCarousel = ({ Photos }) => {
 
   return (
     <div
-      className="transition-basic overview-gallery text-center mb-3"
+      className="transition-basic overview-gallery text-center mx-auto my-4"
       style={!expanded ? { position: 'relative' } : {}}
     >
-      <ProductExpandedView
-        expanded={expanded}
-        setExpanded={setExpanded}
-        photoStyle={photoStyle}
-        zoomed={zoomed}
-        setZoomed={setZoomed}
-      />
+      { photoStyle ? (
+        <ProductExpandedView
+          expanded={expanded}
+          setExpanded={setExpanded}
+          photoStyle={photoStyle}
+          zoomed={zoomed}
+          setZoomed={setZoomed}
+        />
+      ) : null}
       <div
         className="overview-carousel "
         style={{

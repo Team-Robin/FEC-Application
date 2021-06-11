@@ -17,28 +17,30 @@ const Overview = ({
 
   }, []);
   return (
-    <div className="ml-4 mt-5 full-view">
-      <div className="row" style={{ position: 'relative' }}>
+    <div className="mt-5 full-view ">
+      <div className="row justify-content-around" style={{ position: 'relative' }}>
         {CurrentStyle.photos && CurrentStyle.photos.length > 0
           ? (<ProductCarousel Photos={CurrentStyle.photos} />)
           : null}
-        <div className="col ml-3 overview-product-info">
-          <ProductInfo
-            Name={Name}
-            Category={Category}
-            Price={Price}
-            ReviewsRatings={ReviewsRatings}
-            SalePrice={SalePrice}
-          />
-          <ProductStyles
-            Styles={Styles}
-            CurrentStyle={CurrentStyle}
-            setCurrentStyle={setCurrentStyle}
-          />
-          { CurrentStyle.skus ? <ProductFinalSelect SizeInformation={CurrentStyle.skus} /> : null}
+        <div className="col overview-product-info bg-light px-2 py-4 mr-auto mb-4">
+          <div className="d-flex flex-column h-100">
+            <ProductInfo
+              Name={Name}
+              Category={Category}
+              Price={Price}
+              ReviewsRatings={ReviewsRatings}
+              SalePrice={SalePrice}
+            />
+            <ProductStyles
+              Styles={Styles}
+              CurrentStyle={CurrentStyle}
+              setCurrentStyle={setCurrentStyle}
+            />
+            { CurrentStyle.skus ? <ProductFinalSelect SizeInformation={CurrentStyle.skus} /> : null}
+          </div>
         </div>
       </div>
-      <div className="mt-3 row align-items-center justify-content-center w-75 mx-auto">
+      <div className="row align-items-center justify-content-center mx-auto bg-light py-3 px-3 overview-description mb-4">
         <ProductDescription
           Description={Description}
           Slogan={Slogan}

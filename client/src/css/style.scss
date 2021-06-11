@@ -1,6 +1,6 @@
 
 // examples
-
+$highlight: #E0E9F9;
 $primary-color: #B392F8;
 $off-white: #F0F0F0;
 $bright-white: #fcfcfc;
@@ -25,6 +25,7 @@ $red: #FC0058;
 $text-warn: #F7D528;
 $text-error: $red;
 $warn-light: #ff9966;
+$text-blue-light: #89BFFA;
 
 // ====== Reset! ======
 body {
@@ -54,7 +55,7 @@ button {
 }
 
 ::selection {
-  background-color: $primary-color;
+  background-color: $highlight;
 }
 
 
@@ -119,6 +120,9 @@ h1, .h1 {
 .text-size-5{
   font-size: 2rem;
 }
+.text-size-10{
+  font-size: 4rem;
+}
 // ====== Text Color ======
 
 .text-light {
@@ -139,6 +143,9 @@ h1, .h1 {
 .text-warn {
   color: $text-warn;
 }
+.text-blue-light {
+  color: $text-blue-light;
+}
 
 // ====== BG Color ======
 
@@ -147,6 +154,9 @@ h1, .h1 {
 }
 .bg-light{
   background-color: $off-white;
+}
+.bg-lighter{
+  background-color: $bright-white;
 }
 .bg-transparent {
   background-color: transparent;
@@ -173,6 +183,9 @@ h1, .h1 {
 }
 .d-flex {
   display: flex;
+}
+.flex-column {
+  flex-direction: column;
 }
 .d-inline-block{
   display: inline-block;
@@ -219,7 +232,9 @@ h1, .h1 {
 .justify-content-between {
   justify-content: space-between;
 }
-
+.justify-content-around {
+  justify-content: space-around;
+}
 
 .row {
   display: flex;
@@ -321,7 +336,8 @@ h1, .h1 {
   flex-grow: 1 !important;
   flex-shrink: 0 !important;
   flex-basis: 30% !important;
-  max-width: 20rem;
+  width: 100%;
+  // max-width: 20rem;
 }
 .overview-features-bar {
   position: relative;
@@ -341,11 +357,12 @@ h1, .h1 {
 // ====== Overview Gallery  ======
 .overview-gallery {
   flex-grow: 1 !important;
-  flex-shrink: 0 !important;
-  flex-basis: 70% !important;
+  flex-shrink: 1 !important;
+  flex-basis: 65% !important;
   max-width: 1300px;
   height: 80vh;
   max-height: 80vh;
+
 }
 .overview-carousel {
   position: relative;
@@ -485,8 +502,8 @@ h1, .h1 {
   top: 95%;
 }
 // ====== Overview Description  ======
-.overview-description-min {
-  min-width: 28em;
+.overview-description {
+  max-width: 50em;
 }
 .overview-features-min {
   min-width: 14rem
@@ -498,12 +515,12 @@ h1, .h1 {
   max-width: 30rem;
   min-width: 300px
 }
-
+// ====== Overview Description ======
 // ====== Overview Final Select ======
 
 .select-size{
-  width: 10rem;
-  height: 3rem;
+  width: 8em;
+  height: 4em;
   border-style: solid;
   border-width: 2px;
   cursor: pointer;
@@ -512,13 +529,10 @@ h1, .h1 {
 // ====== Styles Icons ======
 .styles-wrapper{
   display: flex;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
   flex-grow: 0;
   flex-basis: 23%;
   flex-shrink: 1;
   justify-content: space-around;
-  overflow: hidden;
   &:hover{
     >.styles-icon{
       transition: all .2s ease-in-out;
@@ -556,14 +570,16 @@ h1, .h1 {
   }
 }
 .styles-icon{
-  width: 3.25rem;
-  height: 3.25rem;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
   border-width: 2px;
   border-style: solid;
+  border-color: $off-white;
   transition: all .2s ease-in-out;
   position: relative;
   color: transparent;
+  background-color: $off-white
 };
 .styles-selected{
   border-color: $primary-color;
@@ -694,7 +710,7 @@ h1, .h1 {
 .mt-3, .my-3 {
   margin-top: 1.25rem;
 }
-.mb-3, .mb-3 {
+.mb-3, .my-3 {
   margin-bottom: 1.25rem;
 }
 .ml-3, .mx-3 {
@@ -749,12 +765,35 @@ h1, .h1 {
 .pb-2, .py-2{
   padding-bottom: .75rem;
 }
-
-.pl-1 {
-  padding: .25rem;
+.pl-2, .px-2 {
+  padding-left: .75rem;
 }
-.pl-4 {
-  padding-left: 1rem;
+.pr-2, .px-2 {
+  padding-right: .75rem;
+}
+.pt-3, .py-3 {
+  padding-top: 1.25rem;
+}
+.pb-3, .py-3 {
+  padding-bottom: 1.25rem;
+}
+.pl-3, .px-3 {
+  padding-left: 1.25rem;
+}
+.pr-3, .px-3 {
+  padding-right: 1.25rem;
+}
+.pl-4, .px-4 {
+  padding-left: 1.75rem;
+}
+.pr-4, .px-4 {
+  padding-right: 1.75rem;
+}
+.pt-4, .py-4 {
+  padding-top:  1.75rem;
+}
+.pb-4, .py-4 {
+  padding-bottom:  1.75rem;
 }
 
 // ====== Button ======

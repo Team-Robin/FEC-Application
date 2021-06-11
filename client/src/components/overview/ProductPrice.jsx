@@ -3,13 +3,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ProductPrice = ({ Price, SalePrice }) => (
-  <div className="">
+  <div className="h3 my-5">
     {SalePrice ? (
       <>
-        <span className="text-red mr-1">{`$${SalePrice}`}</span>
+        <span className="text-red mr-3">{`$${SalePrice}`}</span>
         <span className="text-muted text-strikethrough">{`$${Price}`}</span>
       </>
-    ) : `$${Price}`}
+    ) : <span className="">{`$${Price}`}</span>}
   </div>
 );
 
