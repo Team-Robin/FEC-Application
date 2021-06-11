@@ -18,7 +18,7 @@ const Overview = ({
   }, []);
   return (
     <div className="ml-4 mt-5 full-view">
-      <div className="row">
+      <div className="row" style={{ position: 'relative' }}>
         {CurrentStyle.photos && CurrentStyle.photos.length > 0
           ? (<ProductCarousel Photos={CurrentStyle.photos} />)
           : null}
