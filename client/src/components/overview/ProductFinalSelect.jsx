@@ -86,6 +86,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
               onClick={onClickValidator}
             >
               <span className=""> Add to Bag </span>
+              <i className="fas fa-plus" style={{ float: 'right', marginRight: '10%' }} />
             </button>
             <button
               type="button"
