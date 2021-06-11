@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-const ProductExpandedView = ({ expanded, setExpanded, photoStyle, zoomed, setZoomed }) => {
+const ProductExpandedView = ({
+  expanded, setExpanded, photoStyle, zoomed, setZoomed,
+}) => {
   const [imageStyle, setImageStyle] = useState({
     backgroundImage: `url(${photoStyle})`,
-    backgroundSize: zoomed ? 'cover' : 'contain',
+    backgroundSize: zoomed ? 'contain' : 'contain',
     backgroundRepeat: 'no-repeat',
     transform: zoomed ? 'scale(2.5, 2.5)' : '',
   });
@@ -12,14 +14,14 @@ const ProductExpandedView = ({ expanded, setExpanded, photoStyle, zoomed, setZoo
 
   useEffect(() => {
     setImageStyle({
-      backgroundSize: zoomed ? 'cover' : 'contain',
-      transform: zoomed ? 'scale(2.5, 2.5)' : null,
+      backgroundSize: zoomed ? 'contain' : 'contain',
+      transform: zoomed ? mousePosition : null,
     });
   }, [zoomed]);
 
   const trackMouse = (event) => {
     if (zoomed) {
-      event.target.style.transform = `scale(2.5, 2.5) translate(calc(50% + -${event.clientX}px), calc(50% + -${event.clientY}px))`;
+      setMousePosition(`scale(2.5, 2.5) translate(calc(50% + -${event.clientX}px), calc(50% + -${event.clientY}px))`);
     }
   };
   return (
@@ -29,7 +31,7 @@ const ProductExpandedView = ({ expanded, setExpanded, photoStyle, zoomed, setZoo
         // src={`${photoStyle}`}
         alt="product"
         style={{ backgroundImage: `url(${photoStyle})`, ...imageStyle }}
-        className={`mx-auto shadow-lg rounded-sm overview-carousel-image transition ${zoomed ? 'cursor-minus' : 'cursor-plus'}`}
+        className={`mx-auto shadow-lg rounded-sm overview-carousel-image transition ${zoomed ? 'cursor-minus shadow-no bg-transparent' : 'cursor-plus'}`}
         onClick={() => {
           setZoomed(!zoomed);
         }}

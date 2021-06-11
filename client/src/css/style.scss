@@ -160,6 +160,9 @@ h1, .h1 {
 .bg-error {
   background-color: $text-error;
 }
+.bg-transparent {
+  background-color: transparent !important;
+}
 // ====== display  ======
 .view {
   height: 100%;
@@ -436,6 +439,7 @@ h1, .h1 {
   }
 }
 .overview-carousel-image {
+  background-position: center;
   background-repeat: no-repeat;
   background-origin: fixed;
   background-color: transparent;
@@ -764,7 +768,9 @@ h1, .h1 {
     filter: brightness($active-brightness);
   }
 }
-
+.shadow-no {
+  box-shadow: none !important;
+}
 .shadow-sm{
   box-shadow: .2rem .2rem .2rem  rgba(0,0,0,.3);
 
