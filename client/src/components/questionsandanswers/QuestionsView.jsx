@@ -36,7 +36,6 @@ const QuestionsView = ({ questionInfo }) => {
   const searchQuestions = (input) => {
     setSearch(input);
   };
-  console.log('QUESTION INFO OBJ', questionInfoObj);
 
   return (
     <div id="QA-view">
