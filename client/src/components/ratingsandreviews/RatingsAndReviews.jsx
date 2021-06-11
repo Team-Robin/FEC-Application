@@ -1,7 +1,9 @@
+/* eslint-disable class-methods-use-this */
 import React from 'react';
-import RatingsOverview from './RatingsOverview';
-import ReviewsPanel from './ReviewsPanel';
+import RatingsOverview from './ratingsOverview/RatingsOverview';
+import ReviewsPanel from './reviewsPanel/ReviewsPanel';
 import Connect from '../Connect';
+import ReviewButtons from './reviewsPanel/ReviewButtons';
 
 class RatingsAndReviews extends React.Component {
   constructor(props) {
@@ -12,7 +14,7 @@ class RatingsAndReviews extends React.Component {
         2: 'Lukewarm garbage',
         3: 'Does the job I need it to do',
         4: 'Very niiice',
-        5: 'OMGWOWSOGUUD'
+        5: 'OMGWOWSOGUUD',
       },
       Size: {
         1: 'A size too small',
@@ -72,37 +74,65 @@ class RatingsAndReviews extends React.Component {
     };
     this.state = {
       sortStyle: 'relevant',
-      ratings: {},
-      reviews: {},
+      displayAmount: 2,
       activeFilters: [],
+      reviews: [],
+      ratings: {},
     };
   }
 
   componentDidMount() {
     const options = {
       params: {
-        count: 3,
+        count: 100,
         sort: 'relevant',
         product_id: this.props.productId,
       },
     };
     Connect.getReviews(options)
-      .then((response) => response.data)
-      .then((reviews) => {
-        Connect.getReviewMeta(reviews.product)
-          .then((response) => {
-            let ratings = response.data;
-            console.log(ratings, reviews);
-            this.setState({
-              reviews,
-              ratings,
-            });
+      .then((reviewResponse) => {
+        let reviews = reviewResponse.data;
+        const id = reviews.product;
+        Connect.getReviewMeta(id)
+          .then((ratingsResponse) => {
+            const ratings = ratingsResponse.data;
+            reviews = this.removeDuplicateReviews(reviews);
+            this.setState({ reviews, ratings });
           });
       });
   }
 
   setHelpful(reviewId) {
     Connect.setHelpful(reviewId);
+  }
+
+  removeDuplicateReviews(reviewsObj) {
+    let reviews = reviewsObj.results;
+    reviews.reduce((cache, r, i) => {
+      if (i === 0) reviews = [];
+      const result = cache;
+      const propExists = !!result[r.summary];
+      const valueAtPropExists = () => result[r.summary].indexOf(r.body) > -1;
+      if (!propExists || !valueAtPropExists()) {
+        reviews.push(r);
+        result[r.summary] = (propExists) ? result[r.summary].concat([r.body]) : [r.body];
+      }
+      return result;
+    }, {});
+    return reviews;
+  }
+
+  filterReviews() {
+    const activeFilters = this.state.activeFilters;
+    const reviews = this.state.reviews
+    const filters = activeFilters.reduce((result, f) => Object.assign(result, { [f[0]]: f }), {});
+
+    return reviews.reduce((result, r) => {
+      if (!Object.keys(filters).length || filters[r.rating]) {
+        result.push(r);
+      }
+      return result;
+    }, []);
   }
 
   reportReview(reviewId) {
@@ -119,16 +149,16 @@ class RatingsAndReviews extends React.Component {
 
   sort(e) {
     const sortStyle = e.target.value;
-    console.log('loging sortStyle RatingsAndReviews 86', sortStyle);
     const options = {
       params: {
-        count: 2,
+        count: 100,
         sort: sortStyle,
         product_id: this.props.productId,
       },
     };
     Connect.getReviews(options)
       .then((response) => response.data)
+      .then(this.removeDuplicateReviews)
       .then((reviews) => this.setState({ reviews, sortStyle }));
   }
 
@@ -151,27 +181,20 @@ class RatingsAndReviews extends React.Component {
     const position = parseInt(key.split(' ')[0], 10) - 1;
     const newFilters = this.state.activeFilters.slice();
     newFilters[position] = key;
-    this.state({
+    this.setState({
       activeFilters: newFilters,
     });
   }
 
   expandReviewList() {
-    const { sortStyle } = this.state;
-    const options = {
-      params: {
-        count: 10,
-        sort: sortStyle,
-        product_id: this.props.productId,
-      },
-    };
-    Connect.getReviews(options)
-      .then((response) => response.data)
-      .then((reviews) => this.setState({ reviews, sortStyle }));
+    this.setState({
+      displayAmount: this.state.displayAmount + 2,
+    });
   }
 
   render() {
-    if (Object.values(this.state.reviews).length) {
+    if (this.state.reviews.length) {
+      console.log(this.state);
       return (
         <div id="rnr">
           <RatingsOverview
@@ -180,14 +203,27 @@ class RatingsAndReviews extends React.Component {
             controls={this.controls.ratings}
           />
           <ReviewsPanel
+            displayAmount={this.state.displayAmount}
             activeFilters={this.state.activeFilters}
-            reviews={this.state.reviews}
+            reviews={this.filterReviews()}
             controls={this.controls.reviews}
           />
         </div>
       );
     }
-    return <p>What happened?</p>;
+    return (
+      <div id="addReviewPLS">
+        <h1>No reviews yet... :(</h1>
+        <div>
+          <img src="https://media.giphy.com/media/dxPSj5kctYUpXOS4Tp/giphy.gif" alt="A rating system of reviews" />
+        </div>
+        <ReviewButtons
+          displayAmount={0}
+          reviewCount={0}
+          footerControls={this.controls.reviews.footer}
+        />
+      </div>
+    );
   }
 }
 
