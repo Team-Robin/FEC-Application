@@ -44,7 +44,6 @@ app.get('/api/products/:productId', (req, res) => {
       res.status(200).send(result.data);
     })
     .catch((error) => {
-      console.log(error);
       res.status(500).send('error at API fetch', error);
     });
 });
@@ -108,7 +107,6 @@ app.get('/api/reviews', (req, res) => {
 });
 
 app.get('/api/reviews/meta', (req, res) => {
-  console.log(req.query);
   connect.getReviewsMeta(req.query)
     .then((result) => {
       res.status(200).send(result.data);
