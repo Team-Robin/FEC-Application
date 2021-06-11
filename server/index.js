@@ -86,11 +86,8 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
 });
 
 // =====================QA PUT============================>>>
-app.post('/api/qa/questions/helpful', (req, res) => {
-
-})
 app.put('/api/qa/questions/helpful/', (req, res) => {
-  connect.getHelpfulnessQuestions({question_id: req.body.questionId})
+  connect.getHelpfulnessQuestions({ question_id: req.body.questionId })
     .then((result) => {
       res.status(200).send(result.data);
     })
