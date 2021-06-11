@@ -94,6 +94,12 @@ p.question {
   font-size: small;
   text-align: right;
 }
+
+.question-cards {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+}
 //==================Answers====================
 
 .helpful {
