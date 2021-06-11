@@ -74,7 +74,7 @@ const ProductCarousel = ({ Photos }) => {
 
   return (
     <div
-      className="transition-basic overview-gallery text-center my-3"
+      className="transition-basic overview-gallery text-center my-3 mx-auto"
       style={!expanded ? { position: 'relative' } : {}}
     >
       { photoStyle ? (

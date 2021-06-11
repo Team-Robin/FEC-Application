@@ -82,7 +82,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
             <button
               type="button"
               aria-label="add to cart"
-              className="select-size text-size-2 btn shadow-sm my-2 rounded-sm flex-basis-60 bg-lighter"
+              className="select-size text-size-2 btn shadow my-2 rounded-sm flex-basis-60 bg-lighter"
               onClick={onClickValidator}
             >
               <span className=""> Add to Bag </span>
@@ -90,7 +90,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
             </button>
             <button
               type="button"
-              className="select-size text-size-2 d-flex justify-content-center my-2 btn shadow-sm rounded-sm flex-basis-25 mr-2 bg-lighter"
+              className="select-size text-size-2 d-flex justify-content-center my-2 btn shadow rounded-sm flex-basis-25 mr-2 bg-lighter"
             >
               <i className="far fa-star align-self-center" />
             </button>
@@ -102,7 +102,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
             <div className="text-muted text-bold text-size-4">OUT OF STONKS</div>
             <button
               type="button"
-              className="select-size text-size-2 d-flex justify-content-center my-2 shadow-sm rounded-sm bg-lighter"
+              className="select-size text-size-2 d-flex justify-content-center my-2 shadow rounded-sm bg-lighter"
             >
               <i className="far fa-star align-self-center" />
             </button>
