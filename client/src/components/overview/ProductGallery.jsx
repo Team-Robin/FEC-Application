@@ -1,15 +1,10 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import ProductGalleryItem from './ProductGalleryItem';
 
 const ProductGallery = ({ PhotoGallery, CurrentPhoto, SelectPhoto }) => {
   const [currentView, setCurrentView] = useState(0);
-  const boilerThumbnail = {
-    position: 'absolute',
-    width: '60%',
-    height: '12%',
-    left: '20%',
-  };
 
   useEffect(() => {
     if (CurrentPhoto.index > currentView || CurrentPhoto.index < currentView) {
@@ -22,37 +17,13 @@ const ProductGallery = ({ PhotoGallery, CurrentPhoto, SelectPhoto }) => {
     for (let start = currentView, i = 0; start < PhotoGallery.length && i < 7; start += 1, i += 1) {
       const position = i * 13;
       gallery.push(
-        // eslint-disable-next-line jsx-a11y/control-has-associated-label
-        <div
-          className="overview-gallery-thumbnail"
-          style={{
-            ...boilerThumbnail,
-            // backgroundImage: `url(${PhotoGallery[start].photo.thumbnail_url})`,
-            // backgroundSize: 'contain',
-            // backgroundPosition: 'center',
-            // backgroundRepeat: 'no-repeat',
-            // backgroundColor: 'transparent',
-            top: `calc(${position}% + 5%)`,
-          }}
-          onClick={() => {
-            SelectPhoto(PhotoGallery[start]);
-          }}
-          onKeyDown={() => {
-            SelectPhoto(PhotoGallery[start]);
-          }}
-          role="button"
-          tabIndex="0"
-        >
-          <img
-            src={PhotoGallery[start].photo.thumbnail_url}
-            alt="product thumbnail"
-            style={{
-              maxHeight: '100%',
-              maxWidth: '100%',
-            }}
-            className={`shadow btn rounded-sm ${PhotoGallery[start] === CurrentPhoto ? 'border text-primary overview-gallery-selected' : null}`}
-          />
-        </div>,
+        <ProductGalleryItem
+          position={position}
+          photo={PhotoGallery[start]}
+          SelectPhoto={SelectPhoto}
+          selectedPhoto={PhotoGallery[start] === CurrentPhoto}
+          key={`PhotoGallery-${start}`}
+        />,
       );
     }
     return gallery;

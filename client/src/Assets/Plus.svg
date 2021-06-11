@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <style>
+      .cls-1, .cls-4 {
+        stroke: #fff;
+      }
+
+      .cls-1 {
+        stroke-width: 4px;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2, .cls-3 {
+        stroke: #000;
+        stroke-width: 2px;
+      }
+
+      .cls-3, .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-4 {
+        stroke-width: 1px;
+      }
+    </style>
+  </defs>
+  <path class="cls-1" d="M5,15H26M5,15H26M5,15H26M5,15H26"/>
+  <path id="Shape_1_copy" data-name="Shape 1 copy" class="cls-2" d="M5,15H26M5,15H26M5,15H26M5,15H26"/>
+  <path class="cls-1" d="M15.5,3.5v21m0-21v21m0-21v21m0-21v21"/>
+  <path id="Shape_1_copy-2" data-name="Shape 1 copy" class="cls-2" d="M15.5,3.5v21m0-21v21m0-21v21m0-21v21"/>
+  <path class="cls-3" d="M5,15H26"/>
+  <path class="cls-4" d="M5,14v2"/>
+  <path class="cls-4" d="M26,13v4"/>
+  <path class="cls-4" d="M14,4h4"/>
+  <path class="cls-4" d="M14,25h4"/>
+</svg>
