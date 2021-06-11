@@ -16,6 +16,8 @@ const Connect = {
     },
   }),
 
+  getHelpfulnessQuestions: (questionId) => axios.put(`/api/qa/questions/helpful`, {questionId}),
+
   getAnswers: (id) => axios.get(`/qa/questions/${id}/answers`),
 
   getReviewMeta: (id) => axios.get('/api/reviews/meta', {

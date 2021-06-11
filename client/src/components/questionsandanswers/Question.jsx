@@ -2,10 +2,11 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable react/prop-types */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AnswersList from './AnswersList';
+import Connect from '../Connect';
 
-const Question = ({ question }) => {
+const Question = React.memo(({ question }) => {
   const dateFormat = (inputTime) => {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
       'August', 'September', 'October', 'November', 'December',
@@ -16,13 +17,28 @@ const Question = ({ question }) => {
     return date;
   };
 
-  const [questionId, setQuestionId] = useState(question.question_id);
+  const [helpfulness, setHelpfulness] = useState(false);
+  const [addHelpful, setAddHelpful] = useState(question.question_helpfulness);
+
+
+  const addOneHelp = () => {
+    if (helpfulness === false) {
+      Connect.getHelpfulnessQuestions(question.question_id)
+      .then((response) => {
+        if (response.status === 200) {
+          setAddHelpful(addHelpful + 1)
+          setHelpfulness(true);
+        }
+      });
+    }
+  }
 
   return (
     <div id="questions-answers">
       <div className="question-body">
         <div className="user">
-          {question.asker_name}:
+          {question.asker_name}
+          :
         </div>
         <div className="date">
           Date:
@@ -34,11 +50,19 @@ const Question = ({ question }) => {
         {' '}
         {question.question_body}
       </p>
+      <div>
+        Was this helpful?
+        {'  '}
+        <div>
+          {addHelpful}
+          <button onClick={() => { addOneHelp() }} className="question-helpfulness-btn" type="button">Yes</button>
+        </div>
+      </div>
       <AnswersList answers={question.answers} />
       <input className="answer-input" type="text" placeholder="submit an answer" />
-      <button onClick={console.log('Hello')} className="answer-submit-btn" type="button">Submit</button>
+      <button onClick={() => console.log('Hello')} className="answer-submit-btn" type="button">Submit</button>
     </div>
   );
-};
+});
 
 export default Question;

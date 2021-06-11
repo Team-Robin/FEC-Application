@@ -19,6 +19,7 @@ const App = () => {
   const [currentStyle, setCurrentStyle] = useState({});
   const [productSalesPrice, setProductSalesPrice] = useState({});
   //  Component Did Mount
+
   useEffect(async () => {
     const id = window.location.pathname.split('/')[2]; // splits '/products/###/' to '/', 'products', '####, '/'. we just want the numbers
     const product = await Connect.getProductById(id);
