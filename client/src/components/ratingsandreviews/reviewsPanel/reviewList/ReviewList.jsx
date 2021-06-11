@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Review from './Review';
+import Review from './review/Review';
 
-const ReviewList = ({ reviews, reviewControls }) => (
+const ReviewList = ({ displayAmount, reviews, reviewControls }) => (
   <div id="reviewList">
     {
       reviews.map((review, i) => {
-        if (i < 2) {
-          console.log(reviews);
+        if (i < displayAmount) {
           return (
             <Review
               key={review.review_id}
@@ -15,14 +14,16 @@ const ReviewList = ({ reviews, reviewControls }) => (
               review={review}
               reviewControls={reviewControls}
             />
-          )
+          );
         }
+        return '';
       })
     }
   </div>
 );
 
 ReviewList.propTypes = {
+  displayAmount: PropTypes.number.isRequired,
   reviews: PropTypes.arrayOf(PropTypes.object).isRequired,
   reviewControls: PropTypes.objectOf(PropTypes.func).isRequired,
 };

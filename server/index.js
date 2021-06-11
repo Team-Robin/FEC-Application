@@ -100,8 +100,7 @@ app.get('/api/reviews', (req, res) => {
 });
 
 app.get('/api/reviews/meta', (req, res) => {
-  console.log(req.query);
-  connect.getReviewsMeta(req.query)
+  connect.getReviewsMeta(req.query.id)
     .then((result) => {
       res.status(200).send(result.data);
     })
@@ -110,8 +109,13 @@ app.get('/api/reviews/meta', (req, res) => {
     });
 });
 
-app.get('/test', (req, res) => {
-  res.status(200).send('hello from test!');
+app.put('/api/:review_id/report', (req, res) => {
+  console.log(req.params);
+  res.send(200);
+});
+
+app.put('/api/:review_id/helpful', (req, res) => {
+  res.send(200);
 });
 
 app.listen(port, () => {

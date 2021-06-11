@@ -12,7 +12,10 @@
   display: inline-block;
   background: rgb(253, 252, 252);
   margin: 1rem;
+}
 
+#rnr button {
+  text-decoration: underline;
 }
 
 //----------------------------------------------------------------------
@@ -21,6 +24,8 @@
   display: flex;
   flex-flow: column wrap;
   flex: 1 2 auto;
+  border-left: solid #5fc3c5;
+  position: sticky;
 }
 
 #ratingsOverview h1 {
@@ -31,7 +36,14 @@
 #ratingsOverview > * {
   background: rgb(236, 236, 236);
   flex: 1 1 auto;
-  margin: 1rem;
+}
+
+#ratingsOverview > *::after {
+  content: '';
+  border-top: solid thin #a7a7a7;
+  display: block;
+  width: 30%;
+  margin: 1em auto 0;
 }
 
 //rating Summary-------------------------------------------------
@@ -91,9 +103,11 @@
   background: black;
 }
 .minLabel {
+  font-size: .7em;
   float: left;
 }
 .maxLabel {
+  font-size: .7em;
   float: right;
 }
 
@@ -132,6 +146,16 @@
   white-space: pre;
 }
 
+
+
+#sortHeader {
+  display: flex;
+  justify-content: center;
+}
+#sortHeader > * {
+  margin: 0 .25em;
+}
+
 //reviewList ----------------------------------------------------------
 #reviewList {
   flex: 6 1 auto;
@@ -146,7 +170,7 @@
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
-  border-left: solid green;
+  border-left: solid #5fc3c5;
   margin: .25em 0;
   padding: .25em;
   background: #E3E3E2;
@@ -154,6 +178,17 @@
 
 .review > * {
   margin: .4rem .2rem;
+}
+.reviewContent {
+  border-bottom: thin green;
+}
+
+.reviewContent > * {
+  margin: 0 0 1em 0;
+}
+
+.recommended {
+  margin: 0;
 }
 .reviewInfo {
   float: right;
@@ -173,19 +208,35 @@
   display: block;
 }
 
+.reviewHead:after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 75%;
+  padding-top: 15px;
+  border-bottom: 1px solid #a7a7a7;
+}
+
 #reviewButtons {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: start;
 }
 
-#reviewButtons > * {
+#reviewButtons button {
   background-color: rgb(211, 211, 211);
   padding: 1em;
   margin: 1em;
 }
 
+#reviewButtons p {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+}
+
 .recommended {
+  font-size: .8em;
   font-weight: bold;
 }
 
@@ -195,9 +246,33 @@
   border-left: solid green;
 }
 
-.FeedbackController {
+.feedbackController {
   font-size: .8em;
+}
+
+.feedbackController > * {
+  margin: 0 .5em;
+}
+
+.feedbackController::before {
+  content: "";
+  display: block;
+  margin: 0 auto 1em;
+  width: 75%;
+  padding-bottom: 2px;
+  border-bottom: 1px solid #a7a7a7;
 }
 .responseTitle {
   font-weight: bold;
+}
+
+#addReviewPLS {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+#addReviewPLS img {
+  display: block;
+  margin: 0 auto;
 }

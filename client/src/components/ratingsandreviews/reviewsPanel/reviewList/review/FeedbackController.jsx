@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const FeedbackController = ({ reviewId, setHelpful, reportReview }) => (
-  <span className="FeedbackController">
+  <span className="feedbackController">
     Was this review helpful?
-    <button type="button" onClick={() => { setHelpful(reviewId); }}>  Yes </button>
+    <button type="button" onClick={() => { setHelpful(reviewId); }}>Yes</button>
     |
-    <button type="button" onClick={() => { reportReview(reviewId); }}>  Report</button>
+    <button type="button" onClick={() => { reportReview(reviewId); }}>Report</button>
   </span>
 );
 

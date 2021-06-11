@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RatingSummary from './RatingSummary';
-import RatingBreakdown from './RatingBreakdown';
-import CharacteristicList from './CharacteristicList';
+import RatingBreakdown from './ratingBreakdown/RatingBreakdown';
+import CharacteristicList from './characteristicList/CharacteristicList';
 
 const RatingsOverview = ({ labels, ratingMetaData, controls }) => (
   <div id="ratingsOverview">
