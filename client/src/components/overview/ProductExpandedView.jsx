@@ -17,7 +17,7 @@ const ProductExpandedView = ({
       backgroundSize: zoomed ? 'contain' : 'contain',
       transform: zoomed ? mousePosition : null,
     });
-  }, [zoomed]);
+  }, [zoomed, mousePosition]);
 
   const trackMouse = (event) => {
     if (zoomed) {
