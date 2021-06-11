@@ -6,14 +6,14 @@ import ProductStyle from './ProductStyle';
 
 const ProductStyles = ({ Styles, CurrentStyle, setCurrentStyle }) => (
   <div className="overview-right-dekstop">
-    <div className="row">
+    <div className="row h4">
       <span className="text-bold">Style &gt;</span>
-      <span className="text-muted">
+      <span className="text-muted text-thin">
         &nbsp;
         {CurrentStyle.name}
       </span>
     </div>
-    <div className="row">
+    <div className="row my-3">
       {Styles.map((iStyle) => (
         <ProductStyle
           Style={iStyle}

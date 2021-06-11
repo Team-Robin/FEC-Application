@@ -25,17 +25,19 @@ const ProductExpandedView = ({
     }
   };
   return (
-    <div className={`mx-auto d-flex justify-content-center overview-carousel-image-wrapper ${expanded ? 'overview-expanded-carousel' : ''} ${zoomed ? 'cursor-minus' : 'cursor-plus'}`}>
+    <div
+      className={`mx-auto d-flex justify-content-center overview-carousel-image-wrapper shadow ${expanded ? 'overview-expanded-carousel' : ''} ${zoomed ? 'cursor-minus' : 'cursor-plus'}`}
+      onMouseMove={trackMouse}
+    >
       <button
         type="button"
         // src={`${photoStyle}`}
         alt="product"
         style={{ backgroundImage: `url(${photoStyle})`, ...imageStyle }}
-        className={`mx-auto shadow-lg rounded-sm overview-carousel-image transition ${zoomed ? 'cursor-minus shadow-no bg-transparent' : 'cursor-plus'}`}
+        className={`mx-auto rounded-sm overview-carousel-image transition ${zoomed ? 'cursor-minus shadow-no bg-transparent' : 'cursor-plus'}`}
         onClick={() => {
           setZoomed(!zoomed);
         }}
-        onMouseMove={trackMouse}
       >
         {/* <img
           alt="product"
