@@ -357,11 +357,12 @@ h1, .h1 {
 // ====== Overview Gallery  ======
 .overview-gallery {
   flex-grow: 1 !important;
-  flex-shrink: 0 !important;
-  flex-basis: 70% !important;
+  flex-shrink: 1 !important;
+  flex-basis: 65% !important;
   max-width: 1300px;
   height: 80vh;
   max-height: 80vh;
+
 }
 .overview-carousel {
   position: relative;

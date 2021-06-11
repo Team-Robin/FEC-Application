@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ReviewButtons = ({ reviewCount, footerControls }) => {
-  const seeMoreButton = (reviewCount > 2) ? (
+const ReviewButtons = ({ displayAmount, reviewCount, footerControls }) => {
+  const seeMoreButton = (reviewCount > displayAmount) ? (
     <button
       type="button"
       id="seeMore"
@@ -10,7 +10,7 @@ const ReviewButtons = ({ reviewCount, footerControls }) => {
     >
       See More
     </button>
-  ) : '';
+  ) : <p>No More Reviews</p>;
 
   return (
     <div id="reviewButtons">
@@ -27,6 +27,7 @@ const ReviewButtons = ({ reviewCount, footerControls }) => {
 };
 
 ReviewButtons.propTypes = {
+  displayAmount: PropTypes.number.isRequired,
   reviewCount: PropTypes.number.isRequired,
   footerControls: PropTypes.objectOf(PropTypes.func).isRequired,
 };
