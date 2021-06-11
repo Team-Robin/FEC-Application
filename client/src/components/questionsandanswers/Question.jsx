@@ -33,10 +33,6 @@ const Question = React.memo(({ question }) => {
     }
   }
 
-
-
-  console.log('QUESSTION', question);
-
   return (
     <div id="questions-answers">
       <div className="question-body">
