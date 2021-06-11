@@ -4,7 +4,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Search from './Search';
-import Questions from './Questions';
+import Question from './Question';
 import QuestionsAndAnswers from './QuestionsAndAnswers';
 // import Questions from './questionsandanswers/Questions.jsx';
 const QuestionsView = ({ questionInfo }) => {
@@ -36,13 +36,24 @@ const QuestionsView = ({ questionInfo }) => {
   const searchQuestions = (input) => {
     setSearch(input);
   };
-  console.log("QUESTION INFO OBJ", questionInfoObj);
+  console.log('QUESTION INFO OBJ', questionInfoObj);
 
   return (
     <div id="QA-view">
       <div id="inner-QAview">
         <h1 id="QA-header">Questions & Answers</h1>
-        <Questions questionInfo={questionInfo} />
+        <div>
+          <Search searchQuestions={searchQuestions} />
+        </div>
+        <div className="question-cards">
+        {questionInfoObj.map((question) => <Question question={question} />)}
+        </div>
+        <div className="add-more-questions">
+          <button
+            onClick={handleMoreQuestions}>
+              add more questions
+          </button>
+        </div>
         <form className="QA-form">
           <h5>Ask a Question</h5>
           <input className="QA-search-box" type="text" name="QA-search-box" placeholder="Have a question?" />

@@ -16,6 +16,7 @@ const Question = React.memo(({ question }) => {
     const date = `${months[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`;
     return date;
   };
+  console.log(question);
 
   const [helpfulness, setHelpfulness] = useState(false);
   const [addHelpful, setAddHelpful] = useState(question.question_helpfulness);
