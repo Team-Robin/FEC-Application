@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import TrackerContext from '../context/Tracker';
 
 const ProductExpandedView = ({
   expanded, setExpanded, photoStyle, zoomed, setZoomed,
@@ -11,6 +12,7 @@ const ProductExpandedView = ({
     transform: zoomed ? 'scale(2.5, 2.5)' : '',
   });
   const [mousePosition, setMousePosition] = useState();
+  const { tracking, setTracking } = useContext(TrackerContext);
 
   useEffect(() => {
     setImageStyle({
@@ -35,8 +37,10 @@ const ProductExpandedView = ({
         alt="product"
         style={{ backgroundImage: `url(${photoStyle})`, ...imageStyle }}
         className={`mx-auto rounded-sm overview-carousel-image transition ${zoomed ? 'cursor-minus shadow-no bg-transparent' : 'cursor-plus'}`}
-        onClick={() => {
+        onClick={(event) => {
           setZoomed(!zoomed);
+          const tracked = { element: event.target, time: new Date(), module: `Picture zoom-in. Status: ${!zoomed}` };
+          setTracking([...tracking, tracked]);
         }}
       >
         {/* <img
@@ -65,12 +69,16 @@ const ProductExpandedView = ({
           bottom: '0',
           right: '0',
         }}
-        onClick={() => {
+        onClick={(event) => {
           setExpanded(!expanded);
+          const tracked = { element: event.target, time: new Date(), module: `Picture expander. Status: ${!expanded}` };
+          setTracking([...tracking, tracked]);
         }}
         onKeyDown={(event) => {
           if (event.key === 'Enter') {
             setExpanded(!expanded);
+            const tracked = { element: event.target, time: new Date(), module: `Picture expander. Status: ${!expanded}` };
+            setTracking([...tracking, tracked]);
           }
         }}
         role="button"
