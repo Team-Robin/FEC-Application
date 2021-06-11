@@ -28,6 +28,8 @@ const Connect = {
 
   reportReview: (reviewid) => axios.put(`/api/${reviewid}/report`),
 
+  getTest: () => axios.get('/test'),
+
 };
 
 export default Connect;
