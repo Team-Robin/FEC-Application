@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
@@ -30,6 +31,7 @@ const QuestionsView = ({ questionInfo }) => {
   };
 
   const questionInfoObj = questionList();
+
   const handleMoreQuestions = () => {
     setQuestionView(!questionView);
   };
@@ -45,12 +47,13 @@ const QuestionsView = ({ questionInfo }) => {
           <Search searchQuestions={searchQuestions} />
         </div>
         <div className="question-cards">
-        {questionInfoObj.map((question) => <Question question={question} />)}
+          {questionInfoObj.map((question) => <Question key={question.question_id} question={question} />)}
         </div>
         <div className="add-more-questions">
           <button
-            onClick={handleMoreQuestions}>
-              add more questions
+            onClick={handleMoreQuestions}
+          >
+            add more questions
           </button>
         </div>
         <form className="QA-form">

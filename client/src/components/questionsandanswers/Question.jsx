@@ -16,7 +16,6 @@ const Question = React.memo(({ question }) => {
     const date = `${months[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`;
     return date;
   };
-  console.log(question);
 
   const [helpfulness, setHelpfulness] = useState(false);
   const [addHelpful, setAddHelpful] = useState(question.question_helpfulness);
@@ -58,7 +57,9 @@ const Question = React.memo(({ question }) => {
           <button onClick={() => { addOneHelp(); }} className="question-helpfulness-btn" type="button">Yes</button>
         </div>
       </div>
-      <AnswersList answers={question.answers} />
+      <AnswersList
+        answers={Object.entries(question.answers)}
+      />
       <input className="answer-input" type="text" placeholder="submit an answer" />
       <button onClick={() => console.log('Hello')} className="answer-submit-btn" type="button">Submit</button>
     </div>
