@@ -20,18 +20,17 @@ const Question = React.memo(({ question }) => {
   const [helpfulness, setHelpfulness] = useState(false);
   const [addHelpful, setAddHelpful] = useState(question.question_helpfulness);
 
-
   const addOneHelp = () => {
     if (helpfulness === false) {
       Connect.getHelpfulnessQuestions(question.question_id)
-      .then((response) => {
-        if (response.status === 200) {
-          setAddHelpful(addHelpful + 1)
-          setHelpfulness(true);
-        }
-      });
+        .then((response) => {
+          if (response.status === 200) {
+            setAddHelpful(addHelpful + 1);
+            setHelpfulness(true);
+          }
+        });
     }
-  }
+  };
 
   return (
     <div id="questions-answers">
@@ -55,7 +54,7 @@ const Question = React.memo(({ question }) => {
         {'  '}
         <div>
           {addHelpful}
-          <button onClick={() => { addOneHelp() }} className="question-helpfulness-btn" type="button">Yes</button>
+          <button onClick={() => { addOneHelp(); }} className="question-helpfulness-btn" type="button">Yes</button>
         </div>
       </div>
       <AnswersList answers={question.answers} />
