@@ -35,8 +35,8 @@ const ProductInfo = ({
           reviews
         </button>
       </div>
-      <div className="h5 text-thin">{Category}</div>
-      <div className="h3 text-bold">{Name}</div>
+      <div className="h3 text-thin text-muted">{Category}</div>
+      <div className="text-size-10 text-bold text-primary">{Name}</div>
       <ProductPrice Price={Price} SalePrice={SalePrice} />
     </div>
   );

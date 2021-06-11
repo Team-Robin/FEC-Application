@@ -40,7 +40,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
   };
 
   return (
-    <div>
+    <div className="flex-basis-30">
       { !SizeInformation.null ? (
         <>
           {error ? (
@@ -52,7 +52,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
           ) : null}
           <div className="row justify-content-between">
             <select
-              className="select-size text-size-2 rounded-sm pl-4 hover-outline my-2 flex-basis-50 "
+              className="select-size text-size-2 rounded-sm pl-4 hover-outline my-2 flex-basis-50 bg-lighter"
               onChange={(event) => setCurrentSize(event.target.value)}
               value={currentSize || ''}
             >
@@ -68,7 +68,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
               ))}
             </select>
             <select
-              className="select-size text-size-2 rounded-sm pl-4 my-2 mr-2 flex-basis-30"
+              className="select-size text-size-2 rounded-sm pl-4 my-2 mr-2 flex-basis-30 bg-lighter"
               value={`${currentSize ? selectedQuantity : null}` || ''}
               onChange={(event) => setSelectedQuantity(event.target.value)}
             >
@@ -82,14 +82,14 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
             <button
               type="button"
               aria-label="add to cart"
-              className="select-size text-size-2 btn shadow-sm my-2 rounded-sm flex-basis-60"
+              className="select-size text-size-2 btn shadow-sm my-2 rounded-sm flex-basis-60 bg-lighter"
               onClick={onClickValidator}
             >
               <span className=""> Add to Bag </span>
             </button>
             <button
               type="button"
-              className="select-size text-size-2 d-flex justify-content-center my-2 btn shadow-sm rounded-sm flex-basis-25  mr-2"
+              className="select-size text-size-2 d-flex justify-content-center my-2 btn shadow-sm rounded-sm flex-basis-25 mr-2 bg-lighter"
             >
               <i className="far fa-star align-self-center" />
             </button>
@@ -101,7 +101,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
             <div className="text-muted text-bold text-size-4">OUT OF STONKS</div>
             <button
               type="button"
-              className="select-size text-size-2 d-flex justify-content-center my-2 shadow-sm rounded-sm"
+              className="select-size text-size-2 d-flex justify-content-center my-2 shadow-sm rounded-sm bg-lighter"
             >
               <i className="far fa-star align-self-center" />
             </button>
