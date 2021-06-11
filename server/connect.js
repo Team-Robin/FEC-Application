@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 /* eslint-disable import/no-unresolved */
 require('dotenv').config();
@@ -50,16 +51,17 @@ const getQuestions = async ({ product_id }, options = { page: 1, count: 5 }) => 
   },
 });
 
-// const getHelpfulnessQuestions = async ({ question_id }) => axios({
-//   method: 'PUT',
-//   url: 'PUT /qa/questions/:question_id/helpful',
-//   headers: {
-//     Authorization: process.env.GIT_TOKEN,
-//   },
-//   params: {
-//     question_id,
-//   },
-// });
+const getHelpfulnessQuestions = async ({ question_id }) => axios({
+  method: 'PUT',
+  url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/helpful`,
+  headers: {
+    Authorization: process.env.GIT_TOKEN,
+  },
+  data: {
+    question_id,
+  },
+});
+
 const getAnswers = async (id = { id: 104629 }, options = { page: 1, count: 5 }) => axios({
   method: 'GET',
   url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${id.id}/answers`,
@@ -100,4 +102,5 @@ module.exports = {
   getAnswers,
   getReviewsMeta,
   getReviews,
+  getHelpfulnessQuestions,
 };

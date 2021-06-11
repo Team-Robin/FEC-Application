@@ -38,7 +38,6 @@ app.get('/api/products', (req, res) => {
 
 // get by product id
 app.get('/api/products/:productId', (req, res) => {
-  console.log(req.params, '-------------------------------------------------------------------')
   const { productId } = req.params; // productId = req.params.productId;
   connect.getProductId({ id: productId })
     .then((result) => {
@@ -67,7 +66,7 @@ app.get('/api/products/:productId/styles', (req, res) => {
 app.get('/api/qa/questions', (req, res) => {
   connect.getQuestions(req.query)
     .then((result) => {
-      console.log('QUESTIONS IN SERVER', result.data);
+      // console.log('QUESTIONS IN SERVER', result.data);
       res.status(200).send(result.data);
     })
     .catch((error) => {
@@ -79,12 +78,23 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
   connect.getAnswers(req.query)
   // console.log(req.query)
     .then((result) => {
-      console.log('ANSWERS IN SERVER', result.data);
+      // console.log('ANSWERS IN SERVER', result.data);
       res.status(200).send(result.data);
     })
     .catch((error) => {
       // console.log(error);
       res.status(200).send(error);
+    });
+});
+
+// =====================QA PUT============================>>>
+app.put('/api/qa/questions/helpful/', (req, res) => {
+  connect.getHelpfulnessQuestions({question_id: req.body.questionId})
+    .then((result) => {
+      res.status(200).send(result.data);
+    })
+    .catch((err) => {
+      res.send(500, err);
     });
 });
 

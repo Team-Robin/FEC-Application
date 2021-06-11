@@ -16,15 +16,24 @@ const Question = React.memo(({ question }) => {
     const date = `${months[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`;
     return date;
   };
-  // const [questionID, ]
+
   const [helpfulness, setHelpfulness] = useState(false);
-  // eslint-disable-next-line max-len
   const [addHelpful, setAddHelpful] = useState(question.question_helpfulness);
 
-  useEffect(() => {
-    Connect.getHelpfulnessQuestions(question.question_id)
-      .then((response) => setAddHelpful(response.question_helpfulness + 1));
-  }, []);
+
+  const addOneHelp = () => {
+    if (helpfulness === false) {
+      Connect.getHelpfulnessQuestions(question.question_id)
+      .then((response) => {
+        if (response.status === 200) {
+          setAddHelpful(addHelpful + 1)
+          setHelpfulness(true);
+        }
+      });
+    }
+  }
+
+
 
   console.log('QUESSTION', question);
 
@@ -50,7 +59,7 @@ const Question = React.memo(({ question }) => {
         {'  '}
         <div>
           {addHelpful}
-          <button onClick={() => { useEffect(); }} className="question-helpfulness-btn" type="button">Yes</button>
+          <button onClick={() => { addOneHelp() }} className="question-helpfulness-btn" type="button">Yes</button>
         </div>
       </div>
       <AnswersList answers={question.answers} />
