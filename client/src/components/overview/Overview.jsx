@@ -22,7 +22,7 @@ const Overview = ({
         {CurrentStyle.photos && CurrentStyle.photos.length > 0
           ? (<ProductCarousel Photos={CurrentStyle.photos} />)
           : null}
-        <div className="col overview-product-info bg-light px-2 mb-1 py-4 mr-auto">
+        <div className="col overview-product-info bg-light px-2 py-4 mr-auto mb-4">
           <div className="d-flex flex-column h-100">
             <ProductInfo
               Name={Name}
@@ -40,7 +40,7 @@ const Overview = ({
           </div>
         </div>
       </div>
-      <div className="my-3 row align-items-center justify-content-center mx-auto bg-light py-3 px-3 overview-description ">
+      <div className="row align-items-center justify-content-center mx-auto bg-light py-3 px-3 overview-description mb-4">
         <ProductDescription
           Description={Description}
           Slogan={Slogan}
