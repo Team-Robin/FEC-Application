@@ -41,7 +41,6 @@ app.get('/api/products/:productId', (req, res) => {
   const { productId } = req.params; // productId = req.params.productId;
   connect.getProductId({ id: productId })
     .then((result) => {
-      // console.log(result);
       res.status(200).send(result.data);
     })
     .catch((error) => {
@@ -66,7 +65,6 @@ app.get('/api/products/:productId/styles', (req, res) => {
 app.get('/api/qa/questions', (req, res) => {
   connect.getQuestions(req.query)
     .then((result) => {
-      // console.log('QUESTIONS IN SERVER', result.data);
       res.status(200).send(result.data);
     })
     .catch((error) => {
@@ -88,6 +86,9 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
 });
 
 // =====================QA PUT============================>>>
+app.post('/api/qa/questions/helpful', (req, res) => {
+
+})
 app.put('/api/qa/questions/helpful/', (req, res) => {
   connect.getHelpfulnessQuestions({question_id: req.body.questionId})
     .then((result) => {
