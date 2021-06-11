@@ -21,7 +21,7 @@ const App = () => {
   //  Component Did Mount
 
   useEffect(async () => {
-    const id = window.location.pathname.split('/')[2]; // splits '/products/###/' to '/', 'products', '####, '/'. we just want the numbers
+    const id = window.location.pathname.split('/')[2] || '17071'; // splits '/products/###/' to '/', 'products', '####, '/'. we just want the numbers
     const product = await Connect.getProductById(id);
     const reviewMeta = await Connect.getReviewMeta(product.data.id);
     const questions = await Connect.getQuestions(product.data.id);
