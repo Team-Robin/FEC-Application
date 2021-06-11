@@ -124,4 +124,8 @@ app.put('/api/:id/helpful', (req, res) => {
   res.send(200);
 });
 
+app.get('/test', (req, res) => {
+  res.status(200).send('hello from test!');
+});
+
 module.exports = app;

@@ -29,6 +29,7 @@ describe('Connect to server', () => {
   test('Gets the test endpoint', async () => {
     const response = await request.get('/test');
     expect(response.status).toBe(200);
+    expect(response.text).toBe('hello from test!');
   });
 });
 
@@ -44,7 +45,7 @@ describe('Basic React actions', () => {
 
 describe('React Components', () => {
   let productInfo;
-  // let reviewMeta;
+  let reviewMeta;
   // let productStyles;
   // let salesPrice;
   beforeEach(async () => {
