@@ -4,8 +4,7 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
-
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable no-unused-vars */
 import axios from 'axios';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -45,9 +44,9 @@ describe('Basic React actions', () => {
 
 describe('React Components', () => {
   let productInfo;
-  let reviewMeta;
-  let productStyles;
-  let salesPrice;
+  // let reviewMeta;
+  // let productStyles;
+  // let salesPrice;
   beforeEach(async () => {
     productInfo = {
       id: 17071,

@@ -12,6 +12,10 @@ app.use(express.json());
 app.use(morgan('dev')); // see in the server commandline the method, url and speed it took
 app.use(cookieParser());
 
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
 // ===================== Product Information =======================
 
 // trying to figure out how to render the page and product number
@@ -102,7 +106,7 @@ app.get('/api/reviews', (req, res) => {
 });
 
 app.get('/api/reviews/meta', (req, res) => {
-  connect.getReviewsMeta(req.query)
+  connect.getReviewsMeta(req.query.id)
     .then((result) => {
       res.status(200).send(result.data);
     })
@@ -111,8 +115,13 @@ app.get('/api/reviews/meta', (req, res) => {
     });
 });
 
-app.get('/test', (req, res) => {
-  res.status(200).send('hello from test!');
+app.put('/api/:review_id/report', (req, res) => {
+  res.send(200);
+});
+
+app.put('/api/:id/helpful', (req, res) => {
+  connect.setHelpfulReview(req.params.id);
+  res.send(200);
 });
 
 module.exports = app;

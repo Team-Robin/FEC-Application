@@ -17,8 +17,8 @@ const ReviewContent = ({
   }
 
   return (
-    <div>
-      <h3 className="reviewTitle">{summary}</h3>
+    <div className="reviewContent">
+      <h5 className="reviewTitle">{summary}</h5>
       <p className="reviewBody">{text}</p>
       {seeMoreButton}
       {recommendation}
