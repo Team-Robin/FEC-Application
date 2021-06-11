@@ -121,11 +121,11 @@ app.get('/api/reviews/meta', (req, res) => {
 });
 
 app.put('/api/:review_id/report', (req, res) => {
-  console.log(req.params);
   res.send(200);
 });
 
-app.put('/api/:review_id/helpful', (req, res) => {
+app.put('/api/:id/helpful', (req, res) => {
+  connect.setHelpfulReview(req.params.id);
   res.send(200);
 });
 

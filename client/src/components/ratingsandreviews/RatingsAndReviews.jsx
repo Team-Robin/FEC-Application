@@ -74,10 +74,10 @@ class RatingsAndReviews extends React.Component {
     };
     this.state = {
       sortStyle: 'relevant',
-      ratings: {},
-      reviews: [],
-      activeFilters: [],
       displayAmount: 2,
+      activeFilters: [],
+      reviews: [],
+      ratings: {},
     };
   }
 
@@ -120,6 +120,19 @@ class RatingsAndReviews extends React.Component {
       return result;
     }, {});
     return reviews;
+  }
+
+  filterReviews() {
+    const activeFilters = this.state.activeFilters;
+    const reviews = this.state.reviews
+    const filters = activeFilters.reduce((result, f) => Object.assign(result, { [f[0]]: f }), {});
+
+    return reviews.reduce((result, r) => {
+      if (!Object.keys(filters).length || filters[r.rating]) {
+        result.push(r);
+      }
+      return result;
+    }, []);
   }
 
   reportReview(reviewId) {
@@ -168,7 +181,7 @@ class RatingsAndReviews extends React.Component {
     const position = parseInt(key.split(' ')[0], 10) - 1;
     const newFilters = this.state.activeFilters.slice();
     newFilters[position] = key;
-    this.state({
+    this.setState({
       activeFilters: newFilters,
     });
   }
@@ -181,6 +194,7 @@ class RatingsAndReviews extends React.Component {
 
   render() {
     if (this.state.reviews.length) {
+      console.log(this.state);
       return (
         <div id="rnr">
           <RatingsOverview
@@ -191,7 +205,7 @@ class RatingsAndReviews extends React.Component {
           <ReviewsPanel
             displayAmount={this.state.displayAmount}
             activeFilters={this.state.activeFilters}
-            reviews={this.state.reviews}
+            reviews={this.filterReviews()}
             controls={this.controls.reviews}
           />
         </div>

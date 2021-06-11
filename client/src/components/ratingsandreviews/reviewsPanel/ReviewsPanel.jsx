@@ -9,7 +9,7 @@ const ReviewsPanel = ({
 }) => (
   <div id="reviewPanel">
     <SortHeader
-      reviewCount={reviews.length}
+      reviews={reviews}
       displayControls={controls.display}
       activeFilters={activeFilters}
     />

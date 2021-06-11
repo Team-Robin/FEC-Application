@@ -41,16 +41,7 @@ const getQuestions = async ({ product_id }, options = { page: 1, count: 5 }) => 
   },
 });
 
-const getHelpfulnessQuestions = async ({ question_id }) => axios({
-  method: 'PUT',
-  url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/helpful`,
-  headers: {
-    Authorization: process.env.GIT_TOKEN,
-  },
-  data: {
-    question_id,
-  },
-});
+const getHelpfulnessQuestions = async ({ question_id }) => axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/helpful`);
 
 const getAnswers = async (id = { id: 104629 }, options = { page: 1, count: 5 }) => axios({
   method: 'GET',
@@ -65,17 +56,12 @@ const getAnswers = async (id = { id: 104629 }, options = { page: 1, count: 5 }) 
 const getReviewsMeta = async (product_id) => axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${product_id}`);
 
 const getReviews = async (params) => axios.get(
-  'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/',
-  { params }
+  'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/', { params },
 );
 
-const reportReview = async (review_id) => axios.put({
-  method: 'GET',
-  url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/',
-  headers: {
-    Authorization: process.env.GIT_TOKEN,
-  },
-});
+const reportReview = async (id) => axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${id}/report`);
+
+const setHelpfulReview = async (id) => axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${id}/helpful`);
 
 module.exports = {
   getProducts,
@@ -86,4 +72,6 @@ module.exports = {
   getReviewsMeta,
   getReviews,
   getHelpfulnessQuestions,
+  reportReview,
+  setHelpfulReview,
 };

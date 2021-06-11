@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const sortHeader = ({ activeFilters, displayControls, reviewCount }) => {
+const sortHeader = ({ activeFilters, displayControls, reviews }) => {
   let filters = '';
   if (activeFilters.length) {
     filters = (
@@ -29,7 +29,7 @@ const sortHeader = ({ activeFilters, displayControls, reviewCount }) => {
   return (
     <div>
       <div id="sortHeader">
-        <span>{`${reviewCount}  reviews, sorted by `}</span>
+        <span>{`${reviews.length}  reviews, sorted by `}</span>
         <select onChange={displayControls.sort}>
           <option value="relevant">Relevance</option>
           <option value="helpful">Most Helpful</option>
@@ -44,7 +44,7 @@ const sortHeader = ({ activeFilters, displayControls, reviewCount }) => {
 sortHeader.propTypes = {
   activeFilters: PropTypes.arrayOf(PropTypes.string).isRequired,
   displayControls: PropTypes.objectOf(PropTypes.func).isRequired,
-  reviewCount: PropTypes.number.isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
 export default sortHeader;
