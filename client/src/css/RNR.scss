@@ -3,19 +3,29 @@
   flex-flow: row wrap;
   width: 100%;
   margin: 0;
-  background: rgb(245, 242, 242);
+  padding: 50px 0;
+  background: #ededed;
   justify-content: center;
   align-items: flex-start;
 }
 
 #rnr > * {
   display: inline-block;
-  background: rgb(253, 252, 252);
+  background: #ededed;
   margin: 1rem;
 }
 
 #rnr button {
   text-decoration: underline;
+}
+//starComponent---------------------------------------------------------
+
+.starComponent {
+  padding: 5px;
+}
+
+path {
+  fill: #338689
 }
 
 //----------------------------------------------------------------------
@@ -24,8 +34,7 @@
   display: flex;
   flex-flow: column wrap;
   flex: 1 2 auto;
-  border-left: solid #5fc3c5;
-  position: sticky;
+  max-width: 86%;
 }
 
 #ratingsOverview h1 {
@@ -34,16 +43,11 @@
 }
 
 #ratingsOverview > * {
-  background: rgb(236, 236, 236);
+  background: #ececec;
   flex: 1 1 auto;
-}
-
-#ratingsOverview > *::after {
-  content: '';
-  border-top: solid thin #a7a7a7;
-  display: block;
-  width: 30%;
-  margin: 1em auto 0;
+  padding: 0.5em 0;
+  background: #b9dfe0;
+  box-shadow: black 6px 8px 10px -15px;
 }
 
 //rating Summary-------------------------------------------------
@@ -51,6 +55,9 @@
   display: flex;
   flex-flow: column wrap;
   align-content: space-around;
+  padding-bottom: 2em;
+  background: #ededed;
+  box-shadow: none;
 }
 //ratingBreakdown------------------------------------------------
 #ratingBreakdown {
@@ -58,8 +65,23 @@
   flex-flow: column wrap;
   align-content: center;
   justify-content: space-around;
-
+  border: solid;
+  border-radius: 2em 0.5rem 0 0;
+  border-top: solid #2c9b9d;
+  border-left: solid #2c9b9d;
+  border-bottom: none;
+  border-right: none;
+  padding-top: 2em;
 }
+
+#ratingBreakdown::after {
+  content: '';
+  border-top: solid thin #a7a7a7;
+  display: block;
+  width: 30%;
+  margin: 1.5em auto 0;
+}
+
 .ratingBar {
   width: 70%;
 }
@@ -81,6 +103,9 @@
   flex-flow: column wrap;
   align-content: center;
   justify-content: space-around;
+  border-left: solid #2c9b9d;
+  border-radius: 0 0 2em 0.5em;
+  padding-bottom: 3em;
 }
 
 .characteristic > * {
@@ -118,6 +143,8 @@
   flex-flow: column;
   flex: 10;
   justify-content: center;
+  align-items: center;
+  padding-top: .5em;
 }
 
 #reviewPanel > * {
@@ -125,10 +152,12 @@
   flex: 1 1 auto;
   margin: .25rem;
   padding: .5rem 0;
+  width: 100%;
 }
 
 //sort header----------------------------------------------------------
 #filters {
+  font-size: .7em;
   display: flex;
   justify-content: flex-start;
   align-content: center;
@@ -137,12 +166,14 @@
 }
 
 .filterBtn {
-  font-size: .8em;
-  background: rgb(238, 137, 137);
-  border-radius: 1em;
-  padding: 0 .5em;
-  margin: .5em;
+  color: #f1f1f1;
+  font-size: 1em;
+  font-weight: 600;
+  background: #da3939;
+  border-radius: .25em;
+  padding: .2em;
   display: flex;
+  margin: 0 0.5em;
   white-space: pre;
 }
 
@@ -151,9 +182,22 @@
 #sortHeader {
   display: flex;
   justify-content: center;
+  font-size: 1.5em;
+  flex-flow: column nowrap;
+  align-items: center;
+  flex: 1 1 4em;
 }
-#sortHeader > * {
-  margin: 0 .25em;
+
+#sortHeader:first-child > * {
+  margin: .5em;
+}
+
+sortHeader::after {
+  content: "";
+  border-top: solid thin #a7a7a7;
+  display: block;
+  width: 30%;
+  margin: 1em auto 0;
 }
 
 //reviewList ----------------------------------------------------------
@@ -163,6 +207,8 @@
   flex-flow: column nowrap;
   justify-content: space-between;
   padding: 0;
+  width: 90%;
+  background: transparent;
 }
 
 .review {
@@ -170,10 +216,11 @@
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
-  border-left: solid #5fc3c5;
-  margin: .25em 0;
-  padding: .25em;
-  background: #E3E3E2;
+  border-left: solid #2c9b9d;
+  margin: 0.25em 0;
+  padding: 0.25em;
+  background: #b9dfe0;
+  box-shadow: black 6px 8px 10px -15px;
 }
 
 .review > * {
@@ -221,6 +268,9 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: start;
+  width: 93%;
+  padding: 0em;
+  margin: 0;
 }
 
 #reviewButtons button {
@@ -276,3 +326,139 @@
   display: block;
   margin: 0 auto;
 }
+
+//Modals
+
+#outerModal {
+  position: fixed;
+  z-index: 120;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  margin: auto;
+  display: inline-block;
+  opacity: 1;
+  background: none;
+  backdrop-filter: blur(6px);
+}
+
+#modalWindow {
+  display: flex;
+  flex-flow: column;
+  margin: 0 auto;
+  width: 80%;
+  height: 65%;
+  position: fixed;
+  left: 10%;
+  top: 10%;
+  background: #ededed;
+  justify-content: space-between;
+}
+
+#modalBottom {
+  background-image: url(http://localhost:3000/book.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+  height: 70%;
+  width: 100%;
+  top: 65%;
+  position: absolute;
+}
+
+#modalTop {
+  display: flex;
+  flex: 1 1 80%;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-content: stretch;
+}
+
+#modalTop div {
+  border: solid black;
+  padding: .5em;
+  margin: .25em;
+}
+
+#ratingSelectors {
+  display: flex;
+  flex-flow: column;
+  flex: 1 1 5%;
+}
+
+#addReviewForm {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 1 60%;
+}
+
+#formContent {
+  display: flex;
+  flex-flow: row nowrap;
+  flex: 1 1 60%;
+}
+
+#formText {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 1 70%;
+}
+
+#formText > * {
+  flex: 0 0 10%
+}
+
+#formText textarea {
+  flex: 1 1 60%;
+  background: transparent;
+}
+
+div#userInfo {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 1em 0;
+  border: none;
+}
+
+#formPics {
+  display: flex;
+  flex-flow: column;
+  flex: 1 1 20%;
+}
+
+#formFooter {
+  display: flex;
+  flex: 1 1 10%;
+  justify-content: space-evenly;
+  font-size: .8em;
+}
+
+#formFooter > * {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+  border: black solid;
+  padding: .25em;
+  flex: 1 1 30%;
+}
+
+#picturesSideBar {
+  border: solid black;
+  flex: 1 1 30%;
+}
+
+#addReviewForm input, #addReviewForm textarea {
+  border: none;
+  border-bottom: solid rgb(83, 83, 83);
+  border-radius: 0;
+  margin: 0 1em;
+  padding: 0;
+}
+
+.emptiness > * {
+  fill: transparent;
+  stroke: black;
+}
+

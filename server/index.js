@@ -111,12 +111,13 @@ app.get('/api/reviews', (req, res) => {
 });
 
 app.get('/api/reviews/meta', (req, res) => {
-  connect.getReviewsMeta(req.query.id)
+
+  connect.getReviewsMeta(Number(req.query.id))
     .then((result) => {
       res.status(200).send(result.data);
     })
     .catch((error) => {
-      res.status(200).send(error);
+      res.status(error.response.status).send(error);
     });
 });
 
@@ -128,6 +129,10 @@ app.put('/api/:id/helpful', (req, res) => {
   connect.setHelpfulReview(req.params.id);
   res.send(200);
 });
+
+app.post('/reviews', (req, res) => {
+  console.log(req.query);
+})
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console

@@ -27,8 +27,8 @@ const sortHeader = ({ activeFilters, displayControls, reviews }) => {
   }
 
   return (
-    <div>
-      <div id="sortHeader">
+    <div id="sortHeader">
+      <div >
         <span>{`${reviews.length}  reviews, sorted by `}</span>
         <select onChange={displayControls.sort}>
           <option value="relevant">Relevance</option>
