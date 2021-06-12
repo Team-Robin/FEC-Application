@@ -7,6 +7,8 @@ import React, { useState, useEffect } from 'react';
 import Search from './Search';
 import Question from './Question';
 import QuestionsAndAnswers from './QuestionsAndAnswers';
+import AddQuestion from './AddQuestion';
+// import AddQuestionForm from './AddQuestionForm';
 // import Questions from './questionsandanswers/Questions.jsx';
 const QuestionsView = ({ questionInfo }) => {
   // const info = questionInfo.questions;
@@ -58,6 +60,9 @@ const QuestionsView = ({ questionInfo }) => {
         </div>
         <form className="QA-form">
           <h5>Ask a Question</h5>
+          <div>
+            <AddQuestion questionInfo={questionInfo.questions} />
+          </div>
           <input className="QA-search-box" type="text" name="QA-search-box" placeholder="Have a question?" />
         </form>
       </div>

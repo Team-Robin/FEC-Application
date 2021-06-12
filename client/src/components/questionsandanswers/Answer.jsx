@@ -10,7 +10,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Questions from './Questions';
 
-const Answer = React.memo(({ answerBody }) => {
+const Answer = ({ answerBody }) => {
   const dateFormat = (inputTime) => {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
       'August', 'September', 'October', 'November', 'December',
@@ -45,7 +45,7 @@ const Answer = React.memo(({ answerBody }) => {
       </p>
     </div>
   );
-});
+};
 
 Answer.propTypes = {
   answerBody: PropTypes.object.isRequired,

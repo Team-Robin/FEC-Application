@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 import AnswersList from './AnswersList';
 import Connect from '../Connect';
 
-const Question = React.memo(({ question }) => {
+const Question = ({ question }) => {
   const dateFormat = (inputTime) => {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
       'August', 'September', 'October', 'November', 'December',
@@ -64,6 +64,6 @@ const Question = React.memo(({ question }) => {
       <button onClick={() => console.log('Hello')} className="answer-submit-btn" type="button">Submit</button>
     </div>
   );
-});
+};
 
 export default Question;

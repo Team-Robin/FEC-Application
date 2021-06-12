@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/no-unresolved */
 const express = require('express');
@@ -91,6 +92,20 @@ app.put('/api/qa/questions/helpful/', (req, res) => {
     })
     .catch((err) => {
       res.send(500, err);
+    });
+});
+// =====================QA POST===========================>>>
+app.post('/api/qa/questions', (req, res) => {
+  req.body.product_id = Number(req.body.product_id);
+  connect.postAddQuestion(req.body)
+    .then((result) => {
+      res.status(200).end(result.data);
+    })
+    .catch((err) => {
+      if (err.response.status === 422) {
+        res.send(422, 'Please check to make sure your information is corretct');
+      }
+      res.send(err.response.status, err);
     });
 });
 
