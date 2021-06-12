@@ -9,6 +9,7 @@ import QuestionsView from './questionsandanswers/QuestionsView.jsx';
 import RatingsAndReviews from './ratingsandreviews/RatingsAndReviews.jsx';
 import Connect from './Connect';
 import LoadingPulse from './LoadingPulse';
+import TrackerContext from './context/Tracker';
 
 const App = () => {
   // both the this.state and this.setState()
@@ -18,6 +19,7 @@ const App = () => {
   const [productStyles, setProductStyles] = useState({});
   const [currentStyle, setCurrentStyle] = useState({});
   const [productSalesPrice, setProductSalesPrice] = useState({});
+  const [tracking, setTracking] = useState([]);
   //  Component Did Mount
 
   useEffect(async () => {
@@ -42,7 +44,7 @@ const App = () => {
   }, [currentStyle]);
 
   return (
-    <>
+    <TrackerContext.Provider value={{ tracking, setTracking }}>
       {productInfo.product ? (
         <Overview
           Name={productInfo.product.name}
@@ -68,7 +70,7 @@ const App = () => {
       {productInfo.product ? (
         <RatingsAndReviews productId={productInfo.product.id} />
       ) : null}
-    </>
+    </TrackerContext.Provider>
   );
 };
 
