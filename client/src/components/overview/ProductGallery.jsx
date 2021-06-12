@@ -1,10 +1,12 @@
 /* eslint-disable react/forbid-prop-types */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ProductGalleryItem from './ProductGalleryItem';
+import TrackerContext from '../context/Tracker';
 
 const ProductGallery = ({ PhotoGallery, CurrentPhoto, SelectPhoto }) => {
   const [currentView, setCurrentView] = useState(0);
+  const { tracking, setTracking } = useContext(TrackerContext);
 
   useEffect(() => {
     if (CurrentPhoto.index > currentView || CurrentPhoto.index < currentView) {
@@ -44,14 +46,22 @@ const ProductGallery = ({ PhotoGallery, CurrentPhoto, SelectPhoto }) => {
       <div className="overview-gallery-thumbnails-wrapper">
         <button
           type="button"
-          onClick={() => galleryReducer(currentView + 7)}
+          onClick={(event) => {
+            galleryReducer(currentView + 7);
+            const tracked = { element: event.target, time: new Date(), module: 'Gallery Increment' };
+            setTracking([...tracking, tracked]);
+          }}
           className="overview-gallery-increment"
         >
           <i className="fas fa-chevron-down fa-lg rounded-circle overview-gallery-icon" style={{ overflow: 'hidden', fontSize: '2em' }} />
         </button>
         <button
           type="button"
-          onClick={() => galleryReducer(currentView - 7)}
+          onClick={(event) => {
+            galleryReducer(currentView - 7);
+            const tracked = { element: event.target, time: new Date(), module: 'Gallery Decrement' };
+            setTracking([...tracking, tracked]);
+          }}
           className="overview-gallery-decrement"
         >
           <i className="fas fa-chevron-up fa-lg rounded-circle overview-gallery-icon" style={{ overflow: 'hidden', fontSize: '2em' }} />

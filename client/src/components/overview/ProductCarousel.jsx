@@ -1,9 +1,10 @@
 /* eslint-disable react/forbid-prop-types */
 // eslint-disable-next-line import/no-unresolved
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ProductGallery from './ProductGallery';
 import ProductExpandedView from './ProductExpandedView';
+import TrackerContext from '../context/Tracker';
 
 const ProductCarousel = ({ Photos }) => {
   // hello
@@ -14,6 +15,7 @@ const ProductCarousel = ({ Photos }) => {
   const [restrict, setRestrict] = useState('decrement');
   const [expanded, setExpanded] = useState(false);
   const [zoomed, setZoomed] = useState(false);
+  const { tracking, setTracking } = useContext(TrackerContext);
 
   useEffect(() => {
     if (!expanded) {
@@ -106,12 +108,16 @@ const ProductCarousel = ({ Photos }) => {
           </>
         ) : null}
         <div
-          onClick={() => {
+          onClick={(event) => {
             setExpanded(!expanded);
+            const tracked = { element: event.target, time: new Date(), module: `Picture expander. Status: ${!expanded}` };
+            setTracking([...tracking, tracked]);
           }}
           onKeyDown={(event) => {
             if (event.key === 'Enter') {
               setExpanded(!expanded);
+              const tracked = { element: event.target, time: new Date(), module: `Picture expander. Status: ${!expanded}` };
+              setTracking([...tracking, tracked]);
             }
           }}
           style={{
@@ -135,8 +141,10 @@ const ProductCarousel = ({ Photos }) => {
             type="button"
             className="overview-carousel-decrement"
             style={expanded ? { left: '0' } : null}
-            onClick={() => {
+            onClick={(event) => {
               carouselReducer(currentPhoto.index - 1);
+              const tracked = { element: event.target, time: new Date(), module: 'Carousel decrement' };
+              setTracking([...tracking, tracked]);
             }}
           >
             <i className="fas fa-chevron-left fa-lg rounded-circle overview-carousel-icon" style={{ overflow: 'hidden', fontSize: '2em' }} />
@@ -147,8 +155,10 @@ const ProductCarousel = ({ Photos }) => {
             type="button"
             className="overview-carousel-increment"
             style={expanded ? { left: '100%' } : null}
-            onClick={() => {
+            onClick={(event) => {
               carouselReducer(currentPhoto.index + 1);
+              const tracked = { element: event.target, time: new Date(), module: 'Carousel increment' };
+              setTracking([...tracking, tracked]);
             }}
           >
             <i className="fas fa-chevron-right fa-lg rounded-circle overview-carousel-icon" style={{ overflow: 'hidden', fontSize: '2em' }} />

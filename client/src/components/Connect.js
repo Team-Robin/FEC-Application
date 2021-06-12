@@ -30,6 +30,8 @@ const Connect = {
 
   submitReview: (params) => axios.post('/reviews', params),
 
+  getTest: () => axios.get('/test'),
+
 };
 
 export default Connect;

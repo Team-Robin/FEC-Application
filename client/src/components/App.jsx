@@ -9,6 +9,7 @@ import QuestionsView from './questionsandanswers/QuestionsView.jsx';
 import RatingsAndReviews from './ratingsandreviews/RatingsAndReviews.jsx';
 import Connect from './Connect';
 import LoadingPulse from './LoadingPulse';
+import TrackerContext from './context/Tracker';
 
 const App = () => {
   // both the this.state and this.setState()
@@ -18,10 +19,11 @@ const App = () => {
   const [productStyles, setProductStyles] = useState({});
   const [currentStyle, setCurrentStyle] = useState({});
   const [productSalesPrice, setProductSalesPrice] = useState({});
+  const [tracking, setTracking] = useState([]);
   //  Component Did Mount
 
   useEffect(async () => {
-    const id = window.location.pathname.split('/')[2]; // splits '/products/###/' to '/', 'products', '####, '/'. we just want the numbers
+    const id = window.location.pathname.split('/')[2] || '17071'; // splits '/products/###/' to '/', 'products', '####, '/'. we just want the numbers
     const product = await Connect.getProductById(id);
     const reviewMeta = await Connect.getReviewMeta(product.data.id);
     const questions = await Connect.getQuestions(product.data.id);
@@ -42,7 +44,7 @@ const App = () => {
   }, [currentStyle]);
 
   return (
-    <>
+    <TrackerContext.Provider value={{ tracking, setTracking }}>
       {productInfo.product ? (
         <Overview
           Name={productInfo.product.name}
@@ -68,7 +70,7 @@ const App = () => {
       {productInfo.product ? (
         <RatingsAndReviews productId={productInfo.product.id} />
       ) : null}
-    </>
+    </TrackerContext.Provider>
   );
 };
 
