@@ -29,15 +29,12 @@ const RatingStars = ({ ratings, mutable, charId = 0, cb = ()=>{} }) => {
     let position  = target.parentElement.attributes.position.value;
     position = Number(position);
     const grandParent = target.parentElement.parentElement;
-    console.log(target, grandParent.children)
     for (var i = 0; i < grandParent.children.length; i++) {
       let svg = grandParent.children[i];
       if (i <= position) {
         svg.classList.remove('emptiness');
-        console.log('inside the if statement', svg);
       } else {
         svg.classList.add('emptiness');
-        console.log(svg);
       }
     }
     cb(charId, position);

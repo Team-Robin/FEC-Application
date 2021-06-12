@@ -36,7 +36,6 @@ const AddReviewModal = ({ labels, ratings, submitReview }) => {
     const target = e.target;
     const name = e.target.name;
     const state = name[0].toUpperCase() + name.slice(1);
-    console.log(state, target.attributes)
     setters[`set${state}`](target.value);
   }
 

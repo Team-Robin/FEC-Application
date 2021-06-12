@@ -223,7 +223,6 @@ class RatingsAndReviews extends React.Component {
 
   render() {
     if (this.state.reviews.length) {
-      console.log(this.state);
       return (
         <div id="rnr">
           <RatingsOverview
