@@ -2,17 +2,22 @@
 /* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/no-unresolved */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ProductPrice from './ProductPrice';
 import StarRatings from '../StarRatings';
+import TrackerContext from '../context/Tracker';
 
 const ProductInfo = ({
   Name, Category, Price, ReviewsRatings, SalePrice,
 }) => {
   const [totalReviews, setTotalReviews] = useState();
+  const { tracking, setTracking } = useContext(TrackerContext);
+
   const scrollTo = (event) => {
-    document.querySelector('#reviewSummary').scrollIntoView({
+    const tracked = { element: event.target, time: new Date(), module: 'Scroll to Reviews' };
+    setTracking([...tracking, tracked]);
+    document.querySelector('#ratingSummary').scrollIntoView({
       behavior: 'smooth',
     });
   };

@@ -1,7 +1,8 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable import/no-unresolved */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import TrackerContext from '../context/Tracker';
 
 const ProductFinalSelect = ({ SizeInformation = {} }) => {
   const [currentSize, setCurrentSize] = useState();
@@ -9,7 +10,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
   const [quantityOptions, setQuantityOptions] = useState([]);
   const [selectedQuantity, setSelectedQuantity] = useState();
   const [error, setError] = useState(false);
-
+  const { tracking, setTracking } = useContext(TrackerContext);
   useEffect(() => {
     if (currentSize) {
       setQuantity(parseInt(currentSize.split(',')[1], 10));
@@ -30,7 +31,9 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
     setQuantityOptions(qOpts);
   }, [quantity]);
 
-  const onClickValidator = () => {
+  const onClickValidator = (event) => {
+    const tracked = { element: event.target, time: new Date(), module: 'Add to Cart' };
+    setTracking([...tracking, tracked]);
     if (!currentSize && !selectedQuantity) {
       setError(true);
     } else {
@@ -53,7 +56,11 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
           <div className="row justify-content-between">
             <select
               className="select-size text-size-2 rounded-sm pl-4 hover-outline my-2 flex-basis-50 bg-lighter"
-              onChange={(event) => setCurrentSize(event.target.value)}
+              onChange={(event) => {
+                setCurrentSize(event.target.value);
+                const tracked = { element: event.target, time: new Date(), module: `Size Selector. Size Selected: ${event.target.value}` };
+                setTracking([...tracking, tracked]);
+              }}
               value={currentSize || ''}
             >
               <option value="">Select size</option>
@@ -70,7 +77,11 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
             <select
               className="select-size text-size-2 rounded-sm pl-4 my-2 mr-2 flex-basis-30 bg-lighter"
               value={`${currentSize ? selectedQuantity : null}` || ''}
-              onChange={(event) => setSelectedQuantity(event.target.value)}
+              onChange={(event) => {
+                setSelectedQuantity(event.target.value);
+                const tracked = { element: event.target, time: new Date(), module: `Quantity Selector. Quantity Selected: ${event.target.value}` };
+                setTracking([...tracking, tracked]);
+              }}
             >
               <option value="">-</option>
               {quantityOptions.map((value) => (
@@ -91,6 +102,10 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
             <button
               type="button"
               className="select-size text-size-2 d-flex justify-content-center my-2 btn shadow rounded-sm flex-basis-25 mr-2 bg-lighter"
+              onClick={(event) => {
+                const tracked = { element: event.target, time: new Date(), module: 'Add to favourites' };
+                setTracking([...tracking, tracked]);
+              }}
             >
               <i className="far fa-star align-self-center" />
             </button>
@@ -103,6 +118,10 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
             <button
               type="button"
               className="select-size text-size-2 d-flex justify-content-center my-2 shadow rounded-sm bg-lighter"
+              onClick={(event) => {
+                const tracked = { element: event.target, time: new Date(), module: 'Add to favourites' };
+                setTracking([...tracking, tracked]);
+              }}
             >
               <i className="far fa-star align-self-center" />
             </button>
