@@ -4,9 +4,12 @@ import RatingSummary from './RatingSummary';
 import RatingBreakdown from './ratingBreakdown/RatingBreakdown';
 import CharacteristicList from './characteristicList/CharacteristicList';
 
-const RatingsOverview = ({ labels, ratingMetaData, controls }) => (
+const RatingsOverview = ({
+  starComponent, labels, ratingMetaData, controls,
+}) => (
   <div id="ratingsOverview">
     <RatingSummary
+      starComponent={starComponent}
       ratings={ratingMetaData.ratings}
       recommended={ratingMetaData.recommended}
     />
@@ -22,6 +25,7 @@ const RatingsOverview = ({ labels, ratingMetaData, controls }) => (
 );
 
 RatingsOverview.propTypes = {
+  starComponent: PropTypes.element.isRequired,
   labels: PropTypes.objectOf(PropTypes.object).isRequired,
   ratingMetaData: PropTypes.objectOf(PropTypes.any).isRequired,
   controls: PropTypes.objectOf(PropTypes.func).isRequired,

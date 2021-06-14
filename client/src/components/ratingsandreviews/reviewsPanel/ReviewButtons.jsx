@@ -10,7 +10,7 @@ const ReviewButtons = ({ displayAmount, reviewCount, footerControls }) => {
     >
       See More
     </button>
-  ) : <p>No More Reviews</p>;
+  ) : '';
 
   return (
     <div id="reviewButtons">
