@@ -9385,7 +9385,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/readable-stream-npm-3.6.0-23a4a5eb56-f178b1daa8.zip/node_modules/readable-stream/",
           "packageDependencies": [
             ["readable-stream", "npm:3.6.0"],
-            ["inherits", "npm:2.0.4"],
+            ["inherits", "npm:2.0.3"],
             ["string_decoder", "npm:1.3.0"],
             ["util-deprecate", "npm:1.0.2"]
           ],

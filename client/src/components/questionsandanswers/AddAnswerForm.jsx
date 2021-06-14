@@ -1,11 +1,9 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Modal from './Modal';
 import Connect from '../Connect';
 
-const AddQuestionForm = ({ questionInfo }) => {
+const AddAnswerForm = ({ answerBody}) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [body, setBody] = useState('');
@@ -71,8 +69,4 @@ const AddQuestionForm = ({ questionInfo }) => {
   );
 };
 
-AddQuestionForm.propTypes = {
-  questionInfo: PropTypes.objectOf(PropTypes.any).isRequired,
-};
-
-export default AddQuestionForm;
+export default AddAnswerForm;

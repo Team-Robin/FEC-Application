@@ -9,6 +9,7 @@ import React from 'react';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Questions from './Questions';
+import AddAnswer from './AddAnswer';
 
 const Answer = ({ answerBody }) => {
   const dateFormat = (inputTime) => {
@@ -43,6 +44,9 @@ const Answer = ({ answerBody }) => {
         |
         <button className="helpful-btn" type="button">  No</button>
       </p>
+      <div>
+        <AddAnswer answerBody={answerBody} />
+      </div>
     </div>
   );
 };

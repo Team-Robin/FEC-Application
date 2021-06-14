@@ -42,7 +42,6 @@ const getQuestions = async ({ product_id }, options = { page: 1, count: 5 }) => 
 });
 const postAddQuestion = async (options) => axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions', options);
 
-
 // const postAddQuestion = async (query)) => axios({
 //   method: 'POST',
 //   url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions',
@@ -50,7 +49,7 @@ const postAddQuestion = async (options) => axios.post('https://app-hrsei-api.her
 
 const getHelpfulnessQuestions = async ({ question_id }) => axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/helpful`);
 
-const getAnswers = async (id = { id: 104629 }, options = { page: 1, count: 5 }) => axios({
+const getAnswers = async (id = { id: 104629 }, options = { page: 1, count: 100 }) => axios({
   method: 'GET',
   url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${id.id}/answers`,
   params: {

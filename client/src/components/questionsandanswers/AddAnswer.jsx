@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Modal from './Modal';
-import AddQuestionForm from './AddQuestionForm';
+import AddAnswerForm from './AddAnswerForm';
 
-const AddQuestion = ({ questionInfo }) => {
+const AddAnswer = ({ answerBody }) => {
   // useEffect();
   const [modal, setModal] = useState(false);
   const openModal = () => {
@@ -17,19 +17,15 @@ const AddQuestion = ({ questionInfo }) => {
   return (
     <div>
       <button className="modal-btn" onClick={openModal} type="button">
-        Add Question
+        Add Answer
       </button>
       {modal ? (
         <Modal closeModal={closeModal}>
-          <AddQuestionForm questionInfo={questionInfo} />
+          <AddAnswerForm answerBody={answerBody} />
         </Modal>
       ) : ''}
     </div>
   );
 };
 
-AddQuestion.propTypes = {
-  questionInfo: PropTypes.objectOf(PropTypes.any).isRequired,
-};
-
-export default AddQuestion;
+export default AddAnswer;
