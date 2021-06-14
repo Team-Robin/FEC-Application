@@ -3,6 +3,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import TrackerContext from '../context/Tracker';
+import ThemeContext from '../context/Theme';
 
 const ProductFinalSelect = ({ SizeInformation = {} }) => {
   const [currentSize, setCurrentSize] = useState();
@@ -11,6 +12,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
   const [selectedQuantity, setSelectedQuantity] = useState();
   const [error, setError] = useState(false);
   const { tracking, setTracking } = useContext(TrackerContext);
+  const { themeMode } = useContext(ThemeContext);
   useEffect(() => {
     if (currentSize) {
       setQuantity(parseInt(currentSize.split(',')[1], 10));
@@ -55,7 +57,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
           ) : null}
           <div className="row justify-content-between">
             <select
-              className="select-size text-size-2 rounded-sm pl-4 hover-outline my-2 flex-basis-50 bg-lighter"
+              className={`select-size text-size-2 rounded-sm pl-4 hover-outline my-2 flex-basis-50 btn shadow my-2 ${themeMode === 'Light' ? 'bg-light text-dark' : 'bg-darker text-light'}`}
               onChange={(event) => {
                 setCurrentSize(event.target.value);
                 const tracked = { element: event.target, time: new Date(), module: `Size Selector. Size Selected: ${event.target.value}` };
@@ -75,7 +77,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
               ))}
             </select>
             <select
-              className="select-size text-size-2 rounded-sm pl-4 my-2 mr-2 flex-basis-30 bg-lighter"
+              className={`select-size text-size-2 rounded-sm pl-4 my-2 mr-2 flex-basis-30 btn shadow my-2 ${themeMode === 'Light' ? 'bg-light text-dark' : 'bg-darker text-light'}`}
               value={`${currentSize ? selectedQuantity : null}` || ''}
               onChange={(event) => {
                 setSelectedQuantity(event.target.value);
@@ -93,21 +95,21 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
             <button
               type="button"
               aria-label="add to cart"
-              className="select-size text-size-2 btn shadow my-2 rounded-sm flex-basis-60 bg-lighter"
+              className={`select-size text-size-2 btn shadow my-2 rounded-sm flex-basis-60 btn-focus  ${themeMode === 'Light' ? 'bg-light text-dark' : 'bg-darker text-light'}`}
               onClick={onClickValidator}
             >
-              <span className=""> Add to Bag </span>
-              <i className="fas fa-plus" style={{ float: 'right', marginRight: '10%' }} />
+              <span className={`${themeMode === 'Light' ? 'text-dark' : 'text-light'}`}> Add to Bag </span>
+              <i className={`fas fa-plus ${themeMode === 'Light' ? 'text-dark' : 'text-light'}`} style={{ float: 'right', marginRight: '10%' }} />
             </button>
             <button
               type="button"
-              className="select-size text-size-2 d-flex justify-content-center my-2 btn shadow rounded-sm flex-basis-25 mr-2 bg-lighter"
+              className={`text-size-2 d-flex justify-content-center my-2 btn shadow rounded-sm flex-basis-25 mr-2 btn-focus select-size ${themeMode === 'Light' ? 'bg-light text-dark' : 'bg-darker text-light'}`}
               onClick={(event) => {
                 const tracked = { element: event.target, time: new Date(), module: 'Add to favourites' };
                 setTracking([...tracking, tracked]);
               }}
             >
-              <i className="far fa-star align-self-center" />
+              <i className={`far fa-star align-self-center ${themeMode === 'Light' ? 'text-dark' : 'text-light'}`} />
             </button>
           </div>
         </>
@@ -117,13 +119,13 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
             <div className="text-muted text-bold text-size-4">OUT OF STONKS</div>
             <button
               type="button"
-              className="select-size text-size-2 d-flex justify-content-center my-2 shadow rounded-sm bg-lighter"
+              className={`select-size text-size-2 d-flex justify-content-center my-2 shadow rounded-sm btn-focus  ${themeMode === 'Light' ? 'bg-light text-dark' : 'bg-darker text-light'}`}
               onClick={(event) => {
                 const tracked = { element: event.target, time: new Date(), module: 'Add to favourites' };
                 setTracking([...tracking, tracked]);
               }}
             >
-              <i className="far fa-star align-self-center" />
+              <i className={`far fa-star align-self-center ${themeMode === 'Light' ? 'text-dark' : 'text-light'}`} />
             </button>
           </>
         )}
