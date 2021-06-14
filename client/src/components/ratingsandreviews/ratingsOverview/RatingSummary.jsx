@@ -17,7 +17,7 @@ const RatingSummary = ({ starComponent, ratings, recommended }) => {
         Ratings and Reviews
       </h3>
       <div>
-        <h1>{overallRating.toString().slice(0, 3)}</h1>
+        <h1><sup>{overallRating.toString().slice(0, 3)}</sup>&frasl;<sub>5</sub></h1>
         {starComponent}
       </div>
       <p>{`${Math.floor((parseInt(recommended.true) / totalRatings) * 100)}% of people recommend this product`}</p>
