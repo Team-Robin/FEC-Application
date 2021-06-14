@@ -25,12 +25,12 @@ const RatingStars = ({ ratings, mutable, charId = 0, cb = ()=>{} }) => {
   }
 
   const redraw = (e) => {
-    const target = e.target;
-    let position  = target.parentElement.attributes.position.value;
+    const target = e.currentTarget;
+    let position  = target.attributes.position.value;
     position = Number(position);
-    const grandParent = target.parentElement.parentElement;
-    for (var i = 0; i < grandParent.children.length; i++) {
-      let svg = grandParent.children[i];
+    const parent = target.parentElement;
+    for (var i = 0; i < parent.children.length; i++) {
+      let svg = parent.children[i];
       if (i <= position) {
         svg.classList.remove('emptiness');
       } else {
