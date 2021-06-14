@@ -4,6 +4,8 @@ import RatingsOverview from './ratingsOverview/RatingsOverview';
 import ReviewsPanel from './reviewsPanel/ReviewsPanel';
 import Connect from '../Connect';
 import ReviewButtons from './reviewsPanel/ReviewButtons';
+import RatingStars from './RatingStars';
+import AddReviewModal from './AddReviewModal';
 
 class RatingsAndReviews extends React.Component {
   constructor(props) {
@@ -66,6 +68,7 @@ class RatingsAndReviews extends React.Component {
         },
         footer: {
           seeMore: this.expandReviewList.bind(this),
+          addReview: this.addReviewModal.bind(this),
         },
       },
       ratings: {
@@ -78,6 +81,8 @@ class RatingsAndReviews extends React.Component {
       activeFilters: [],
       reviews: [],
       ratings: {},
+      modal: '',
+      // modal should be empty or should contain a jsx component.
     };
   }
 
@@ -141,9 +146,10 @@ class RatingsAndReviews extends React.Component {
 
   expandBody(e) {
     const target = e.target;
-    const parent = target.parent;
+    const parent = target.parentElement;
     const body = parent.children[1]; // should be the <p> element
     const fullText = e.target.value; // may need to use attribute.value
+    target.innerHTML = '';
     body.innerHTML = fullText;
   }
 
@@ -192,12 +198,41 @@ class RatingsAndReviews extends React.Component {
     });
   }
 
+  addReviewModal() {
+    this.setState({modal: (
+      <AddReviewModal
+        labels={this.labels}
+        ratings={this.state.ratings}
+        submitReview={this.submitReview}
+        handleClose={this.closeModal.bind(this)}
+      />
+      )});
+  }
+
+  submitReview(params) {
+    console.log(params);
+    Connect.submitReview({params})
+      .then((r) => console.log(r.data));
+  }
+
+  addPhotoModal() {
+    this.setState({modal: <PhotoModal />});
+  }
+
+  closeModal() {
+    this.setState({modal: ''})
+  }
+
+
   render() {
     if (this.state.reviews.length) {
-      console.log(this.state);
       return (
         <div id="rnr">
           <RatingsOverview
+            starComponent={<RatingStars
+              ratings={this.state.ratings.ratings}
+              mutable={false}
+               />}
             labels={this.labels}
             ratingMetaData={this.state.ratings}
             controls={this.controls.ratings}
@@ -208,6 +243,7 @@ class RatingsAndReviews extends React.Component {
             reviews={this.filterReviews()}
             controls={this.controls.reviews}
           />
+          {this.state.modal}
         </div>
       );
     }
@@ -222,6 +258,7 @@ class RatingsAndReviews extends React.Component {
           reviewCount={0}
           footerControls={this.controls.reviews.footer}
         />
+        {this.state.modal}
       </div>
     );
   }

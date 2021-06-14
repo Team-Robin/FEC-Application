@@ -1,28 +1,28 @@
 /* eslint-disable react/forbid-prop-types */
 // eslint-disable-next-line import/no-unresolved
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import ProductInfo from './ProductInfo';
 import ProductDescription from './ProductDescription';
 import ProductStyles from './ProductStyles';
 import ProductFinalSelect from './ProductFinalSelect';
 import ProductCarousel from './ProductCarousel';
+import ThemeContext from '../context/Theme';
 
 // eslint-disable-next-line object-curly-newline
 const Overview = ({
   Name, Category, Description, Slogan, Price, ReviewsRatings, Features, Styles,
   CurrentStyle, setCurrentStyle, SalePrice,
 }) => {
-  useEffect(() => {
+  const { themeMode } = useContext(ThemeContext);
 
-  }, []);
   return (
     <div className="mt-5 full-view ">
       <div className="row justify-content-around" style={{ position: 'relative' }}>
         {CurrentStyle.photos && CurrentStyle.photos.length > 0
           ? (<ProductCarousel Photos={CurrentStyle.photos} />)
           : null}
-        <div className="col overview-product-info bg-light px-2 py-4 mr-auto mb-4">
+        <div className={`col overview-product-info px-2 py-4 mr-auto mb-4 ${themeMode === 'Light' ? 'bg-light' : 'bg-dark'}`}>
           <div className="d-flex flex-column h-100">
             <ProductInfo
               Name={Name}
@@ -40,7 +40,7 @@ const Overview = ({
           </div>
         </div>
       </div>
-      <div className="row align-items-center justify-content-center mx-auto bg-light py-3 px-3 overview-description mb-4">
+      <div className={`row align-items-center justify-content-center mx-auto py-3 px-3 overview-description mb-4 ${themeMode === 'Light' ? 'bg-light' : 'bg-dark'}`}>
         <ProductDescription
           Description={Description}
           Slogan={Slogan}

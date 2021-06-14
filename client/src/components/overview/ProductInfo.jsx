@@ -7,12 +7,14 @@ import PropTypes from 'prop-types';
 import ProductPrice from './ProductPrice';
 import StarRatings from '../StarRatings';
 import TrackerContext from '../context/Tracker';
+import ThemeContext from '../context/Theme';
 
 const ProductInfo = ({
   Name, Category, Price, ReviewsRatings, SalePrice,
 }) => {
   const [totalReviews, setTotalReviews] = useState();
   const { tracking, setTracking } = useContext(TrackerContext);
+  const { themeMode } = useContext(ThemeContext);
 
   const scrollTo = (event) => {
     const tracked = { element: event.target, time: new Date(), module: 'Scroll to Reviews' };
@@ -34,13 +36,22 @@ const ProductInfo = ({
     <div className="overview-right-dekstop">
       <div className="row">
         <StarRatings ReviewsRatings={ReviewsRatings} />
-        <button type="button" className="py-1 ml-1 align-self-center cursor-pointer hover-outline-cascade" onClick={scrollTo} onKeyDown={scrollTo}>
+        <button
+          type="button"
+          className={`py-1 ml-1 align-self-center cursor-pointer
+            ${themeMode === 'Light'
+            ? 'text-dark hover-outline-cascade'
+            : 'text-light hover-outline-cascade-light'
+          }`}
+          onClick={scrollTo}
+          onKeyDown={scrollTo}
+        >
           Read all
           {` ${totalReviews} `}
           reviews
         </button>
       </div>
-      <div className="h3 text-thin text-muted">{Category}</div>
+      <div className={`h3 text-thin ${themeMode === 'Light' ? 'text-muted' : 'text-muted-light'}`}>{Category}</div>
       <div className="text-size-10 text-bold text-primary">{Name}</div>
       <ProductPrice Price={Price} SalePrice={SalePrice} />
     </div>

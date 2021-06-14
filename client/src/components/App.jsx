@@ -10,6 +10,7 @@ import RatingsAndReviews from './ratingsandreviews/RatingsAndReviews.jsx';
 import Connect from './Connect';
 import LoadingPulse from './LoadingPulse';
 import TrackerContext from './context/Tracker';
+import ThemeContext from './context/Theme';
 
 const App = () => {
   // both the this.state and this.setState()
@@ -20,6 +21,7 @@ const App = () => {
   const [currentStyle, setCurrentStyle] = useState({});
   const [productSalesPrice, setProductSalesPrice] = useState({});
   const [tracking, setTracking] = useState([]);
+  const [themeMode, setThemeMode] = useState('Light');
   //  Component Did Mount
 
   useEffect(async () => {
@@ -43,34 +45,47 @@ const App = () => {
     }
   }, [currentStyle]);
 
+  useEffect(() => {
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (systemTheme) {
+      setThemeMode('Dark');
+    } else {
+      setThemeMode('Light');
+    }
+  }, []);
+
   return (
-    <TrackerContext.Provider value={{ tracking, setTracking }}>
-      {productInfo.product ? (
-        <Overview
-          Name={productInfo.product.name}
-          Category={productInfo.product.category}
-          Description={productInfo.product.description}
-          Slogan={productInfo.product.slogan}
-          Price={productInfo.product.default_price}
-          ReviewsRatings={productReviewMeta.ratings}
-          Features={productInfo.product.features}
-          Styles={productStyles.styles}
-          CurrentStyle={currentStyle}
-          setCurrentStyle={setCurrentStyle}
-          SalePrice={productSalesPrice}
-        />
-      ) : <LoadingPulse Message="quick coffee run!" />}
-      <>
-        {questionInfo.questions ? (
-          <QuestionsView
-            questionInfo={questionInfo}
-          />
-        ) : null}
-      </>
-      {productInfo.product ? (
-        <RatingsAndReviews productId={productInfo.product.id} />
-      ) : null}
-    </TrackerContext.Provider>
+    <div className={`rounded-no ${themeMode === 'Light' ? 'bg-lighter' : 'bg-darker text-light'}`}>
+      <TrackerContext.Provider value={{ tracking, setTracking }}>
+        <ThemeContext.Provider value={{ themeMode }}>
+          {productInfo.product ? (
+            <Overview
+              Name={productInfo.product.name}
+              Category={productInfo.product.category}
+              Description={productInfo.product.description}
+              Slogan={productInfo.product.slogan}
+              Price={productInfo.product.default_price}
+              ReviewsRatings={productReviewMeta.ratings}
+              Features={productInfo.product.features}
+              Styles={productStyles.styles}
+              CurrentStyle={currentStyle}
+              setCurrentStyle={setCurrentStyle}
+              SalePrice={productSalesPrice}
+            />
+          ) : <LoadingPulse Message="quick coffee run!" />}
+          <>
+            {questionInfo.questions ? (
+              <QuestionsView
+                questionInfo={questionInfo}
+              />
+            ) : null}
+          </>
+          {productInfo.product ? (
+            <RatingsAndReviews productId={productInfo.product.id} />
+          ) : null}
+        </ThemeContext.Provider>
+      </TrackerContext.Provider>
+    </div>
   );
 };
 
