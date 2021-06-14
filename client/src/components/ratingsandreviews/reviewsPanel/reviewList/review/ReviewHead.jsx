@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RatingStars from '/home/noshua/HackReactor/Coding/FEC-Application/client/src/components/ratingsandreviews/RatingStars.jsx';
+import RatingStars from '../../../RatingStars.jsx';
 
 const ReviewHead = ({ rating, reviewerName, date }) => {
 
