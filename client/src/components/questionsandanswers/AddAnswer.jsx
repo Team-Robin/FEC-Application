@@ -16,7 +16,7 @@ const AddAnswer = ({ answerBody }) => {
 
   return (
     <div>
-      <button className="modal-btn" onClick={openModal} type="button">
+      <button className="modal-btn-answer" onClick={openModal} type="button">
         Add Answer
       </button>
       {modal ? (

@@ -9,7 +9,8 @@ import React from 'react';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Questions from './Questions';
-import AddAnswer from './AddAnswer';
+import { AddAnswer } from './AddAnswer';
+import Connect from '../Connect';
 
 const Answer = ({ answerBody }) => {
   const dateFormat = (inputTime) => {
@@ -22,6 +23,23 @@ const Answer = ({ answerBody }) => {
     return date;
   };
 
+  console.log(answerBody);
+
+  const [helpfulness, setHelpfulness] = useState(false);
+  const [addHelpful, setAddHelpful] = useState(answerBody.helpfulness);
+
+  const addOneHelp = () => {
+    if (helpfulness === false) {
+      Connect.putHelpfulnessAnswers(answerBody.id)
+        .then((response) => {
+          if (response.status === 200) {
+            setAddHelpful(addHelpful + 1);
+            setHelpfulness(true);
+          }
+        });
+    }
+  };
+
   return (
     <div id="answers">
       <p>
@@ -29,23 +47,18 @@ const Answer = ({ answerBody }) => {
         {' '}
         {answerBody.body}
       </p>
-      <p className="answer-user">
-        User:
+      <div className="answer-user">
         {answerBody.answerer_name}
         {' '}
-        Date:
         {dateFormat(answerBody.date)}
-      </p>
-      <p className="helpful">
+      </div>
+      <div className="helpful">
         Helpful?
         {' '}
-        {answerBody.helpfulness}
-        <button className="helpful-btn" type="button">  Yes</button>
-        |
-        <button className="helpful-btn" type="button">  No</button>
-      </p>
-      <div>
-        <AddAnswer answerBody={answerBody} />
+        <div>
+          {addHelpful}
+          <button onClick={() => { addOneHelp(); }} className="answer-helpfulness-btn" type="button">Yes</button>
+        </div>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@
 /* eslint-disable import/no-cycle */
 import React, { useState } from 'react';
 import Answer from './Answer';
+import AddAnswer from './AddAnswer';
 
 const AnswersList = ({ answers }) => {
   const [answerView, setAnswerView] = useState(true);
@@ -24,6 +25,9 @@ const AnswersList = ({ answers }) => {
       <button className="more-answers" onClick={handleMoreAnswers} type="button">
         {moreAnswers}
       </button>
+      <div>
+        <AddAnswer answerBody={answers} />
+      </div>
     </div>
 
   );

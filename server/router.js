@@ -94,6 +94,18 @@ app.put('/api/qa/questions/helpful/', (req, res) => {
       res.send(500, err);
     });
 });
+
+app.put('/api/qa/answers/:answerId/helpful/', (req, res) => {
+  console.log('INSIDE ROUTER', req.params); // {answer_id: '23424' }
+  connect.putHelpfulnessAnswers({ answer_id: Number(req.params.answerId) })
+    .then((results) => {
+      res.status(200).send(results.data);
+    })
+    .catch((err) => {
+      console.log(err)
+      res.send(500, err);
+    });
+});
 // =====================QA POST===========================>>>
 app.post('/api/qa/questions', (req, res) => {
   req.body.product_id = Number(req.body.product_id);
