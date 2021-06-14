@@ -28,7 +28,7 @@ const ProductExpandedView = ({
   };
   return (
     <div
-      className={`mx-auto d-flex justify-content-center overview-carousel-image-wrapper shadow ${expanded ? 'overview-expanded-carousel' : ''} ${zoomed ? 'cursor-minus' : 'cursor-plus'}`}
+      className={`mx-auto d-flex justify-content-center overview-carousel-image-wrapper shadow-down ${expanded ? 'overview-expanded-carousel' : ''} ${zoomed ? 'cursor-minus' : 'cursor-plus'}`}
       onMouseMove={trackMouse}
     >
       <button

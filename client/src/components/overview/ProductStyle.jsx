@@ -9,7 +9,7 @@ const ProductStyle = ({ Style, setCurrentStyle, CurrentStyle }) => {
   return (
     <button
       type="button"
-      className="styles-wrapper cursor-pointer py-2"
+      className="styles-wrapper cursor-pointer py-2 btn-focus rounded-circle"
       onClick={(event) => {
         setCurrentStyle(Style);
         const tracked = { element: event.target, time: new Date(), module: 'Product Style Selector' };
@@ -18,7 +18,7 @@ const ProductStyle = ({ Style, setCurrentStyle, CurrentStyle }) => {
       aria-label={`style ${Style.name}`}
     >
       <div
-        className={`styles-icon no-clicker shadow-sm ${Style.style_id === CurrentStyle.style_id ? 'styles-selected' : 'styles-pop'}`}
+        className={`styles-icon no-clicker shadow ${Style.style_id === CurrentStyle.style_id ? 'styles-selected' : 'styles-pop'}`}
         style={{
           backgroundImage: `url("${Style.photos[0].thumbnail_url}")`,
           backgroundSize: 'cover',

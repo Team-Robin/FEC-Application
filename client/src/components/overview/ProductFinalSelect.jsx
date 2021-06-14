@@ -55,7 +55,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
           ) : null}
           <div className="row justify-content-between">
             <select
-              className="select-size text-size-2 rounded-sm pl-4 hover-outline my-2 flex-basis-50 bg-lighter"
+              className="select-size text-size-2 rounded-sm pl-4 hover-outline my-2 flex-basis-50 bg-lighter btn shadow my-2"
               onChange={(event) => {
                 setCurrentSize(event.target.value);
                 const tracked = { element: event.target, time: new Date(), module: `Size Selector. Size Selected: ${event.target.value}` };
@@ -75,7 +75,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
               ))}
             </select>
             <select
-              className="select-size text-size-2 rounded-sm pl-4 my-2 mr-2 flex-basis-30 bg-lighter"
+              className="select-size text-size-2 rounded-sm pl-4 my-2 mr-2 flex-basis-30 bg-lighter btn shadow my-2"
               value={`${currentSize ? selectedQuantity : null}` || ''}
               onChange={(event) => {
                 setSelectedQuantity(event.target.value);
@@ -93,7 +93,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
             <button
               type="button"
               aria-label="add to cart"
-              className="select-size text-size-2 btn shadow my-2 rounded-sm flex-basis-60 bg-lighter"
+              className="select-size text-size-2 btn shadow my-2 rounded-sm flex-basis-60 bg-lighter btn-focus"
               onClick={onClickValidator}
             >
               <span className=""> Add to Bag </span>
@@ -101,7 +101,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
             </button>
             <button
               type="button"
-              className="select-size text-size-2 d-flex justify-content-center my-2 btn shadow rounded-sm flex-basis-25 mr-2 bg-lighter"
+              className="select-size text-size-2 d-flex justify-content-center my-2 btn shadow rounded-sm flex-basis-25 mr-2 bg-lighter btn-focus"
               onClick={(event) => {
                 const tracked = { element: event.target, time: new Date(), module: 'Add to favourites' };
                 setTracking([...tracking, tracked]);
@@ -117,7 +117,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
             <div className="text-muted text-bold text-size-4">OUT OF STONKS</div>
             <button
               type="button"
-              className="select-size text-size-2 d-flex justify-content-center my-2 shadow rounded-sm bg-lighter"
+              className="select-size text-size-2 d-flex justify-content-center my-2 shadow rounded-sm bg-lighter btn-focus"
               onClick={(event) => {
                 const tracked = { element: event.target, time: new Date(), module: 'Add to favourites' };
                 setTracking([...tracking, tracked]);
