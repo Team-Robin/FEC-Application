@@ -204,21 +204,24 @@ class RatingsAndReviews extends React.Component {
         labels={this.labels}
         ratings={this.state.ratings}
         submitReview={this.submitReview}
+        handleClose={this.closeModal.bind(this)}
       />
       )});
   }
 
   submitReview(params) {
+    console.log(params);
     Connect.submitReview({params})
       .then((r) => console.log(r.data));
   }
-
 
   addPhotoModal() {
     this.setState({modal: <PhotoModal />});
   }
 
-
+  closeModal() {
+    this.setState({modal: ''})
+  }
 
 
   render() {

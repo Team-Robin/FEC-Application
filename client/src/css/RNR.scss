@@ -368,6 +368,7 @@ sortHeader::after {
   width: 100%;
   top: 65%;
   position: absolute;
+  pointer-events: none;
 }
 
 #modalTop {
