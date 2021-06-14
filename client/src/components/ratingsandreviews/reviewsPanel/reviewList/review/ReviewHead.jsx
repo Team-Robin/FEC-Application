@@ -1,19 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import RatingStars from '../../../RatingStars.jsx';
 
 const ReviewHead = ({ rating, reviewerName, date }) => {
-  // const verification = (isVerified(reviewerName)) ? (<div className="verification" />) : '';
-  //  just a random function to shut the linter up. should refactor out when time allows.
-  const test = 0;
-  if (test === 1) {
-    console.log('thats odd');
-  }
 
   return (
     <div className="reviewHead">
-      <span>Star Component</span>
+
+      {<RatingStars ratings={rating} mutable={false} />}
       <span className="reviewInfo">
-        {/* {verification} */}
         <span>{`${reviewerName}, `}</span>
         <span>{`${date.slice(0, 10)} `}</span>
       </span>

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const RatingSummary = ({ ratings, recommended }) => {
+const RatingSummary = ({ starComponent, ratings, recommended }) => {
   const totalRatings = Object.values(ratings).reduce((total, rateCount) => (
     parseInt(total) + parseInt(rateCount)
   ));
@@ -17,8 +17,8 @@ const RatingSummary = ({ ratings, recommended }) => {
         Ratings and Reviews
       </h3>
       <div>
-        <h1>{overallRating.toString().slice(0, 3)}</h1>
-        <div>--star component--</div>
+        <h1><sup>{overallRating.toString().slice(0, 3)}</sup>&frasl;<sub>5</sub></h1>
+        {starComponent}
       </div>
       <p>{`${Math.floor((parseInt(recommended.true) / totalRatings) * 100)}% of people recommend this product`}</p>
     </div>
@@ -26,6 +26,7 @@ const RatingSummary = ({ ratings, recommended }) => {
 };
 
 RatingSummary.propTypes = {
+  starComponent: PropTypes.element.isRequired,
   ratings: PropTypes.objectOf(PropTypes.string).isRequired,
   recommended: PropTypes.objectOf(PropTypes.string).isRequired,
 };
