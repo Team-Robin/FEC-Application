@@ -4652,7 +4652,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ini@npm:1.3.7":
+"ini@npm:1.3.7, ini@npm:~1.3.0":
   version: 1.3.7
   resolution: "ini@npm:1.3.7"
   checksum: cf00289cb43d8de635d907c202f7dd8650d8228c322b501c089c4f52ea78dc21ebc38b07c4f37b532f52eba110d11b71f32bc22173097ca0e9c8521575688d7c
