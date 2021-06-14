@@ -46,18 +46,16 @@ const App = () => {
   }, [currentStyle]);
 
   useEffect(() => {
-    // const app = document.getElementById('#app');
-    // if (themeMode === 'Light') {
-    //   app.classList.add('bg-light');
-    //   app.classList.remove('bg-dark');
-    // } else if (themeMode === 'Dark') {
-    //   app.classList.add('bg-dark');
-    //   app.classList.remove('bg-light');
-    // }
-  }, [themeMode]);
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (systemTheme) {
+      setThemeMode('Dark');
+    } else {
+      setThemeMode('Light');
+    }
+  }, []);
 
   return (
-    <div className={themeMode === 'Light' ? 'bg-light' : 'bg-dark'}>
+    <div className={`rounded-no ${themeMode === 'Light' ? 'bg-lighter' : 'bg-darker text-light'}`}>
       <TrackerContext.Provider value={{ tracking, setTracking }}>
         <ThemeContext.Provider value={{ themeMode }}>
           {productInfo.product ? (

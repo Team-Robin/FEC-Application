@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import TrackerContext from '../context/Tracker';
+import ThemeContext from '../context/Theme';
 
 const ProductExpandedView = ({
   expanded, setExpanded, photoStyle, zoomed, setZoomed,
@@ -13,6 +14,7 @@ const ProductExpandedView = ({
   });
   const [mousePosition, setMousePosition] = useState();
   const { tracking, setTracking } = useContext(TrackerContext);
+  const { themeMode } = useContext(ThemeContext);
 
   useEffect(() => {
     setImageStyle({
@@ -28,7 +30,10 @@ const ProductExpandedView = ({
   };
   return (
     <div
-      className={`mx-auto d-flex justify-content-center overview-carousel-image-wrapper shadow-down ${expanded ? 'overview-expanded-carousel' : ''} ${zoomed ? 'cursor-minus' : 'cursor-plus'}`}
+      className={`mx-auto d-flex justify-content-center overview-carousel-image-wrapper shadow-down
+      ${expanded ? 'overview-expanded-carousel' : ''}
+      ${zoomed ? 'cursor-minus' : 'cursor-plus'}
+      ${themeMode === 'Light' ? 'bg-light' : 'bg-dark'}`}
       onMouseMove={trackMouse}
     >
       <button

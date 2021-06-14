@@ -9,7 +9,7 @@ const ProductStyle = ({ Style, setCurrentStyle, CurrentStyle }) => {
   return (
     <button
       type="button"
-      className="styles-wrapper cursor-pointer py-2 btn-focus rounded-circle"
+      className="styles-wrapper cursor-pointer py-2 btn-focus-border-transparent rounded-circle"
       onClick={(event) => {
         setCurrentStyle(Style);
         const tracked = { element: event.target, time: new Date(), module: 'Product Style Selector' };
