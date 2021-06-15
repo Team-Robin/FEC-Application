@@ -41,7 +41,7 @@ const Answer = ({ answerBody, question }) => {
 
   return (
     <div id="answers">
-      <p>
+      <p className="answer-body">
         A:
         {' '}
         {answerBody.body}
@@ -49,7 +49,9 @@ const Answer = ({ answerBody, question }) => {
       <div className="answer-user">
         {answerBody.answerer_name}
         {' '}
-        {dateFormat(answerBody.date)}
+        <div className="answer-date">
+          {dateFormat(answerBody.date)}
+        </div>
       </div>
       <div className="helpful">
         Helpful?

@@ -16,8 +16,8 @@ const AnswersList = ({ answers, question }) => {
   const moreAnswers = answerView ? 'more answers' : 'less answers';
 
   return (
-    <div>
-      <div>
+    <div id="main-answers-block">
+      <div id="answers-block">
         {answers
           ? Object.keys(answerList).map((keys) => (<Answer question={question} key={answerList[keys][1].id} answerBody={answerList[keys][1]} />))
           : null}

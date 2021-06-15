@@ -13,7 +13,7 @@ import AddQuestion from './AddQuestion';
 const QuestionsView = ({ questionInfo }) => {
   // const info = questionInfo.questions;
   const [info, setInfo] = useState(questionInfo.questions);
-  const [questionView, setQuestionView] = useState(false);
+  const [questionView, setQuestionView] = useState(true);
   const [search, setSearch] = useState('');
 
   const questionList = () => {
@@ -63,7 +63,6 @@ const QuestionsView = ({ questionInfo }) => {
           <div>
             <AddQuestion questionInfo={questionInfo.questions} />
           </div>
-          <input className="QA-search-box" type="text" name="QA-search-box" placeholder="Have a question?" />
         </form>
       </div>
     </div>

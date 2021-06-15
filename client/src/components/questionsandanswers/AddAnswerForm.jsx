@@ -35,9 +35,9 @@ const AddAnswerForm = ({ answerBody, question }) => {
   return (
     <div>
       <label>Name: </label>
-      <div className="add-question-container-name">
+      <div className="add-answer-container-name">
         <input
-          className="add-question-name"
+          className="add-answer-name"
           type="text"
           placeholder="Username here"
           value={name}
@@ -45,26 +45,26 @@ const AddAnswerForm = ({ answerBody, question }) => {
         />
       </div>
       <label> Email: </label>
-      <div className="add-question-container-email">
+      <div className="add-answer-container-email">
         <input
-          className="add-question-email"
+          className="add-answer-email"
           type="text"
           placeholder="Email Here"
           value={email}
           onChange={handleEmail}
         />
       </div>
-      <label>Question: </label>
-      <div className="add-question-container-body">
+      <label>Answer: </label>
+      <div className="add-answer-container-body">
         <textarea
-          className="add-question-body"
+          className="add-answer-body"
           type="text"
-          placeholder="Question Here"
+          placeholder="Answer Here"
           value={body}
           onChange={handleBody}
         />
       </div>
-      <div className="add-question-btn">
+      <div className="add-answer-btn">
         <button onClick={handleQuestionSubmit} type="button">Submit</button>
       </div>
     </div>
