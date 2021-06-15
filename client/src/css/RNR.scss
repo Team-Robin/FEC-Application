@@ -369,6 +369,7 @@ sortHeader::after {
   top: 65%;
   position: absolute;
   pointer-events: none;
+  z-index: -1;
 }
 
 #modalTop {
@@ -377,6 +378,7 @@ sortHeader::after {
   flex-flow: row nowrap;
   justify-content: space-between;
   align-content: stretch;
+  background: inherit;
 }
 
 #modalTop div {

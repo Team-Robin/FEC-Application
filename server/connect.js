@@ -63,6 +63,9 @@ const reportReview = async (id) => axios.put(`https://app-hrsei-api.herokuapp.co
 
 const setHelpfulReview = async (id) => axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${id}/helpful`);
 
+const addReview = async (options) => axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/', options);
+
+
 module.exports = {
   getProducts,
   getProductId,
@@ -71,6 +74,7 @@ module.exports = {
   getAnswers,
   getReviewsMeta,
   getReviews,
+  addReview,
   getHelpfulnessQuestions,
   reportReview,
   setHelpfulReview,
