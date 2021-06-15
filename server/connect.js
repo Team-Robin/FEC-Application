@@ -41,7 +41,7 @@ const getQuestions = async ({ product_id }, options = { page: 1, count: 100 }) =
   },
 });
 
-const postAddAnswer = async (options, questionId) => axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${questionId}/answers`, options, console.log('inside connect', options));
+const postAddAnswer = async (options, questionId) => axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${questionId}/answers`, options);
 
 const postAddQuestion = async (options) => axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions', options);
 
@@ -70,7 +70,6 @@ const reportReview = async (id) => axios.put(`https://app-hrsei-api.herokuapp.co
 const setHelpfulReview = async (id) => axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${id}/helpful`);
 
 const addReview = async (options) => axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/', options);
-
 
 module.exports = {
   getProducts,

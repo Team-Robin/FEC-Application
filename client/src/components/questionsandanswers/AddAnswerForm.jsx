@@ -22,7 +22,6 @@ const AddAnswerForm = ({ answerBody, question }) => {
   const handleBody = (e) => {
     setBody(e.target.value);
   };
-  console.log('INSIDE ADD ANSWER FORM', question);
 
   const handleQuestionSubmit = () => {
     Connect.postAddAnswer({

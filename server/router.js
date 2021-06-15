@@ -74,13 +74,10 @@ app.get('/api/qa/questions', (req, res) => {
 
 app.get('/qa/questions/:question_id/answers', (req, res) => {
   connect.getAnswers(req.query)
-  // console.log(req.query)
     .then((result) => {
-      // console.log('ANSWERS IN SERVER', result.data);
       res.status(200).send(result.data);
     })
     .catch((error) => {
-      // console.log(error);
       res.status(200).send(error);
     });
 });
@@ -121,7 +118,6 @@ app.post('/api/qa/questions', (req, res) => {
 });
 
 app.post('/api/qa/questions/:question_id/answers', (res, req) => {
-  console.log(req.body, req.params, req.query);
   connect.postAddAnswer(req.body)
     .then((result) => {
       res.status(200).send(result.data);
@@ -170,10 +166,9 @@ app.post('/reviews', (req, res) => {
       res.status(200).send(result.data);
     })
     .catch((err) => {
-      console.log(err)
       res.status(err.response.status).send(err.response.statusText);
     });
-})
+});
 
 app.get('/test', (req, res) => {
   res.status(200).send('hello from test!');
