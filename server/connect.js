@@ -41,9 +41,9 @@ const getQuestions = async ({ product_id }, options = { page: 1, count: 100 }) =
   },
 });
 
-const postAddAnswer = async (options) => axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions', options);
+const postAddAnswer = async (options, questionId) => axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${questionId}/answers`, options, console.log('inside connect', options));
 
-const postAddQuestion = async (options, questionId) => axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${questionId}`, options);
+const postAddQuestion = async (options) => axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions', options);
 
 const getHelpfulnessQuestions = async ({ question_id }) => axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/helpful`);
 

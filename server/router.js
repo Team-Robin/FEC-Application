@@ -121,9 +121,10 @@ app.post('/api/qa/questions', (req, res) => {
 });
 
 app.post('/api/qa/questions/:question_id/answers', (res, req) => {
+  console.log(req.body, req.params, req.query);
   connect.postAddAnswer(req.body)
     .then((result) => {
-      res.status(200).end(result.data);
+      res.status(200).send(result.data);
     })
     .catch((err) => {
       if (err.response.status === 422) {
