@@ -1,4 +1,18 @@
 // =================Main Container====================
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #b9dfe0;
+  border-radius: 2em;
+  // border: 3px solid #4267B2;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
 #QA-view {
   display: flex;
   flex-flow: row wrap;
@@ -68,9 +82,11 @@ div#inner-QAview {
   overflow-y: scroll;
   min-width: 20em;
   max-width: 8em;
+  box-shadow: -2px 2px 3px #4c82ad;
   /* overflow: scroll; */
   /* overflow-x: unset; */
 }
+
 
 #questions-answers > * {
   flex: 1 1 auto;
@@ -123,11 +139,26 @@ input {
   border-bottom-style: groove;
   background-color: #eee;
 }
-.QA-search-box {
+.QA-search-bar {
   height: 2em;
   border-radius: 0;
   background-color: #ededed;
   border: none;
   outline: none;
   border-bottom: 1px solid black;
+}
+
+//==================Modal=====================
+#modal-main {
+  display: flex;
+  flex-flow: column;
+  margin: 0 auto;
+  width: 80%;
+  height: 65%;
+  position: fixed;
+  left: 10%;
+  top: 10%;
+  background: #b9dfe0;
+  opacity: .5;
+  justify-content: space-between;
 }
