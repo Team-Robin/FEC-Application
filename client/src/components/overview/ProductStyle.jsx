@@ -1,11 +1,17 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable import/no-unresolved */
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import TrackerContext from '../context/Tracker';
+import ThemeContext from '../context/Theme';
 
 const ProductStyle = ({ Style, setCurrentStyle, CurrentStyle }) => {
   const { tracking, setTracking } = useContext(TrackerContext);
+  const [popStyle, setPopStyle] = useState('styles-pop');
+  const { themeMode } = useContext(ThemeContext);
+  useEffect(() => {
+    setPopStyle(themeMode === 'Light' ? 'styles-pop' : 'styles-pop-light');
+  }, [themeMode]);
   return (
     <button
       type="button"
@@ -18,7 +24,7 @@ const ProductStyle = ({ Style, setCurrentStyle, CurrentStyle }) => {
       aria-label={`style ${Style.name}`}
     >
       <div
-        className={`styles-icon no-clicker shadow ${Style.style_id === CurrentStyle.style_id ? 'styles-selected' : 'styles-pop'}`}
+        className={`styles-icon no-clicker shadow ${Style.style_id === CurrentStyle.style_id ? 'styles-selected' : popStyle}`}
         style={{
           backgroundImage: `url("${Style.photos[0].thumbnail_url}")`,
           backgroundSize: 'cover',
