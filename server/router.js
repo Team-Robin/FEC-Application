@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable max-len */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/no-unresolved */
 const express = require('express');
@@ -72,13 +74,10 @@ app.get('/api/qa/questions', (req, res) => {
 
 app.get('/qa/questions/:question_id/answers', (req, res) => {
   connect.getAnswers(req.query)
-  // console.log(req.query)
     .then((result) => {
-      // console.log('ANSWERS IN SERVER', result.data);
       res.status(200).send(result.data);
     })
     .catch((error) => {
-      // console.log(error);
       res.status(200).send(error);
     });
 });
@@ -91,6 +90,43 @@ app.put('/api/qa/questions/helpful/', (req, res) => {
     })
     .catch((err) => {
       res.send(500, err);
+    });
+});
+
+app.put('/api/qa/answers/:answerId/helpful/', (req, res) => {
+  connect.putHelpfulnessAnswers({ answer_id: Number(req.params.answerId) })
+    .then((results) => {
+      res.status(200).send(results.data);
+    })
+    .catch((err) => {
+      res.send(500, err);
+    });
+});
+// =====================QA POST===========================>>>
+app.post('/api/qa/questions', (req, res) => {
+  req.body.product_id = Number(req.body.product_id);
+  connect.postAddQuestion(req.body)
+    .then((result) => {
+      res.status(200).end(result.data);
+    })
+    .catch((err) => {
+      if (err.response.status === 422) {
+        res.send(422, 'Please check to make sure your information is corretct');
+      }
+      res.send(err.response.status, err);
+    });
+});
+
+app.post('/api/qa/questions/:question_id/answers', (req, res) => {
+  connect.postAddAnswer(req.body, Number(req.params.question_id))
+    .then((result) => {
+      res.status(200).send(result.data);
+    })
+    .catch((err) => {
+      if (err.response.status === 422) {
+        res.send(422, 'Please check to make sure your information is corretct');
+      }
+      res.send(err.response.status, err);
     });
 });
 
@@ -130,10 +166,9 @@ app.post('/reviews', (req, res) => {
       res.status(200).send(result.data);
     })
     .catch((err) => {
-      console.log(err)
       res.status(err.response.status).send(err.response.statusText);
     });
-})
+});
 
 app.get('/test', (req, res) => {
   res.status(200).send('hello from test!');

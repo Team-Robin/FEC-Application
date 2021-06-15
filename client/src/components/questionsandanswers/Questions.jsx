@@ -17,31 +17,3 @@ const Questions = ({ questionInfo }) => (
 );
 
 export default Questions;
-
-/*
-  answers = {
-    13123: {},
-    13773: {},
-  }
-
-  // IN A HYPOTHETICAL ANSWER(S) COMPONENT ------------------------------------------------
-
-  const Answers = ({answerObj}) {
-    answersArr = Object.values(answers)
-
-    return (
-      {
-        answersArr.map((answer)=> <Answer answer={anwer} />)
-      }
-    )
-  }
-
-  // IN A HYPOTHETICAL ANSWER COMPONENT ---------------------------------------------------
-
-  const Answer = ({answer}) => (
-    <p>{answer.body}</p>
-    <p>{answer.answerer_name}</p>
-    etc....
-  )
-
-*/
