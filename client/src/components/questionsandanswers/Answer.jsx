@@ -12,7 +12,7 @@ import Questions from './Questions';
 import { AddAnswer } from './AddAnswer';
 import Connect from '../Connect';
 
-const Answer = ({ answerBody }) => {
+const Answer = ({ answerBody, question }) => {
   const dateFormat = (inputTime) => {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
       'August', 'September', 'October', 'November', 'December',

@@ -38,12 +38,13 @@ const AddQuestionForm = ({ questionInfo }) => {
       <div className="add-question-container-name">
         <input
           className="add-question-name"
+          placeholder="Example: jackson11!"
           type="text"
-          placeholder="Username here"
           value={name}
           onChange={handleName}
         />
       </div>
+      <span>For your privacy, do not use your full name or email address</span>
       <label>Email: </label>
       <div className="add-question-container-email">
         <input
@@ -59,7 +60,7 @@ const AddQuestionForm = ({ questionInfo }) => {
         <textarea
           className="add-question-body"
           type="text"
-          placeholder="Question Here"
+          placeholder="Why did you like the product or not?"
           value={body}
           onChange={handleBody}
         />

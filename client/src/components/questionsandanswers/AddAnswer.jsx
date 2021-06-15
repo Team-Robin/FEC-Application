@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Modal from './Modal';
 import AddAnswerForm from './AddAnswerForm';
 
-const AddAnswer = ({ answerBody }) => {
+const AddAnswer = ({ answerBody, question }) => {
   // useEffect();
   const [modal, setModal] = useState(false);
   const openModal = () => {
@@ -21,7 +21,7 @@ const AddAnswer = ({ answerBody }) => {
       </button>
       {modal ? (
         <Modal closeModal={closeModal}>
-          <AddAnswerForm answerBody={answerBody} />
+          <AddAnswerForm question={question} answerBody={answerBody} />
         </Modal>
       ) : ''}
     </div>

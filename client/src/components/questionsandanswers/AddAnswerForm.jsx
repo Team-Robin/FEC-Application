@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Modal from './Modal';
 import Connect from '../Connect';
 
-const AddAnswerForm = ({ answerBody}) => {
+const AddAnswerForm = ({ answerBody, question }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [body, setBody] = useState('');
@@ -19,12 +19,12 @@ const AddAnswerForm = ({ answerBody}) => {
   const handleBody = (e) => {
     setBody(e.target.value);
   };
+  console.log('INSIDE ADD ANSWER FORM', question);
 
   const handleQuestionSubmit = () => {
-    const productId = questionInfo.product_id;
-    Connect.postAddQuestion({
-      body, name, email, product_id: productId,
-    })
+    Connect.postAddAnswer({
+      body, name, email, photos: []
+    }, question.question_id )
       .then((response) => {
         console.log(response);
       });

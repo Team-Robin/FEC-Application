@@ -31,6 +31,7 @@ const Question = ({ question }) => {
         });
     }
   };
+  console.log(question)
 
   return (
     <div id="questions-answers">
@@ -59,6 +60,7 @@ const Question = ({ question }) => {
       </div>
       <AnswersList
         answers={Object.entries(question.answers)}
+        question={question}
       />
       <input className="answer-input" type="text" placeholder="submit an answer" />
       <button onClick={() => console.log('Hello')} className="answer-submit-btn" type="button">Submit</button>

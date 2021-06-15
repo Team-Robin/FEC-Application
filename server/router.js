@@ -121,6 +121,19 @@ app.post('/api/qa/questions', (req, res) => {
     });
 });
 
+app.post('/api/qa/questions/:question_id/answers', (res, req) => {
+  connect.postAddAnswer(req.body)
+    .then((result) => {
+      res.status(200).end(result.data);
+    })
+    .catch((err) => {
+      if (err.response.status === 422) {
+        res.send(422, 'Please check to make sure your information is corretct');
+      }
+      res.send(err.response.status, err);
+    });
+});
+
 // =====================REVIEWS GET=======================>>>
 app.get('/api/reviews', (req, res) => {
   connect.getReviews(req.query)

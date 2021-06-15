@@ -5,12 +5,14 @@ import React, { useState } from 'react';
 import Answer from './Answer';
 import AddAnswer from './AddAnswer';
 
-const AnswersList = ({ answers }) => {
+const AnswersList = ({ answers, question }) => {
   const [answerView, setAnswerView] = useState(true);
 
   const handleMoreAnswers = () => {
     setAnswerView(!answerView);
   };
+
+  console.log('INSIDE ANSWERLIST',question)
 
   const answerList = answerView && answers ? answers.slice(0, 2) : answers;
   const moreAnswers = answerView ? 'more answers' : 'less answers';
@@ -19,14 +21,14 @@ const AnswersList = ({ answers }) => {
     <div>
       <div>
         {answers
-          ? Object.keys(answerList).map((keys) => (<Answer key={answerList[keys][1].id} answerBody={answerList[keys][1]} />))
+          ? Object.keys(answerList).map((keys) => (<Answer question={question} key={answerList[keys][1].id} answerBody={answerList[keys][1]}/>))
           : null}
       </div>
       <button className="more-answers" onClick={handleMoreAnswers} type="button">
         {moreAnswers}
       </button>
       <div>
-        <AddAnswer answerBody={answers} />
+        <AddAnswer question={question} answerBody={answers} />
       </div>
     </div>
 
