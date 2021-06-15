@@ -25,7 +25,7 @@ const ProductSocials = () => {
     <div className="d-flex mt-2">
       <button
         type="button"
-        className="btn text-light social-icon bg-transparent shadow cursor-pointer"
+        className="btn text-light social-icon bg-transparent shadow cursor-pointer btn-focus"
         onClick={handleFacebook}
         style={{ fontSize: '2rem' }}
       >
@@ -33,7 +33,7 @@ const ProductSocials = () => {
       </button>
       <button
         type="button"
-        className="btn text-light social-icon bg-transparent shadow cursor-pointer"
+        className="btn text-light social-icon bg-transparent shadow cursor-pointer btn-focus"
         onClick={handleTwitter}
         style={{ fontSize: '2rem' }}
       >
@@ -41,7 +41,7 @@ const ProductSocials = () => {
       </button>
       <button
         type="button"
-        className="btn text-light social-icon bg-transparent shadow"
+        className="btn text-light social-icon bg-transparent shadow btn-focus"
         onClick={handlePinterest}
         style={{ fontSize: '2rem' }}
       >
