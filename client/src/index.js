@@ -3,6 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
+import './css/variables.scss';
 import './css/style.scss';
 import './css/RNR.scss';
 import './css/QA.scss';

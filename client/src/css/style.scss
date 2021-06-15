@@ -1,39 +1,5 @@
 
-// examples
-$highlight: #E0E9F9;
-
-
-// Text Color Palette
-$primary-color: #79E0D8;
-$secondary-color: #4C82AD;
-$tertiary-color: #f5a962;
-$text-blue-light: #89BFFA;
-
-
-$off-white: #F0F0F0;
-$bright-white: #fcfcfc;
-$charcoal: #101010;
-
-$background-dark: #202124;
-$background-light: #fff;
-$background-darker: #121314;
-
-$Roboto-regular: 'Roboto', sans-serif;
-$Roboto-light: 'Roboto', sans-serif, 200;
-
-$muted: rgba(0,0,0,.6);
-
-$fb-color: #4267B2;
-$twtr-color: #1DA1F2;
-$pins-color: #E60023;
-
-$hover-brightness: 110%;
-$active-brightness: 110%;
-
-$red: #FC0058;
-$text-warn: #F7D528;
-$text-error: $red;
-$warn-light: #ff9966;
+@import './variables.scss';
 
 // ====== Reset! ======
 body {
@@ -53,7 +19,10 @@ body {
   //   border-style: dotted;
   // }
 }
-
+a {
+  text-decoration: none;
+  border: 0;
+}
 button, select {
   outline: none;
   border: none;
