@@ -52,7 +52,7 @@ const ProductInfo = ({
         </button>
       </div>
       <div className={`h3 text-thin ${themeMode === 'Light' ? 'text-muted' : 'text-muted-light'}`}>{Category}</div>
-      <div className="text-size-10 text-bold text-primary">{Name}</div>
+      <div className="text-size-10 text-bold text-primary" id="product-hero-name">{Name}</div>
       <ProductPrice Price={Price} SalePrice={SalePrice} />
     </div>
   );
