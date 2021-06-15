@@ -200,6 +200,9 @@ h1, .h1 {
 .bg-transparent {
   background-color: transparent !important;
 }
+.bg-blue-light {
+  background-color: $text-blue-light;
+}
 // ====== display  ======
 .view {
   height: 100%;
@@ -410,10 +413,6 @@ nav {
 @media screen and (min-width: 1200px) {
   .nav-toggle-label {
     display: none;
-  }
-  #app {
-    position: absolute;
-    top: .75em;
   }
   header {
     margin: 0;
