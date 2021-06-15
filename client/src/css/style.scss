@@ -778,28 +778,27 @@ nav {
   &::after {
     content: "";
     position: absolute;
-    left: 50%;
+    left: 0;
     right: 0;
-    top: 50%;
+    top: 0;
     bottom: 0;
-    width: 0%;
-    height: 0%;
+    width: 125%;
+    height: 125%;
     opacity: 0%;
     border-width: 1px;
     border-style: solid;
     border-color: $primary-color;
     border-radius: 2em;
-    transition: all .15s ease-out;
+    transform: scale(0) translate(-50%, -50%);
+    transition: transform .15s ease-out;
   }
   &:focus, &:hover {
     &::after {
-      left: -16%;
-      top: -15%;
       opacity: 1;
-      width: 125%;
-      height: 125%;
+      transform: scale(1) translate(-12%, -12%);
       border-radius: .25em;
     }
+    background-color: $off-white !important;
   }
 }
 .fb-bg-color{
