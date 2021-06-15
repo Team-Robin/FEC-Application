@@ -37,14 +37,13 @@ const AddReviewModal = ({ labels, ratings, submitReview, handleClose }) => {
     const newState = target.type === 'checkbox' ? target.checked : target.value;
     const name = e.target.name;
     const state = name[0].toUpperCase() + name.slice(1);
-    console.log(state, target.value)
     setters[`set${state}`](newState);
   }
 
   const manageCharacteristic = (charId, rating) => {
     const result = {};
     Object.assign(result, characteristics)
-    result[charId] = rating;
+    result[charId] = rating + 1;
     setCharacteristics(result);
   }
 
@@ -74,7 +73,7 @@ const AddReviewModal = ({ labels, ratings, submitReview, handleClose }) => {
           {
             Object.keys(ratings.characteristics).map((characteristic) => {
               let charId = ratings.characteristics[characteristic].id;
-              let value = (characteristics[charId] + 1 || 0);
+              let value = (characteristics[charId] || 0);
               return (
                 <div>
                   <h5>{characteristic}</h5>
@@ -150,7 +149,7 @@ const AddReviewModal = ({ labels, ratings, submitReview, handleClose }) => {
               <button
               type="button"
               onClick={()=>{ submitReview({
-                name, email, summary, body, recommend, product_id, rating,
+                name, email, summary, body, recommend, product_id, rating, photos, characteristics,
               }) }}
               >Submit Reveiw</button>
               <button type="button">Add Picture</button>
