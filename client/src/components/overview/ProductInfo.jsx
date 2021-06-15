@@ -40,8 +40,8 @@ const ProductInfo = ({
           type="button"
           className={`py-1 ml-1 align-self-center cursor-pointer
             ${themeMode === 'Light'
-            ? 'text-dark'
-            : 'text-light '
+            ? 'text-dark hover-outline'
+            : 'text-light hover-outline-light'
           }`}
           onClick={scrollTo}
           onKeyDown={scrollTo}

@@ -3,10 +3,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import NavigationBar from './components/NavigationBar';
 import './css/style.scss';
 import './css/RNR.scss';
 import './css/QA.scss';
 
-ReactDOM.render(<NavigationBar />, document.getElementById('navigation'));
 ReactDOM.render(<App />, document.getElementById('app'));
