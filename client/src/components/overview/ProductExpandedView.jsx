@@ -41,7 +41,10 @@ const ProductExpandedView = ({
         // src={`${photoStyle}`}
         alt="product"
         style={{ backgroundImage: `url(${photoStyle})`, ...imageStyle }}
-        className={`mx-auto rounded-sm overview-carousel-image transition ${zoomed ? 'cursor-minus shadow-no bg-transparent' : 'cursor-plus'}`}
+        className={`mx-auto rounded-sm overview-carousel-image transition
+          ${zoomed ? 'cursor-minus shadow-no' : 'cursor-plus'}
+          ${themeMode === 'Light' ? 'bg-light' : 'bg-dark'}
+        `}
         onClick={(event) => {
           setZoomed(!zoomed);
           const tracked = { element: event.target, time: new Date(), module: `Picture zoom-in. Status: ${!zoomed}` };

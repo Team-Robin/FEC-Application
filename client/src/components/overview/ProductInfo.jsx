@@ -40,8 +40,8 @@ const ProductInfo = ({
           type="button"
           className={`py-1 ml-1 align-self-center cursor-pointer
             ${themeMode === 'Light'
-            ? 'text-dark hover-outline-cascade'
-            : 'text-light hover-outline-cascade-light'
+            ? 'text-dark'
+            : 'text-light '
           }`}
           onClick={scrollTo}
           onKeyDown={scrollTo}
@@ -52,7 +52,7 @@ const ProductInfo = ({
         </button>
       </div>
       <div className={`h3 text-thin ${themeMode === 'Light' ? 'text-muted' : 'text-muted-light'}`}>{Category}</div>
-      <div className="text-size-10 text-bold text-primary">{Name}</div>
+      <div className="text-size-10 text-bold text-primary" id="product-hero-name">{Name}</div>
       <ProductPrice Price={Price} SalePrice={SalePrice} />
     </div>
   );

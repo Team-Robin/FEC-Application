@@ -209,9 +209,8 @@ class RatingsAndReviews extends React.Component {
       )});
   }
 
-  submitReview(params) {
-    console.log(params);
-    Connect.submitReview({params})
+  submitReview(body) {
+    Connect.submitReview(body)
       .then((r) => console.log(r.data));
   }
 

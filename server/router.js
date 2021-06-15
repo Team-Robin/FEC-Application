@@ -165,7 +165,15 @@ app.put('/api/:id/helpful', (req, res) => {
 });
 
 app.post('/reviews', (req, res) => {
-});
+  connect.addReview(req.body)
+    .then((result) => {
+      res.status(200).send(result.data);
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(err.response.status).send(err.response.statusText);
+    });
+})
 
 app.get('/test', (req, res) => {
   res.status(200).send('hello from test!');

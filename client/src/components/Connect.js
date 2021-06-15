@@ -34,7 +34,7 @@ const Connect = {
 
   reportReview: (reviewid) => axios.put(`/api/${reviewid}/report`),
 
-  submitReview: (params) => axios.post('/reviews', params),
+  submitReview: (body) => axios.post('/reviews', body),
 
   getTest: () => axios.get('/test'),
 
