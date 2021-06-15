@@ -22,8 +22,8 @@ const App = () => {
   const [productSalesPrice, setProductSalesPrice] = useState({});
   const [tracking, setTracking] = useState([]);
   const [themeMode, setThemeMode] = useState('Light');
-  //  Component Did Mount
 
+  // async component did mount
   useEffect(async () => {
     const id = window.location.pathname.split('/')[2] || '17071'; // splits '/products/###/' to '/', 'products', '####, '/'. we just want the numbers
     const product = await Connect.getProductById(id);
@@ -45,47 +45,61 @@ const App = () => {
     }
   }, [currentStyle]);
 
+  // sync component did mount
   useEffect(() => {
     const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (systemTheme) {
       setThemeMode('Dark');
+      document.body.classList.add('bg-darker');
+      document.body.classList.remove('bg-lighter');
     } else {
       setThemeMode('Light');
+      document.body.classList.remove('bg-darker');
+      document.body.classList.add('bg-lighter');
     }
   }, []);
 
+  // on theme change
+  useEffect(() => {
+    if (themeMode === 'Light') {
+      document.body.classList.remove('bg-darker');
+      document.body.classList.add('bg-lighter');
+    } else {
+      document.body.classList.add('bg-darker');
+      document.body.classList.remove('bg-lighter');
+    }
+  }, [themeMode]);
+
   return (
-    <div className={`rounded-no ${themeMode === 'Light' ? 'bg-lighter' : 'bg-darker text-light'}`}>
-      <TrackerContext.Provider value={{ tracking, setTracking }}>
-        <ThemeContext.Provider value={{ themeMode }}>
-          {productInfo.product ? (
-            <Overview
-              Name={productInfo.product.name}
-              Category={productInfo.product.category}
-              Description={productInfo.product.description}
-              Slogan={productInfo.product.slogan}
-              Price={productInfo.product.default_price}
-              ReviewsRatings={productReviewMeta.ratings}
-              Features={productInfo.product.features}
-              Styles={productStyles.styles}
-              CurrentStyle={currentStyle}
-              setCurrentStyle={setCurrentStyle}
-              SalePrice={productSalesPrice}
+    <TrackerContext.Provider value={{ tracking, setTracking }}>
+      <ThemeContext.Provider value={{ themeMode }}>
+        {productInfo.product ? (
+          <Overview
+            Name={productInfo.product.name}
+            Category={productInfo.product.category}
+            Description={productInfo.product.description}
+            Slogan={productInfo.product.slogan}
+            Price={productInfo.product.default_price}
+            ReviewsRatings={productReviewMeta.ratings}
+            Features={productInfo.product.features}
+            Styles={productStyles.styles}
+            CurrentStyle={currentStyle}
+            setCurrentStyle={setCurrentStyle}
+            SalePrice={productSalesPrice}
+          />
+        ) : <LoadingPulse Message="quick coffee run!" />}
+        <>
+          {questionInfo.questions ? (
+            <QuestionsView
+              questionInfo={questionInfo}
             />
-          ) : <LoadingPulse Message="quick coffee run!" />}
-          <>
-            {questionInfo.questions ? (
-              <QuestionsView
-                questionInfo={questionInfo}
-              />
-            ) : null}
-          </>
-          {productInfo.product ? (
-            <RatingsAndReviews productId={productInfo.product.id} />
           ) : null}
-        </ThemeContext.Provider>
-      </TrackerContext.Provider>
-    </div>
+        </>
+        {productInfo.product ? (
+          <RatingsAndReviews productId={productInfo.product.id} />
+        ) : null}
+      </ThemeContext.Provider>
+    </TrackerContext.Provider>
   );
 };
 
