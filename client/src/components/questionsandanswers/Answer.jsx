@@ -1,3 +1,4 @@
+/* eslint-disable import/named */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable array-callback-return */
 /* eslint-disable react/prop-types */
@@ -22,8 +23,6 @@ const Answer = ({ answerBody, question }) => {
     const date = `${months[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`;
     return date;
   };
-
-  console.log(answerBody);
 
   const [helpfulness, setHelpfulness] = useState(false);
   const [addHelpful, setAddHelpful] = useState(answerBody.helpfulness);

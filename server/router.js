@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/no-unresolved */
@@ -96,13 +97,11 @@ app.put('/api/qa/questions/helpful/', (req, res) => {
 });
 
 app.put('/api/qa/answers/:answerId/helpful/', (req, res) => {
-  console.log('INSIDE ROUTER', req.params); // {answer_id: '23424' }
   connect.putHelpfulnessAnswers({ answer_id: Number(req.params.answerId) })
     .then((results) => {
       res.status(200).send(results.data);
     })
     .catch((err) => {
-      console.log(err)
       res.send(500, err);
     });
 });
@@ -165,7 +164,6 @@ app.put('/api/:id/helpful', (req, res) => {
 });
 
 app.post('/reviews', (req, res) => {
-  console.log(req.query);
 });
 
 app.get('/test', (req, res) => {

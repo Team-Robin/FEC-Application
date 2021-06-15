@@ -12,8 +12,6 @@ const AnswersList = ({ answers, question }) => {
     setAnswerView(!answerView);
   };
 
-  console.log('INSIDE ANSWERLIST',question)
-
   const answerList = answerView && answers ? answers.slice(0, 2) : answers;
   const moreAnswers = answerView ? 'more answers' : 'less answers';
 
@@ -21,7 +19,7 @@ const AnswersList = ({ answers, question }) => {
     <div>
       <div>
         {answers
-          ? Object.keys(answerList).map((keys) => (<Answer question={question} key={answerList[keys][1].id} answerBody={answerList[keys][1]}/>))
+          ? Object.keys(answerList).map((keys) => (<Answer question={question} key={answerList[keys][1].id} answerBody={answerList[keys][1]} />))
           : null}
       </div>
       <button className="more-answers" onClick={handleMoreAnswers} type="button">

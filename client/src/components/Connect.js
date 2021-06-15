@@ -22,7 +22,7 @@ const Connect = {
 
   postAddQuestion: (options) => axios.post('/api/qa/questions', options),
 
-  postAddAnswer: (options, questionId) => axios.post(`/api/qa/questions/${questionID}/answers`, options),
+  postAddAnswer: (options, questionId) => axios.post(`/api/qa/questions/${questionId}/answers`, options),
 
   getAnswers: (id) => axios.get(`/qa/questions/${id}/answers`),
 

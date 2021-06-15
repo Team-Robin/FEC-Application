@@ -31,7 +31,6 @@ const Question = ({ question }) => {
         });
     }
   };
-  console.log(question)
 
   return (
     <div id="questions-answers">

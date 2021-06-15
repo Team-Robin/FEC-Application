@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Modal from './Modal';
@@ -23,8 +26,8 @@ const AddAnswerForm = ({ answerBody, question }) => {
 
   const handleQuestionSubmit = () => {
     Connect.postAddAnswer({
-      body, name, email, photos: []
-    }, question.question_id )
+      body, name, email, photos: [],
+    }, question.question_id)
       .then((response) => {
         console.log(response);
       });
@@ -42,7 +45,7 @@ const AddAnswerForm = ({ answerBody, question }) => {
           onChange={handleName}
         />
       </div>
-      <label>Email: </label>
+      <label> Email: </label>
       <div className="add-question-container-email">
         <input
           className="add-question-email"
