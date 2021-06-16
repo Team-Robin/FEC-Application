@@ -7,19 +7,14 @@ import ThemeContext from '../context/Theme';
 
 const ProductStyle = ({ Style, setCurrentStyle, CurrentStyle }) => {
   const { tracking, setTracking } = useContext(TrackerContext);
-  const [popStyle, setPopStyle] = useState('styles-pop');
-  const [altName, setAltName] = useState('A&B');
   const [altDivs, setAltDivs] = useState(<span>Test</span>);
+  const [currentClass, setCurrentClass] = useState('styles-icon no-clicker shadow d-flex align-items-center');
   const { themeMode } = useContext(ThemeContext);
-  useEffect(() => {
-    setPopStyle(themeMode === 'Light' ? 'styles-pop' : 'styles-pop-light');
-  }, [themeMode]);
   useEffect(() => {
     if (!Style.photos[0].thumbnail_url && Style && Style.name) {
       const split = Style.name.split(' & ');
       const [[a], [b]] = split;
       let [c, d] = split;
-      setAltName(!b ? a : `${a}&${b}`);
       c = c.split(' ')[0].toLowerCase();
       d = d.split(' ')[0].toLowerCase();
       if (b) {
@@ -36,12 +31,32 @@ const ProductStyle = ({ Style, setCurrentStyle, CurrentStyle }) => {
         );
       }
     }
+    // {`styles-icon no-clicker shadow d-flex align-items-center
+    //       ${Style.style_id === CurrentStyle.style_id ? 'styles-selected' : popStyle}
+    //       ${themeMode === 'Light' ? 'bg-light-dark' :
+    // 'bg-dark-light styles-selected-dark-mode'}`}
   }, [Style]);
+
+  useEffect(() => {
+    if (Style.style_id === CurrentStyle.style_id) {
+      if (themeMode === 'Light') {
+        setCurrentClass('styles-icon no-clicker shadow d-flex align-items-center styles-selected bg-light-dark');
+      } else {
+        setCurrentClass('styles-icon no-clicker shadow d-flex align-items-center styles-selected-dark-mode bg-dark-light');
+      }
+    } else if (Style.style_id !== CurrentStyle.style_id) {
+      if (themeMode === 'Light') {
+        setCurrentClass('styles-icon no-clicker shadow d-flex align-items-center styles-pop bg-dark-light');
+      } else {
+        setCurrentClass('styles-icon no-clicker shadow d-flex align-items-center styles-pop-light bg-dark-light');
+      }
+    }
+  }, [CurrentStyle]);
 
   return (
     <button
       type="button"
-      className={`styles-wrapper cursor-pointer py-2 btn-focus-border-transparent rounded-circle ${themeMode === 'Light' ? 'border-primary' : 'border-tertiary'}`}
+      className={`styles-wrapper cursor-pointer py-2 rounded-circle ${themeMode === 'Light' ? 'btn-focus-light' : 'btn-focus-dark'}`}
       onClick={(event) => {
         setCurrentStyle(Style);
         const tracked = { element: event.target, time: new Date(), module: 'Product Style Selector' };
@@ -50,9 +65,7 @@ const ProductStyle = ({ Style, setCurrentStyle, CurrentStyle }) => {
       aria-label={`style ${Style.name}`}
     >
       <div
-        className={`styles-icon no-clicker shadow d-flex align-items-center
-          ${Style.style_id === CurrentStyle.style_id ? 'styles-selected' : popStyle}
-          ${themeMode === 'Light' ? 'bg-light-dark' : 'bg-dark-light'}`}
+        className={currentClass}
         style={{
           backgroundImage: `url("${Style.photos[0].thumbnail_url}")`,
           backgroundSize: 'cover',

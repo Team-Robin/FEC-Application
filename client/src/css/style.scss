@@ -733,7 +733,7 @@ nav {
   color: transparent;
   background-color: $off-white
 };
-.styles-selected{
+.styles-selected, .styles-selected-dark-mode{
   border-color: $primary-color;
   position: relative;
   &::after{
@@ -749,6 +749,13 @@ nav {
     position: absolute;
     left: 75%;
     top: -5%;
+  }
+}
+
+.styles-selected-dark-mode {
+  border-color: $tertiary-color !important;
+  &::after {
+    color: $tertiary-color !important;
   }
 }
 
@@ -986,7 +993,7 @@ nav {
     filter: brightness($active-brightness);
   }
 }
-.btn-focus, .btn-focus-border-transparent {
+.btn-focus, .btn-focus-light, .btn-focus-dark {
   border-style: solid;
   border-width: 1px;
   transition: all .15s ease-in;
@@ -996,8 +1003,13 @@ nav {
     border-color: $primary-color;
   }
 }
-.btn-focus-border-transparent {
+.btn-focus-light, .btn-focus-dark {
   border-color: transparent;
+}
+.btn-focus-dark {
+  &:focus {
+    border-color: $tertiary-color;
+  }
 }
 .shadow-sm{
   box-shadow: .2rem .2rem .2rem  rgba(0,0,0,.3);
