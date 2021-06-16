@@ -102,6 +102,17 @@ app.put('/api/qa/answers/:answerId/helpful/', (req, res) => {
       res.send(500, err);
     });
 });
+
+app.put('/api/qa/questions/:questionId/report/', (req, res) => {
+  console.log({question_id: req.params.questionId});
+  connect.putReportQuestion({ question_id: Number(req.params.questionId) })
+    .then((result) => {
+      res.status(200).send(result.data);
+    })
+    .catch((err) => {
+      res.send(500, err)
+    })
+});
 // =====================QA POST===========================>>>
 app.post('/api/qa/questions', (req, res) => {
   req.body.product_id = Number(req.body.product_id);

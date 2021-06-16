@@ -19,6 +19,7 @@ const Question = ({ question }) => {
 
   const [helpfulness, setHelpfulness] = useState(false);
   const [addHelpful, setAddHelpful] = useState(question.question_helpfulness);
+  const [reported, setReported] = useState(false);
 
   const addOneHelp = () => {
     if (helpfulness === false) {
@@ -31,6 +32,17 @@ const Question = ({ question }) => {
         });
     }
   };
+
+  const markReported = () => {
+    console.log(question.question_id);
+
+    Connect.putReportQuestion(question.question_id)
+      .then((response) => {
+        setReported(true);
+      })
+  };
+
+
 
   return (
     <div id="questions-answers">
@@ -55,6 +67,7 @@ const Question = ({ question }) => {
         <div>
           {addHelpful}
           <button onClick={() => { addOneHelp(); }} className="question-helpfulness-btn" type="button">Yes</button>
+          <button onClick={() => { markReported(); }} className="question-report-btn" type="button">Report</button>
         </div>
       </div>
       <AnswersList

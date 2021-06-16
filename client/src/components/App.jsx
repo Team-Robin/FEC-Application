@@ -11,6 +11,7 @@ import Connect from './Connect';
 import LoadingPulse from './LoadingPulse';
 import TrackerContext from './context/Tracker';
 import ThemeContext from './context/Theme';
+import ProductName from './context/ProductName';
 import NavigationBar from './NavigationBar';
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
   const [productSalesPrice, setProductSalesPrice] = useState({});
   const [tracking, setTracking] = useState([]);
   const [themeMode, setThemeMode] = useState('Light');
+  const [productName, setProductName] = useState({});
 
   // async component did mount
   useEffect(async () => {
@@ -71,6 +73,12 @@ const App = () => {
     }
   }, [themeMode]);
 
+  useEffect(() => {
+    if (productInfo && productInfo.product) {
+      setProductName(productInfo.product.name);
+    }
+  }, [productInfo]);
+
   return (
     <TrackerContext.Provider value={{ tracking, setTracking }}>
       <ThemeContext.Provider value={{ themeMode }}>
@@ -92,9 +100,12 @@ const App = () => {
         ) : <LoadingPulse Message="quick coffee run!" />}
         <>
           {questionInfo.questions ? (
-            <QuestionsView
-              questionInfo={questionInfo}
-            />
+            <ProductName.Provider value={{ productName }}>
+              <QuestionsView
+              // Name={productInfo.product.name}
+                questionInfo={questionInfo}
+              />
+            </ProductName.Provider>
           ) : null}
         </>
         {productInfo.product ? (

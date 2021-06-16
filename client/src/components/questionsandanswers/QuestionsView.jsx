@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable react/button-has-type */
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
@@ -10,7 +11,7 @@ import QuestionsAndAnswers from './QuestionsAndAnswers';
 import AddQuestion from './AddQuestion';
 // import AddQuestionForm from './AddQuestionForm';
 // import Questions from './questionsandanswers/Questions.jsx';
-const QuestionsView = ({ questionInfo }) => {
+const QuestionsView = ({ questionInfo, Name }) => {
   // const info = questionInfo.questions;
   const [info, setInfo] = useState(questionInfo.questions);
   const [questionView, setQuestionView] = useState(true);
@@ -41,6 +42,8 @@ const QuestionsView = ({ questionInfo }) => {
     setSearch(input);
   };
 
+  const moreQuestions = questionView ? 'More Questions' : 'Collapse Questions';
+
   return (
     <div id="QA-view">
       <div id="inner-QAview">
@@ -55,13 +58,13 @@ const QuestionsView = ({ questionInfo }) => {
           <button
             onClick={handleMoreQuestions}
           >
-            add more questions
+            {moreQuestions}
           </button>
         </div>
         <form className="QA-form">
           <h5>Ask a Question</h5>
           <div>
-            <AddQuestion questionInfo={questionInfo.questions} />
+            <AddQuestion questionInfo={questionInfo.questions} Name={Name} />
           </div>
         </form>
       </div>

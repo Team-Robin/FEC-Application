@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
@@ -5,12 +6,13 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Modal from './Modal';
 import Connect from '../Connect';
+import { productInfo } from '../App';
 
-const AddAnswerForm = ({ answerBody, question }) => {
+const AddAnswerForm = ({ answerBody, question, productInfo }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [body, setBody] = useState('');
-
+console.log(productInfo)
   const handleName = (e) => {
     setName(e.target.value);
   };
@@ -33,7 +35,7 @@ const AddAnswerForm = ({ answerBody, question }) => {
   };
 
   return (
-    <div>
+    <div id="add-answer-main">
       <label>Name: </label>
       <div className="add-answer-container-name">
         <input

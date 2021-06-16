@@ -20,6 +20,8 @@ const Connect = {
 
   putHelpfulnessAnswers: (answerId) => axios.put(`/api/qa/answers/${answerId}/helpful`),
 
+  putReportQuestion: (questionId) => axios.put(`/api/qa/questions/${ questionId }/report`),
+
   postAddQuestion: (options) => axios.post('/api/qa/questions', options),
 
   postAddAnswer: (options, questionId) => axios.post(`/api/qa/questions/${questionId}/answers`, options),
