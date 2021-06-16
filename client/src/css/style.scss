@@ -113,11 +113,17 @@ h1, .h1 {
 .text-dark {
   color: $charcoal !important;
 }
+.text-dark-light {
+  color: $background-dark-light
+}
 .text-primary {
   color: $primary-color;
 }
 .text-secondary {
   color: $secondary-color;
+}
+.text-tertiary {
+  color: $tertiary-color;
 }
 .text-red {
   color: $red
@@ -139,8 +145,14 @@ h1, .h1 {
 .bg-dark{
   background-color: $background-dark !important;
 }
+.bg-dark-light{
+  background-color: $background-dark-light !important;
+}
 .bg-darker{
   background-color: $background-darker !important;
+}
+.bg-light-dark{
+  background-color: $background-light-dark !important;
 }
 .bg-light{
   background-color: $off-white !important;
@@ -281,6 +293,15 @@ h1, .h1 {
 .border-{
   border-right-style: solid;
   border-right-width: 2px;
+}
+.border-primary {
+  border-color: $primary-color;
+}
+.border-secondary {
+  border-color: $secondary-color;
+}
+.border-tertiary {
+  border-color: $tertiary-color;
 }
 
 // ====== Rounded ======
@@ -1088,6 +1109,12 @@ nav {
       left: 0;
     }
   }
+  &:focus {
+    &::after {
+      transform: scale(1,1);
+      left: 0;
+    }
+  }
 }
 .hover-outline-light {
   &::after {
@@ -1184,11 +1211,13 @@ nav {
   }
 }
 
+// ====== Focus ======
+
 // ====== MISC ======
 .transition-basic {
   transition: all .15s ease-in-out;
 }
-.no-clicker{
+.no-clicker, .no-cursor{
   pointer-events: none;
 }
 .cursor-pointer {
