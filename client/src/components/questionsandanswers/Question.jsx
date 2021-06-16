@@ -34,15 +34,11 @@ const Question = ({ question }) => {
   };
 
   const markReported = () => {
-    console.log(question.question_id);
-
     Connect.putReportQuestion(question.question_id)
       .then((response) => {
         setReported(true);
-      })
+      });
   };
-
-
 
   return (
     <div id="questions-answers">
