@@ -4,10 +4,8 @@ import React from 'react';
 
 const Modal = ({ closeModal, children }) => (
   <div id="modal-main">
-    <div>
-      <button className="close-modal" type="button" onClick={closeModal}>close</button>
-    </div>
     {children}
+    <button className="close-modal" type="button" onClick={closeModal}>close</button>
   </div>
 );
 
