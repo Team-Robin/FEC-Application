@@ -6,7 +6,6 @@ import React, { useState, useEffect } from 'react';
 import AnswersList from './AnswersList';
 import Connect from '../Connect';
 
-
 const Question = ({ question }) => {
   const dateFormat = (inputTime) => {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
