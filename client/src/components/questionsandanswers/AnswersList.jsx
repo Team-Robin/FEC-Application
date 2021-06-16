@@ -13,7 +13,7 @@ const AnswersList = ({ answers, question }) => {
   };
 
   const answerList = answerView && answers ? answers.slice(0, 2) : answers;
-  const moreAnswers = answerView ? 'more answers' : 'Collapse answers';
+  const moreAnswers = answerView ? 'more answers ˅' : 'Collapse answers ^';
 
   return (
     <div id="main-answers-block">

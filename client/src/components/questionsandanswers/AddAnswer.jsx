@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
@@ -14,7 +15,6 @@ const AddAnswer = ({ answerBody, question }) => {
   const closeModal = () => {
     setModal(false);
   };
-  // const modelComponent = ()
 
   return (
     <div>
@@ -23,7 +23,7 @@ const AddAnswer = ({ answerBody, question }) => {
       </button>
       {modal ? (
         <Modal closeModal={closeModal}>
-          <AddAnswerForm question={question} answerBody={answerBody} />
+          <AddAnswerForm question={question} answerBody={answerBody} closeModal={closeModal} />
         </Modal>
       ) : ''}
     </div>
