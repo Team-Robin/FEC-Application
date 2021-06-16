@@ -49,6 +49,8 @@ const getHelpfulnessQuestions = async ({ question_id }) => axios.put(`https://ap
 
 const putHelpfulnessAnswers = async ({ answer_id }) => axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${answer_id}/helpful`);
 
+const putReportQuestion = async ({ question_id }) => axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/report`);
+
 const getAnswers = async (id = { id: 104629 }, options = { page: 1, count: 100 }) => axios({
   method: 'GET',
   url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${id.id}/answers`,
@@ -86,4 +88,5 @@ module.exports = {
   postAddQuestion,
   putHelpfulnessAnswers,
   postAddAnswer,
+  putReportQuestion,
 };

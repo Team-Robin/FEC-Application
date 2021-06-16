@@ -48,7 +48,7 @@ const AddQuestionForm = ({ questionInfo }) => {
       <div className="Q-name-email">
         <div className="add-question-container-name">
           <div>
-          <label>Name: </label>
+            <label>Name: </label>
             <input
               className="add-question-name"
               placeholder="Example: jackson11!"
