@@ -31,7 +31,7 @@ const getProductIdStyle = async (id = { id: 17071 }) => axios({
   url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id.id}/styles`,
 });
 
-const getQuestions = async ({ product_id }, options = { page: 1, count: 5 }) => axios({
+const getQuestions = async ({ product_id }, options = { page: 1, count: 100 }) => axios({
   method: 'GET',
   url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions',
   params: {
@@ -41,9 +41,17 @@ const getQuestions = async ({ product_id }, options = { page: 1, count: 5 }) => 
   },
 });
 
+const postAddAnswer = async (options, questionId) => axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${questionId}/answers`, options);
+
+const postAddQuestion = async (options) => axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions', options);
+
 const getHelpfulnessQuestions = async ({ question_id }) => axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/helpful`);
 
-const getAnswers = async (id = { id: 104629 }, options = { page: 1, count: 5 }) => axios({
+const putHelpfulnessAnswers = async ({ answer_id }) => axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${answer_id}/helpful`);
+
+const putReportQuestion = async ({ question_id }) => axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/report`);
+
+const getAnswers = async (id = { id: 104629 }, options = { page: 1, count: 100 }) => axios({
   method: 'GET',
   url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${id.id}/answers`,
   params: {
@@ -65,7 +73,6 @@ const setHelpfulReview = async (id) => axios.put(`https://app-hrsei-api.herokuap
 
 const addReview = async (options) => axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/', options);
 
-
 module.exports = {
   getProducts,
   getProductId,
@@ -78,4 +85,8 @@ module.exports = {
   getHelpfulnessQuestions,
   reportReview,
   setHelpfulReview,
+  postAddQuestion,
+  putHelpfulnessAnswers,
+  postAddAnswer,
+  putReportQuestion,
 };

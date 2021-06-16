@@ -1,39 +1,5 @@
 
-// examples
-$highlight: #E0E9F9;
-
-
-// Text Color Palette
-$primary-color: #79E0D8;
-$secondary-color: #4C82AD;
-$tertiary-color: #f5a962;
-$text-blue-light: #89BFFA;
-
-
-$off-white: #F0F0F0;
-$bright-white: #fcfcfc;
-$charcoal: #101010;
-
-$background-dark: #202124;
-$background-light: #fff;
-$background-darker: #121314;
-
-$Roboto-regular: 'Roboto', sans-serif;
-$Roboto-light: 'Roboto', sans-serif, 200;
-
-$muted: rgba(0,0,0,.6);
-
-$fb-color: #4267B2;
-$twtr-color: #1DA1F2;
-$pins-color: #E60023;
-
-$hover-brightness: 110%;
-$active-brightness: 110%;
-
-$red: #FC0058;
-$text-warn: #F7D528;
-$text-error: $red;
-$warn-light: #ff9966;
+@import './variables.scss';
 
 // ====== Reset! ======
 body {
@@ -53,7 +19,10 @@ body {
   //   border-style: dotted;
   // }
 }
-
+a {
+  text-decoration: none;
+  border: 0;
+}
 button, select {
   outline: none;
   border: none;
@@ -144,11 +113,17 @@ h1, .h1 {
 .text-dark {
   color: $charcoal !important;
 }
+.text-dark-light {
+  color: $background-dark-light
+}
 .text-primary {
   color: $primary-color;
 }
 .text-secondary {
   color: $secondary-color;
+}
+.text-tertiary {
+  color: $tertiary-color;
 }
 .text-red {
   color: $red
@@ -170,8 +145,14 @@ h1, .h1 {
 .bg-dark{
   background-color: $background-dark !important;
 }
+.bg-dark-light{
+  background-color: $background-dark-light !important;
+}
 .bg-darker{
   background-color: $background-darker !important;
+}
+.bg-light-dark{
+  background-color: $background-light-dark !important;
 }
 .bg-light{
   background-color: $off-white !important;
@@ -312,6 +293,15 @@ h1, .h1 {
 .border-{
   border-right-style: solid;
   border-right-width: 2px;
+}
+.border-primary {
+  border-color: $primary-color;
+}
+.border-secondary {
+  border-color: $secondary-color;
+}
+.border-tertiary {
+  border-color: $tertiary-color;
 }
 
 // ====== Rounded ======
@@ -1009,9 +999,6 @@ nav {
 .btn-focus-border-transparent {
   border-color: transparent;
 }
-.shadow-no {
-  box-shadow: none !important;
-}
 .shadow-sm{
   box-shadow: .2rem .2rem .2rem  rgba(0,0,0,.3);
 
@@ -1032,7 +1019,51 @@ nav {
     box-shadow: 0rem .15rem .1rem  rgba(0,0,0,.3);
   }
 }
+// ====== Input ======
+.user-input-form {
+  position: relative;
+  text-align: left;
+}
+.user-input {
+  outline: none;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  position: relative;
+  ~ label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform-origin: left;
+    transition: transform .15s ease-in-out;
+  }
+  ~ .user-line {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    transform: translate(0,0);
+    transition: background-image .15s ease-in;
+  }
+  &:focus ~label, &:not(:placeholder-shown) ~label {
+    transform: scale(.5) translate(0, -115%);
+    opacity: .5;
+  }
+  &:focus ~.user-line {
+    background-image: linear-gradient(to right, $primary-color, $tertiary-color);
+  }
+}
 
+// ====== Shadow ======
+
+.shadow-no {
+  box-shadow: none !important;
+}
 .shadow {
   box-shadow: .2rem .2rem .2rem  rgba(0,0,0,.2);
   &.btn:hover {
@@ -1062,17 +1093,25 @@ nav {
     content: '';
     position: absolute;
     background-color: $charcoal;
-    left: 50%;
+    left: 0;
     right: 0;
-    top: 1em;
+    top: 0;
     bottom: 0;
     height: 2px;
-    width: 0%;
-    transition: all .2s ease-in-out;
+    width: 100%;
+    transform: scale(0,1);
+    transform-origin: center;
+    transition: transform .2s ease-in-out;
   }
   &:hover {
     &::after {
-      width: 100%;
+      transform: scale(1,1);
+      left: 0;
+    }
+  }
+  &:focus {
+    &::after {
+      transform: scale(1,1);
       left: 0;
     }
   }
@@ -1172,11 +1211,13 @@ nav {
   }
 }
 
+// ====== Focus ======
+
 // ====== MISC ======
 .transition-basic {
   transition: all .15s ease-in-out;
 }
-.no-clicker{
+.no-clicker, .no-cursor{
   pointer-events: none;
 }
 .cursor-pointer {

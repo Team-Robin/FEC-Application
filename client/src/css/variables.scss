@@ -1,0 +1,36 @@
+// examples
+$highlight: #E0E9F9;
+
+
+// Text Color Palette
+$primary-color: #79E0D8;
+$secondary-color: #FCC790;
+$tertiary-color: #EF5BFC;
+
+$off-white: #F0F0F0;
+$bright-white: #fcfcfc;
+$charcoal: #101010;
+
+$background-light: #fff;
+$background-light-dark: rgb(230, 230, 230);
+$background-dark: #2c2d31;
+$background-dark-light: #202124;
+$background-darker: #121314;
+
+$Roboto-regular: 'Roboto', sans-serif;
+$Roboto-light: 'Roboto', sans-serif, 200;
+
+$muted: rgba(0,0,0,.6);
+
+$fb-color: #4267B2;
+$twtr-color: #1DA1F2;
+$pins-color: #E60023;
+
+$hover-brightness: 110%;
+$active-brightness: 110%;
+
+$red: #FC0058;
+$text-blue-light: #89BFFA;
+$text-warn: #F7D528;
+$text-error: $red;
+$warn-light: #ff9966;

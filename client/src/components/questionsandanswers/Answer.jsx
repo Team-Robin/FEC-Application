@@ -1,3 +1,4 @@
+/* eslint-disable import/named */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable array-callback-return */
 /* eslint-disable react/prop-types */
@@ -9,8 +10,10 @@ import React from 'react';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Questions from './Questions';
+import { AddAnswer } from './AddAnswer';
+import Connect from '../Connect';
 
-const Answer = React.memo(({ answerBody }) => {
+const Answer = ({ answerBody, question }) => {
   const dateFormat = (inputTime) => {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
       'August', 'September', 'October', 'November', 'December',
@@ -21,31 +24,46 @@ const Answer = React.memo(({ answerBody }) => {
     return date;
   };
 
+  const [helpfulness, setHelpfulness] = useState(false);
+  const [addHelpful, setAddHelpful] = useState(answerBody.helpfulness);
+
+  const addOneHelp = () => {
+    if (helpfulness === false) {
+      Connect.putHelpfulnessAnswers(answerBody.id)
+        .then((response) => {
+          if (response.status === 200) {
+            setAddHelpful(addHelpful + 1);
+            setHelpfulness(true);
+          }
+        });
+    }
+  };
+
   return (
     <div id="answers">
-      <p>
+      <p className="answer-body">
         A:
         {' '}
         {answerBody.body}
       </p>
-      <p className="answer-user">
-        User:
+      <div className="answer-user">
         {answerBody.answerer_name}
         {' '}
-        Date:
-        {dateFormat(answerBody.date)}
-      </p>
-      <p className="helpful">
+        <div className="answer-date">
+          {dateFormat(answerBody.date)}
+        </div>
+      </div>
+      <div className="helpful">
         Helpful?
         {' '}
-        {answerBody.helpfulness}
-        <button className="helpful-btn" type="button">  Yes</button>
-        |
-        <button className="helpful-btn" type="button">  No</button>
-      </p>
+        <div>
+          {addHelpful}
+          <button onClick={() => { addOneHelp(); }} className="answer-helpfulness-btn" type="button">Yes</button>
+        </div>
+      </div>
     </div>
   );
-});
+};
 
 Answer.propTypes = {
   answerBody: PropTypes.object.isRequired,

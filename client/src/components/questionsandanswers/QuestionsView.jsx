@@ -1,3 +1,5 @@
+/* eslint-disable import/no-cycle */
+/* eslint-disable react/button-has-type */
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
@@ -6,11 +8,13 @@ import React, { useState, useEffect } from 'react';
 import Search from './Search';
 import Question from './Question';
 import QuestionsAndAnswers from './QuestionsAndAnswers';
+import AddQuestion from './AddQuestion';
+// import AddQuestionForm from './AddQuestionForm';
 // import Questions from './questionsandanswers/Questions.jsx';
-const QuestionsView = ({ questionInfo }) => {
+const QuestionsView = ({ questionInfo, Name }) => {
   // const info = questionInfo.questions;
   const [info, setInfo] = useState(questionInfo.questions);
-  const [questionView, setQuestionView] = useState(false);
+  const [questionView, setQuestionView] = useState(true);
   const [search, setSearch] = useState('');
 
   const questionList = () => {
@@ -30,12 +34,15 @@ const QuestionsView = ({ questionInfo }) => {
   };
 
   const questionInfoObj = questionList();
+
   const handleMoreQuestions = () => {
     setQuestionView(!questionView);
   };
   const searchQuestions = (input) => {
     setSearch(input);
   };
+
+  const moreQuestions = questionView ? 'More Questions' : 'Collapse Questions';
 
   return (
     <div id="QA-view">
@@ -45,17 +52,20 @@ const QuestionsView = ({ questionInfo }) => {
           <Search searchQuestions={searchQuestions} />
         </div>
         <div className="question-cards">
-        {questionInfoObj.map((question) => <Question question={question} />)}
+          {questionInfoObj.map((question) => <Question key={question.question_id} question={question} />)}
         </div>
         <div className="add-more-questions">
           <button
-            onClick={handleMoreQuestions}>
-              add more questions
+            onClick={handleMoreQuestions}
+          >
+            {moreQuestions}
           </button>
         </div>
         <form className="QA-form">
           <h5>Ask a Question</h5>
-          <input className="QA-search-box" type="text" name="QA-search-box" placeholder="Have a question?" />
+          <div>
+            <AddQuestion questionInfo={questionInfo.questions} Name={Name} />
+          </div>
         </form>
       </div>
     </div>
