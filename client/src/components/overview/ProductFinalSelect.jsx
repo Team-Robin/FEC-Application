@@ -57,7 +57,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
           ) : null}
           <div className="row justify-content-between">
             <select
-              className={`select-size text-size-2 rounded-sm pl-4 hover-outline my-2 flex-basis-50 btn shadow my-2 ${themeMode === 'Light' ? 'bg-light text-dark' : 'bg-darker text-light'}`}
+              className={`select-size text-size-2 rounded-sm pl-4 hover-outline my-2 flex-basis-50 btn shadow my-2 ${themeMode === 'Light' ? 'bg-light text-dark' : 'bg-dark-light text-light'}`}
               onChange={(event) => {
                 setCurrentSize(event.target.value);
                 const tracked = { element: event.target, time: new Date(), module: `Size Selector. Size Selected: ${event.target.value}` };
@@ -77,7 +77,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
               ))}
             </select>
             <select
-              className={`select-size text-size-2 rounded-sm pl-4 my-2 mr-2 flex-basis-30 btn shadow my-2 ${themeMode === 'Light' ? 'bg-light text-dark' : 'bg-darker text-light'}`}
+              className={`select-size text-size-2 rounded-sm pl-4 my-2 mr-2 flex-basis-30 btn shadow my-2 ${themeMode === 'Light' ? 'bg-light text-dark' : 'bg-dark-light text-light'}`}
               value={`${currentSize ? selectedQuantity : null}` || ''}
               onChange={(event) => {
                 setSelectedQuantity(event.target.value);
@@ -95,7 +95,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
             <button
               type="button"
               aria-label="add to cart"
-              className={`select-size text-size-2 btn shadow my-2 rounded-sm flex-basis-60 btn-focus  ${themeMode === 'Light' ? 'bg-light text-dark' : 'bg-darker text-light'}`}
+              className={`select-size text-size-2 btn shadow my-2 rounded-sm flex-basis-60 btn-focus  ${themeMode === 'Light' ? 'bg-light text-dark' : 'bg-dark-light text-light'}`}
               onClick={onClickValidator}
             >
               <span className={`${themeMode === 'Light' ? 'text-dark' : 'text-light'}`}> Add to Bag </span>
@@ -103,7 +103,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
             </button>
             <button
               type="button"
-              className={`text-size-2 d-flex justify-content-center my-2 btn shadow rounded-sm flex-basis-25 mr-2 btn-focus select-size ${themeMode === 'Light' ? 'bg-light text-dark' : 'bg-darker text-light'}`}
+              className={`text-size-2 d-flex justify-content-center my-2 btn shadow rounded-sm flex-basis-25 mr-2 btn-focus select-size ${themeMode === 'Light' ? 'bg-light text-dark' : 'bg-dark-light text-light'}`}
               onClick={(event) => {
                 const tracked = { element: event.target, time: new Date(), module: 'Add to favourites' };
                 setTracking([...tracking, tracked]);
@@ -116,10 +116,10 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
       )
         : (
           <>
-            <div className="text-muted text-bold text-size-4">OUT OF STONKS</div>
+            <div className={` text-bold text-size-4 ${themeMode === 'Light' ? 'text-muted' : 'text-muted-light'}`}>OUT OF STOCK</div>
             <button
               type="button"
-              className={`select-size text-size-2 d-flex justify-content-center my-2 shadow rounded-sm btn-focus  ${themeMode === 'Light' ? 'bg-light text-dark' : 'bg-darker text-light'}`}
+              className={`select-size text-size-2 d-flex justify-content-center my-2 shadow rounded-sm btn-focus  ${themeMode === 'Light' ? 'bg-light text-dark' : 'bg-dark-light text-light'}`}
               onClick={(event) => {
                 const tracked = { element: event.target, time: new Date(), module: 'Add to favourites' };
                 setTracking([...tracking, tracked]);

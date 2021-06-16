@@ -11,7 +11,11 @@ import Connect from './Connect';
 import LoadingPulse from './LoadingPulse';
 import TrackerContext from './context/Tracker';
 import ThemeContext from './context/Theme';
+<<<<<<< HEAD
 import ProductName from './context/ProductName';
+=======
+import NavigationBar from './NavigationBar';
+>>>>>>> d33afe2fa2e4e7c0a7af79c8fa41b833d9d65dce
 
 const App = () => {
   // both the this.state and this.setState()
@@ -81,6 +85,7 @@ const App = () => {
   return (
     <TrackerContext.Provider value={{ tracking, setTracking }}>
       <ThemeContext.Provider value={{ themeMode }}>
+        <NavigationBar />
         {productInfo.product ? (
           <Overview
             Name={productInfo.product.name}

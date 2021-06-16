@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import ProductGallery from './ProductGallery';
 import ProductExpandedView from './ProductExpandedView';
 import TrackerContext from '../context/Tracker';
+import ThemeContext from '../context/Theme';
 
 const ProductCarousel = ({ Photos }) => {
   // hello
@@ -12,10 +13,11 @@ const ProductCarousel = ({ Photos }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [photoGallery, setPhotoGallery] = useState([]);
   const [photoStyle, setPhotoStyle] = useState();
-  const [restrict, setRestrict] = useState('decrement');
+  const [restrict, setRestrict] = useState('null');
   const [expanded, setExpanded] = useState(false);
   const [zoomed, setZoomed] = useState(false);
   const { tracking, setTracking } = useContext(TrackerContext);
+  const { themeMode } = useContext(ThemeContext);
 
   useEffect(() => {
     if (!expanded) {
@@ -42,7 +44,7 @@ const ProductCarousel = ({ Photos }) => {
   }, [Photos]);
 
   useEffect(() => {
-    if (currentPhoto && currentPhoto.photo) {
+    if (currentPhoto && currentPhoto.photo && currentPhoto.photo.url !== null) {
       // setPhotoStyle({
       //   backgroundImage: `url(${currentPhoto.url})`,
       //   backgroundSize: 'contain',
@@ -79,92 +81,100 @@ const ProductCarousel = ({ Photos }) => {
       className="transition-basic overview-gallery text-center mx-auto my-4"
       style={!expanded ? { position: 'relative' } : {}}
     >
-      { photoStyle ? (
-        <ProductExpandedView
-          expanded={expanded}
-          setExpanded={setExpanded}
-          photoStyle={photoStyle}
-          zoomed={zoomed}
-          setZoomed={setZoomed}
-        />
-      ) : null}
-      <div
-        className="overview-carousel "
-        style={{
-          // backgroundImage: `url(${photoStyle})`,
-          // backgroundSize: 'contain',
-          // backgroundPosition: 'center',
-          // backgroundRepeat: 'no-repeat',
-          // transition: 'all .15s ease-out',
-        }}
-      >
-        { currentPhoto && currentPhoto.photo && !expanded ? (
-          <>
-            <ProductGallery
-              PhotoGallery={photoGallery}
-              CurrentPhoto={currentPhoto}
-              SelectPhoto={setCurrentPhoto}
-            />
-          </>
-        ) : null}
-        <div
-          onClick={(event) => {
-            setExpanded(!expanded);
-            const tracked = { element: event.target, time: new Date(), module: `Picture expander. Status: ${!expanded}` };
-            setTracking([...tracking, tracked]);
-          }}
-          onKeyDown={(event) => {
-            if (event.key === 'Enter') {
-              setExpanded(!expanded);
-              const tracked = { element: event.target, time: new Date(), module: `Picture expander. Status: ${!expanded}` };
-              setTracking([...tracking, tracked]);
-            }
-          }}
-          style={{
-            color: 'transparent',
-            position: 'absolute',
-            backgroundColor: 'transparent',
-            left: 'min(10em, 20%)',
-            right: '0',
-            top: '0',
-            bottom: '0',
-            width: 'calc(100% - min(20em, 40%))',
-            cursor: 'zoom-in',
-          }}
-          role="button"
-          tabIndex="0"
-        >
-          expand image
-        </div>
-        {restrict !== 'decrement' && !zoomed ? (
-          <button
-            type="button"
-            className="overview-carousel-decrement"
-            style={expanded ? { left: '0' } : null}
-            onClick={(event) => {
-              carouselReducer(currentPhoto.index - 1);
-              const tracked = { element: event.target, time: new Date(), module: 'Carousel decrement' };
-              setTracking([...tracking, tracked]);
+      { photoStyle && photoStyle !== null ? (
+        <>
+          <ProductExpandedView
+            expanded={expanded}
+            setExpanded={setExpanded}
+            photoStyle={photoStyle}
+            zoomed={zoomed}
+            setZoomed={setZoomed}
+          />
+          <div
+            className="overview-carousel "
+            style={{
+              // backgroundImage: `url(${photoStyle})`,
+              // backgroundSize: 'contain',
+              // backgroundPosition: 'center',
+              // backgroundRepeat: 'no-repeat',
+              // transition: 'all .15s ease-out',
             }}
           >
-            <i className="fas fa-chevron-left fa-lg rounded-circle overview-carousel-icon" style={{ overflow: 'hidden', fontSize: '2em' }} />
-          </button>
-        ) : null}
-        {restrict !== 'increment' && !zoomed ? (
-          <button
-            type="button"
-            className="overview-carousel-increment"
-            style={expanded ? { left: '100%' } : null}
-            onClick={(event) => {
-              carouselReducer(currentPhoto.index + 1);
-              const tracked = { element: event.target, time: new Date(), module: 'Carousel increment' };
-              setTracking([...tracking, tracked]);
-            }}
-          >
-            <i className="fas fa-chevron-right fa-lg rounded-circle overview-carousel-icon" style={{ overflow: 'hidden', fontSize: '2em' }} />
-          </button>
-        ) : null}
-      </div>
+            { currentPhoto && currentPhoto.photo && currentPhoto.photo.url && !expanded ? (
+              <>
+                <ProductGallery
+                  PhotoGallery={photoGallery}
+                  CurrentPhoto={currentPhoto}
+                  SelectPhoto={setCurrentPhoto}
+                />
+              </>
+            ) : null}
+            <div
+              onClick={(event) => {
+                setExpanded(!expanded);
+                const tracked = { element: event.target, time: new Date(), module: `Picture expander. Status: ${!expanded}` };
+                setTracking([...tracking, tracked]);
+              }}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  setExpanded(!expanded);
+                  const tracked = { element: event.target, time: new Date(), module: `Picture expander. Status: ${!expanded}` };
+                  setTracking([...tracking, tracked]);
+                }
+              }}
+              style={{
+                color: 'transparent',
+                position: 'absolute',
+                backgroundColor: 'transparent',
+                left: 'min(10em, 20%)',
+                right: '0',
+                top: '0',
+                bottom: '0',
+                width: 'calc(100% - min(20em, 40%))',
+                cursor: 'zoom-in',
+              }}
+              role="button"
+              tabIndex="0"
+            >
+              expand image
+            </div>
+            {restrict !== 'decrement' && !zoomed && restrict !== 'null' ? (
+              <button
+                type="button"
+                className="overview-carousel-decrement"
+                style={expanded ? { left: '0' } : null}
+                onClick={(event) => {
+                  carouselReducer(currentPhoto.index - 1);
+                  const tracked = { element: event.target, time: new Date(), module: 'Carousel decrement' };
+                  setTracking([...tracking, tracked]);
+                }}
+              >
+                <i className="fas fa-chevron-left fa-lg rounded-circle overview-carousel-icon" style={{ overflow: 'hidden', fontSize: '2em' }} />
+              </button>
+            ) : null}
+            {restrict !== 'increment' && !zoomed && restrict !== 'null' ? (
+              <button
+                type="button"
+                className="overview-carousel-increment"
+                style={expanded ? { left: '100%' } : null}
+                onClick={(event) => {
+                  carouselReducer(currentPhoto.index + 1);
+                  const tracked = { element: event.target, time: new Date(), module: 'Carousel increment' };
+                  setTracking([...tracking, tracked]);
+                }}
+              >
+                <i className="fas fa-chevron-right fa-lg rounded-circle overview-carousel-icon" style={{ overflow: 'hidden', fontSize: '2em' }} />
+              </button>
+            ) : null}
+          </div>
+        </>
+      )
+        : (
+          <div style={{ width: '100%', height: '100%', fontSize: '10em' }} className={`rounded-sm d-flex align-items-center ${themeMode === 'Light' ? 'text-muted bg-light' : 'text-muted-light bg-dark'}`}>
+            <span className="mx-auto no-cursor">NO IMAGE</span>
+          </div>
+        )}
+
     </div>
   );
 };
