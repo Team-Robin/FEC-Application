@@ -10,7 +10,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import supertest from 'supertest';
 import renderer from 'react-test-renderer';
-import App from './client/src/components/App';
+import AppRouter from './client/src/components/AppRouter';
 import Overview from './client/src/components/overview/Overview';
 import server from './server/router';
 
@@ -53,7 +53,7 @@ describe('Start Jest', () => {
     describe('React Check', () => {
       it('renders App without crashing', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<App />, div);
+        ReactDOM.render(<AppRouter />, div);
         ReactDOM.unmountComponentAtNode(div);
       });
     });
