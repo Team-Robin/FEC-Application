@@ -452,7 +452,7 @@ nav {
       right: 0;
       bottom: 0;
       transform: translate(225%,25%);
-      transition: all .2s ease-in;
+      transition: all .25s ease-in;
     }
     &::before {
       content: '\f185';
@@ -467,8 +467,8 @@ nav {
       left: 0;
       right: 0;
       bottom: 0;
-      transform: translate(15%,300%);
-      transition: all .2s ease-in;
+      transform: translate(15%,250%);
+      transition: all .25s ease-in;
     }
   }
   & input:checked ~ .slider{
@@ -479,7 +479,7 @@ nav {
   }
   & input:checked ~ .slider-icons {
     &::after {
-      transform: translate(225%, 300%)
+      transform: translate(225%, 250%)
     }
     &::before {
       transform: translate(15%, 25%);
@@ -799,6 +799,11 @@ nav {
     font-weight: 900;
     left: 100%;
     top: 0%;
+  }
+}
+.styles-pop {
+  &::before {
+    color: $charcoal;
   }
 }
 

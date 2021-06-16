@@ -51,7 +51,7 @@ const ProductStyle = ({ Style, setCurrentStyle, CurrentStyle }) => {
         setCurrentClass('styles-icon no-clicker shadow d-flex align-items-center styles-pop-light bg-dark-light');
       }
     }
-  }, [CurrentStyle]);
+  }, [CurrentStyle, themeMode]);
 
   return (
     <button
