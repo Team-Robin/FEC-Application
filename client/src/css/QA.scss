@@ -153,6 +153,7 @@ input {
   display: flex;
   flex-flow: column;
   margin: 0 auto;
+  border: 2px solid #4c82ad;
   width: 50%;
   height: 50%;
   position: fixed;
@@ -160,7 +161,7 @@ input {
   top: 30%;
   background: whitesmoke;
   opacity: 0.9;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
   align-content: space-around;
 }
@@ -176,6 +177,7 @@ input {
   border: 2px solid black;
   width: 90%;
   height: 65%;
+  padding-bottom: 1px;
 }
 .add-question-container-body {
   display: flex;
@@ -228,4 +230,32 @@ input {
 	border-radius: 50px;
 	border-color: #b9dfe0 !important;
 	transition: all 0.3s ease 0s;
+}
+
+.close-modal-container {
+  padding-top: 1px;
+  height: 10%;
+  margin-top: 2px;
+
+}
+
+.close-modal {
+  float: right;
+  width: 10%;
+  height: 100%;
+  border-color: #f1c40f;
+  color: black;
+  background-image: -webkit-linear-gradient(
+45deg
+, #ff3300 50%, transparent 50%);
+  background-image: linear-gradient(
+45deg
+, #f1620f 50%, transparent 50%);
+  background-position: 100%;
+  background-size: 400%;
+  -webkit-transition: background 300ms ease-in-out;
+  transition: background 300ms ease-in-out;
+}
+.close-modal:hover {
+  background-position: 0;
 }
