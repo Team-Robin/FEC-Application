@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import AnswersList from './AnswersList';
 import Connect from '../Connect';
 
+
 const Question = ({ question }) => {
   const dateFormat = (inputTime) => {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
@@ -57,12 +58,14 @@ const Question = ({ question }) => {
         {' '}
         {question.question_body}
       </p>
-      <div>
-        Was this helpful?
+      <div className="Q-helpful-text">
+        Was this question helpful?
         {'  '}
-        <div>
+        <div className="Q-helpful-buttons">
           {addHelpful}
+          {' | '}
           <button onClick={() => { addOneHelp(); }} className="question-helpfulness-btn" type="button">Yes</button>
+          {' | '}
           <button onClick={() => { markReported(); }} className="question-report-btn" type="button">Report</button>
         </div>
       </div>
