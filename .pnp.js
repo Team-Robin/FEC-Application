@@ -63,7 +63,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:17.0.2"],
             ["react-dom", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:17.0.2"],
             ["react-test-renderer", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:17.0.2"],
-            ["sass", "npm:1.35.0"],
+            ["sass", "npm:1.35.1"],
             ["sass-loader", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:12.1.0"],
             ["style-loader", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:2.0.0"],
             ["supertest", "npm:6.1.3"],
@@ -5925,7 +5925,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:17.0.2"],
             ["react-dom", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:17.0.2"],
             ["react-test-renderer", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:17.0.2"],
-            ["sass", "npm:1.35.0"],
+            ["sass", "npm:1.35.1"],
             ["sass-loader", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:12.1.0"],
             ["style-loader", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:2.0.0"],
             ["supertest", "npm:6.1.3"],
@@ -9669,10 +9669,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["sass", [
-        ["npm:1.35.0", {
-          "packageLocation": "./.yarn/cache/sass-npm-1.35.0-c6065bc08a-030a3767cc.zip/node_modules/sass/",
+        ["npm:1.35.1", {
+          "packageLocation": "./.yarn/cache/sass-npm-1.35.1-b1de82f460-ceeb2ebd09.zip/node_modules/sass/",
           "packageDependencies": [
-            ["sass", "npm:1.35.0"],
+            ["sass", "npm:1.35.1"],
             ["chokidar", "npm:3.5.2"]
           ],
           "linkType": "HARD",
@@ -9698,7 +9698,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["klona", "npm:2.0.4"],
             ["neo-async", "npm:2.6.2"],
             ["node-sass", null],
-            ["sass", "npm:1.35.0"],
+            ["sass", "npm:1.35.1"],
             ["webpack", "virtual:889ff20922e07bbeb5b4f5b26b593dfbc21eee783eda5577db27ca415f08359805e1112bf2c4a7d8824d275717317bd3b242bd899cefe93e13bfcc588a2f2964#npm:5.39.0"]
           ],
           "packagePeers": [
