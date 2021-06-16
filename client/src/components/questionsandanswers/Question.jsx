@@ -34,15 +34,11 @@ const Question = ({ question }) => {
   };
 
   const markReported = () => {
-    console.log(question.question_id);
-
     Connect.putReportQuestion(question.question_id)
       .then((response) => {
         setReported(true);
-      })
+      });
   };
-
-
 
   return (
     <div id="questions-answers">
@@ -61,12 +57,14 @@ const Question = ({ question }) => {
         {' '}
         {question.question_body}
       </p>
-      <div>
-        Was this helpful?
+      <div className="Q-helpful-text">
+        Was this question helpful?
         {'  '}
-        <div>
+        <div className="Q-helpful-buttons">
           {addHelpful}
+          {' | '}
           <button onClick={() => { addOneHelp(); }} className="question-helpfulness-btn" type="button">Yes</button>
+          {' | '}
           <button onClick={() => { markReported(); }} className="question-report-btn" type="button">Report</button>
         </div>
       </div>

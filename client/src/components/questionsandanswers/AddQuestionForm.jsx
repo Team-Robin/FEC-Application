@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-duplicate-props */
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-unused-vars */
@@ -7,7 +8,7 @@ import Modal from './Modal';
 import Connect from '../Connect';
 import ProductName from '../context/ProductName';
 
-const AddQuestionForm = ({ questionInfo }) => {
+const AddQuestionForm = ({ questionInfo, closeModal }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [body, setBody] = useState('');
@@ -39,6 +40,7 @@ const AddQuestionForm = ({ questionInfo }) => {
       .then((response) => {
         console.log(response);
       });
+    closeModal();
   };
 
   return (
