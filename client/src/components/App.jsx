@@ -25,6 +25,7 @@ const App = () => {
   const [tracking, setTracking] = useState([]);
   const [themeMode, setThemeMode] = useState('Light');
   const [productName, setProductName] = useState({});
+  const [productStyles, setProductStyles] = useState({})
 
   // async component did mount
   useEffect(async () => {
