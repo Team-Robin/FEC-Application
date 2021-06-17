@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import RatingStars from './RatingStars';
 import ThemeContext from '../context/Theme';
 
-const AddReviewModal = ({ labels, ratings, submitReview, handleClose }) => {
+const AddReviewModal = ({ labels, ratings, submitReview, handleClose, uploader }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [summary, setSummary] = useState('');
   const [body, setBody] = useState('');
   const [photos, setPhotos] = useState([]);
-  const [thumbnails, setThumbnails] = useState([])
   const [recommend, setRecommend] = useState(false);
   const [characteristics, setCharacteristics] = useState({});
   const [rating, setRating] = useState(0);
@@ -66,20 +65,30 @@ const AddReviewModal = ({ labels, ratings, submitReview, handleClose }) => {
     }
   }
 
-  const uploader = cloudinary.createUploadWidget({
-    cloudName: 'ddrvosdfa',
-    uploadPreset: 'wmysnpod',
-    maxFiles: 5,
-    thumbnails: '#formPics',
-  }, async (error, result) => {
-      if (!error && result && result.event === "success") {
-        console.log('Done! Here is the image info: ', result.info);
-        photoQueue.push(result.info.url);
-      }
-    }
-  )
+  // const uploader = cloudinary.createUploadWidget({
+  //   cloudName: 'ddrvosdfa',
+  //   uploadPreset: 'wmysnpod',
+  //   maxFiles: 5,
+  //   thumbnails: '#formPics',
+  // }, (error, result) => {
+  //     if (!error && result && result.event === "success") {
+  //       console.log('Done! Here is the image info: ', result.info);
+  //       photoQueue.push(result.info.url)
+  //     }
+  //   }
+  // )
 
   const submit = async () => {
+    let thumbnails = document.getElementsByClassName('cloudinary-thumbnails')[0];
+    if (thumbnails !== undefined) {
+      debugger;
+       thumbnails = thumbnails.children;
+       for (var i = 0; i < thumbnails.length; i++) {
+         let thumbnail = thumbnails[i];
+         let { url } = JSON.parse(thumbnail.attributes[1].value)
+         photoQueue.push(url);
+       }
+    }
     await setPhotos(photoQueue.slice(0, 5));
     submitReview({
       name, email, summary, body, recommend, product_id, rating, photos, characteristics,
@@ -197,6 +206,7 @@ AddReviewModal.propTypes = {
   ratings: PropTypes.objectOf(PropTypes.any).isRequired,
   submitReview: PropTypes.func.isRequired,
   handleClose: PropTypes.func.isRequired,
+  uploader: PropTypes.objectOf(PropTypes.any).isRequired,
 }
 
 export default AddReviewModal;
