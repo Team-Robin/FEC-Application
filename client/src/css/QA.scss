@@ -76,6 +76,7 @@ div#inner-QAview {
   min-width: 20em;
   max-width: 8em;
   box-shadow: -2px 2px 3px #4c82ad;
+  word-break: break-all;
   /* overflow: scroll; */
   /* overflow-x: unset; */
 }
@@ -226,6 +227,21 @@ p.question {
 .answer-date {
   font-size: small;
   text-align: right;
+}
+#answer-photos {
+  display: flex;
+  overflow-x: scroll;
+}
+
+#answer-photos::-webkit-scrollbar-thumb {
+  background-color: #dce0b9;
+  border-radius: 2em;
+  // border: 3px solid #4267B2;
+}
+.answer-photo {
+  max-height: 100%;
+  max-width: 100%;
+  padding-right: 5px;
 }
 
 .more-answers {

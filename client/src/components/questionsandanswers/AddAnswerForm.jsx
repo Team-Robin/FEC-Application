@@ -19,10 +19,12 @@ const AddAnswerForm = ({
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [body, setBody] = useState('');
+  const [photos, setPhotos] = useState(null);
   const [charCountName, setCharCountName] = useState(60);
   const [charCountEmail, setCharCountEmail] = useState(60);
   const [charCountBody, setCharCountBody] = useState(1000);
   const [error, setError] = useState('');
+
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -40,6 +42,10 @@ const AddAnswerForm = ({
     setBody(e.target.value);
     setCharCountBody(1000 - e.target.value.length);
     setError('');
+  };
+
+  const handlePhoto = (e) => {
+    setPhotos(URL.createObjectURL(e.target.files[0]));
   };
 
   const validate = () => {
@@ -72,7 +78,7 @@ const AddAnswerForm = ({
         name,
         email,
         body,
-        photos: []
+        photos,
       }
 
 
@@ -143,6 +149,7 @@ const AddAnswerForm = ({
           {' '}
           <span className="A-body-count">{charCountBody}</span>
         </div>
+        <input type="file" onChange={handlePhoto}/>
       </div>
       <span>For your privacy, do not use your full name or email address</span>
       <div className="add-answer-btn">

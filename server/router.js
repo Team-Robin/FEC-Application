@@ -128,6 +128,7 @@ app.post('/api/qa/questions', (req, res) => {
 });
 
 app.post('/api/qa/questions/:question_id/answers', (req, res) => {
+  console.log(req.body)
   connect.postAddAnswer(req.body, Number(req.params.question_id))
     .then((result) => {
       res.status(200).send(result.data);

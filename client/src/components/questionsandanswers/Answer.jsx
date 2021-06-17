@@ -27,6 +27,17 @@ const Answer = ({ answerBody, question }) => {
   const [helpfulness, setHelpfulness] = useState(false);
   const [addHelpful, setAddHelpful] = useState(answerBody.helpfulness);
 
+  // const onWheel = e => {
+  //   e.preventDefault();
+  //   const container = document.getElementById("answer-photos");
+  //   const containerScrollPosition = document.getElementById("answer-photos").scrollLeft;
+  //   container.scrollTo({
+  //     top: 0,
+  //     left: containerScrollPosition + e.deltaY,
+  //     behaviour: "smooth"
+  //   });
+  // };
+
   const addOneHelp = () => {
     if (helpfulness === false) {
       Connect.putHelpfulnessAnswers(answerBody.id)
@@ -54,6 +65,11 @@ const Answer = ({ answerBody, question }) => {
         <div className="answer-date">
           {dateFormat(answerBody.date)}
         </div>
+      </div>
+      <div id="answer-photos" /*onWheel={onWheel}*/>
+        {answerBody.photos.map((images, idx) =>
+          <img key={idx} className="answer-photo" src={images} />
+          )}
       </div>
       <div className="helpful">
         <div>
