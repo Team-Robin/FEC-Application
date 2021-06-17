@@ -22,30 +22,66 @@ const AddAnswerForm = ({
   const [charCountName, setCharCountName] = useState(60);
   const [charCountEmail, setCharCountEmail] = useState(60);
   const [charCountBody, setCharCountBody] = useState(1000);
+  const [error, setError] = useState('');
 
   const handleName = (e) => {
     setName(e.target.value);
     setCharCountName(60 - e.target.value.length);
+    setError('');
   };
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
     setCharCountEmail(60 - e.target.value.length);
+    setError('');
   };
 
   const handleBody = (e) => {
     setBody(e.target.value);
     setCharCountBody(1000 - e.target.value.length);
+    setError('');
   };
 
+  const validate = () => {
+    let errors = {};
+
+    if (!name) {
+      errors.name = 'Name is required';
+    }
+
+    if (!email) {
+      errors.email = 'Email address is required';
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      errors.email = 'Email address is invalid';
+    }
+
+    if (!body) {
+      errors.body = 'Message body is required';
+    }
+
+    return errors;
+  }
+
   const handleQuestionSubmit = () => {
-    Connect.postAddAnswer({
-      body, name, email, photos: [],
-    }, question.question_id)
+    let error = validate();
+    if (Object.keys(error).length !== 0){
+      setError(error);
+      alert(JSON.stringify(error));
+    } else {
+      let validatedAnswer = {
+        name,
+        email,
+        body,
+        photos: []
+      }
+
+
+    Connect.postAddAnswer(validatedAnswer, question.question_id)
       .then((response) => {
         console.log(response);
       });
     closeModal();
+    }
   };
 
   return (
