@@ -4,11 +4,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Search from './Search';
 import Question from './Question';
 import QuestionsAndAnswers from './QuestionsAndAnswers';
 import AddQuestion from './AddQuestion';
+import ThemeContext from '../context/Theme';
 // import AddQuestionForm from './AddQuestionForm';
 // import Questions from './questionsandanswers/Questions.jsx';
 const QuestionsView = ({ questionInfo, Name }) => {
@@ -16,6 +17,7 @@ const QuestionsView = ({ questionInfo, Name }) => {
   const [info, setInfo] = useState(questionInfo.questions);
   const [questionView, setQuestionView] = useState(true);
   const [search, setSearch] = useState('');
+  const { themeMode } = useContext(ThemeContext);
 
   const questionList = () => {
     if (!info) {
@@ -45,25 +47,24 @@ const QuestionsView = ({ questionInfo, Name }) => {
   const moreQuestions = questionView ? 'More Questions' : 'Collapse Questions';
 
   return (
-    <div id="QA-view">
-      <div id="inner-QAview">
+    <div id="QA-view" className={`${themeMode === 'Light' ? 'text-muted' : 'text-muted-light'}`}>
+      <div id="inner-QAview" className={`${themeMode === 'Light' ? 'bg-light' : 'bg-dark'}`}>
         <h1 id="QA-header">Questions & Answers</h1>
         <div>
           <Search searchQuestions={searchQuestions} />
         </div>
-        <div className="question-cards">
+        <div id="question-cards">
           {questionInfoObj.map((question) => <Question key={question.question_id} question={question} />)}
         </div>
         <button className="add-more-questions mx-auto" onClick={handleMoreQuestions}>
-
             {moreQuestions}
         </button>
-        <form className="QA-form">
-          <h5>Ask a Question</h5>
+        <div className="QA-form">
+          <h5 className="QA-ask-question mx-auto">Ask a Question</h5>
           <div>
             <AddQuestion questionInfo={questionInfo.questions} Name={Name} />
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );

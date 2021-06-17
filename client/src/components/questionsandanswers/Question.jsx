@@ -2,9 +2,10 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable react/prop-types */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import AnswersList from './AnswersList';
 import Connect from '../Connect';
+import ThemeContext from '../context/Theme';
 
 const Question = ({ question }) => {
   const dateFormat = (inputTime) => {
@@ -20,6 +21,7 @@ const Question = ({ question }) => {
   const [helpfulness, setHelpfulness] = useState(false);
   const [addHelpful, setAddHelpful] = useState(question.question_helpfulness);
   const [reported, setReported] = useState(false);
+  const { themeMode } = useContext(ThemeContext);
 
   const addOneHelp = () => {
     if (helpfulness === false) {
@@ -41,8 +43,8 @@ const Question = ({ question }) => {
   };
 
   return (
-    <div id="questions-answers">
-      <div className="question-body">
+    <div id="questions-answers" className={`${themeMode === 'Light' ? 'bg-light-blue' : 'bg-secondary text-dark'}`} >
+      <div id="question-body" >
         <div className="user">
           {question.asker_name}
           :
