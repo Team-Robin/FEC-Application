@@ -1,28 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import RatingSummary from './RatingSummary';
 import RatingBreakdown from './ratingBreakdown/RatingBreakdown';
 import CharacteristicList from './characteristicList/CharacteristicList';
+import ThemeContext from '../../context/Theme';
 
 const RatingsOverview = ({
   starComponent, labels, ratingMetaData, controls,
-}) => (
-  <div id="ratingsOverview">
-    <RatingSummary
-      starComponent={starComponent}
-      ratings={ratingMetaData.ratings}
-      recommended={ratingMetaData.recommended}
-    />
-    <RatingBreakdown
-      ratingsObj={ratingMetaData.ratings}
-      addFilter={controls.addFilter}
-    />
-    <CharacteristicList
-      characteristics={ratingMetaData.characteristics}
-      labels={labels}
-    />
-  </div>
-);
+}) => {
+  const { themeMode } = useContext(ThemeContext);
+  const lightMode = 'text-dark ratingsLight'
+  const darkMode = 'text-light ratingsDark'
+  return (
+    <div id="ratingsOverview" className={themeMode === 'Light' ?  lightMode : darkMode }>
+      <RatingSummary
+        starComponent={starComponent}
+        ratings={ratingMetaData.ratings}
+        recommended={ratingMetaData.recommended}
+      />
+      <RatingBreakdown
+        ratingsObj={ratingMetaData.ratings}
+        addFilter={controls.addFilter}
+      />
+      <CharacteristicList
+        characteristics={ratingMetaData.characteristics}
+        labels={labels}
+      />
+    </div>
+  )
+};
 
 RatingsOverview.propTypes = {
   starComponent: PropTypes.element.isRequired,

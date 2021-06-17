@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import ThemeContext from '../../../context/Theme'
+
 
 const RatingBar = ({
   name, ratingCount, percent, addFilter,
-}) => (
-  <div className="ratingBar">
-    <button type="button" onClick={() => { addFilter(name); }}>
-      { `${name} (${ratingCount})`}
-    </button>
-    <div className="backgroundBar" />
-    <div className="forgroundBar" style={{ width: `${percent}` }} />
-  </div>
-);
+}) => {
+  const { themeMode } = useContext(ThemeContext);
+  const lightMode = 'forgroundLight';
+  const darkMode = 'forgroundDark';
+  return (
+    <div className="ratingBar" >
+      <button type="button" onClick={() => { addFilter(name); }}>
+        { `${name} (${ratingCount})`}
+      </button>
+      <div className="backgroundBar" />
+      <div className={`forgroundBar ${themeMode === 'Light' ? lightMode : darkMode}`} style={{ width: `${percent}` }} />
+    </div>
+  );
+}
 
 RatingBar.propTypes = {
   name: PropTypes.string.isRequired,

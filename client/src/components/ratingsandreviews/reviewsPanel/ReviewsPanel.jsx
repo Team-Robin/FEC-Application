@@ -1,30 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import SortHeader from './SortHeader';
 import ReviewList from './reviewList/ReviewList';
 import ReviewButtons from './ReviewButtons';
+import ThemeContext from '../../context/Theme';
 
 const ReviewsPanel = ({
   displayAmount, activeFilters, reviews, controls,
-}) => (
-  <div id="reviewPanel">
-    <SortHeader
-      reviews={reviews}
-      displayControls={controls.display}
-      activeFilters={activeFilters}
-    />
-    <ReviewList
-      displayAmount={displayAmount}
-      reviews={reviews}
-      reviewControls={controls.reviews}
-    />
-    <ReviewButtons
-      displayAmount={displayAmount}
-      reviewCount={reviews.length}
-      footerControls={controls.footer}
-    />
-  </div>
-);
+}) => {
+  const { themeMode } = useContext(ThemeContext);
+  const lightMode = 'text-dark'
+  const darkMode = 'text-light'
+  return (
+    <div id="reviewPanel" className={themeMode === 'Light' ? lightMode : darkMode }>
+      <SortHeader
+        reviews={reviews}
+        displayControls={controls.display}
+        activeFilters={activeFilters}
+      />
+      <ReviewList
+        displayAmount={displayAmount}
+        reviews={reviews}
+        reviewControls={controls.reviews}
+      />
+      <ReviewButtons
+        displayAmount={displayAmount}
+        reviewCount={reviews.length}
+        footerControls={controls.footer}
+      />
+    </div>
+  );
+}
 
 ReviewsPanel.propTypes = {
   displayAmount: PropTypes.number.isRequired,
