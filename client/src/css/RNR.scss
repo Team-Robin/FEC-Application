@@ -115,6 +115,12 @@
   position: relative;
   top: -5px
 }
+.forgroundLight {
+  background: green;
+}
+.forgroundDark {
+  background: #ae1eba;
+}
 //Characteristics ----------------------------------------------
 #characteristicList {
   display: flex;
@@ -143,6 +149,7 @@
   height: 7px;
   top: -1px;
   width: 7px;
+  background: black;
 }
 .minLabel {
   font-size: .7em;
@@ -366,7 +373,7 @@ sortHeader::after {
   display: inline-block;
   opacity: 1;
   background: none;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(15px);
 }
 
 #modalWindow {
@@ -476,6 +483,7 @@ div#userInfo {
   display: flex;
   flex-flow: column;
   flex: 1 1 20%;
+  align-items: center;
 }
 
 #formFooter {
@@ -512,5 +520,15 @@ div#userInfo {
 .emptiness > * {
   fill: transparent;
   stroke: black;
+}
+
+.cloudinary-thumbnails {
+  display: flex;
+  flex: 1;
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+  flex-flow: column;
+  justify-content: space-evenly;
 }
 

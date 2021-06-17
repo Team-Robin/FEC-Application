@@ -3,16 +3,19 @@ import PropTypes from 'prop-types';
 import RatingStars from './RatingStars';
 import ThemeContext from '../context/Theme';
 
-
 const AddReviewModal = ({ labels, ratings, submitReview, handleClose }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [summary, setSummary] = useState('');
   const [body, setBody] = useState('');
   const [photos, setPhotos] = useState([]);
+  const [thumbnails, setThumbnails] = useState([])
   const [recommend, setRecommend] = useState(false);
   const [characteristics, setCharacteristics] = useState({});
   const [rating, setRating] = useState(0);
+  const [test, setTest] = useState([]);
+
+  // contexts
   const { themeMode } = useContext(ThemeContext);
   const lightMode = 'modalLight';
   const darkMode = 'modalDark';
@@ -62,6 +65,28 @@ const AddReviewModal = ({ labels, ratings, submitReview, handleClose }) => {
       handleClose();
     }
   }
+
+  const uploader = cloudinary.createUploadWidget({
+    cloudName: 'ddrvosdfa',
+    uploadPreset: 'wmysnpod',
+    maxFiles: 5,
+    thumbnails: '#formPics',
+  }, async (error, result) => {
+      if (!error && result && result.event === "success") {
+        console.log('Done! Here is the image info: ', result.info);
+        photoQueue.push(result.info.url);
+      }
+    }
+  )
+
+  const submit = async () => {
+    await setPhotos(photoQueue.slice(0, 5));
+    submitReview({
+      name, email, summary, body, recommend, product_id, rating, photos, characteristics,
+    })
+  }
+
+  const photoQueue = [];
 
   return (
     <div id="outerModal" onClick={closeModal}>
@@ -134,11 +159,11 @@ const AddReviewModal = ({ labels, ratings, submitReview, handleClose }) => {
                   onChange={handleChange}
                   required
                   row="20"
-                  col="50"
+                  col="10"
                 />
               </div>
-              <div id="formPics">
-
+              <div id="formPics" >
+                <h5>Uploaded Photos</h5>
               </div>
             </div>
             <div id="formFooter" >
@@ -155,11 +180,9 @@ const AddReviewModal = ({ labels, ratings, submitReview, handleClose }) => {
               </span>
               <button
               type="button"
-              onClick={()=>{ submitReview({
-                name, email, summary, body, recommend, product_id, rating, photos, characteristics,
-              }) }}
+              onClick={submit}
               >Submit Reveiw</button>
-              <button type="button">Add Picture</button>
+              <button id="photoButton" type="button" onClick={uploader.open}>Add Picture</button>
             </div>
           </div>
         </div>
