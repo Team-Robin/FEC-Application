@@ -44,14 +44,7 @@ div#inner-QAview {
 }
 
 #QA-header {
-  display: flex;
-  float: left;
-  width: 12%;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  justify-content: flex-start;
-  font-size: 2rem;
+
 }
 //==================Questions==================
 #QA-questions {
@@ -83,6 +76,7 @@ div#inner-QAview {
   min-width: 20em;
   max-width: 8em;
   box-shadow: -2px 2px 3px #4c82ad;
+  word-break: break-all;
   /* overflow: scroll; */
   /* overflow-x: unset; */
 }
@@ -234,6 +228,21 @@ p.question {
   font-size: small;
   text-align: right;
 }
+#answer-photos {
+  display: flex;
+  overflow-x: scroll;
+}
+
+#answer-photos::-webkit-scrollbar-thumb {
+  background-color: #dce0b9;
+  border-radius: 2em;
+  // border: 3px solid #4267B2;
+}
+.answer-photo {
+  max-height: 100%;
+  max-width: 100%;
+  padding-right: 5px;
+}
 
 .more-answers {
   margin-left: 85px;
@@ -259,6 +268,31 @@ p.question {
 	border-color: #b9dfe0 !important;
 	transition: all 0.5s ease 0s;
 }
+
+.modal-btn-answer {
+  margin-left: 97px;
+  // border: 1px solid #55b8d9;
+  background-color: transparent;
+  font-family: inherit;
+  padding: 0;
+  cursor: pointer;
+  color: black;
+  border-radius: 2px;
+  box-shadow: 0 3px 5px rgb(0 0 0 / 18%);
+  padding: 0.25em 0.75em;
+  min-width: 10ch;
+  min-height: 44px;
+  &:hover {
+    background-color: scale-color(#FCC790, $lightness: -20%);
+}
+}
+
+.modal-btn-answer:hover {
+  color: black !important;
+	border-radius: 10px;
+	border-color: #b9dfe0 !important;
+	transition: all 0.5s ease 0s;
+}
 //==================Search=====================
 input {
   border-top-style: hidden;
@@ -269,6 +303,7 @@ input {
 }
 .QA-search-bar {
   height: 2em;
+  min-width: 250px;
   border-radius: 0;
   background-color: #ededed;
   border: none;
@@ -330,11 +365,17 @@ input {
   display: flex;
   width: 80%;
   padding: 10px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   flex-direction: row;
   align-items: flex-end;
   align-content: space-between;
   justify-content: space-evenly;
+}
+
+.Q-name-email input[type="text"] {
+  border-radius: 0;
+  background-color: transparent;
+
 }
 
 .question-charCount {
@@ -426,11 +467,17 @@ input {
   display: flex;
   width: 80%;
   padding: 10px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   flex-direction: row;
   align-items: flex-end;
   align-content: space-between;
   justify-content: space-evenly;
+}
+
+.A-name-email input[type="text"] {
+  border-radius: 0;
+  background-color: transparent;
+
 }
 
 .answer-charCount {
