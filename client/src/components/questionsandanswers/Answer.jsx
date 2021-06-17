@@ -49,16 +49,18 @@ const Answer = ({ answerBody, question }) => {
       <div className="answer-user">
         {answerBody.answerer_name}
         {' '}
+        (user)
+        {' '}
         <div className="answer-date">
           {dateFormat(answerBody.date)}
         </div>
       </div>
       <div className="helpful">
-        Helpful?
-        {' '}
         <div>
           {addHelpful}
-          <button onClick={() => { addOneHelp(); }} className="answer-helpfulness-btn" type="button">Yes</button>
+          {' | '}
+          <button onClick={() => { addOneHelp(); }} className="answer-helpfulness-btn" type="button">Helpful </button>
+          {' '}
         </div>
       </div>
     </div>

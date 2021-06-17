@@ -3,16 +3,16 @@
 /* eslint-disable import/no-unresolved */
 
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Overview from './overview/Overview.jsx';
 import QuestionsView from './questionsandanswers/QuestionsView.jsx';
 import RatingsAndReviews from './ratingsandreviews/RatingsAndReviews.jsx';
 import Connect from './Connect';
 import LoadingPulse from './LoadingPulse';
-import TrackerContext from './context/Tracker';
 import ThemeContext from './context/Theme';
 import ProductName from './context/ProductName';
-import NavigationBar from './NavigationBar';
+import { useParams } from 'react-router-dom';
 
 const App = () => {
   // both the this.state and this.setState()
@@ -22,13 +22,12 @@ const App = () => {
   const [productStyles, setProductStyles] = useState({});
   const [currentStyle, setCurrentStyle] = useState({});
   const [productSalesPrice, setProductSalesPrice] = useState({});
-  const [tracking, setTracking] = useState([]);
-  const [themeMode, setThemeMode] = useState('Light');
+  const { themeMode, setThemeMode } = useContext(ThemeContext);
   const [productName, setProductName] = useState({});
+  const { id } = useParams();
 
   // async component did mount
   useEffect(async () => {
-    const id = window.location.pathname.split('/')[2] || '17071'; // splits '/products/###/' to '/', 'products', '####, '/'. we just want the numbers
     const product = await Connect.getProductById(id);
     const reviewMeta = await Connect.getReviewMeta(product.data.id);
     const questions = await Connect.getQuestions(product.data.id);
@@ -48,31 +47,6 @@ const App = () => {
     }
   }, [currentStyle]);
 
-  // sync component did mount
-  useEffect(() => {
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (systemTheme) {
-      setThemeMode('Dark');
-      document.body.classList.add('bg-darker');
-      document.body.classList.remove('bg-lighter');
-    } else {
-      setThemeMode('Light');
-      document.body.classList.remove('bg-darker');
-      document.body.classList.add('bg-lighter');
-    }
-  }, []);
-
-  // on theme change
-  useEffect(() => {
-    if (themeMode === 'Light') {
-      document.body.classList.remove('bg-darker');
-      document.body.classList.add('bg-lighter');
-    } else {
-      document.body.classList.add('bg-darker');
-      document.body.classList.remove('bg-lighter');
-    }
-  }, [themeMode]);
-
   useEffect(() => {
     if (productInfo && productInfo.product) {
       setProductName(productInfo.product.name);
@@ -80,40 +54,40 @@ const App = () => {
   }, [productInfo]);
 
   return (
-    <TrackerContext.Provider value={{ tracking, setTracking }}>
-      <ThemeContext.Provider value={{ themeMode }}>
-        <NavigationBar />
-        {productInfo.product ? (
-          <Overview
-            Name={productInfo.product.name}
-            Category={productInfo.product.category}
-            Description={productInfo.product.description}
-            Slogan={productInfo.product.slogan}
-            Price={productInfo.product.default_price}
-            ReviewsRatings={productReviewMeta.ratings}
-            Features={productInfo.product.features}
-            Styles={productStyles.styles}
-            CurrentStyle={currentStyle}
-            setCurrentStyle={setCurrentStyle}
-            SalePrice={productSalesPrice}
-          />
-        ) : <LoadingPulse Message="quick coffee run!" />}
-        <>
-          {questionInfo.questions ? (
-            <ProductName.Provider value={{ productName }}>
-              <QuestionsView
-              // Name={productInfo.product.name}
-                questionInfo={questionInfo}
-              />
-            </ProductName.Provider>
-          ) : null}
-        </>
-        {productInfo.product ? (
-          <RatingsAndReviews productId={productInfo.product.id} />
+    <>
+      {productInfo.product ? (
+        <Overview
+          Name={productInfo.product.name}
+          Category={productInfo.product.category}
+          Description={productInfo.product.description}
+          Slogan={productInfo.product.slogan}
+          Price={productInfo.product.default_price}
+          ReviewsRatings={productReviewMeta.ratings}
+          Features={productInfo.product.features}
+          Styles={productStyles.styles}
+          CurrentStyle={currentStyle}
+          setCurrentStyle={setCurrentStyle}
+          SalePrice={productSalesPrice}
+        />
+      ) : <LoadingPulse Message="quick coffee run!" />}
+      <>
+        {questionInfo.questions ? (
+          <ProductName.Provider value={{ productName }}>
+            <QuestionsView
+            // Name={productInfo.product.name}
+              questionInfo={questionInfo}
+            />
+          </ProductName.Provider>
         ) : null}
-      </ThemeContext.Provider>
-    </TrackerContext.Provider>
+      </>
+      {productInfo.product ? (
+        <RatingsAndReviews productId={productInfo.product.id} />
+      ) : null}
+    </>
   );
+};
+
+App.propTypes = {
 };
 
 export default App;

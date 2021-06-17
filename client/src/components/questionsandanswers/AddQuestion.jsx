@@ -21,7 +21,7 @@ const AddQuestion = ({ questionInfo }) => {
       </button>
       {modal ? (
         <Modal closeModal={closeModal}>
-          <AddQuestionForm questionInfo={questionInfo} />
+          <AddQuestionForm closeModal={closeModal} questionInfo={questionInfo} />
         </Modal>
       ) : ''}
     </div>
