@@ -355,7 +355,7 @@ nav {
     & button, & input {
       font-size: 1.2em;
       text-transform: uppercase;
-      opacity: 0;
+      opacity: 1;
       transition: opacity .15s ease-out;
     }
   }
@@ -366,7 +366,7 @@ nav {
   &:checked ~nav {
     transform: scale(1);
   }
-  &:checked ~nav button, &:checked ~nav input {
+  &:checked ~nav button, &:checked ~nav input, &:checked > * {
     opacity: 1;
     transition: opacity .25s ease-in-out .15s;
   }
@@ -404,7 +404,7 @@ nav {
   position: relative;
   display: inline-block;
   width: 4em;
-  height: 100%;
+  height: 1.2em;
   border-radius: 1em;
   overflow: hidden;
   & input {
@@ -432,7 +432,7 @@ nav {
       right: 0;
       bottom: 0;
       background-color: white;
-      transform: translate(15%, 20%);
+      transform: translate(15%, 10%);
       transition: transform .2s ease-in-out;
     }
   }
@@ -451,7 +451,7 @@ nav {
       left: 0;
       right: 0;
       bottom: 0;
-      transform: translate(225%,25%);
+      transform: translate(225%,20%);
       transition: all .25s ease-in;
     }
     &::before {
@@ -474,7 +474,7 @@ nav {
   & input:checked ~ .slider{
     background-color: $text-blue-light;
     &::before {
-      transform: translate(275%, 20%);
+      transform: translate(275%, 10%);
     }
   }
   & input:checked ~ .slider-icons {
@@ -482,7 +482,7 @@ nav {
       transform: translate(225%, 250%)
     }
     &::before {
-      transform: translate(15%, 25%);
+      transform: translate(15%, 20%);
     }
   }
 }
