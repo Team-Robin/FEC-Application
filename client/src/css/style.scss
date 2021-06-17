@@ -358,7 +358,7 @@ nav {
     & button, & input {
       font-size: 1.2em;
       text-transform: uppercase;
-      opacity: 0;
+      opacity: 1;
       transition: opacity .15s ease-out;
     }
   }
@@ -369,7 +369,7 @@ nav {
   &:checked ~nav {
     transform: scale(1);
   }
-  &:checked ~nav button, &:checked ~nav input {
+  &:checked ~nav button, &:checked ~nav input, &:checked > * {
     opacity: 1;
     transition: opacity .25s ease-in-out .15s;
   }
@@ -407,7 +407,7 @@ nav {
   position: relative;
   display: inline-block;
   width: 4em;
-  height: 100%;
+  height: 1.2em;
   border-radius: 1em;
   overflow: hidden;
   & input {
@@ -420,22 +420,22 @@ nav {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #455e79;
+    background-color: #272b63;
     border-radius: 1em;
     overflow: hidden;
     transition: background-color .25s ease-in-out;
     &::before {
       position: absolute;
       content: '';
-      width: 1em;
-      height: 1em;
+      width: .8em;
+      height: .8em;
       border-radius: 100%;
       left: 0;
       top: 0;
       right: 0;
       bottom: 0;
       background-color: white;
-      transform: translate(15%, 20%);
+      transform: translate(25%, 25%);
       transition: transform .2s ease-in-out;
     }
   }
@@ -454,7 +454,7 @@ nav {
       left: 0;
       right: 0;
       bottom: 0;
-      transform: translate(225%,25%);
+      transform: translate(225%,20%);
       transition: all .25s ease-in;
     }
     &::before {
@@ -477,7 +477,8 @@ nav {
   & input:checked ~ .slider{
     background-color: $text-blue-light;
     &::before {
-      transform: translate(275%, 20%);
+      box-shadow: .3em .1em .5em rgba(0,0,0,.5);
+      transform: translate(360%, 25%);
     }
   }
   & input:checked ~ .slider-icons {
@@ -485,7 +486,7 @@ nav {
       transform: translate(225%, 250%)
     }
     &::before {
-      transform: translate(15%, 25%);
+      transform: translate(15%, 20%);
     }
   }
 }
