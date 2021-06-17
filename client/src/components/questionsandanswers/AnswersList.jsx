@@ -22,9 +22,12 @@ const AnswersList = ({ answers, question }) => {
           ? Object.keys(answerList).map((keys) => (<Answer question={question} key={answerList[keys][1].id} answerBody={answerList[keys][1]} />))
           : null}
       </div>
+      { answers.length > 2 ?(
       <button className="more-answers" onClick={handleMoreAnswers} type="button">
         {moreAnswers}
       </button>
+      ) : null
+      }
       <div>
         <AddAnswer question={question} answerBody={answers} />
       </div>
