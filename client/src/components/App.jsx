@@ -1,18 +1,15 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
-
 // eslint-disable-next-line no-unused-vars
 import React, { useContext, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 import Overview from './overview/Overview.jsx';
 import QuestionsView from './questionsandanswers/QuestionsView.jsx';
 import RatingsAndReviews from './ratingsandreviews/RatingsAndReviews.jsx';
 import Connect from './Connect';
 import LoadingPulse from './LoadingPulse';
-import ThemeContext from './context/Theme';
 import ProductName from './context/ProductName';
-import { useParams } from 'react-router-dom';
 
 const App = () => {
   // both the this.state and this.setState()
@@ -22,7 +19,6 @@ const App = () => {
   const [productStyles, setProductStyles] = useState({});
   const [currentStyle, setCurrentStyle] = useState({});
   const [productSalesPrice, setProductSalesPrice] = useState({});
-  const { themeMode, setThemeMode } = useContext(ThemeContext);
   const [productName, setProductName] = useState({});
   const { id } = useParams();
 
@@ -85,9 +81,6 @@ const App = () => {
       ) : null}
     </>
   );
-};
-
-App.propTypes = {
 };
 
 export default App;

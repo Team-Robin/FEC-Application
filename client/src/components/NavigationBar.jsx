@@ -26,7 +26,7 @@ const NavigationBar = () => {
   };
   return (
     <header>
-      <h1 className="logo text-light cursor-pointer"><i className="fas fa-store" /></h1>
+      <Link className="logo text-light cursor-pointer h1" to="/"><i className="fas fa-store" /></Link>
       <input type="checkbox" id="nav-toggle" className="nav-toggle" />
       <nav id="navigation">
         <ul>
@@ -52,6 +52,6 @@ const NavigationBar = () => {
       </label>
     </header>
   );
-}
+};
 
 export default NavigationBar;
