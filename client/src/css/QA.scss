@@ -140,14 +140,11 @@ p.question {
 }
 
 .QA-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-wrap: nowrap;
+  margin-left: 50%;
 }
 
 .add-more-questions {
-  margin-left: 85px;
+  margin-left: 50%;
   border: 1px solid #55b8d9;
   background-color: transparent;
   font-family: inherit;
@@ -284,14 +281,15 @@ input {
   display: flex;
   flex-flow: column;
   margin: 0 auto;
-  border: 2px solid #4c82ad;
   width: 50%;
   height: 50%;
   position: fixed;
   left: 30%;
   top: 30%;
-  background: whitesmoke;
-  opacity: 0.9;
+  background: rgba(240,240,240,.2);
+  backdrop-filter: blur(4px);
+  box-shadow: .2em .2em 1em rgba(0,0,0,.3);
+  opacity: 1;
   justify-content: center;
   flex-wrap: wrap;
   align-content: space-around;
@@ -305,7 +303,6 @@ input {
   align-content: stretch;
   justify-content: space-between;
   align-items: center;
-  border: 2px solid black;
   width: 90%;
   height: 65%;
   padding-bottom: 1px;
