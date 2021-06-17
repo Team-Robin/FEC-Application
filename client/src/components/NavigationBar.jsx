@@ -31,7 +31,7 @@ const NavigationBar = () => {
       <nav id="navigation">
         <ul>
           <li>
-            <label className="switch">
+            <label className="switch" >
               <input id="themeSwitch" type="checkbox" checked={dayMode} onChange={ToggleMode} />
               <span htmlFor="themeSwitch" className="slider" />
               <span htmlFor="themeSwitch" className="slider-icons" />

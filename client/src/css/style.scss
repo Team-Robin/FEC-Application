@@ -417,22 +417,22 @@ nav {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #455e79;
+    background-color: #272b63;
     border-radius: 1em;
     overflow: hidden;
     transition: background-color .25s ease-in-out;
     &::before {
       position: absolute;
       content: '';
-      width: 1em;
-      height: 1em;
+      width: .8em;
+      height: .8em;
       border-radius: 100%;
       left: 0;
       top: 0;
       right: 0;
       bottom: 0;
       background-color: white;
-      transform: translate(15%, 10%);
+      transform: translate(25%, 25%);
       transition: transform .2s ease-in-out;
     }
   }
@@ -474,7 +474,8 @@ nav {
   & input:checked ~ .slider{
     background-color: $text-blue-light;
     &::before {
-      transform: translate(275%, 10%);
+      box-shadow: .3em .1em .5em rgba(0,0,0,.5);
+      transform: translate(360%, 25%);
     }
   }
   & input:checked ~ .slider-icons {
