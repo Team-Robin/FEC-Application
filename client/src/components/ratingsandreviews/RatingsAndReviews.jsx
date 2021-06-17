@@ -91,7 +91,7 @@ class RatingsAndReviews extends React.Component {
       maxFiles: 10,
     }, (error, result) => {
         if (!error && result && result.event === "success") {
-
+          console.log(result);
         }
       }
     )

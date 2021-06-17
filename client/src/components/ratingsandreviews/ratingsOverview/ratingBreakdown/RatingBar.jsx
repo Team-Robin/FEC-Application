@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const RatingBar = ({
   name, ratingCount, percent, addFilter,
 }) => (
-  <div className="ratingBar">
+  <div className="ratingBar" >
     <button type="button" onClick={() => { addFilter(name); }}>
       { `${name} (${ratingCount})`}
     </button>

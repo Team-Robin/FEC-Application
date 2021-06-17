@@ -1,6 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import PropTypes from 'prop-types';
 import RatingStars from './RatingStars';
+import ThemeContext from '../context/Theme';
+
 
 const AddReviewModal = ({ labels, ratings, submitReview, handleClose }) => {
   const [name, setName] = useState('');
@@ -11,6 +13,9 @@ const AddReviewModal = ({ labels, ratings, submitReview, handleClose }) => {
   const [recommend, setRecommend] = useState(false);
   const [characteristics, setCharacteristics] = useState({});
   const [rating, setRating] = useState(0);
+  const { themeMode } = useContext(ThemeContext);
+  const lightMode = 'modalLight';
+  const darkMode = 'modalDark';
 
   const product_id = Number(ratings.product_id);
 
@@ -61,15 +66,17 @@ const AddReviewModal = ({ labels, ratings, submitReview, handleClose }) => {
   return (
     <div id="outerModal" onClick={closeModal}>
       <div id="modalWindow">
-        <div id="modalTop">
+        <div id="modalTop" className={themeMode === 'Light' ? lightMode : darkMode} >
           <div id="ratingSelectors" >
-          <h4>Overall Rating</h4>
-          <RatingStars
-            ratings={ratings}
-            mutable={true}
-            cb={updateRating}
-          />
-          <p>{labels.rating[rating]}</p>
+          <div>
+            <h4>Overall Rating</h4>
+            <RatingStars
+              ratings={ratings}
+              mutable={true}
+              cb={updateRating}
+            />
+            <p>{labels.rating[rating]}</p>
+          </div>
           {
             Object.keys(ratings.characteristics).map((characteristic) => {
               let charId = ratings.characteristics[characteristic].id;
