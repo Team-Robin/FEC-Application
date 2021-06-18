@@ -4,7 +4,11 @@ import axios from 'axios';
 
 const Connect = {
 
-  getProducts: () => axios.get('/api/products'),
+  getProducts: (count = 5) => axios.get('/api/products', {
+    params: {
+      count,
+    },
+  }),
 
   getProductById: (id) => axios.get(`/api/products/${id}`),
 

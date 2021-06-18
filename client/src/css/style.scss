@@ -110,6 +110,9 @@ h1, .h1 {
 .text-light {
   color: $off-white !important;
 }
+.text-light-dark {
+  color: $white-dark !important;
+}
 .text-dark {
   color: $charcoal !important;
 }
@@ -165,6 +168,9 @@ h1, .h1 {
 }
 .bg-secondary{
   background-color: $secondary-color !important;
+}
+.bg-tertiary {
+  background-color: $tertiary-color !important;
 }
 .bg-transparent {
   background-color: transparent;
@@ -240,6 +246,18 @@ h1, .h1 {
 .flex-basis-100 {
   flex-basis: 100%;
 }
+.flex-grow {
+  flex-grow: 1;
+}
+.flex-shrink {
+  flex-shrink: 1;
+}
+.flex-grow-0 {
+  flex-grow: 0;
+}
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
 .justify-content-between {
   justify-content: space-between;
 }
@@ -310,6 +328,10 @@ h1, .h1 {
 }
 .rounded{
   border-radius: .5rem;
+}
+.rounded-bottom-sm {
+  border-bottom-left-radius: .25rem;
+  border-bottom-right-radius: .25rem;
 }
 .rounded-lg{
   border-radius: 1rem;
@@ -1157,7 +1179,7 @@ nav {
   }
   &:focus ~label, &:not(:placeholder-shown) ~label {
     transform: scale(.5) translate(0, -115%);
-    opacity: .5;
+    opacity: 1;
   }
   &:focus ~.user-line {
     background-image: linear-gradient(to right, $primary-color, $tertiary-color);
@@ -1322,6 +1344,9 @@ nav {
 .transition-basic {
   transition: all .15s ease-in-out;
 }
+.transition-transform {
+  transition: transform .15s ease-in-out;
+}
 .no-clicker, .no-cursor{
   pointer-events: none;
 }
@@ -1336,6 +1361,9 @@ nav {
 }
 .filter-invert {
   filter: invert(1);
+}
+.filter-brightness-10{
+  filter: brightness(110%);
 }
 
 .bar {
