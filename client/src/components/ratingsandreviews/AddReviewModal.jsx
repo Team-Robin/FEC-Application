@@ -3,18 +3,16 @@ import PropTypes from 'prop-types';
 import RatingStars from './RatingStars';
 import ThemeContext from '../context/Theme';
 
-const AddReviewModal = ({ labels, ratings, submitReview, handleClose }) => {
+const AddReviewModal = ({ labels, ratings, submitReview, handleClose, uploader }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [summary, setSummary] = useState('');
   const [body, setBody] = useState('');
   const [photos, setPhotos] = useState([]);
-  const [thumbnails, setThumbnails] = useState([])
   const [recommend, setRecommend] = useState(false);
   const [characteristics, setCharacteristics] = useState({});
   const [rating, setRating] = useState(0);
   const [test, setTest] = useState([]);
-
   // contexts
   const { themeMode } = useContext(ThemeContext);
   const lightMode = 'modalLight';
@@ -29,7 +27,6 @@ const AddReviewModal = ({ labels, ratings, submitReview, handleClose }) => {
     4: 'Good',
     5: 'Great',
   }
-
 
   const setters = {
     setName,
@@ -66,25 +63,38 @@ const AddReviewModal = ({ labels, ratings, submitReview, handleClose }) => {
     }
   }
 
-  const uploader = cloudinary.createUploadWidget({
-    cloudName: 'ddrvosdfa',
-    uploadPreset: 'wmysnpod',
-    maxFiles: 5,
-    thumbnails: '#formPics',
-  }, async (error, result) => {
-      if (!error && result && result.event === "success") {
-        console.log('Done! Here is the image info: ', result.info);
-        photoQueue.push(result.info.url);
-      }
-    }
-  )
+  // const uploader = cloudinary.createUploadWidget({
+  //   cloudName: 'ddrvosdfa',
+  //   uploadPreset: 'wmysnpod',
+  //   maxFiles: 5,
+  //   thumbnails: '#formPics',
+  // }, (error, result) => {
+  //     if (!error && result && result.event === "success") {
+  //       console.log('Done! Here is the image info: ', result.info);
+  //       photoQueue.push(result.info.url)
+  //     }
+  //   }
+  // )
 
-  const submit = async () => {
-    await setPhotos(photoQueue.slice(0, 5));
-    submitReview({
-      name, email, summary, body, recommend, product_id, rating, photos, characteristics,
-    })
+  const submit = () => {
+    let thumbnails = document.getElementsByClassName('cloudinary-thumbnails')[0];
+    if (thumbnails !== undefined) {
+       thumbnails = thumbnails.children;
+       for (var i = 0; i < thumbnails.length; i++) {
+         let thumbnail = thumbnails[i];
+         let { url } = JSON.parse(thumbnail.attributes[1].value)
+         photoQueue.push(url);
+       }
+    }
+    setPhotos(photoQueue.slice(0, 5));
   }
+
+  useEffect(() => {
+    console.log(photos)
+      submitReview({
+        name, email, summary, body, recommend, product_id, rating, photos, characteristics,
+      });
+  }, [photos])
 
   const photoQueue = [];
 
@@ -197,6 +207,7 @@ AddReviewModal.propTypes = {
   ratings: PropTypes.objectOf(PropTypes.any).isRequired,
   submitReview: PropTypes.func.isRequired,
   handleClose: PropTypes.func.isRequired,
+  uploader: PropTypes.objectOf(PropTypes.any).isRequired,
 }
 
 export default AddReviewModal;

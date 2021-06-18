@@ -205,6 +205,17 @@ class RatingsAndReviews extends React.Component {
         ratings={this.state.ratings}
         submitReview={this.submitReview}
         handleClose={this.closeModal.bind(this)}
+        uploader={cloudinary.createUploadWidget({
+          cloudName: 'ddrvosdfa',
+          uploadPreset: 'wmysnpod',
+          maxFiles: 5,
+          thumbnails: '#formPics',
+        }, (error, result) => {
+            if (!error && result && result.event === "success") {
+              console.log('Done! Here is the image info: ', result.info)
+            }
+          }
+        )}
       />
       )});
   }

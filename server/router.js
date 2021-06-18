@@ -163,6 +163,7 @@ app.get('/api/reviews/meta', (req, res) => {
 });
 
 app.put('/api/:review_id/report', (req, res) => {
+  connect.reportReview(req.params.review_id)
   res.send(200);
 });
 
