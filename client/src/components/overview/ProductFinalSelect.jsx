@@ -103,6 +103,7 @@ const ProductFinalSelect = ({ SizeInformation = {} }) => {
             </button>
             <button
               type="button"
+              aria-label="favourite the product"
               className={`text-size-2 d-flex justify-content-center my-2 btn shadow rounded-sm flex-basis-25 mr-2 btn-focus select-size ${themeMode === 'Light' ? 'bg-light text-dark' : 'bg-dark-light text-light'}`}
               onClick={(event) => {
                 const tracked = { element: event.target, time: new Date(), module: 'Add to favourites' };
