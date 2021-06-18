@@ -68,7 +68,7 @@ const Answer = ({ answerBody, question }) => {
       </div>
       <div id="answer-photos" /*onWheel={onWheel}*/>
         {answerBody.photos.map((images, idx) =>
-          <img key={idx} className="answer-photo" src={images} />
+          <img key={idx} className="answer-photo" src={images} alt="This is an answer image" />
           )}
       </div>
       <div className="helpful">

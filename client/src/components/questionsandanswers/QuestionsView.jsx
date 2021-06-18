@@ -43,14 +43,15 @@ const QuestionsView = ({ questionInfo, Name }) => {
   const searchQuestions = (input) => {
     setSearch(input);
   };
-
-  const moreQuestions = questionView ? 'More Questions' : 'Collapse Questions';
+  console.log();
+  const totalQs = `See all ${questionInfo.questions.results.length} Questions`
+  const moreQuestions = questionView ? totalQs : 'Collapse Questions';
 
   return (
     <div id="QA-view" className={`${themeMode === 'Light' ? 'text-muted' : 'text-muted-light'}`}>
-      <div id="inner-QAview" className={`${themeMode === 'Light' ? 'bg-light border-light' : 'bg-dark border-dark'}`}>
-        <h1 id="QA-header">Questions & Answers</h1>
-        <div>
+      <div id="inner-QAview" className={`${themeMode === 'Light' ? 'bg-light border-light' : 'bg-dark border-dark text-dark'}`}>
+        <div className="QA-header-search">
+      <h1 id="QA-header" className="mr-2" >Questions & Answers</h1>
           <Search searchQuestions={searchQuestions} />
         </div>
         <div id="question-cards">
