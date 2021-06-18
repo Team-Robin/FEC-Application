@@ -546,3 +546,31 @@ div#userInfo {
   box-shadow: 0.1rem 0.1rem 0.2rem rgb(0 0 0 / 30%);
 }
 
+.modalPhoto {
+  max-height: 60em;
+  min-height: 40em;
+  // max-width:  60em;
+}
+
+#photoModal {
+  position: fixed;
+  z-index: 120;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  margin: auto;
+  display: flex;
+  opacity: 1;
+  background: none;
+  backdrop-filter: blur(15px);
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#photoModal > * {
+  width: auto;
+  height: auto;
+  top: auto;
+  left: auto;
+}

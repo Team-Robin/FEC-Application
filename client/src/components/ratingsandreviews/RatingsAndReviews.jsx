@@ -6,6 +6,7 @@ import Connect from '../Connect';
 import ReviewButtons from './reviewsPanel/ReviewButtons';
 import RatingStars from './RatingStars';
 import AddReviewModal from './AddReviewModal';
+import PhotoModal from './PhotoModal';
 
 class RatingsAndReviews extends React.Component {
   constructor(props) {
@@ -65,6 +66,7 @@ class RatingsAndReviews extends React.Component {
           seeMore: this.expandBody.bind(this),
           setHelpful: this.setHelpful,
           reportReview: this.reportReview,
+          openPhoto: this.addPhotoModal.bind(this),
         },
         footer: {
           seeMore: this.expandReviewList.bind(this),
@@ -225,8 +227,13 @@ class RatingsAndReviews extends React.Component {
       .then((r) => console.log(r.data));
   }
 
-  addPhotoModal() {
-    this.setState({modal: <PhotoModal />});
+  addPhotoModal(e) {
+    console.log(e.currentTarget);
+    this.setState({modal: (
+      <PhotoModal handleClose={this.closeModal.bind(this)}>
+        {e.currentTarget}
+      </PhotoModal>
+    )});
   }
 
   closeModal() {
