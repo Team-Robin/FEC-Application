@@ -1,9 +1,11 @@
 /* eslint-disable import/no-unresolved */
 import React, { useContext } from 'react';
+import ThemeContext from '../context/Theme';
 import TrackerContext from '../context/Tracker';
 
 const ProductSocials = () => {
   const { tracking, setTracking } = useContext(TrackerContext);
+  const { themeMode } = useContext(ThemeContext);
   const handleFacebook = (event) => {
     // when we deploy. only difference is the u
     // window.open(`https://www.facebook.com/sharer.php?u=${window.location.href}`, '_blank');
@@ -25,7 +27,7 @@ const ProductSocials = () => {
     <div className="d-flex mt-2">
       <button
         type="button"
-        className="btn text-light social-icon bg-transparent shadow cursor-pointer btn-focus"
+        className={`btn text-light social-icon bg-transparent shadow cursor-pointer ${themeMode === 'Light' ? 'btn-focus' : 'border-tertiary btn-focus-dark'}`}
         onClick={handleFacebook}
         aria-label="share to facebook"
         style={{ fontSize: '2rem' }}
@@ -34,7 +36,7 @@ const ProductSocials = () => {
       </button>
       <button
         type="button"
-        className="btn text-light social-icon bg-transparent shadow cursor-pointer btn-focus"
+        className={`btn text-light social-icon bg-transparent shadow cursor-pointer ${themeMode === 'Light' ? 'btn-focus' : 'border-tertiary btn-focus-dark'}`}
         onClick={handleTwitter}
         aria-label="share to twitter"
         style={{ fontSize: '2rem' }}
@@ -43,7 +45,7 @@ const ProductSocials = () => {
       </button>
       <button
         type="button"
-        className="btn text-light social-icon bg-transparent shadow btn-focus"
+        className={`btn text-light social-icon bg-transparent shadow  ${themeMode === 'Light' ? 'btn-focus' : 'border-tertiary btn-focus-dark'}`}
         onClick={handlePinterest}
         aria-label="share to pintrest"
         style={{ fontSize: '2rem' }}
