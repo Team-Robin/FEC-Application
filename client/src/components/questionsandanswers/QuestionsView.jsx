@@ -56,15 +56,10 @@ const QuestionsView = ({ questionInfo, Name }) => {
         <div id="question-cards">
           {questionInfoObj.map((question) => <Question key={question.question_id} question={question} />)}
         </div>
-        <button className="add-more-questions mx-auto" onClick={handleMoreQuestions}>
+        <button className="add-more-questions py-3 w-50 mx-auto my-2" onClick={handleMoreQuestions}>
             {moreQuestions}
         </button>
-        <div className="QA-form">
-          <h5 className="QA-ask-question mx-auto">Ask a Question</h5>
-          <div>
             <AddQuestion questionInfo={questionInfo.questions} Name={Name} />
-          </div>
-        </div>
       </div>
     </div>
   );
