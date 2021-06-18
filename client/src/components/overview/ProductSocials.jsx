@@ -24,10 +24,10 @@ const ProductSocials = () => {
     window.open(`http://pinterest.com/pin/create/button/?url=${window.location.href}&description=Hack Reactor Student FEC`, '_blank');
   };
   return (
-    <div className="d-flex mt-2">
+    <div className="d-flex mt-2 border-tertiary">
       <button
         type="button"
-        className={`btn text-light social-icon bg-transparent shadow cursor-pointer ${themeMode === 'Light' ? 'btn-focus' : 'border-tertiary btn-focus-dark'}`}
+        className={`btn text-light social-icon bg-transparent shadow cursor-pointer ${themeMode === 'Light' ? 'border-primary btn-focus' : 'border-tertiary btn-focus-dark'}`}
         onClick={handleFacebook}
         aria-label="share to facebook"
         style={{ fontSize: '2rem' }}
@@ -36,7 +36,7 @@ const ProductSocials = () => {
       </button>
       <button
         type="button"
-        className={`btn text-light social-icon bg-transparent shadow cursor-pointer ${themeMode === 'Light' ? 'btn-focus' : 'border-tertiary btn-focus-dark'}`}
+        className={`btn text-light social-icon bg-transparent shadow cursor-pointer ${themeMode === 'Light' ? 'border-primary btn-focus' : 'border-tertiary btn-focus-dark'}`}
         onClick={handleTwitter}
         aria-label="share to twitter"
         style={{ fontSize: '2rem' }}
@@ -45,7 +45,7 @@ const ProductSocials = () => {
       </button>
       <button
         type="button"
-        className={`btn text-light social-icon bg-transparent shadow  ${themeMode === 'Light' ? 'btn-focus' : 'border-tertiary btn-focus-dark'}`}
+        className={`btn text-light social-icon bg-transparent shadow  ${themeMode === 'Light' ? 'border-primary btn-focus' : 'border-tertiary btn-focus-dark'}`}
         onClick={handlePinterest}
         aria-label="share to pintrest"
         style={{ fontSize: '2rem' }}
