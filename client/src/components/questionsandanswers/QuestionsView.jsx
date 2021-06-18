@@ -43,7 +43,7 @@ const QuestionsView = ({ questionInfo, Name }) => {
   const searchQuestions = (input) => {
     setSearch(input);
   };
-  console.log();
+
   const totalQs = `See Remaining ${questionInfo.questions.results.length - 4} Questions`
   const moreQuestions = questionView ? totalQs : 'Collapse Questions';
 
