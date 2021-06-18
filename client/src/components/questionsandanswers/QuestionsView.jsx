@@ -44,7 +44,7 @@ const QuestionsView = ({ questionInfo, Name }) => {
     setSearch(input);
   };
   console.log();
-  const totalQs = `See all ${questionInfo.questions.results.length} Questions`
+  const totalQs = `See Remaining ${questionInfo.questions.results.length - 4} Questions`
   const moreQuestions = questionView ? totalQs : 'Collapse Questions';
 
   return (
@@ -57,9 +57,10 @@ const QuestionsView = ({ questionInfo, Name }) => {
         <div id="question-cards">
           {questionInfoObj.map((question) => <Question key={question.question_id} question={question} />)}
         </div>
+        { (questionInfo.questions.results.length > 4) ?
         <button className="add-more-questions py-3 w-50 mx-auto my-2" onClick={handleMoreQuestions}>
             {moreQuestions}
-        </button>
+        </button> : null}
             <AddQuestion questionInfo={questionInfo.questions} Name={Name} />
       </div>
     </div>
