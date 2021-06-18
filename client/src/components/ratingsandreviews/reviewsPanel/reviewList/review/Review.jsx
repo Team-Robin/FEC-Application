@@ -24,6 +24,7 @@ const Review = ({ name, review, reviewControls }) => {
         recommended={review.recommend}
         body={review.body}
         seeMore={reviewControls.seeMore}
+        openPhoto={reviewControls.openPhoto}
         photos={review.photos}
       />
       {response}

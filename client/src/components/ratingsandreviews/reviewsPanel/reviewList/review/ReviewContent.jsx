@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ReviewContent = ({
-  summary, recommended, body, seeMore, photos
+  summary, recommended, body, seeMore, photos, openPhoto
 }) => {
   const text = body.length > 250 ? body.slice(0, 250) : body;
   const seeMoreButton = body.length > 250 ? (
@@ -20,7 +20,7 @@ const ReviewContent = ({
       {recommendation}
       <div className="reviewPhotos">
         {photos.map(({url}) => (
-          <img className="reviewThumbnail" src={url} />
+          <img className="reviewThumbnail" onClick={openPhoto} src={url} />
         ))}
       </div>
     </div>
@@ -32,6 +32,8 @@ ReviewContent.propTypes = {
   recommended: PropTypes.bool.isRequired,
   body: PropTypes.string.isRequired,
   seeMore: PropTypes.func.isRequired,
+  photos: PropTypes.arrayOf(PropTypes.any).isRequired,
+  openPhoto: PropTypes.func.isRequired,
 };
 
 export default ReviewContent;
