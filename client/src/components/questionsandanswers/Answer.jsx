@@ -27,17 +27,6 @@ const Answer = ({ answerBody, question }) => {
   const [helpfulness, setHelpfulness] = useState(false);
   const [addHelpful, setAddHelpful] = useState(answerBody.helpfulness);
 
-  // const onWheel = e => {
-  //   e.preventDefault();
-  //   const container = document.getElementById("answer-photos");
-  //   const containerScrollPosition = document.getElementById("answer-photos").scrollLeft;
-  //   container.scrollTo({
-  //     top: 0,
-  //     left: containerScrollPosition + e.deltaY,
-  //     behaviour: "smooth"
-  //   });
-  // };
-
   const addOneHelp = () => {
     if (helpfulness === false) {
       Connect.putHelpfulnessAnswers(answerBody.id)
@@ -50,6 +39,8 @@ const Answer = ({ answerBody, question }) => {
     }
   };
 
+  const seller = answerBody.answerer_name === 'seller' ? 'sellerBold' : 'answer-user';
+
   return (
     <div id="answers">
       <p className="answer-body">
@@ -57,12 +48,12 @@ const Answer = ({ answerBody, question }) => {
         {' '}
         {answerBody.body}
       </p>
-      <div className="answer-user">
+      <div className={seller}>
         {answerBody.answerer_name}
         {' '}
         (user)
         {' '}
-        <div className="answer-date">
+        <div className="answer-date seller">
           {dateFormat(answerBody.date)}
         </div>
       </div>
