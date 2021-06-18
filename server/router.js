@@ -28,7 +28,8 @@ app.get('/products/:productId', (req, res) => {
 
 // all products
 app.get('/api/products', (req, res) => {
-  connect.getProducts()
+  const { count } = req.query;
+  connect.getProducts({ page: 1, count })
     .then((result) => {
       res.status(200).send(result.data);
     })
@@ -128,7 +129,7 @@ app.post('/api/qa/questions', (req, res) => {
 });
 
 app.post('/api/qa/questions/:question_id/answers', (req, res) => {
-  console.log(req.body)
+  console.log(req.body);
   connect.postAddAnswer(req.body, Number(req.params.question_id))
     .then((result) => {
       res.status(200).send(result.data);

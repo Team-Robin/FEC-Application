@@ -22,8 +22,7 @@ const App = () => {
   const [productName, setProductName] = useState({});
   const { id } = useParams();
 
-  // async component did mount
-  useEffect(async () => {
+  const dataGather = async () => {
     const product = await Connect.getProductById(id);
     const reviewMeta = await Connect.getReviewMeta(product.data.id);
     const questions = await Connect.getQuestions(product.data.id);
@@ -35,7 +34,14 @@ const App = () => {
     setProductInfo({ product: product.data });
     setCurrentStyle(styles.data.results[0]);
     setProductSalesPrice(styles.data.results[0].sale_price);
-  }, []);
+  };
+
+  useEffect(() => {
+    dataGather();
+  }, [id]);
+
+  // async component did mount
+  useEffect(dataGather, []);
 
   useEffect(() => {
     if (currentStyle) {
