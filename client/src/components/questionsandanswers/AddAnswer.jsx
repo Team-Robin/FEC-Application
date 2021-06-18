@@ -18,7 +18,7 @@ const AddAnswer = ({ answerBody, question }) => {
 
   return (
     <div>
-      <button className="modal-btn-answer" onClick={openModal} type="button">
+      <button className="modal-btn-answer py-3 w-50 mx-auto my-2" onClick={openModal} type="button">
         Add Answer
       </button>
       {modal ? (
