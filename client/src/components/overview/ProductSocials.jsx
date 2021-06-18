@@ -27,25 +27,28 @@ const ProductSocials = () => {
         type="button"
         className="btn text-light social-icon bg-transparent shadow cursor-pointer btn-focus"
         onClick={handleFacebook}
+        aria-label="share to facebook"
         style={{ fontSize: '2rem' }}
       >
-        <i className="fab fa-facebook-square fa-lg fb-text-color" />
+        <i className="fab fa-facebook-square fa-lg fb-text-color" aria-hidden="true" />
       </button>
       <button
         type="button"
         className="btn text-light social-icon bg-transparent shadow cursor-pointer btn-focus"
         onClick={handleTwitter}
+        aria-label="share to twitter"
         style={{ fontSize: '2rem' }}
       >
-        <i className="fab fa-twitter-square fa-lg twtr-text-color cursor-pointer" />
+        <i className="fab fa-twitter-square fa-lg twtr-text-color cursor-pointer" aria-hidden="true" />
       </button>
       <button
         type="button"
         className="btn text-light social-icon bg-transparent shadow btn-focus"
         onClick={handlePinterest}
+        aria-label="share to pintrest"
         style={{ fontSize: '2rem' }}
       >
-        <i className="fab fa-pinterest-square fa-lg pins-text-color cursor-pointer" />
+        <i className="fab fa-pinterest-square fa-lg pins-text-color cursor-pointer" aria-hidden="true" />
       </button>
     </div>
   );
