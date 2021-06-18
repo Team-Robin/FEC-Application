@@ -43,7 +43,7 @@ const Question = ({ question }) => {
   };
 
   return (
-    <div id="questions-answers" className={`${themeMode === 'Light' ? 'bg-light-blue' : 'bg-secondary text-dark'}`} >
+    <div id="questions-answers" className={`${themeMode === 'Light' ? 'bg-primary' : 'bg-secondary text-dark'}`} >
       <div id="question-body" >
         <div className="user">
           {question.asker_name}

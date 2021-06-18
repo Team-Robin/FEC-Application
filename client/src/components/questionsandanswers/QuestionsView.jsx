@@ -48,7 +48,7 @@ const QuestionsView = ({ questionInfo, Name }) => {
 
   return (
     <div id="QA-view" className={`${themeMode === 'Light' ? 'text-muted' : 'text-muted-light'}`}>
-      <div id="inner-QAview" className={`${themeMode === 'Light' ? 'bg-light' : 'bg-dark'}`}>
+      <div id="inner-QAview" className={`${themeMode === 'Light' ? 'bg-light border-light' : 'bg-dark border-dark'}`}>
         <h1 id="QA-header">Questions & Answers</h1>
         <div>
           <Search searchQuestions={searchQuestions} />

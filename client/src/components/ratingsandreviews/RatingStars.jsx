@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import ThemeContext from '../context/Theme';
 
 const RatingStars = ({ ratings, mutable, charId = 0, cb = ()=>{} }) => {
   const overallRating = (typeof ratings === 'number') ? ratings : (
@@ -40,23 +41,28 @@ const RatingStars = ({ ratings, mutable, charId = 0, cb = ()=>{} }) => {
     cb(charId, position);
   }
 
-  const makeStar = (pathDirection, count) => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      position={count - 1}
-      key={`star ${count}`}
-      className={mutable ? 'emptiness' : ''}
-      onClick={mutable ? redraw : ()=>{}}
-    >
-      <path fill="#212121"
-       fillRule="nonzero"
-       d={pathDirection}
-      />
-    </svg>
-  )
+  const makeStar = (pathDirection, count) => {
+    const { themeMode } = useContext(ThemeContext);
+    const filled = themeMode === 'Light' ? 'starPrimary' : 'starTertiary';
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        position={count - 1}
+        key={`star ${count}`}
+        className={mutable ? 'emptiness' : filled}
+        onClick={mutable ? redraw : ()=>{}}
+      >
+        <path
+          fillRule="nonzero"
+          d={pathDirection}
+        />
+      </svg>
+    )
+  }
+
 
   const fill = {
     0.25: `M7.55167 1.77872L5.75771 5.41369L1.74627 5.99659C1.33616 6.05618 1.17241 6.56016 1.46917 6.84943L4.37187 9.67887L3.68663

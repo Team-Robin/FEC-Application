@@ -44,6 +44,14 @@ div#inner-QAview {
   flex-direction: column;
 }
 
+.border-light {
+  border-color: #FCC790;
+}
+
+.border-dark {
+  border-color: #b9dfe0;
+}
+
 //==================Questions==================
 #QA-questions {
   display: flex;
@@ -121,6 +129,15 @@ p.question {
 
 }
 
+.question-helpfulness-btn:hover {
+  font-weight: bolder;
+
+}
+.question-report-btn:hover {
+  font-weight: bolder;
+  color: red;
+
+}
 #question-cards {
   display: flex;
   flex-direction: row;
@@ -129,6 +146,17 @@ p.question {
   border-bottom: 3px solid #FCC790;
   border-radius: 0;
   margin-top: 5px;
+}
+
+.question-cards-dark {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  border-top: 3px solid #b9dfe0;
+  border-bottom: 3px solid #b9dfe0;
+  border-radius: 0;
+  margin-top: 5px;
+
 }
 
 .QA-form {
@@ -463,14 +491,8 @@ input {
 }
 
 .A-name-email {
-  display: flex;
-  width: 80%;
-  padding: 10px;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: flex-end;
-  align-content: space-between;
-  justify-content: space-evenly;
+  border-radius: 0;
+  background-color: transparent;
 }
 
 .A-name-email input[type="text"] {
