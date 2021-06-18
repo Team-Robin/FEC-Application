@@ -36,6 +36,10 @@ const App = () => {
     setProductSalesPrice(styles.data.results[0].sale_price);
   };
 
+  useEffect(() => {
+    dataGather();
+  }, [id]);
+
   // async component did mount
   useEffect(dataGather, []);
 
