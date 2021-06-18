@@ -23,7 +23,7 @@ const AnswersList = ({ answers, question }) => {
           : null}
       </div>
       { answers.length > 2 ?(
-      <button className="more-answers" onClick={handleMoreAnswers} type="button">
+      <button className="more-answers more-answers py-3 w-50 mx-auto my-2" onClick={handleMoreAnswers} type="button">
         {moreAnswers}
       </button>
       ) : null

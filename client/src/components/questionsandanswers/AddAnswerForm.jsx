@@ -163,7 +163,6 @@ const AddAnswerForm = ({
           <span className="A-body-count">{charCountBody}</span>
         </div>
         <button id="photoButton" type="button" onClick={uploader.open}>Add Picture</button>
-        <input type="file" onChange={handlePhoto}/>
       </div>
       <span>For your privacy, do not use your full name or email address</span>
       <div className="add-answer-btn">

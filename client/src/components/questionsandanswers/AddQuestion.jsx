@@ -15,16 +15,16 @@ const AddQuestion = ({ questionInfo }) => {
   // const modelComponent = ()
 
   return (
-    <div>
-      <button className="modal-btn" onClick={openModal} type="button">
-        Add Question
+    <>
+      <button className="modal-btn py-2 w-50 mx-auto my-2" onClick={openModal} type="button">
+        Ask Question
       </button>
       {modal ? (
         <Modal closeModal={closeModal}>
           <AddQuestionForm closeModal={closeModal} questionInfo={questionInfo} />
         </Modal>
       ) : ''}
-    </div>
+    </>
   );
 };
 
