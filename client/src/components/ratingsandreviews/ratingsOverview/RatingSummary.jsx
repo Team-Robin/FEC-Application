@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import ThemeContext from '../../context/Theme';
 
 const RatingSummary = ({ starComponent, ratings, recommended }) => {
+  const { themeMode } = useContext(ThemeContext);
   const totalRatings = Object.values(ratings).reduce((total, rateCount) => (
     parseInt(total) + parseInt(rateCount)
   ));
@@ -13,13 +15,13 @@ const RatingSummary = ({ starComponent, ratings, recommended }) => {
 
   return (
     <div id="ratingSummary">
-      <h3>
+      <h3 >
         Ratings and Reviews
-      </h3>
+      </h3><br/>
       <div>
         <h1><sup>{overallRating.toString().slice(0, 3)}</sup>&frasl;<sub>5</sub></h1>
         {starComponent}
-      </div>
+      </div><br />
       <p>{`${Math.floor((parseInt(recommended.true) / totalRatings) * 100)}% of people recommend this product`}</p>
     </div>
   );

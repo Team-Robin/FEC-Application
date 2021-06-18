@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import ThemeContext from '../../context/Theme'
 
 const sortHeader = ({ activeFilters, displayControls, reviews }) => {
   let filters = '';
+  const { themeMode } = useContext(ThemeContext);
   if (activeFilters.length) {
     filters = (
       <div id="filters">
@@ -30,7 +32,7 @@ const sortHeader = ({ activeFilters, displayControls, reviews }) => {
     <div id="sortHeader">
       <div >
         <span>{`${reviews.length}  reviews, sorted by `}</span>
-        <select onChange={displayControls.sort}>
+        <select onChange={displayControls.sort} className={themeMode === 'Dark' ? 'bg-dark-light' : 'bg-light'}>
           <option value="relevant">Relevance</option>
           <option value="helpful">Most Helpful</option>
           <option value="newest">New</option>

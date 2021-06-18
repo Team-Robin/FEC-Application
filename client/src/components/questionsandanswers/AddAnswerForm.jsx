@@ -19,7 +19,7 @@ const AddAnswerForm = ({
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [body, setBody] = useState('');
-  const [photos, setPhotos] = useState(null);
+  const [photos, setPhotos] = useState([]);
   const [charCountName, setCharCountName] = useState(60);
   const [charCountEmail, setCharCountEmail] = useState(60);
   const [charCountBody, setCharCountBody] = useState(1000);
@@ -67,6 +67,19 @@ const AddAnswerForm = ({
 
     return errors;
   }
+
+  const uploader = cloudinary.createUploadWidget({
+    cloudName: 'ddrvosdfa',
+    uploadPreset: 'wmysnpod',
+    maxFiles: 5,
+    thumbnails: '#formPics',
+  }, async (error, result) => {
+      if (!error && result && result.event === "success") {
+        console.log('Done! Here is the image info: ', result.info);
+        photos.push(result.info.url);
+      }
+    }
+  )
 
   const handleQuestionSubmit = () => {
     let error = validate();
@@ -149,6 +162,7 @@ const AddAnswerForm = ({
           {' '}
           <span className="A-body-count">{charCountBody}</span>
         </div>
+        <button id="photoButton" type="button" onClick={uploader.open}>Add Picture</button>
         <input type="file" onChange={handlePhoto}/>
       </div>
       <span>For your privacy, do not use your full name or email address</span>

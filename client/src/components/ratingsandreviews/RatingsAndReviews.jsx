@@ -84,17 +84,6 @@ class RatingsAndReviews extends React.Component {
       modal: '',
       // modal should be empty or should contain a jsx component.
     };
-
-    this.myWidget = cloudinary.createUploadWidget({
-      cloudName: 'ddrvosdfa',
-      uploadPreset: 'wmysnpod',
-      maxFiles: 10,
-    }, (error, result) => {
-        if (!error && result && result.event === "success") {
-
-        }
-      }
-    )
   }
 
   componentDidMount() {
@@ -216,6 +205,17 @@ class RatingsAndReviews extends React.Component {
         ratings={this.state.ratings}
         submitReview={this.submitReview}
         handleClose={this.closeModal.bind(this)}
+        uploader={cloudinary.createUploadWidget({
+          cloudName: 'ddrvosdfa',
+          uploadPreset: 'wmysnpod',
+          maxFiles: 5,
+          thumbnails: '#formPics',
+        }, (error, result) => {
+            if (!error && result && result.event === "success") {
+              console.log('Done! Here is the image info: ', result.info)
+            }
+          }
+        )}
       />
       )});
   }
@@ -255,7 +255,6 @@ class RatingsAndReviews extends React.Component {
             ratingMetaData={this.state.ratings}
             controls={this.controls.ratings}
           />
-          <button type="button" onClick={this.myWidget.open}>Upload</button>
           <ReviewsPanel
             displayAmount={this.state.displayAmount}
             activeFilters={this.state.activeFilters}

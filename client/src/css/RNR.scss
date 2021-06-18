@@ -1,10 +1,11 @@
+@import './variables.scss';
+
 #rnr {
   display: flex;
   flex-flow: row wrap;
   width: 100%;
   margin: 0;
   padding: 50px 0;
-  background: #ededed;
   justify-content: center;
   align-items: flex-start;
 }
@@ -15,21 +16,24 @@
 
 #rnr > * {
   display: inline-block;
-  background: #ededed;
   margin: 1rem;
 }
 
 #rnr button {
   text-decoration: underline;
+  color: inherit;
 }
 //starComponent---------------------------------------------------------
 
-.starComponent {
+.starComponent path {
   padding: 5px;
 }
 
-path {
-  fill: #338689
+.starPrimary path {
+  fill: #1d8078 !important;
+}
+.starTertiary {
+  fill: #ae1eba !important;
 }
 
 //----------------------------------------------------------------------
@@ -47,11 +51,20 @@ path {
 }
 
 #ratingsOverview > * {
-  background: #ececec;
   flex: 1 1 auto;
   padding: 0.5em 0;
-  background: #b9dfe0;
-  box-shadow: black 6px 8px 10px -15px;
+  box-shadow: .2rem .2rem .2rem  rgba(0,0,0,.3)
+}
+
+.ratingsLight > * {
+  background-color: $primary-color;
+  border-color: #1c8078 !important;
+}
+
+.ratingsDark > * {
+  background-color: #d48cda;
+  border-color: #ae1eba !important;
+  color: black;
 }
 
 //rating Summary-------------------------------------------------
@@ -59,9 +72,10 @@ path {
   display: flex;
   flex-flow: column wrap;
   align-content: space-around;
-  padding-bottom: 2em;
-  background: #ededed;
-  box-shadow: none;
+  padding: 1em;
+  margin-bottom: 2em;
+  border-bottom: solid;
+  border-left: solid;
 }
 //ratingBreakdown------------------------------------------------
 #ratingBreakdown {
@@ -89,6 +103,7 @@ path {
 .ratingBar {
   width: 70%;
 }
+
 .backgroundBar {
   background: gray;
   width: 100%;
@@ -96,10 +111,15 @@ path {
 }
 //NEED TO MAKE DYNAMIC
 .forgroundBar {
-  background: green;
   height: 5px;
   position: relative;
   top: -5px
+}
+.forgroundLight {
+  background: green;
+}
+.forgroundDark {
+  background: #ae1eba;
 }
 //Characteristics ----------------------------------------------
 #characteristicList {
@@ -145,14 +165,13 @@ path {
 #reviewPanel {
   display: flex;
   flex-flow: column;
-  flex: 1 1 70%;
+  flex: 3 1 50%;
   justify-content: center;
   align-items: center;
   padding-top: .5em;
 }
 
 #reviewPanel > * {
-  background: rgb(236, 236, 236);
   flex: 1 1 auto;
   margin: .25rem;
   padding: .65em 0;
@@ -173,7 +192,6 @@ path {
   color: #f1f1f1;
   font-size: 1em;
   font-weight: 600;
-  background: #da3939;
   border-radius: .25em;
   padding: .2em;
   display: flex;
@@ -189,11 +207,16 @@ path {
   font-size: 1.5em;
   flex-flow: column nowrap;
   align-items: center;
-  flex: 1 1 4em;
+  flex: 1 1 7em;
 }
 
 #sortHeader:first-child > * {
   margin: .5em;
+}
+
+#sortHeader select {
+  border-radius: .25rem;
+  color: inherit;
 }
 
 sortHeader::after {
@@ -220,11 +243,21 @@ sortHeader::after {
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
-  border-left: solid #2c9b9d;
-  margin: 0.25em 0;
+  border-left: solid;
+  margin: 0 0.25em 1em;
   padding: 0.25em;
-  background: #b9dfe0;
-  box-shadow: black 6px 8px 10px -15px;
+  box-shadow: .2rem .2rem .2rem  rgba(0,0,0,.3);
+  color: black;
+}
+
+.reviewLight {
+  background-color: #79E0D8;
+  border-color: #1c8078 !important;
+}
+
+.reviewDark {
+  background-color: #d48cda;
+  border-color: #ae1eba !important;
 }
 
 .review > * {
@@ -278,7 +311,6 @@ sortHeader::after {
 }
 
 #reviewButtons button {
-  background-color: rgb(211, 211, 211);
   padding: 1em;
   margin: 1em;
 }
@@ -295,9 +327,7 @@ sortHeader::after {
 }
 
 .reviewResponse {
-  background: rgb(255, 255, 255);
   padding: .5em;
-  border-left: solid green;
 }
 
 .feedbackController {
@@ -343,7 +373,7 @@ sortHeader::after {
   display: inline-block;
   opacity: 1;
   background: none;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(15px);
 }
 
 #modalWindow {
@@ -355,7 +385,6 @@ sortHeader::after {
   position: fixed;
   left: 10%;
   top: 10%;
-  background: #ededed;
   justify-content: space-between;
 }
 
@@ -381,16 +410,37 @@ sortHeader::after {
   background: inherit;
 }
 
-#modalTop div {
-  border: solid black;
+.modalLight {
+  border-left: solid #1d8078 0.25em;
+  border-right: solid #1d8078 0.25em;
+}
+
+.modalDark {
+  border-left: solid #ae1eba;
+  border-right: solid #ae1eba;
+}
+
+.modalLight > div {
   padding: .5em;
   margin: .25em;
+  background-color: $background-light-dark;
+  color: $charcoal;
+  fill: #1d8078;
+}
+
+.modalDark > div {
+  padding: .5em;
+  margin: .25em;
+  background-color: $background-dark-light;
+  color: $off-white;
+  fill: #ae1eba;
 }
 
 #ratingSelectors {
   display: flex;
   flex-flow: column;
   flex: 1 1 5%;
+  justify-content: space-around;
 }
 
 #addReviewForm {
@@ -402,7 +452,7 @@ sortHeader::after {
 #formContent {
   display: flex;
   flex-flow: row nowrap;
-  flex: 1 1 60%;
+  flex: 1 1 80%;
 }
 
 #formText {
@@ -418,6 +468,7 @@ sortHeader::after {
 #formText textarea {
   flex: 1 1 60%;
   background: transparent;
+  margin-bottom: 1em !important;
 }
 
 div#userInfo {
@@ -432,6 +483,7 @@ div#userInfo {
   display: flex;
   flex-flow: column;
   flex: 1 1 20%;
+  align-items: center;
 }
 
 #formFooter {
@@ -446,7 +498,6 @@ div#userInfo {
   flex-flow: column nowrap;
   align-items: center;
   justify-content: space-evenly;
-  border: black solid;
   padding: .25em;
   flex: 1 1 30%;
 }
@@ -458,14 +509,40 @@ div#userInfo {
 
 #addReviewForm input, #addReviewForm textarea {
   border: none;
-  border-bottom: solid rgb(83, 83, 83);
+  border-bottom: solid #535353;
   border-radius: 0;
   margin: 0 1em;
-  padding: 0;
+  padding: .5em;
+  border-radius: .25em;
+  background-color: #eee;
 }
 
 .emptiness > * {
   fill: transparent;
   stroke: black;
+}
+
+.cloudinary-thumbnails {
+  display: flex;
+  flex: 1;
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+  flex-flow: column;
+  justify-content: space-evenly;
+}
+
+.reviewPhotos {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: start;
+  margin: 0;
+}
+
+.reviewPhotos > * {
+  height: 5em;
+  margin: 1em;
+  box-shadow: 0.1rem 0.1rem 0.2rem rgb(0 0 0 / 30%);
 }
 

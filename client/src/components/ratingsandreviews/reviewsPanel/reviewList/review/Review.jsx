@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import ReviewHead from './ReviewHead';
 import ReviewContent from './ReviewContent';
 import ReviewResponse from './ReviewResponse';
 import FeedbackController from './FeedbackController';
+import ThemeContext from '../../../../context/Theme'
 
 const Review = ({ name, review, reviewControls }) => {
   const response = (review.response !== null) ? <ReviewResponse response={review.response} /> : '';
+  const { themeMode } = useContext(ThemeContext);
+  const lightMode = 'reviewLight';
+  const darkMode = 'reviewDark';
+  console.log(review);
   return (
-    <div className="review">
+    <div className={`review ${themeMode === 'Light' ? lightMode : darkMode}`}>
       <ReviewHead
         rating={review.rating}
         reviewerName={review.reviewer_name}
@@ -19,6 +24,7 @@ const Review = ({ name, review, reviewControls }) => {
         recommended={review.recommend}
         body={review.body}
         seeMore={reviewControls.seeMore}
+        photos={review.photos}
       />
       {response}
       <FeedbackController
