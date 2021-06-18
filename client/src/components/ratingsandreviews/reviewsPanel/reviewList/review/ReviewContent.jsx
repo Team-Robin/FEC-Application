@@ -2,19 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ReviewContent = ({
-  summary, recommended, body, seeMore,
+  summary, recommended, body, seeMore, photos
 }) => {
-  let text = body;
-  let seeMoreButton = '';
-  const recommendation = (recommended) ? (<p className="recommended">I recomend this product</p>) : '';
-  if (body.length > 250) {
-    seeMoreButton = (
+  const text = body.length > 250 ? body.slice(0, 250) : body;
+  const seeMoreButton = body.length > 250 ? (
       <button type="button" value={body} onClick={seeMore}>
         See more
       </button>
-    );
-    text = body.slice(0, 250);
-  }
+    ) : '';
+  const recommendation = (recommended) ? (<p className="recommended">I recomend this product</p>) : '';
 
   return (
     <div className="reviewContent">
@@ -22,6 +18,11 @@ const ReviewContent = ({
       <p className="reviewBody">{text}</p>
       {seeMoreButton}
       {recommendation}
+      <div className="reviewPhotos">
+        {photos.map(({url}) => (
+          <img className="reviewThumbnail" src={url} />
+        ))}
+      </div>
     </div>
   );
 };

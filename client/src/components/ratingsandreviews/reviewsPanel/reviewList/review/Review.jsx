@@ -11,6 +11,7 @@ const Review = ({ name, review, reviewControls }) => {
   const { themeMode } = useContext(ThemeContext);
   const lightMode = 'reviewLight';
   const darkMode = 'reviewDark';
+  console.log(review);
   return (
     <div className={`review ${themeMode === 'Light' ? lightMode : darkMode}`}>
       <ReviewHead
@@ -23,6 +24,7 @@ const Review = ({ name, review, reviewControls }) => {
         recommended={review.recommend}
         body={review.body}
         seeMore={reviewControls.seeMore}
+        photos={review.photos}
       />
       {response}
       <FeedbackController

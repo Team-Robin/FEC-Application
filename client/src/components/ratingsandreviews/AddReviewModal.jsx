@@ -13,7 +13,6 @@ const AddReviewModal = ({ labels, ratings, submitReview, handleClose, uploader }
   const [characteristics, setCharacteristics] = useState({});
   const [rating, setRating] = useState(0);
   const [test, setTest] = useState([]);
-
   // contexts
   const { themeMode } = useContext(ThemeContext);
   const lightMode = 'modalLight';
@@ -28,7 +27,6 @@ const AddReviewModal = ({ labels, ratings, submitReview, handleClose, uploader }
     4: 'Good',
     5: 'Great',
   }
-
 
   const setters = {
     setName,
@@ -78,10 +76,9 @@ const AddReviewModal = ({ labels, ratings, submitReview, handleClose, uploader }
   //   }
   // )
 
-  const submit = async () => {
+  const submit = () => {
     let thumbnails = document.getElementsByClassName('cloudinary-thumbnails')[0];
     if (thumbnails !== undefined) {
-      debugger;
        thumbnails = thumbnails.children;
        for (var i = 0; i < thumbnails.length; i++) {
          let thumbnail = thumbnails[i];
@@ -89,11 +86,15 @@ const AddReviewModal = ({ labels, ratings, submitReview, handleClose, uploader }
          photoQueue.push(url);
        }
     }
-    await setPhotos(photoQueue.slice(0, 5));
-    submitReview({
-      name, email, summary, body, recommend, product_id, rating, photos, characteristics,
-    })
+    setPhotos(photoQueue.slice(0, 5));
   }
+
+  useEffect(() => {
+    console.log(photos)
+      submitReview({
+        name, email, summary, body, recommend, product_id, rating, photos, characteristics,
+      });
+  }, [photos])
 
   const photoQueue = [];
 

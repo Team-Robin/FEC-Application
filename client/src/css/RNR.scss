@@ -532,3 +532,17 @@ div#userInfo {
   justify-content: space-evenly;
 }
 
+.reviewPhotos {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: start;
+  margin: 0;
+}
+
+.reviewPhotos > * {
+  height: 5em;
+  margin: 1em;
+  box-shadow: 0.1rem 0.1rem 0.2rem rgb(0 0 0 / 30%);
+}
+
